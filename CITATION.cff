@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this reproducibility package, please cite the associated paper."
-title: "Text-based Entity Resolution Using Transformer Models: Reproducibility Package"
+message: "If you use this software or reproducibility package, please cite it using the metadata below."
+title: "Text-based Entity Resolution Using Transformer Models — Reproducibility Package"
 type: software
 authors:
   - family-names: Ahmed
@@ -11,3 +11,8 @@ authors:
     given-names: Ralf
   - family-names: Vogt
     given-names: Martin
+version: 1.0.0
+date-released: 2026-09-25
+doi: 10.5281/zenodo.22968294
+repository-code: "https://github.com/aahmed101521/er-transformer-reproducibility"
+url: "https://doi.org/10.5281/zenodo.22968294"
