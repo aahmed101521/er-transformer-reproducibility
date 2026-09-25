@@ -16,3 +16,4 @@ date-released: 2026-09-25
 doi: 10.5281/zenodo.22968294
 repository-code: "https://github.com/aahmed101521/er-transformer-reproducibility"
 url: "https://doi.org/10.5281/zenodo.22968294"
+license: MIT

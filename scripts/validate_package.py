@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = (
     "README.md", "REPRODUCIBILITY.md", "DETERMINISM.md",
-    "DATA_LICENSE.md",
+    "DATA_LICENSE.md", "LICENSE",
     "environment/ENVIRONMENT_PROVENANCE.md",
     "requirements.txt", "requirements-recovery.txt",
     "requirements-historical-core.txt", "reproduce.py", "reproduce_revision.py",

@@ -249,3 +249,17 @@ The intended final archival workflow is:
 5. insert those identifiers into the manuscript and reviewer response.
 
 See `environment/ENVIRONMENT_PROVENANCE.md` for environment provenance and `DETERMINISM.md` for the distinction between replication variability and same-seed GPU reproducibility.
+
+
+## Licensing
+
+Software code authored for this reproducibility package is released under the
+MIT License; see `LICENSE`.
+
+The DBLP-Scholar and Abt-Buy benchmark datasets are third-party materials and
+are not relicensed under the MIT License. Their provenance and the licensing
+statement provided by the original distributor are documented in
+`DATA_LICENSE.md`.
+
+Manuscript text included for reproducibility is not covered by the software
+license and remains subject to the applicable author/publisher rights.

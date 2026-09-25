@@ -38,3 +38,16 @@ Abt-Buy:
 The scientific code, documentation and other material authored for this
 reproducibility package are separate from the licensing of these third-party
 benchmark datasets.
+
+## Original licensing statement
+
+The official Database Group Leipzig benchmark page states that the binary
+entity-resolution datasets are made available "under the Creative Commons
+license." The page does not identify a specific Creative Commons license
+variant. This package therefore does not infer or assign a more specific
+Creative Commons license to those datasets.
+
+Original source:
+https://dbs.uni-leipzig.de/research/projects/benchmark-datasets-for-entity-resolution
+
+Source checked: 25 September 2026.
