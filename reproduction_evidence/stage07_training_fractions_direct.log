@@ -1,0 +1,696 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. training-fractions-direct
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis18_section7_direct.py
+
+========================================================================================
+STAGE: training-fractions-direct
+========================================================================================
+Final direct-score reconstruction of the training-fraction experiment, including Zhang FLR/MMR.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis18_section7_direct.py
+==============================================================================
+Analysis 18 direct-score reconstruction
+==============================================================================
+NO CROSS-ENCODER TRAINING
+Validation: direct CrossEncoder.predict()
+Holdout: saved sigmoid scores reclassified using the mathematically equivalent sigmoid threshold
+Final metrics: Zhang FLR and Zhang MMR
+Seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+Fractions: [0.5, 0.6, 0.7, 0.8, 0.9]
+Pinned GPU: cuda:0 (NVIDIA L40); visible CUDA devices=1
+
+DBLP input validation
+------------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  A with >1 match=1,238  max matches/A=20
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+
+ECOM input validation
+------------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  A with >1 match=16  max matches/A=2
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+Loaded top-50 cache: /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_section7/cache/DBLP_top50.json
+Loaded top-50 cache: /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_section7/cache/ECOM_top50.json
+
+    DBLP f=0.50 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8073.51it/s]
+      direct threshold=0.15; sigmoid-equivalent=0.537430; validation F1=0.9402
+      result: FLR=0.014073; Zhang MMR=0.015702; legacy psi=0.012397; declared=1208; false=17; missing=15
+
+    DBLP f=0.50 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7511.29it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9194
+      result: FLR=0.023967; Zhang MMR=0.012542; legacy psi=0.006689; declared=1210; false=29; missing=8
+
+    DBLP f=0.50 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7605.59it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.9274
+      result: FLR=0.015625; Zhang MMR=0.014815; legacy psi=0.009877; declared=1216; false=19; missing=12
+
+    DBLP f=0.50 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8515.28it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9240
+      result: FLR=0.013969; Zhang MMR=0.009083; legacy psi=0.004955; declared=1217; false=17; missing=6
+
+    DBLP f=0.50 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8105.76it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9259
+      result: FLR=0.018333; Zhang MMR=0.010915; legacy psi=0.007557; declared=1200; false=22; missing=9
+
+    DBLP f=0.50 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8103.07it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9356
+      result: FLR=0.016447; Zhang MMR=0.018868; legacy psi=0.011485; declared=1216; false=20; missing=14
+
+    DBLP f=0.50 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8237.82it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9091
+      result: FLR=0.017370; Zhang MMR=0.016556; legacy psi=0.010762; declared=1209; false=21; missing=13
+
+    DBLP f=0.50 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8156.95it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9132
+      result: FLR=0.014742; Zhang MMR=0.011504; legacy psi=0.004108; declared=1221; false=18; missing=5
+
+    DBLP f=0.50 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7907.67it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9545
+      result: FLR=0.019040; Zhang MMR=0.018227; legacy psi=0.008285; declared=1208; false=23; missing=10
+
+    DBLP f=0.50 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p50/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7980.32it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9417
+      result: FLR=0.014286; Zhang MMR=0.019231; legacy psi=0.013378; declared=1190; false=17; missing=16
+
+    DBLP f=0.60 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7979.74it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9167
+      result: FLR=0.025407; Zhang MMR=0.014388; legacy psi=0.008222; declared=984; false=25; missing=8
+
+    DBLP f=0.60 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7630.76it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9365
+      result: FLR=0.019669; Zhang MMR=0.014568; legacy psi=0.006243; declared=966; false=19; missing=6
+
+    DBLP f=0.60 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8659.44it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9384
+      result: FLR=0.013361; Zhang MMR=0.012346; legacy psi=0.008230; declared=973; false=13; missing=8
+
+    DBLP f=0.60 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7515.52it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.9365
+      result: FLR=0.011482; Zhang MMR=0.017635; legacy psi=0.013485; declared=958; false=11; missing=13
+
+    DBLP f=0.60 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8482.48it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.9008
+      result: FLR=0.017764; Zhang MMR=0.010526; legacy psi=0.007368; declared=957; false=17; missing=7
+
+    DBLP f=0.60 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8185.45it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9517
+      result: FLR=0.017562; Zhang MMR=0.019588; legacy psi=0.011340; declared=968; false=17; missing=11
+
+    DBLP f=0.60 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8521.87it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9291
+      result: FLR=0.014478; Zhang MMR=0.016512; legacy psi=0.008256; declared=967; false=14; missing=8
+
+    DBLP f=0.60 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7958.40it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9275
+      result: FLR=0.022380; Zhang MMR=0.011317; legacy psi=0.004115; declared=983; false=22; missing=4
+
+    DBLP f=0.60 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8036.97it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9262
+      result: FLR=0.022774; Zhang MMR=0.019730; legacy psi=0.009346; declared=966; false=22; missing=9
+
+    DBLP f=0.60 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p60/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8153.02it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9297
+      result: FLR=0.022965; Zhang MMR=0.021944; legacy psi=0.013584; declared=958; false=22; missing=13
+
+    DBLP f=0.70 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 19120.48it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9389
+      result: FLR=0.015131; Zhang MMR=0.015131; legacy psi=0.011004; declared=727; false=11; missing=8
+
+    DBLP f=0.70 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7949.92it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9398
+      result: FLR=0.022008; Zhang MMR=0.016598; legacy psi=0.008299; declared=727; false=16; missing=6
+
+    DBLP f=0.70 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8135.40it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9306
+      result: FLR=0.006859; Zhang MMR=0.012278; legacy psi=0.009550; declared=729; false=5; missing=7
+
+    DBLP f=0.70 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6913.15it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.9119
+      result: FLR=0.016349; Zhang MMR=0.006878; legacy psi=0.002751; declared=734; false=12; missing=2
+
+    DBLP f=0.70 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7327.82it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9195
+      result: FLR=0.015385; Zhang MMR=0.011236; legacy psi=0.009831; declared=715; false=11; missing=7
+
+    DBLP f=0.70 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7092.05it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9353
+      result: FLR=0.016484; Zhang MMR=0.017833; legacy psi=0.010974; declared=728; false=12; missing=8
+
+    DBLP f=0.70 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8192.76it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9421
+      result: FLR=0.005571; Zhang MMR=0.019231; legacy psi=0.015110; declared=718; false=4; missing=11
+
+    DBLP f=0.70 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6798.84it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.9308
+      result: FLR=0.013736; Zhang MMR=0.009655; legacy psi=0.005517; declared=728; false=10; missing=4
+
+    DBLP f=0.70 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8845.54it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.9326
+      result: FLR=0.024965; Zhang MMR=0.024965; legacy psi=0.009709; declared=721; false=18; missing=7
+
+    DBLP f=0.70 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p70/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8276.52it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9374
+      result: FLR=0.008451; Zhang MMR=0.016760; legacy psi=0.011173; declared=710; false=6; missing=8
+
+    DBLP f=0.80 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8197.18it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9379
+      result: FLR=0.022358; Zhang MMR=0.008247; legacy psi=0.008247; declared=492; false=11; missing=4
+
+    DBLP f=0.80 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7630.76it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9305
+      result: FLR=0.026804; Zhang MMR=0.014614; legacy psi=0.004175; declared=485; false=13; missing=2
+
+    DBLP f=0.80 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8484.77it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9380
+      result: FLR=0.004141; Zhang MMR=0.014344; legacy psi=0.012295; declared=483; false=2; missing=6
+
+    DBLP f=0.80 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8172.69it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9325
+      result: FLR=0.004124; Zhang MMR=0.012270; legacy psi=0.008180; declared=485; false=2; missing=4
+
+    DBLP f=0.80 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8902.04it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.9256
+      result: FLR=0.017058; Zhang MMR=0.017058; legacy psi=0.012793; declared=469; false=8; missing=6
+
+    DBLP f=0.80 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9679.16it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9424
+      result: FLR=0.018330; Zhang MMR=0.026263; legacy psi=0.016162; declared=491; false=9; missing=8
+
+    DBLP f=0.80 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8076.03it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9301
+      result: FLR=0.012346; Zhang MMR=0.014374; legacy psi=0.006160; declared=486; false=6; missing=3
+
+    DBLP f=0.80 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8154.69it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.9326
+      result: FLR=0.006224; Zhang MMR=0.014403; legacy psi=0.010288; declared=482; false=3; missing=5
+
+    DBLP f=0.80 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7093.53it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9342
+      result: FLR=0.024691; Zhang MMR=0.018634; legacy psi=0.006211; declared=486; false=12; missing=3
+
+    DBLP f=0.80 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p80/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8685.40it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.9280
+      result: FLR=0.019068; Zhang MMR=0.023207; legacy psi=0.016878; declared=472; false=9; missing=8
+
+    DBLP f=0.90 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7944.47it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9486
+      result: FLR=0.008333; Zhang MMR=0.016529; legacy psi=0.016529; declared=240; false=2; missing=4
+
+    DBLP f=0.90 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8312.92it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9374
+      result: FLR=0.025000; Zhang MMR=0.016807; legacy psi=0.012605; declared=240; false=6; missing=3
+
+    DBLP f=0.90 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7260.65it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9384
+      result: FLR=0.012448; Zhang MMR=0.028571; legacy psi=0.024490; declared=241; false=3; missing=6
+
+    DBLP f=0.90 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7835.50it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9427
+      result: FLR=0.004065; Zhang MMR=0.012097; legacy psi=0.008065; declared=246; false=1; missing=2
+
+    DBLP f=0.90 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8062.57it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9420
+      result: FLR=0.021186; Zhang MMR=0.012821; legacy psi=0.008547; declared=236; false=5; missing=2
+
+    DBLP f=0.90 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7880.08it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9341
+      result: FLR=0.016393; Zhang MMR=0.024390; legacy psi=0.012195; declared=244; false=4; missing=3
+
+    DBLP f=0.90 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8038.29it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9176
+      result: FLR=0.012448; Zhang MMR=0.012448; legacy psi=0.004149; declared=241; false=3; missing=1
+
+    DBLP f=0.90 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8386.05it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9421
+      result: FLR=0.000000; Zhang MMR=0.012448; legacy psi=0.012448; declared=238; false=0; missing=3
+
+    DBLP f=0.90 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8061.24it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9280
+      result: FLR=0.021008; Zhang MMR=0.021008; legacy psi=0.008403; declared=238; false=5; missing=2
+
+    DBLP f=0.90 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/DBLP/f_0p90/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6909.89it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9400
+      result: FLR=0.025316; Zhang MMR=0.029412; legacy psi=0.021008; declared=237; false=6; missing=5
+
+    ECOM f=0.50 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7326.36it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8545
+      result: FLR=0.042596; Zhang MMR=0.127542; legacy psi=0.088725; declared=493; false=21; missing=48
+
+    ECOM f=0.50 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8620.79it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.8796
+      result: FLR=0.044025; Zhang MMR=0.157116; legacy psi=0.118299; declared=477; false=21; missing=64
+
+    ECOM f=0.50 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9726.84it/s]
+      direct threshold=0.40; sigmoid-equivalent=0.598688; validation F1=0.8018
+      result: FLR=0.036559; Zhang MMR=0.171904; legacy psi=0.140481; declared=465; false=17; missing=76
+
+    ECOM f=0.50 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8878.53it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8692
+      result: FLR=0.051173; Zhang MMR=0.177449; legacy psi=0.133087; declared=469; false=24; missing=72
+
+    ECOM f=0.50 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8341.10it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8533
+      result: FLR=0.041068; Zhang MMR=0.136784; legacy psi=0.099815; declared=487; false=20; missing=54
+
+    ECOM f=0.50 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7727.84it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.8246
+      result: FLR=0.027897; Zhang MMR=0.162662; legacy psi=0.138632; declared=466; false=13; missing=75
+
+    ECOM f=0.50 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8549.17it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.8381
+      result: FLR=0.026144; Zhang MMR=0.173752; legacy psi=0.151571; declared=459; false=12; missing=82
+
+    ECOM f=0.50 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8604.63it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.8638
+      result: FLR=0.034043; Zhang MMR=0.160813; legacy psi=0.131238; declared=470; false=16; missing=71
+
+    ECOM f=0.50 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9420.56it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.8624
+      result: FLR=0.044872; Zhang MMR=0.173752; legacy psi=0.134935; declared=468; false=21; missing=73
+
+    ECOM f=0.50 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p50/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8753.94it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.8173
+      result: FLR=0.043841; Zhang MMR=0.153420; legacy psi=0.114603; declared=479; false=21; missing=62
+
+    ECOM f=0.60 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8201.76it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.8494
+      result: FLR=0.039164; Zhang MMR=0.150115; legacy psi=0.115473; declared=383; false=15; missing=50
+
+    ECOM f=0.60 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8390.53it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.8471
+      result: FLR=0.043597; Zhang MMR=0.189376; legacy psi=0.152425; declared=367; false=16; missing=66
+
+    ECOM f=0.60 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7174.89it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8606
+      result: FLR=0.032432; Zhang MMR=0.173210; legacy psi=0.145497; declared=370; false=12; missing=63
+
+    ECOM f=0.60 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 5132.89it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8408
+      result: FLR=0.022284; Zhang MMR=0.189376; legacy psi=0.170901; declared=359; false=8; missing=74
+
+    ECOM f=0.60 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 3670.32it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8516
+      result: FLR=0.023438; Zhang MMR=0.133949; legacy psi=0.113164; declared=384; false=9; missing=49
+
+    ECOM f=0.60 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7403.58it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8421
+      result: FLR=0.033943; Zhang MMR=0.145497; legacy psi=0.115473; declared=383; false=13; missing=50
+
+    ECOM f=0.60 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8151.06it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8797
+      result: FLR=0.028818; Zhang MMR=0.221709; legacy psi=0.198614; declared=347; false=10; missing=86
+
+    ECOM f=0.60 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6302.62it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8314
+      result: FLR=0.043011; Zhang MMR=0.177829; legacy psi=0.140878; declared=372; false=16; missing=61
+
+    ECOM f=0.60 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8611.02it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8626
+      result: FLR=0.043928; Zhang MMR=0.145497; legacy psi=0.106236; declared=387; false=17; missing=46
+
+    ECOM f=0.60 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p60/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7134.21it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.8769
+      result: FLR=0.029101; Zhang MMR=0.152425; legacy psi=0.127021; declared=378; false=11; missing=55
+
+    ECOM f=0.70 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 5106.35it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.8552
+      result: FLR=0.035088; Zhang MMR=0.153846; legacy psi=0.123077; declared=285; false=10; missing=40
+
+    ECOM f=0.70 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6857.81it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8667
+      result: FLR=0.035842; Zhang MMR=0.172308; legacy psi=0.141538; declared=279; false=10; missing=46
+
+    ECOM f=0.70 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8332.42it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8795
+      result: FLR=0.014440; Zhang MMR=0.160000; legacy psi=0.147692; declared=277; false=4; missing=48
+
+    ECOM f=0.70 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8506.89it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8797
+      result: FLR=0.026119; Zhang MMR=0.196923; legacy psi=0.175385; declared=268; false=7; missing=57
+
+    ECOM f=0.70 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7952.36it/s]
+      direct threshold=0.40; sigmoid-equivalent=0.598688; validation F1=0.8729
+      result: FLR=0.017986; Zhang MMR=0.160000; legacy psi=0.144615; declared=278; false=5; missing=47
+
+    ECOM f=0.70 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7860.11it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8198
+      result: FLR=0.017857; Zhang MMR=0.153846; legacy psi=0.138462; declared=280; false=5; missing=45
+
+    ECOM f=0.70 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8140.67it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8696
+      result: FLR=0.042553; Zhang MMR=0.169231; legacy psi=0.132308; declared=282; false=12; missing=43
+
+    ECOM f=0.70 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 3796.73it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.8629
+      result: FLR=0.039007; Zhang MMR=0.166154; legacy psi=0.132308; declared=282; false=11; missing=43
+
+    ECOM f=0.70 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8204.97it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8746
+      result: FLR=0.045296; Zhang MMR=0.156923; legacy psi=0.116923; declared=287; false=13; missing=38
+
+    ECOM f=0.70 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p70/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7614.14it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8754
+      result: FLR=0.014286; Zhang MMR=0.150769; legacy psi=0.138462; declared=280; false=4; missing=45
+
+    ECOM f=0.80 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7782.47it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.8598
+      result: FLR=0.041667; Zhang MMR=0.152074; legacy psi=0.115207; declared=192; false=8; missing=25
+
+    ECOM f=0.80 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6133.73it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.8667
+      result: FLR=0.027473; Zhang MMR=0.184332; legacy psi=0.161290; declared=182; false=5; missing=35
+
+    ECOM f=0.80 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 4918.88it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8640
+      result: FLR=0.039773; Zhang MMR=0.221198; legacy psi=0.188940; declared=176; false=7; missing=41
+
+    ECOM f=0.80 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7438.22it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.8431
+      result: FLR=0.033149; Zhang MMR=0.193548; legacy psi=0.165899; declared=181; false=6; missing=36
+
+    ECOM f=0.80 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7385.70it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.8520
+      result: FLR=0.027027; Zhang MMR=0.170507; legacy psi=0.147465; declared=185; false=5; missing=32
+
+    ECOM f=0.80 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7190.47it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.8318
+      result: FLR=0.042781; Zhang MMR=0.175115; legacy psi=0.138249; declared=187; false=8; missing=30
+
+    ECOM f=0.80 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 5317.71it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.8389
+      result: FLR=0.037838; Zhang MMR=0.179724; legacy psi=0.147465; declared=185; false=7; missing=32
+
+    ECOM f=0.80 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7424.67it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.8667
+      result: FLR=0.031579; Zhang MMR=0.152074; legacy psi=0.124424; declared=190; false=6; missing=27
+
+    ECOM f=0.80 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7169.98it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.8780
+      result: FLR=0.031579; Zhang MMR=0.152074; legacy psi=0.124424; declared=190; false=6; missing=27
+
+    ECOM f=0.80 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p80/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7656.37it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8665
+      result: FLR=0.021390; Zhang MMR=0.156682; legacy psi=0.138249; declared=187; false=4; missing=30
+
+    ECOM f=0.90 seed=42
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6750.59it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.8958
+      result: FLR=0.041667; Zhang MMR=0.155963; legacy psi=0.119266; declared=96; false=4; missing=13
+
+    ECOM f=0.90 seed=43
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7192.23it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8906
+      result: FLR=0.053191; Zhang MMR=0.183486; legacy psi=0.137615; declared=94; false=5; missing=15
+
+    ECOM f=0.90 seed=44
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 3468.96it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8930
+      result: FLR=0.034483; Zhang MMR=0.229358; legacy psi=0.201835; declared=87; false=3; missing=22
+
+    ECOM f=0.90 seed=45
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7661.56it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.8883
+      result: FLR=0.031915; Zhang MMR=0.165138; legacy psi=0.137615; declared=94; false=3; missing=15
+
+    ECOM f=0.90 seed=46
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7383.60it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8865
+      result: FLR=0.010204; Zhang MMR=0.110092; legacy psi=0.100917; declared=98; false=1; missing=11
+
+    ECOM f=0.90 seed=47
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 4064.25it/s]
+      direct threshold=0.40; sigmoid-equivalent=0.598688; validation F1=0.8375
+      result: FLR=0.032609; Zhang MMR=0.183486; legacy psi=0.155963; declared=92; false=3; missing=17
+
+    ECOM f=0.90 seed=48
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6006.49it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8677
+      result: FLR=0.021053; Zhang MMR=0.146789; legacy psi=0.128440; declared=95; false=2; missing=14
+
+    ECOM f=0.90 seed=49
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6796.33it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8686
+      result: FLR=0.030303; Zhang MMR=0.119266; legacy psi=0.091743; declared=99; false=3; missing=10
+
+    ECOM f=0.90 seed=50
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 3112.32it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9072
+      result: FLR=0.010101; Zhang MMR=0.100917; legacy psi=0.091743; declared=99; false=1; missing=10
+
+    ECOM f=0.90 seed=51
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis18_section7/cross_encoder/ECOM/f_0p90/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7794.86it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8696
+      result: FLR=0.021978; Zhang MMR=0.183486; legacy psi=0.165138; declared=91; false=2; missing=18
+
+==============================================================================
+DIRECT-SCORE SUMMARY
+==============================================================================
+
+Primary three seeds:
+dataset  fraction  FLR_mean  MMR_mean
+   DBLP       0.5  0.017888  0.014353
+   DBLP       0.6  0.019479  0.013767
+   DBLP       0.7  0.014666  0.014669
+   DBLP       0.8  0.017768  0.012402
+   DBLP       0.9  0.015260  0.020636
+   ECOM       0.5  0.041060  0.152187
+   ECOM       0.6  0.038398  0.170901
+   ECOM       0.7  0.028457  0.162051
+   ECOM       0.8  0.036304  0.185868
+   ECOM       0.9  0.043114  0.189602
+
+Complete ten-seed groups:
+dataset  fraction  FLR_mean  MMR_mean
+   DBLP       0.5  0.016785  0.014744
+   DBLP       0.6  0.018784  0.015855
+   DBLP       0.7  0.014494  0.015056
+   DBLP       0.8  0.015514  0.016341
+   DBLP       0.9  0.014620  0.018653
+   ECOM       0.5  0.039222  0.159519
+   ECOM       0.6  0.033972  0.167898
+   ECOM       0.7  0.028847  0.164000
+   ECOM       0.8  0.033425  0.173733
+   ECOM       0.9  0.028750  0.157798
+
+Saved:
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_fraction_sweep_direct_perseed.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_fraction_sweep_direct_primary3.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_fraction_sweep_direct_mc10.csv
+
+Analysis 18 direct-score reconstruction complete.
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

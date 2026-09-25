@@ -1,0 +1,21 @@
+Python: 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]
+numpy: 2.5.3
+pandas: 3.0.6
+scikit-learn: 1.9.1
+torch: 2.5.1+cu121
+sentence-transformers: 6.1.0
+transformers: 5.17.0
+xgboost: NOT INSTALLED
+datasets: 5.0.1
+accelerate: 1.15.0
+PyTorch CUDA: 12.1
+CUDA available: True
+GPU: NVIDIA L40
+
+Historical Analysis 20 environment recorded in archived manifest:
+Python: 3.12.3
+NumPy: 2.5.1
+pandas: 3.0.3
+scikit-learn: 1.9.0
+PyTorch: 2.5.1+cu121
+XGBoost: 3.3.0

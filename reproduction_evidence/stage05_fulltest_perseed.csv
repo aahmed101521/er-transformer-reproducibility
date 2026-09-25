@@ -1,0 +1,7 @@
+dataset,seed,model,model_parameters_updated,score_path,n_train_a,n_test_a,n_pair_fit_partition_unused,n_validation_pairs,threshold,validation_f1,FLR,MMR,declared,correct,false_links,missing_matches,n_true_records
+DBLP,42,cross-encoder/ms-marco-MiniLM-L-6-v2,False,CrossEncoder.predict() direct,1308,1308,46772,11693,0.9000000000000002,0.5597189695550351,0.059856344772545866,0.026446280991735516,1253,1178,75,4,1210
+DBLP,43,cross-encoder/ms-marco-MiniLM-L-6-v2,False,CrossEncoder.predict() direct,1308,1308,47306,11827,0.9000000000000002,0.5724550898203593,0.06586345381526104,0.027591973244147194,1245,1163,82,3,1196
+DBLP,44,cross-encoder/ms-marco-MiniLM-L-6-v2,False,CrossEncoder.predict() direct,1308,1308,46588,11647,0.9000000000000002,0.5738498789346247,0.05723370429252783,0.023868312757201693,1258,1186,72,3,1215
+ECOM,42,cross-encoder/ms-marco-MiniLM-L-6-v2,False,CrossEncoder.predict() direct,540,541,21597,5400,0.9000000000000002,0.20803295571575695,0.24440298507462688,0.25138632162661734,536,405,131,5,541
+ECOM,43,cross-encoder/ms-marco-MiniLM-L-6-v2,False,CrossEncoder.predict() direct,540,541,21597,5400,0.9000000000000002,0.23370786516853934,0.2735849056603774,0.28835489833641403,530,385,145,11,541
+ECOM,44,cross-encoder/ms-marco-MiniLM-L-6-v2,False,CrossEncoder.predict() direct,540,541,21595,5399,0.9000000000000002,0.21739130434782608,0.27819548872180455,0.2902033271719039,532,384,148,9,541

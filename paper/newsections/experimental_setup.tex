@@ -1,0 +1,238 @@
+\section{Data and experimental setup}
+\label{sec:experimental-setup}
+
+\subsection{Datasets and preprocessing}
+\label{sec:data}
+
+We use the DBLP-Scholar and Abt-Buy datasets from the Magellan repository
+\citep{konda2016magellan}. The two datasets differ considerably in both scale and
+the form of their textual information. DBLP-Scholar contains bibliographic records,
+whereas Abt-Buy contains product records collected from two online retailers.
+\rev{Our evaluation reformulates these benchmark datasets as record-level candidate
+retrieval and linkage problems, with FLR and MMR calculated over file-$A$ records and
+their candidate sets. These error rates are therefore not directly comparable to the
+pair-level precision, recall or F1 scores reported under the standard entity-matching
+classification protocol in, for example, DeepMatcher and Ditto
+\citep{mudgal2018deep,li2020deep}.}
+Table \ref{tab:dataset-summary} summarises the data used in the experiments.
+
+\begin{table}[ht]
+\centering
+\caption{Summary of the datasets used in the experiments.}
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & $n_A$ & $n_B$ & Gold pairs & Matchable records in $A$ \\
+\midrule
+DBLP-Scholar & 2,616 & 64,263 & 5,347 & 2,408 \\
+Abt-Buy      & 1,081 & 1,092  & 1,097 & 1,081 \\
+\bottomrule
+\end{tabular}
+\label{tab:dataset-summary}
+\end{table}
+
+For DBLP-Scholar, file $A$ is the DBLP file and file $B$ is the Scholar
+file. The original files contain the fields title, authors, venue and year.
+The gold-standard mapping contains 5,347 pairs involving 2,408 distinct
+DBLP records and 5,218 distinct Scholar records. A DBLP record may therefore
+have more than one valid Scholar partner. Of the 2,616 DBLP records, 2,408
+have at least one gold-standard match.
+
+For Abt-Buy, file $A$ is the Abt file and file $B$ is the Buy file. The
+original Abt file contains the product name, description and price, while the
+Buy file additionally contains the manufacturer. The gold-standard mapping
+contains 1,097 pairs. All 1,081 Abt records have at least one known match in
+the Buy file, and some records have more than one valid partner.
+
+For semantic blocking, we use the title field for DBLP-Scholar and the
+product-name field for Abt-Buy. These fields contain no missing values in
+either dataset. The other common text fields remain available for the field-level comparisons
+used by the traditional scoring models. The complete
+gold-standard mappings are retained when determining whether a candidate
+set contains a valid match and when evaluating a predicted link.
+
+For constructing supervised match examples, one valid file-$B$ partner is
+retained for each matchable file-$A$ record. Thus, there are 2,408 retained
+positive pairs for DBLP-Scholar and 1,081 for Abt-Buy. Importantly, the
+other known valid partners are not treated as non-matches. At evaluation,
+a predicted link is considered correct if the selected file-$B$ record is
+any known valid partner of the corresponding file-$A$ record.
+
+
+\subsection{Training and candidate construction}
+\label{sec:training-candidates}
+
+The experimental unit is a file-$A$ record together with its candidate
+file-$B$ records, rather than an individual candidate pair. This distinction
+is important because all the pairs associated with a given file-$A$ record
+must remain together when the data are divided into training and test sets.
+
+For the main experiments, the file-$A$ records are randomly divided 50--50
+into training and test sets. In DBLP-Scholar this gives 1,308 records in
+each half. In Abt-Buy, 540 records are assigned to training and 541 to
+testing. The primary results reported in Sections 3 and 4 use random seeds
+42, 43 and 44 and are averaged over the three resulting splits. \rev{In Tables
+\ref{tab:comparison}--\ref{tab:discrimination-gap}, numbers in parentheses are
+Monte Carlo standard errors, calculated as the sample standard deviation of
+the three seed-level error rates divided by $\sqrt{3}$. The FLR and MMR
+are calculated separately for each split before averaging. With only three
+replications, these standard errors describe observed split-to-split
+variation and do not support precise interpretation of small method differences.}
+Seeds 45--51 are used later where additional Monte Carlo replications are
+required.
+
+Candidate blocks are constructed according to Scheme-II in Section 1.3.
+First, the pretrained bi-encoder \texttt{all-MiniLM-L6-v2} is used to
+embed the blocking text of every record in files $A$ and $B$. For each
+record $i\in A$, the records in $B$ are ranked by cosine similarity of
+their embeddings, and the $k$ most similar records form $C_i$. We consider
+primarily $k=5$ and $k=50$, while $k=1$ is also useful for examining the
+blocking floor.
+
+The same procedure is applied independently to every file-$A$ record.
+Consequently, the same file-$B$ record may occur in the candidate blocks
+of several file-$A$ records. This mirrors how semantic blocking would be
+applied to records outside the labelled sample and avoids imposing an
+artificial one-to-one restriction at the blocking stage.
+
+The labelled candidate pairs are then constructed for supervised learning. Each retained
+valid partner provides one positive example for its matchable file-$A$ record. This retained
+positive is supplied for supervised fitting whether or not that particular partner occurs
+among the retrieved top-$k$ candidates. The non-match examples are drawn from the
+retrieved candidate block: candidate-derived pairs that are not known valid partners are
+treated as negatives, while every additional gold-standard partner of the same file-$A$
+record is excluded from the non-match class. Thus, one retained positive may be accompanied
+by several retrieved hard non-matches rather than by only one negative example. At
+evaluation, the candidate block is not augmented with the retained positive, so a record
+cannot be linked correctly when none of its valid partners has been retrieved. The resulting
+non-matches are therefore relatively difficult examples selected by semantic similarity
+rather than arbitrary pairs drawn from $A\times B$.
+
+For DBLP-Scholar, the training and test sets also contain file-$A$ records
+that have no gold-standard partner. Their candidate pairs are all
+non-matches. This is useful because such records occur in the application
+of record linkage and a classification procedure should be able to leave
+them unlinked. For Abt-Buy, every file-$A$ record has at least one known
+valid partner.
+
+For discriminative link classification, the candidate pairs belonging to
+the training half are further divided 80--20 into fitting and validation
+parts. The fitting part is used to estimate the model and the validation
+part to choose the link-classification threshold by maximising the F1
+score. The outer test records are not involved in this choice.
+
+
+\subsection{Models and implementation}
+\label{sec:models-implementation}
+
+We consider three ways of progressing from the candidate pairs to link
+classification, corresponding to the workflows introduced in Figure
+\ref{fig:workflow}.
+
+In the traditional workflow, field-level text comparisons are obtained
+with the Jaro--Winkler metric. In the proposed workflow, these are replaced
+by cosine similarities calculated from bi-encoder embeddings. Unless
+otherwise stated, the bi-encoder is
+\texttt{all-MiniLM-L6-v2} \citep{reimers2019sentence}. Section
+\ref{sec:embedding-scoring} explains how these comparison outcomes enter
+the subsequent scoring models.
+
+Two traditional scoring models are used in the main comparison. The
+generative model follows the MEC approach of \citet{lee2021maximum},
+with the match and non-match densities of the continuous comparison
+outcomes estimated by kernel density estimation. The discriminative model
+is logistic regression. A radial-kernel SVM, XGBoost and a small
+multilayer perceptron are considered later as a sensitivity analysis.
+
+For direct classification from paired texts, we use the cross-encoder
+\texttt{ms-marco-MiniLM-L-6-v2}. Both transformer models are first
+considered in their pretrained form. Their fine-tuning is then investigated
+in Section \ref{sec:fine-tuning-models}, where we give the corresponding
+training settings and explain how the candidate blocks are treated before
+and after fine-tuning.
+
+For discriminative models, including the cross-encoder, a validation
+subset of the training pairs is used to choose the threshold for declaring
+a link by maximising the F1 score. The particular classification rules are
+described together with the corresponding models below, since they form
+part of the methodological comparison rather than merely an implementation
+detail.
+
+The objective of these experiments is not to identify the best possible
+model or hyperparameter configuration for either benchmark dataset.
+Rather, the common setup enables us to examine how embedding, scoring,
+classification and fine-tuning can be combined within the proposed
+workflow. \rev{Accordingly, the reported error rates are intended to illustrate the
+behaviour of this workflow under a common experimental setup, rather than to
+establish state-of-the-art entity-matching performance or a benchmark ranking
+against published systems such as DeepMatcher \citep{mudgal2018deep}, Ditto
+\citep{li2020deep}, or the method of \citet{peeters2021dual}.}
+
+
+\subsection{Evaluation}
+\label{sec:evaluation}
+
+The unit of link classification is again a file-$A$ record. Given the
+candidate block $C_i$, a scoring model ranks or scores its candidate
+file-$B$ records. If a link is declared, let $j_i$ denote the selected
+record. For models that use a classification threshold, no link is
+declared when the best candidate does not satisfy that threshold. The
+generative MEC calculations considered below instead select the
+highest-ranked candidate according to the estimated density ratio.
+
+A declared link is counted as correct whenever $(i,j_i)$ is one of the
+known gold-standard pairs for record $i$. This is important for both
+datasets because the gold-standard relation need not be one-to-one.
+Selecting a valid partner other than the particular partner retained for
+supervised fitting is therefore still a correct link.
+
+The two error measures are the FLR and MMR defined in Equation (1).
+It is useful to state their empirical calculation explicitly. Let $D$
+be the number of links declared among the test file-$A$ records, let
+$C$ be the number of those declarations that select a valid
+gold-standard partner, and let $M$ be the number of matchable file-$A$
+records in the test set. Then
+
+\[
+\widehat{\mathrm{FLR}}
+=
+1-\frac{C}{D},
+\qquad
+\widehat{\mathrm{MMR}}
+=
+1-\frac{C}{M}.
+\]
+
+Thus, an incorrect declared link contributes to both error measures:
+it is a false link among the declarations and, for a matchable
+file-$A$ record, it also means that the true match has not been
+recovered. An undeclared matchable record contributes to the MMR but
+not to the numerator or denominator of the FLR. For DBLP-Scholar,
+a declared link for a non-matchable file-$A$ record is necessarily a
+false link and therefore contributes to the FLR.
+
+Blocking imposes an additional lower bound on the MMR. If none of the
+valid partners of a matchable file-$A$ record occurs in $C_i$, no
+scoring or classification model operating on that block can link the
+record correctly. We refer to the proportion of such records as the
+floor MMR and examine it explicitly in Section
+\ref{sec:embedding-scoring}.
+
+Unless otherwise stated, the tables in Sections 3 and 4 report the mean
+FLR and MMR over the three primary random splits. In the later
+investigation of training-set fractions and subsample error assessment,
+seeds 42--51 provide ten Monte Carlo replications. There we additionally
+report Monte Carlo standard errors, and, where relevant, relative Monte
+Carlo standard errors, in order to distinguish variation across random
+splits from the differences between modelling procedures.
+
+\rev{The replication counts were not selected to attain a prespecified
+hypothesis-testing power or precision target. They reflect the computational
+cost of repeated fine-tuning and the descriptive purpose of the experiments.
+Accordingly, the three-split comparisons in Tables
+\ref{tab:comparison}--\ref{tab:discrimination-gap} are used to identify broad
+patterns rather than to resolve small numerical differences; their Monte Carlo
+standard errors are reported to show the scale of split-to-split variation. The
+ten-replication studies in Section 4.3 provide a more precise assessment of
+training-fraction sensitivity and subsample error estimation, but they are
+likewise interpreted cautiously when the Monte Carlo standard error is of the
+same order as the observed difference or bias.}

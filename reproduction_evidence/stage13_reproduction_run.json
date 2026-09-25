@@ -1,0 +1,31 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-25T15:23:36.950755+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "paper-tables",
+      "description": "Reconstruct the paper-facing tables from saved record counts using Zhang FLR/MMR and verify them against the LaTeX manuscript.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/build_paper_tables.py"
+      ],
+      "started_at": "2026-09-25T15:23:36.951302+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-25T15:23:38.022642+00:00"
+    }
+  ],
+  "finished_at": "2026-09-25T15:23:38.023048+00:00",
+  "status": "completed"
+}

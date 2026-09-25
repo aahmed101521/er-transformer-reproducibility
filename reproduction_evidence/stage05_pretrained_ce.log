@@ -1,0 +1,120 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. pretrained-cross-encoder
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_pretrained_ce.py
+
+========================================================================================
+STAGE: pretrained-cross-encoder
+========================================================================================
+Untouched pretrained cross-encoder baseline using direct CrossEncoder.predict() scores and no model fitting.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_pretrained_ce.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+==============================================================================
+Analysis 17 pretrained cross-encoder final-paper baseline
+==============================================================================
+Project root: /home/ahmeda/ER_Transformer_Reproducible_RUN
+Datasets: ['DBLP', 'ECOM']
+Seeds: [42, 43, 44]
+Device: cuda
+Cross-encoder fit(): NEVER
+Additional sigmoid: NO
+Metrics: Zhang FLR/MMR from declared/correct/matchable counts
+
+DBLP input validation
+------------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  A with >1 match=1,238  max matches/A=20
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+
+DBLP: constructing pretrained bi-encoder top-50 blocks
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8152.73it/s]
+
+DBLP baseline embeddings and blocking
+------------------------------------------------------------------------------
+  encoding A.title [16:56:34]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:00<00:02,  4.24it/s]Batches:  64%|██████▎   | 7/11 [00:00<00:00, 24.17it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 26.72it/s]
+  encoding A.authors [16:56:34]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 41.96it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 59.22it/s]
+  encoding A.venue [16:56:34]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  82%|████████▏ | 9/11 [00:00<00:00, 88.70it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 90.51it/s]
+  encoding A.year [16:56:34]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 117.14it/s]
+  encoding B.title [16:56:34]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 35.92it/s]Batches:   4%|▎         | 9/252 [00:00<00:06, 39.48it/s]Batches:   6%|▌         | 15/252 [00:00<00:05, 44.55it/s]Batches:   8%|▊         | 20/252 [00:00<00:05, 43.98it/s]Batches:  10%|█         | 26/252 [00:00<00:04, 47.00it/s]Batches:  12%|█▏        | 31/252 [00:00<00:04, 45.37it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 45.53it/s]Batches:  16%|█▋        | 41/252 [00:00<00:04, 45.79it/s]Batches:  18%|█▊        | 46/252 [00:01<00:04, 45.71it/s]Batches:  20%|██        | 51/252 [00:01<00:04, 45.79it/s]Batches:  22%|██▏       | 56/252 [00:01<00:04, 45.61it/s]Batches:  24%|██▍       | 61/252 [00:01<00:04, 46.10it/s]Batches:  27%|██▋       | 67/252 [00:01<00:03, 48.70it/s]Batches:  29%|██▉       | 73/252 [00:01<00:03, 50.06it/s]Batches:  31%|███▏      | 79/252 [00:01<00:03, 46.85it/s]Batches:  34%|███▎      | 85/252 [00:01<00:03, 48.45it/s]Batches:  36%|███▌      | 91/252 [00:01<00:03, 49.91it/s]Batches:  38%|███▊      | 97/252 [00:02<00:03, 49.26it/s]Batches:  41%|████      | 103/252 [00:02<00:02, 50.34it/s]Batches:  43%|████▎     | 109/252 [00:02<00:06, 23.03it/s]Batches:  46%|████▌     | 115/252 [00:02<00:04, 27.64it/s]Batches:  48%|████▊     | 120/252 [00:03<00:04, 29.94it/s]Batches:  50%|████▉     | 125/252 [00:03<00:03, 32.53it/s]Batches:  52%|█████▏    | 130/252 [00:03<00:03, 35.94it/s]Batches:  54%|█████▍    | 136/252 [00:03<00:02, 40.21it/s]Batches:  56%|█████▋    | 142/252 [00:03<00:02, 43.61it/s]Batches:  58%|█████▊    | 147/252 [00:03<00:02, 44.28it/s]Batches:  61%|██████    | 154/252 [00:03<00:02, 48.86it/s]Batches:  63%|██████▎   | 160/252 [00:03<00:01, 49.07it/s]Batches:  66%|██████▌   | 166/252 [00:03<00:01, 49.84it/s]Batches:  68%|██████▊   | 172/252 [00:04<00:01, 50.03it/s]Batches:  71%|███████   | 179/252 [00:04<00:01, 54.24it/s]Batches:  73%|███████▎  | 185/252 [00:04<00:01, 55.07it/s]Batches:  76%|███████▌  | 192/252 [00:04<00:01, 57.98it/s]Batches:  79%|███████▊  | 198/252 [00:04<00:00, 58.52it/s]Batches:  81%|████████▏ | 205/252 [00:04<00:00, 60.59it/s]Batches:  84%|████████▍ | 212/252 [00:04<00:00, 62.65it/s]Batches:  87%|████████▋ | 219/252 [00:04<00:00, 58.74it/s]Batches:  90%|████████▉ | 226/252 [00:04<00:00, 61.16it/s]Batches:  92%|█████████▏| 233/252 [00:05<00:00, 59.67it/s]Batches:  95%|█████████▌| 240/252 [00:05<00:00, 60.11it/s]Batches:  98%|█████████▊| 247/252 [00:05<00:00, 60.19it/s]Batches: 100%|██████████| 252/252 [00:05<00:00, 47.34it/s]
+  encoding B.authors [16:56:40]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 51.79it/s]Batches:   5%|▍         | 12/252 [00:00<00:09, 24.47it/s]Batches:   7%|▋         | 18/252 [00:00<00:07, 33.18it/s]Batches:  10%|▉         | 25/252 [00:00<00:05, 41.86it/s]Batches:  12%|█▏        | 31/252 [00:00<00:04, 45.95it/s]Batches:  15%|█▍        | 37/252 [00:00<00:04, 47.52it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 52.93it/s]Batches:  20%|█▉        | 50/252 [00:01<00:03, 53.51it/s]Batches:  22%|██▏       | 56/252 [00:01<00:03, 52.19it/s]Batches:  25%|██▌       | 63/252 [00:01<00:03, 56.88it/s]Batches:  28%|██▊       | 70/252 [00:01<00:03, 58.79it/s]Batches:  31%|███       | 77/252 [00:01<00:02, 60.07it/s]Batches:  33%|███▎      | 84/252 [00:01<00:02, 59.05it/s]Batches:  37%|███▋      | 92/252 [00:01<00:02, 63.23it/s]Batches:  40%|███▉      | 100/252 [00:01<00:02, 66.45it/s]Batches:  42%|████▏     | 107/252 [00:01<00:02, 65.96it/s]Batches:  46%|████▌     | 115/252 [00:02<00:01, 69.22it/s]Batches:  49%|████▉     | 123/252 [00:02<00:01, 72.05it/s]Batches:  52%|█████▏    | 131/252 [00:02<00:01, 72.45it/s]Batches:  55%|█████▌    | 139/252 [00:02<00:01, 70.09it/s]Batches:  58%|█████▊    | 147/252 [00:03<00:03, 31.41it/s]Batches:  62%|██████▏   | 155/252 [00:03<00:02, 38.35it/s]Batches:  64%|██████▍   | 162/252 [00:03<00:02, 42.46it/s]Batches:  67%|██████▋   | 169/252 [00:03<00:01, 47.27it/s]Batches:  70%|███████   | 177/252 [00:03<00:01, 53.89it/s]Batches:  73%|███████▎  | 185/252 [00:03<00:01, 59.35it/s]Batches:  77%|███████▋  | 194/252 [00:03<00:00, 65.56it/s]Batches:  80%|████████  | 202/252 [00:03<00:00, 67.57it/s]Batches:  83%|████████▎ | 210/252 [00:03<00:00, 69.43it/s]Batches:  87%|████████▋ | 218/252 [00:03<00:00, 71.61it/s]Batches:  90%|████████▉ | 226/252 [00:04<00:00, 72.12it/s]Batches:  93%|█████████▎| 235/252 [00:04<00:00, 75.64it/s]Batches:  97%|█████████▋| 244/252 [00:04<00:00, 77.73it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 57.47it/s]
+  encoding B.venue [16:56:44]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 55.53it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 51.40it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 50.82it/s]Batches:  10%|▉         | 24/252 [00:00<00:04, 53.27it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 53.22it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 51.55it/s]Batches:  17%|█▋        | 42/252 [00:00<00:04, 51.90it/s]Batches:  19%|█▉        | 48/252 [00:01<00:06, 31.08it/s]Batches:  22%|██▏       | 55/252 [00:01<00:05, 37.81it/s]Batches:  25%|██▍       | 62/252 [00:01<00:04, 44.47it/s]Batches:  27%|██▋       | 69/252 [00:01<00:03, 48.93it/s]Batches:  30%|███       | 76/252 [00:01<00:03, 53.66it/s]Batches:  33%|███▎      | 83/252 [00:01<00:03, 56.17it/s]Batches:  36%|███▌      | 90/252 [00:01<00:02, 59.26it/s]Batches:  38%|███▊      | 97/252 [00:01<00:02, 61.74it/s]Batches:  41%|████▏     | 104/252 [00:02<00:02, 61.44it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 63.72it/s]Batches:  47%|████▋     | 118/252 [00:02<00:02, 62.83it/s]Batches:  50%|████▉     | 125/252 [00:02<00:01, 64.51it/s]Batches:  52%|█████▏    | 132/252 [00:02<00:01, 61.98it/s]Batches:  56%|█████▌    | 140/252 [00:02<00:01, 65.88it/s]Batches:  59%|█████▊    | 148/252 [00:02<00:01, 69.72it/s]Batches:  62%|██████▏   | 157/252 [00:02<00:01, 73.34it/s]Batches:  65%|██████▌   | 165/252 [00:02<00:01, 72.73it/s]Batches:  69%|██████▉   | 174/252 [00:03<00:01, 75.37it/s]Batches:  73%|███████▎  | 183/252 [00:03<00:00, 78.46it/s]Batches:  76%|███████▌  | 192/252 [00:03<00:01, 36.87it/s]Batches:  81%|████████  | 203/252 [00:03<00:01, 47.49it/s]Batches:  85%|████████▍ | 213/252 [00:03<00:00, 55.90it/s]Batches:  89%|████████▉ | 224/252 [00:03<00:00, 65.82it/s]Batches:  93%|█████████▎| 235/252 [00:04<00:00, 74.44it/s]Batches:  98%|█████████▊| 247/252 [00:04<00:00, 84.62it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 59.84it/s]
+  encoding B.year [16:56:49]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 11/252 [00:00<00:02, 103.19it/s]Batches:   9%|▊         | 22/252 [00:00<00:02, 95.69it/s] Batches:  13%|█▎        | 33/252 [00:00<00:02, 99.82it/s]Batches:  17%|█▋        | 44/252 [00:00<00:02, 102.02it/s]Batches:  22%|██▏       | 55/252 [00:00<00:02, 96.50it/s] Batches:  26%|██▌       | 65/252 [00:00<00:01, 95.12it/s]Batches:  30%|███       | 76/252 [00:00<00:01, 97.08it/s]Batches:  35%|███▍      | 88/252 [00:00<00:01, 101.60it/s]Batches:  39%|███▉      | 99/252 [00:01<00:02, 58.88it/s] Batches:  44%|████▍     | 111/252 [00:01<00:02, 69.74it/s]Batches:  48%|████▊     | 121/252 [00:01<00:01, 75.28it/s]Batches:  52%|█████▏    | 131/252 [00:01<00:01, 80.60it/s]Batches:  57%|█████▋    | 143/252 [00:01<00:01, 88.73it/s]Batches:  62%|██████▏   | 155/252 [00:01<00:01, 95.36it/s]Batches:  66%|██████▌   | 166/252 [00:01<00:00, 97.82it/s]Batches:  70%|███████   | 177/252 [00:01<00:00, 99.27it/s]Batches:  75%|███████▍  | 188/252 [00:02<00:00, 100.13it/s]Batches:  80%|███████▉  | 201/252 [00:02<00:00, 106.07it/s]Batches:  85%|████████▍ | 213/252 [00:02<00:00, 108.65it/s]Batches:  89%|████████▉ | 225/252 [00:02<00:00, 111.01it/s]Batches:  94%|█████████▍| 237/252 [00:02<00:00, 111.49it/s]Batches:  99%|█████████▉| 249/252 [00:02<00:00, 58.13it/s] Batches: 100%|██████████| 252/252 [00:02<00:00, 84.68it/s]
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records
+  caching June string features for k=50 pairs [16:56:52]
+    cached 250/2,616 A records    cached 500/2,616 A records    cached 750/2,616 A records    cached 1,000/2,616 A records    cached 1,250/2,616 A records    cached 1,500/2,616 A records    cached 1,750/2,616 A records    cached 2,000/2,616 A records    cached 2,250/2,616 A records    cached 2,500/2,616 A records    cached 2,616/2,616 A records
+DBLP: loading untouched pretrained cross-encoder cross-encoder/ms-marco-MiniLM-L-6-v2
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7444.00it/s]
+DBLP seed=42: threshold=0.90; FLR=0.059856; MMR=0.026446; declared=1253; correct=1178
+DBLP seed=43: threshold=0.90; FLR=0.065863; MMR=0.027592; declared=1245; correct=1163
+DBLP seed=44: threshold=0.90; FLR=0.057234; MMR=0.023868; declared=1258; correct=1186
+
+ECOM input validation
+------------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  A with >1 match=16  max matches/A=2
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+
+ECOM: constructing pretrained bi-encoder top-50 blocks
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6656.19it/s]
+
+ECOM baseline embeddings and blocking
+------------------------------------------------------------------------------
+  encoding A.title [16:59:02]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 54.97it/s]
+  encoding A.desc [16:59:02]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  40%|████      | 2/5 [00:00<00:00, 19.86it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 26.13it/s]
+  encoding B.title [16:59:03]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 45.67it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 45.56it/s]
+  encoding B.desc [16:59:03]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 52.67it/s]
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records
+  caching June string features for k=50 pairs [16:59:03]
+    cached 250/1,081 A records    cached 500/1,081 A records    cached 750/1,081 A records    cached 1,000/1,081 A records    cached 1,081/1,081 A records
+ECOM: loading untouched pretrained cross-encoder cross-encoder/ms-marco-MiniLM-L-6-v2
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6583.38it/s]
+ECOM seed=42: threshold=0.90; FLR=0.244403; MMR=0.251386; declared=536; correct=405
+ECOM seed=43: threshold=0.90; FLR=0.273585; MMR=0.288355; declared=530; correct=385
+ECOM seed=44: threshold=0.90; FLR=0.278195; MMR=0.290203; declared=532; correct=384
+
+Primary-three pretrained CE results
+==============================================================================
+dataset  n_splits      FLR      MMR   FLR_sd   MMR_sd   FLR_se   MMR_se
+   DBLP         3 0.060985 0.025969 0.004424 0.001907 0.002554 0.001101
+   ECOM         3 0.265394 0.276648 0.018325 0.021897 0.010580 0.012642
+
+Saved:
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis17_pretrained_ce_perseed.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis17_pretrained_ce_primary3.csv
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

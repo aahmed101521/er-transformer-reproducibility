@@ -1,0 +1,34 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-23T07:02:58.261140+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "transformer-primary",
+      "description": "Primary three-seed baseline, fine-tuned bi-encoder, and fine-tuned cross-encoder experiment.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_section5.py",
+        "--phase",
+        "all",
+        "--primary-only"
+      ],
+      "started_at": "2026-09-23T07:02:58.261565+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-23T09:12:09.409800+00:00"
+    }
+  ],
+  "finished_at": "2026-09-23T09:12:09.410348+00:00",
+  "status": "completed"
+}

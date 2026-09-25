@@ -1,0 +1,589 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. representation-scoring
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis16_clean_2x2.py
+
+========================================================================================
+STAGE: representation-scoring
+========================================================================================
+Representation x scoring comparison for the standard blocking settings.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis16_clean_2x2.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+========================================================================
+Analysis 16: corrected Section 4 representation x scorer comparison
+========================================================================
+Project root: /home/ahmeda/ER_Transformer_Reproducible_RUN
+Bi-encoder: all-MiniLM-L6-v2
+String fields: Jaro-Winkler on every field, including authors
+MEC KDE bandwidth: 0.05
+Raw-file decoding: latin-1
+Text preparation: lowercase + strip; June CSV round-trip preserved
+Legacy JW missing handling: pandas NaN is scored as literal 'nan'
+Primary seeds: [42, 43, 44]
+Diagnostic seeds: [45, 46, 47, 48, 49, 50, 51]
+CUDA available: True
+CUDA device: NVIDIA L40
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 9336.59it/s]
+
+DBLP input validation
+------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  A with >1 match=1,238  max matches/A=20
+Training positives: first-listed reachable match, one per matched A
+Test correctness: any member of the complete truth set
+June JW missing-value semantics: pandas NaN -> literal 'nan'
+  missing after June-style reload, title: A=0, B=0
+  missing after June-style reload, authors: A=218, B=1
+  missing after June-style reload, venue: A=211, B=14,997
+  missing after June-style reload, year: A=0, B=34,790
+
+DBLP per-field embeddings [02:21:38]
+------------------------------------------------------------------------
+embedding field: title
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:00<00:02,  4.39it/s]Batches:  73%|███████▎  | 8/11 [00:00<00:00, 28.45it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 28.70it/s]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 35.66it/s]Batches:   4%|▍         | 10/252 [00:00<00:05, 44.41it/s]Batches:   6%|▋         | 16/252 [00:00<00:05, 46.04it/s]Batches:   8%|▊         | 21/252 [00:00<00:05, 45.39it/s]Batches:  10%|█         | 26/252 [00:00<00:04, 46.44it/s]Batches:  12%|█▏        | 31/252 [00:00<00:05, 40.06it/s]Batches:  14%|█▍        | 36/252 [00:00<00:05, 41.51it/s]Batches:  16%|█▋        | 41/252 [00:00<00:05, 42.16it/s]Batches:  18%|█▊        | 46/252 [00:01<00:05, 40.10it/s]Batches:  20%|██        | 51/252 [00:01<00:04, 41.12it/s]Batches:  22%|██▏       | 56/252 [00:01<00:04, 43.47it/s]Batches:  25%|██▍       | 62/252 [00:01<00:04, 46.27it/s]Batches:  27%|██▋       | 68/252 [00:01<00:03, 48.29it/s]Batches:  29%|██▉       | 74/252 [00:01<00:03, 50.75it/s]Batches:  32%|███▏      | 80/252 [00:01<00:03, 51.26it/s]Batches:  34%|███▍      | 86/252 [00:01<00:03, 50.64it/s]Batches:  37%|███▋      | 92/252 [00:02<00:03, 48.78it/s]Batches:  39%|███▉      | 98/252 [00:02<00:03, 49.50it/s]Batches:  41%|████      | 103/252 [00:02<00:03, 48.99it/s]Batches:  44%|████▎     | 110/252 [00:02<00:02, 53.71it/s]Batches:  46%|████▌     | 116/252 [00:02<00:02, 51.61it/s]Batches:  48%|████▊     | 122/252 [00:02<00:02, 50.21it/s]Batches:  51%|█████     | 129/252 [00:02<00:02, 51.64it/s]Batches:  54%|█████▎    | 135/252 [00:02<00:02, 51.56it/s]Batches:  56%|█████▋    | 142/252 [00:02<00:02, 53.62it/s]Batches:  59%|█████▊    | 148/252 [00:03<00:01, 53.93it/s]Batches:  62%|██████▏   | 155/252 [00:03<00:01, 56.61it/s]Batches:  64%|██████▍   | 162/252 [00:03<00:01, 57.89it/s]Batches:  67%|██████▋   | 169/252 [00:03<00:01, 59.36it/s]Batches:  70%|██████▉   | 176/252 [00:03<00:01, 60.16it/s]Batches:  73%|███████▎  | 183/252 [00:03<00:01, 62.01it/s]Batches:  75%|███████▌  | 190/252 [00:03<00:00, 63.49it/s]Batches:  78%|███████▊  | 197/252 [00:03<00:00, 65.08it/s]Batches:  81%|████████▏ | 205/252 [00:03<00:00, 66.90it/s]Batches:  85%|████████▍ | 213/252 [00:04<00:00, 68.70it/s]Batches:  87%|████████▋ | 220/252 [00:04<00:00, 40.97it/s]Batches:  90%|█████████ | 227/252 [00:04<00:00, 46.45it/s]Batches:  93%|█████████▎| 234/252 [00:04<00:00, 50.90it/s]Batches:  96%|█████████▌| 241/252 [00:04<00:00, 55.21it/s]Batches:  98%|█████████▊| 248/252 [00:04<00:00, 57.67it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 51.69it/s]
+embedding field: authors
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 43.09it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 58.31it/s]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 58.61it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 58.39it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 56.47it/s]Batches:  10%|▉         | 24/252 [00:00<00:03, 57.43it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 55.01it/s]Batches:  14%|█▍        | 36/252 [00:00<00:03, 54.94it/s]Batches:  17%|█▋        | 43/252 [00:00<00:03, 58.92it/s]Batches:  20%|██        | 51/252 [00:00<00:03, 63.27it/s]Batches:  23%|██▎       | 59/252 [00:00<00:02, 66.43it/s]Batches:  27%|██▋       | 67/252 [00:01<00:02, 68.83it/s]Batches:  29%|██▉       | 74/252 [00:01<00:02, 68.35it/s]Batches:  32%|███▏      | 81/252 [00:01<00:02, 66.26it/s]Batches:  35%|███▌      | 89/252 [00:01<00:02, 68.11it/s]Batches:  38%|███▊      | 97/252 [00:01<00:02, 68.43it/s]Batches:  41%|████▏     | 104/252 [00:01<00:02, 65.87it/s]Batches:  44%|████▍     | 111/252 [00:01<00:02, 65.97it/s]Batches:  47%|████▋     | 119/252 [00:01<00:01, 67.96it/s]Batches:  51%|█████     | 128/252 [00:01<00:01, 72.05it/s]Batches:  54%|█████▍    | 136/252 [00:02<00:02, 47.51it/s]Batches:  58%|█████▊    | 145/252 [00:02<00:01, 54.80it/s]Batches:  60%|██████    | 152/252 [00:02<00:01, 57.39it/s]Batches:  63%|██████▎   | 160/252 [00:02<00:01, 61.38it/s]Batches:  66%|██████▋   | 167/252 [00:02<00:01, 63.50it/s]Batches:  69%|██████▉   | 175/252 [00:02<00:01, 66.19it/s]Batches:  73%|███████▎  | 183/252 [00:02<00:00, 69.42it/s]Batches:  76%|███████▌  | 191/252 [00:03<00:00, 71.86it/s]Batches:  79%|███████▉  | 200/252 [00:03<00:00, 75.24it/s]Batches:  83%|████████▎ | 209/252 [00:03<00:00, 77.57it/s]Batches:  86%|████████▌ | 217/252 [00:03<00:00, 76.15it/s]Batches:  89%|████████▉ | 225/252 [00:03<00:00, 76.16it/s]Batches:  92%|█████████▏| 233/252 [00:03<00:00, 77.13it/s]Batches:  96%|█████████▌| 241/252 [00:03<00:00, 75.49it/s]Batches:  99%|█████████▉| 250/252 [00:03<00:00, 78.04it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 66.70it/s]
+embedding field: venue
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  73%|███████▎  | 8/11 [00:00<00:00, 76.95it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 84.52it/s]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 5/252 [00:00<00:05, 49.17it/s]Batches:   4%|▍         | 11/252 [00:00<00:04, 53.92it/s]Batches:   7%|▋         | 17/252 [00:00<00:04, 51.80it/s]Batches:   9%|▉         | 23/252 [00:00<00:04, 51.45it/s]Batches:  12%|█▏        | 29/252 [00:00<00:04, 48.43it/s]Batches:  13%|█▎        | 34/252 [00:01<00:08, 24.95it/s]Batches:  16%|█▌        | 40/252 [00:01<00:06, 30.36it/s]Batches:  18%|█▊        | 46/252 [00:01<00:05, 36.03it/s]Batches:  21%|██        | 52/252 [00:01<00:04, 40.33it/s]Batches:  23%|██▎       | 57/252 [00:01<00:04, 42.21it/s]Batches:  25%|██▌       | 64/252 [00:01<00:03, 47.17it/s]Batches:  28%|██▊       | 71/252 [00:01<00:03, 51.93it/s]Batches:  31%|███       | 78/252 [00:01<00:03, 56.25it/s]Batches:  34%|███▎      | 85/252 [00:01<00:02, 57.87it/s]Batches:  37%|███▋      | 92/252 [00:01<00:02, 60.47it/s]Batches:  40%|███▉      | 100/252 [00:02<00:02, 64.64it/s]Batches:  42%|████▏     | 107/252 [00:02<00:02, 65.27it/s]Batches:  45%|████▌     | 114/252 [00:02<00:02, 60.93it/s]Batches:  48%|████▊     | 121/252 [00:02<00:02, 61.64it/s]Batches:  51%|█████     | 128/252 [00:02<00:02, 61.69it/s]Batches:  54%|█████▎    | 135/252 [00:02<00:01, 59.92it/s]Batches:  57%|█████▋    | 143/252 [00:02<00:01, 63.28it/s]Batches:  60%|██████    | 152/252 [00:02<00:01, 69.41it/s]Batches:  63%|██████▎   | 160/252 [00:03<00:01, 71.11it/s]Batches:  67%|██████▋   | 169/252 [00:03<00:01, 74.45it/s]Batches:  70%|███████   | 177/252 [00:03<00:01, 45.32it/s]Batches:  74%|███████▍  | 186/252 [00:03<00:01, 53.79it/s]Batches:  78%|███████▊  | 197/252 [00:03<00:00, 65.43it/s]Batches:  83%|████████▎ | 208/252 [00:03<00:00, 75.46it/s]Batches:  87%|████████▋ | 218/252 [00:03<00:00, 80.62it/s]Batches:  91%|█████████ | 229/252 [00:03<00:00, 87.51it/s]Batches:  96%|█████████▌| 241/252 [00:04<00:00, 94.45it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 60.55it/s]
+embedding field: year
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  82%|████████▏ | 9/11 [00:00<00:00, 88.24it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 93.32it/s]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 10/252 [00:00<00:02, 99.84it/s]Batches:   9%|▊         | 22/252 [00:00<00:02, 106.63it/s]Batches:  13%|█▎        | 33/252 [00:00<00:02, 105.96it/s]Batches:  17%|█▋        | 44/252 [00:00<00:02, 102.88it/s]Batches:  22%|██▏       | 55/252 [00:00<00:01, 102.44it/s]Batches:  26%|██▌       | 66/252 [00:00<00:01, 104.33it/s]Batches:  31%|███       | 77/252 [00:00<00:01, 103.16it/s]Batches:  35%|███▍      | 88/252 [00:00<00:01, 98.72it/s] Batches:  39%|███▉      | 98/252 [00:01<00:02, 62.45it/s]Batches:  43%|████▎     | 109/252 [00:01<00:01, 72.25it/s]Batches:  48%|████▊     | 121/252 [00:01<00:01, 81.62it/s]Batches:  53%|█████▎    | 133/252 [00:01<00:01, 90.15it/s]Batches:  57%|█████▋    | 144/252 [00:01<00:01, 89.75it/s]Batches:  62%|██████▏   | 155/252 [00:01<00:01, 94.80it/s]Batches:  66%|██████▌   | 166/252 [00:01<00:00, 96.98it/s]Batches:  71%|███████   | 179/252 [00:01<00:00, 103.48it/s]Batches:  76%|███████▌  | 191/252 [00:02<00:00, 107.73it/s]Batches:  81%|████████  | 203/252 [00:02<00:00, 107.50it/s]Batches:  85%|████████▌ | 215/252 [00:02<00:00, 107.77it/s]Batches:  90%|█████████ | 227/252 [00:02<00:00, 109.41it/s]Batches:  95%|█████████▍| 239/252 [00:02<00:00, 70.93it/s] Batches: 100%|█████████▉| 251/252 [00:02<00:00, 80.74it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 91.24it/s]
+
+DBLP top-50 title blocking [02:21:55]
+------------------------------------------------------------------------
+retrieved 256/2,616 A recordsretrieved 512/2,616 A recordsretrieved 768/2,616 A recordsretrieved 1,024/2,616 A recordsretrieved 1,280/2,616 A recordsretrieved 1,536/2,616 A recordsretrieved 1,792/2,616 A recordsretrieved 2,048/2,616 A recordsretrieved 2,304/2,616 A recordsretrieved 2,560/2,616 A recordsretrieved 2,616/2,616 A records
+
+DBLP caching pair features [02:21:55]
+------------------------------------------------------------------------
+cached 250/2,616 A records (12,501 unique pairs)cached 500/2,616 A records (25,002 unique pairs)cached 750/2,616 A records (37,503 unique pairs)cached 1,000/2,616 A records (50,006 unique pairs)cached 1,250/2,616 A records (62,510 unique pairs)cached 1,500/2,616 A records (75,012 unique pairs)cached 1,750/2,616 A records (87,514 unique pairs)cached 2,000/2,616 A records (100,016 unique pairs)cached 2,250/2,616 A records (112,517 unique pairs)cached 2,500/2,616 A records (125,019 unique pairs)cached 2,616/2,616 A records (130,819 unique pairs)
+
+DBLP, seed=42 (primary) [02:22:28]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0255 psi=0.1050; LR lambda=0.0292 psi=0.0793 (t=0.50)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0248 psi=0.1058; LR lambda=0.0567 psi=0.0587 (t=0.35)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0310 psi=0.0124; LR lambda=0.0306 psi=0.0248 (t=0.40)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0207 psi=0.0132; LR lambda=0.0087 psi=0.0463 (t=0.40)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0455 psi=0.0041; LR lambda=0.0223 psi=0.0529 (t=0.45)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0426 psi=0.0050; LR lambda=0.0070 psi=0.0628 (t=0.55)
+
+DBLP, seed=43 (primary) [02:40:32]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0355 psi=0.1003; LR lambda=0.0305 psi=0.0844 (t=0.50)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0256 psi=0.0886; LR lambda=0.0679 psi=0.0435 (t=0.30)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0392 psi=0.0092; LR lambda=0.0367 psi=0.0284 (t=0.40)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0249 psi=0.0092; LR lambda=0.0216 psi=0.0443 (t=0.40)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0522 psi=0.0042; LR lambda=0.0315 psi=0.0452 (t=0.35)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0475 psi=0.0033; LR lambda=0.0063 psi=0.0677 (t=0.55)
+
+DBLP, seed=44 (primary) [02:58:59]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0288 psi=0.0996; LR lambda=0.0365 psi=0.0667 (t=0.45)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0281 psi=0.0947; LR lambda=0.0433 psi=0.0947 (t=0.50)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0317 psi=0.0091; LR lambda=0.0235 psi=0.0346 (t=0.55)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0237 psi=0.0066; LR lambda=0.0164 psi=0.0486 (t=0.50)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0416 psi=0.0033; LR lambda=0.0260 psi=0.0379 (t=0.35)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0385 psi=0.0025; LR lambda=0.0147 psi=0.0519 (t=0.40)
+
+DBLP, seed=45 (diagnostic) [03:17:44]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0310 psi=0.1065; LR lambda=0.0251 psi=0.1239 (t=0.65)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0256 psi=0.1016; LR lambda=0.0397 psi=0.0950 (t=0.45)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0333 psi=0.0074; LR lambda=0.0323 psi=0.0281 (t=0.45)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0213 psi=0.0099; LR lambda=0.0088 psi=0.0603 (t=0.55)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0438 psi=0.0017; LR lambda=0.0140 psi=0.0685 (t=0.55)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0408 psi=0.0017; LR lambda=0.0071 psi=0.0669 (t=0.50)
+
+DBLP, seed=46 (diagnostic) [03:36:11]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0287 psi=0.1092; LR lambda=0.0198 psi=0.1201 (t=0.60)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0188 psi=0.1117; LR lambda=0.0353 psi=0.0840 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0402 psi=0.0109; LR lambda=0.0341 psi=0.0428 (t=0.50)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0209 psi=0.0126; LR lambda=0.0217 psi=0.0479 (t=0.35)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0500 psi=0.0034; LR lambda=0.0342 psi=0.0462 (t=0.30)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0432 psi=0.0067; LR lambda=0.0167 psi=0.0546 (t=0.30)
+
+DBLP, seed=47 (diagnostic) [03:54:38]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0238 psi=0.1140; LR lambda=0.0261 psi=0.0984 (t=0.50)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0259 psi=0.1165; LR lambda=0.0320 psi=0.1304 (t=0.50)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0317 psi=0.0098; LR lambda=0.0239 psi=0.0517 (t=0.55)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0206 psi=0.0139; LR lambda=0.0149 psi=0.0648 (t=0.45)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0431 psi=0.0041; LR lambda=0.0168 psi=0.0837 (t=0.55)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0386 psi=0.0041; LR lambda=0.0157 psi=0.0640 (t=0.30)
+
+DBLP, seed=48 (diagnostic) [04:12:51]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0293 psi=0.1084; LR lambda=0.0321 psi=0.0869 (t=0.45)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0236 psi=0.0927; LR lambda=0.0428 psi=0.1010 (t=0.45)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0382 psi=0.0124; LR lambda=0.0341 psi=0.0522 (t=0.50)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0272 psi=0.0141; LR lambda=0.0090 psi=0.0778 (t=0.65)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0527 psi=0.0058; LR lambda=0.0396 psi=0.0464 (t=0.25)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0473 psi=0.0033; LR lambda=0.0099 psi=0.0844 (t=0.60)
+
+DBLP, seed=49 (diagnostic) [04:30:54]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0323 psi=0.0978; LR lambda=0.0317 psi=0.0789 (t=0.50)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0296 psi=0.0896; LR lambda=0.0416 psi=0.1142 (t=0.55)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0323 psi=0.0066; LR lambda=0.0179 psi=0.0468 (t=0.60)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0229 psi=0.0090; LR lambda=0.0140 psi=0.0600 (t=0.60)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0398 psi=0.0000; LR lambda=0.0269 psi=0.0403 (t=0.30)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0408 psi=0.0025; LR lambda=0.0147 psi=0.0501 (t=0.30)
+
+DBLP, seed=50 (diagnostic) [04:48:55]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0275 psi=0.1060; LR lambda=0.0361 psi=0.0563 (t=0.35)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0239 psi=0.1019; LR lambda=0.0396 psi=0.0886 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0344 psi=0.0124; LR lambda=0.0231 psi=0.0489 (t=0.50)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0223 psi=0.0075; LR lambda=0.0123 psi=0.0588 (t=0.45)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0512 psi=0.0050; LR lambda=0.0081 psi=0.0812 (t=0.55)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0427 psi=0.0033; LR lambda=0.0090 psi=0.0804 (t=0.55)
+
+DBLP, seed=51 (diagnostic) [05:06:49]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0303 psi=0.1045; LR lambda=0.0185 psi=0.1463 (t=0.65)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0324 psi=0.1020; LR lambda=0.0393 psi=0.1313 (t=0.55)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0372 psi=0.0142; LR lambda=0.0345 psi=0.0326 (t=0.40)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0301 psi=0.0151; LR lambda=0.0127 psi=0.0811 (t=0.55)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0502 psi=0.0059; LR lambda=0.0272 psi=0.0644 (t=0.40)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.0472 psi=0.0067; LR lambda=0.0128 psi=0.0844 (t=0.50)
+
+ECOM input validation
+------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  A with >1 match=16  max matches/A=2
+Training positives: first-listed reachable match, one per matched A
+Test correctness: any member of the complete truth set
+June JW missing-value semantics: pandas NaN -> literal 'nan'
+  missing after June-style reload, title: A=0, B=0
+  missing after June-style reload, desc: A=0, B=441
+
+ECOM per-field embeddings [05:25:06]
+------------------------------------------------------------------------
+embedding field: title
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 62.32it/s]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 52.26it/s]
+embedding field: desc
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  40%|████      | 2/5 [00:00<00:00, 19.69it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 26.56it/s]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 61.45it/s]
+
+ECOM top-50 title blocking [05:25:07]
+------------------------------------------------------------------------
+retrieved 256/1,081 A recordsretrieved 512/1,081 A recordsretrieved 768/1,081 A recordsretrieved 1,024/1,081 A recordsretrieved 1,081/1,081 A records
+
+ECOM caching pair features [05:25:07]
+------------------------------------------------------------------------
+cached 250/1,081 A records (12,500 unique pairs)cached 500/1,081 A records (25,001 unique pairs)cached 750/1,081 A records (37,502 unique pairs)cached 1,000/1,081 A records (50,003 unique pairs)cached 1,081/1,081 A records (54,053 unique pairs)
+
+ECOM, seed=42 (primary) [05:25:18]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2549 psi=0.2458; LR lambda=0.2836 psi=0.0092 (t=0.40)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2402 psi=0.3383; LR lambda=0.2857 psi=0.0037 (t=0.35)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3898 psi=0.1701; LR lambda=0.3906 psi=0.2144 (t=0.25)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2740 psi=0.1904; LR lambda=0.2655 psi=0.1645 (t=0.20)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4407 psi=0.1275; LR lambda=0.3543 psi=0.4418 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3193 psi=0.0333; LR lambda=0.2322 psi=0.2994 (t=0.15)
+
+ECOM, seed=43 (primary) [05:27:09]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2476 psi=0.2384; LR lambda=0.2905 psi=0.0074 (t=0.35)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2235 psi=0.3383; LR lambda=0.2720 psi=0.0351 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3727 psi=0.2015; LR lambda=0.2941 psi=0.4658 (t=0.30)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2736 psi=0.2163; LR lambda=0.2093 psi=0.4436 (t=0.30)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4376 psi=0.1553; LR lambda=0.3303 psi=0.3956 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3282 psi=0.0481; LR lambda=0.1965 psi=0.5767 (t=0.25)
+
+ECOM, seed=44 (primary) [05:29:00]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2874 psi=0.2348; LR lambda=0.3087 psi=0.0000 (t=0.10)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2658 psi=0.3253; LR lambda=0.2956 psi=0.0370 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4036 psi=0.1756; LR lambda=0.3436 psi=0.4621 (t=0.30)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2870 psi=0.2015; LR lambda=0.2679 psi=0.3031 (t=0.25)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4681 psi=0.1312; LR lambda=0.3300 psi=0.6303 (t=0.20)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3340 psi=0.0481; LR lambda=0.2692 psi=0.3272 (t=0.15)
+
+ECOM, seed=45 (diagnostic) [05:30:51]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2590 psi=0.2292; LR lambda=0.2680 psi=0.0000 (t=0.10)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2076 psi=0.3678; LR lambda=0.2395 psi=0.0351 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3655 psi=0.1959; LR lambda=0.3770 psi=0.0980 (t=0.15)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2578 psi=0.1682; LR lambda=0.2485 psi=0.0850 (t=0.15)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4154 psi=0.1590; LR lambda=0.2953 psi=0.4492 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2940 psi=0.0444; LR lambda=0.2008 psi=0.5397 (t=0.25)
+
+ECOM, seed=46 (diagnostic) [05:32:42]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3049 psi=0.2421; LR lambda=0.3420 psi=0.0000 (t=0.10)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2420 psi=0.3660; LR lambda=0.2828 psi=0.0129 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4400 psi=0.1682; LR lambda=0.4468 psi=0.2181 (t=0.25)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3149 psi=0.1959; LR lambda=0.2127 psi=0.5046 (t=0.30)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.5032 psi=0.1220; LR lambda=0.4160 psi=0.3512 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3365 psi=0.0333; LR lambda=0.2347 psi=0.4880 (t=0.20)
+
+ECOM, seed=47 (diagnostic) [05:34:33]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2945 psi=0.2218; LR lambda=0.3153 psi=0.0444 (t=0.40)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2727 psi=0.4104; LR lambda=0.2966 psi=0.0092 (t=0.30)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3991 psi=0.1756; LR lambda=0.3520 psi=0.4067 (t=0.30)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2934 psi=0.2126; LR lambda=0.2548 psi=0.4196 (t=0.30)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4596 psi=0.1312; LR lambda=0.3017 psi=0.6691 (t=0.20)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3340 psi=0.0481; LR lambda=0.2453 psi=0.5102 (t=0.25)
+
+ECOM, seed=48 (diagnostic) [05:36:24]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2555 psi=0.4140; LR lambda=0.3111 psi=0.0018 (t=0.35)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.1954 psi=0.4325; LR lambda=0.2699 psi=0.0000 (t=0.10)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3813 psi=0.1904; LR lambda=0.3813 psi=0.1904 (t=0.20)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2690 psi=0.2237; LR lambda=0.1855 psi=0.4917 (t=0.30)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4681 psi=0.1312; LR lambda=0.3871 psi=0.4270 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3131 psi=0.0555; LR lambda=0.1913 psi=0.4880 (t=0.20)
+
+ECOM, seed=49 (diagnostic) [05:38:15]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2931 psi=0.2495; LR lambda=0.2815 psi=0.0018 (t=0.35)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2709 psi=0.3586; LR lambda=0.2744 psi=0.2791 (t=0.50)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3875 psi=0.1701; LR lambda=0.3105 psi=0.4880 (t=0.30)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3187 psi=0.1996; LR lambda=0.2690 psi=0.3198 (t=0.25)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4480 psi=0.1294; LR lambda=0.3322 psi=0.4436 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3236 psi=0.0462; LR lambda=0.2703 psi=0.3641 (t=0.15)
+
+ECOM, seed=50 (diagnostic) [05:40:07]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2403 psi=0.2384; LR lambda=0.2704 psi=0.0018 (t=0.35)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2030 psi=0.3900; LR lambda=0.2665 psi=0.0222 (t=0.40)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3707 psi=0.1922; LR lambda=0.3624 psi=0.1941 (t=0.20)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2639 psi=0.2015; LR lambda=0.2178 psi=0.4399 (t=0.30)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4428 psi=0.1442; LR lambda=0.2742 psi=0.6562 (t=0.20)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3021 psi=0.0333; LR lambda=0.2230 psi=0.4362 (t=0.20)
+
+ECOM, seed=51 (diagnostic) [05:41:58]
+  column=forced-1:1   side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2680 psi=0.2551; LR lambda=0.2833 psi=0.0018 (t=0.35)
+  column=forced-1:1   side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2400 psi=0.3993; LR lambda=0.2868 psi=0.0074 (t=0.35)
+  column=k=5          side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3818 psi=0.1867; LR lambda=0.3265 psi=0.4621 (t=0.30)
+  column=k=5          side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.2874 psi=0.2218; LR lambda=0.2359 psi=0.4436 (t=0.30)
+  column=k=50         side=string       /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.4644 psi=0.1442; LR lambda=0.3394 psi=0.3900 (t=0.15)
+  column=k=50         side=bi-encoder   /home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+MEC lambda=0.3346 psi=0.0388; LR lambda=0.2458 psi=0.4436 (t=0.20)
+
+============================================================================================================
+PRIMARY TABLE SUMMARY: seeds 42, 43, 44
+============================================================================================================
+
+DBLP
+column       side         scorer   lambda mean    lambda SD    lambda SE    psi mean      psi SD      psi SE
+forced-1:1   bi-encoder   LR          0.055962     0.012305     0.007104    0.065602    0.026279    0.015172
+forced-1:1   bi-encoder   MEC         0.026188     0.001724     0.000996    0.096355    0.008704    0.005025
+forced-1:1   string       LR          0.032034     0.003885     0.002243    0.076818    0.009155    0.005286
+forced-1:1   string       MEC         0.029939     0.005085     0.002936    0.101627    0.002909    0.001680
+k=5          bi-encoder   LR          0.015551     0.006520     0.003764    0.046385    0.002125    0.001227
+k=5          bi-encoder   MEC         0.023077     0.002180     0.001258    0.009668    0.003344    0.001931
+k=5          string       LR          0.030272     0.006611     0.003817    0.029263    0.004940    0.002852
+k=5          string       MEC         0.033983     0.004571     0.002639    0.010216    0.001890    0.001091
+k=50         bi-encoder   LR          0.009346     0.004669     0.002695    0.060796    0.008126    0.004692
+k=50         bi-encoder   MEC         0.042879     0.004517     0.002608    0.003591    0.001263    0.000729
+k=50         string       LR          0.026594     0.004656     0.002688    0.045301    0.007517    0.004340
+k=50         string       MEC         0.046420     0.005356     0.003092    0.003868    0.000500    0.000288
+
+ECOM
+column       side         scorer   lambda mean    lambda SD    lambda SE    psi mean      psi SD      psi SE
+forced-1:1   bi-encoder   LR          0.284443     0.011829     0.006829    0.025262    0.018699    0.010796
+forced-1:1   bi-encoder   MEC         0.243147     0.021296     0.012295    0.333949    0.007470    0.004313
+forced-1:1   string       LR          0.294257     0.012967     0.007487    0.005545    0.004890    0.002824
+forced-1:1   string       MEC         0.263305     0.021220     0.012251    0.239680    0.005647    0.003260
+k=5          bi-encoder   LR          0.247565     0.033158     0.019144    0.303758    0.139557    0.080574
+k=5          bi-encoder   MEC         0.278198     0.007657     0.004421    0.202711    0.012983    0.007496
+k=5          string       LR          0.342783     0.048241     0.027852    0.380776    0.144083    0.083186
+k=5          string       MEC         0.388676     0.015479     0.008937    0.182378    0.016772    0.009683
+k=50         bi-encoder   LR          0.232642     0.036364     0.020995    0.401109    0.152705    0.088164
+k=50         bi-encoder   MEC         0.327149     0.007386     0.004264    0.043130    0.008538    0.004929
+k=50         string       LR          0.338193     0.013954     0.008056    0.489217    0.124359    0.071799
+k=50         string       MEC         0.448800     0.016771     0.009682    0.138016    0.015055    0.008692
+
+============================================================================================================
+MONTE CARLO DIAGNOSTIC: all ten 50/50 splits
+============================================================================================================
+
+DBLP
+column       side         scorer   lambda mean    lambda SD    lambda SE    psi mean      psi SD      psi SE
+forced-1:1   bi-encoder   LR          0.043811     0.010644     0.003366    0.094130    0.028097    0.008885
+forced-1:1   bi-encoder   MEC         0.025835     0.003682     0.001164    0.100498    0.009244    0.002923
+forced-1:1   string       LR          0.028540     0.006167     0.001950    0.094129    0.028045    0.008869
+forced-1:1   string       MEC         0.029269     0.003325     0.001052    0.105137    0.004913    0.001554
+k=5          bi-encoder   LR          0.013994     0.004819     0.001524    0.058983    0.012865    0.004068
+k=5          bi-encoder   MEC         0.023467     0.003135     0.000991    0.011107    0.003023    0.000956
+k=5          string       LR          0.029073     0.006400     0.002024    0.039085    0.010545    0.003335
+k=5          string       MEC         0.034925     0.003478     0.001100    0.010447    0.002449    0.000774
+k=50         bi-encoder   LR          0.011384     0.003965     0.001254    0.066721    0.012833    0.004058
+k=50         bi-encoder   MEC         0.042932     0.003413     0.001079    0.003902    0.001733    0.000548
+k=50         string       LR          0.024654     0.009593     0.003034    0.056649    0.016724    0.005289
+k=50         string       MEC         0.047006     0.004761     0.001505    0.003734    0.001807    0.000571
+
+ECOM
+column       side         scorer   lambda mean    lambda SD    lambda SE    psi mean      psi SD      psi SE
+forced-1:1   bi-encoder   LR          0.276976     0.016789     0.005309    0.044177    0.083689    0.026465
+forced-1:1   bi-encoder   MEC         0.236112     0.028318     0.008955    0.372643    0.034780    0.010998
+forced-1:1   string       LR          0.295433     0.023251     0.007353    0.006839    0.013557    0.004287
+forced-1:1   string       MEC         0.270523     0.022613     0.007151    0.256932    0.056039    0.017721
+k=5          bi-encoder   LR          0.236682     0.029104     0.009203    0.361553    0.141748    0.044825
+k=5          bi-encoder   MEC         0.283980     0.020538     0.006495    0.203142    0.016612    0.005253
+k=5          string       LR          0.358482     0.044029     0.013923    0.319963    0.149390    0.047241
+k=5          string       MEC         0.389198     0.021555     0.006816    0.182625    0.012130    0.003836
+k=50         bi-encoder   LR          0.230915     0.028262     0.008937    0.447320    0.091832    0.029040
+k=50         bi-encoder   MEC         0.321943     0.014770     0.004671    0.042884    0.007784    0.002461
+k=50         string       LR          0.336042     0.042279     0.013370    0.485397    0.119014    0.037635
+k=50         string       MEC         0.454771     0.023675     0.007487    0.137523    0.012421    0.003928
+
+========================================================================================
+FAITHFULNESS CROSS-CHECK: Analysis 16 LR k=50 vs Analysis 14 audit
+========================================================================================
+dataset     audit lambda   rerun lambda      delta    audit psi   rerun psi      delta
+DBLP            0.042772       0.009346  -0.033426     0.121790    0.060796  -0.060994
+ECOM            0.239220       0.232642  -0.006578     0.399877    0.401109  +0.001232
+
+Interpretation: exact equality is not expected because Analysis 16 restores the complete B files and reports a mean of per-seed rates, whereas Analysis 14 re-tallied pooled saved predictions from the deduplicated June candidate universe.
+
+========================================================================
+Saved outputs
+------------------------------------------------------------------------
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis16_clean_2x2_perseed.csv
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis16_clean_2x2_primary3.csv
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis16_clean_2x2_mc10.csv
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis16_clean_2x2_diagnostics.csv
+========================================================================
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

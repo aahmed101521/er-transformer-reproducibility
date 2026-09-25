@@ -1,0 +1,33 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-23T15:55:45.465331+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "training-fractions",
+      "description": "Ten-seed cross-encoder training-fraction experiment. This produces the fitted checkpoints required by the final direct-score reconstruction.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis18_section7.py",
+        "--phase",
+        "all"
+      ],
+      "started_at": "2026-09-23T15:55:45.465775+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-24T01:53:20.188062+00:00"
+    }
+  ],
+  "finished_at": "2026-09-24T01:53:20.188565+00:00",
+  "status": "completed"
+}

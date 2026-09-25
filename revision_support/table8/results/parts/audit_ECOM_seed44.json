@@ -1,0 +1,31 @@
+{
+  "cuda": "12.1",
+  "dataset": "ECOM",
+  "fixed": {
+    "correct": 418,
+    "declared": 448,
+    "false_links": 30,
+    "lambda": 0.06696428571428571,
+    "missing_matches": 93,
+    "n_train_pairs": 26994,
+    "n_true_records": 541,
+    "psi": 0.17190388170055454,
+    "threshold": 0.30000000000000004,
+    "validation_f1": 0.7981651376146789
+  },
+  "historical_check_passed": true,
+  "reblocked": {
+    "correct": 402,
+    "declared": 426,
+    "false_links": 24,
+    "lambda": 0.056338028169014086,
+    "missing_matches": 115,
+    "n_train_pairs": 26992,
+    "n_true_records": 541,
+    "psi": 0.21256931608133087,
+    "threshold": 0.3500000000000001,
+    "validation_f1": 0.7980295566502463
+  },
+  "seed": 44,
+  "torch": "2.5.1+cu121"
+}

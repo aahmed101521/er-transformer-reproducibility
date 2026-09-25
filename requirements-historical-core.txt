@@ -1,0 +1,9 @@
+# Partial HISTORICAL manifest, taken from Analysis 20 metadata.
+# This is NOT a complete historical environment: sentence-transformers,
+# transformers, datasets, accelerate, and jellyfish were not captured.
+# Do not use this file as a stand-alone installation recipe.
+numpy==2.5.1
+pandas==3.0.3
+scikit-learn==1.9.0
+torch==2.5.1+cu121
+xgboost==3.3.0

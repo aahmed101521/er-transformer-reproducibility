@@ -1,0 +1,311 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. discrimination-gap
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_table7_ftlr.py
+
+========================================================================================
+STAGE: discrimination-gap
+========================================================================================
+Final record-difficulty analysis using fine-tuned bi-encoder LR gaps on fixed pretrained top-50 blocks, compared with the direct-score cross-encoder.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_table7_ftlr.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+==============================================================================
+Final discrimination-gap analysis: fine-tuned LR on fixed pretrained block
+==============================================================================
+Project root: /home/ahmeda/ER_Transformer_Reproducible_RUN
+Device: cuda
+Datasets: ['DBLP', 'ECOM']
+Seeds: [42, 43, 44]
+Transformer training performed here: NO
+Difficulty block: pretrained bi-encoder top-50
+Difficulty features: fine-tuned bi-encoder field similarities
+Comparison CE path: direct CrossEncoder.predict() decisions
+Metrics: Zhang FLR/MMR
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8811.02it/s]
+
+==============================================================================
+DBLP
+==============================================================================
+
+DBLP input validation
+------------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  A with >1 match=1,238  max matches/A=20
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+Building common pretrained top-50 candidate blocks...
+
+DBLP baseline embeddings and blocking
+------------------------------------------------------------------------------
+  encoding A.title [11:47:05]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:00<00:02,  4.22it/s]Batches:  73%|███████▎  | 8/11 [00:00<00:00, 28.10it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 28.70it/s]
+  encoding A.authors [11:47:05]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 47.68it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 64.60it/s]
+  encoding A.venue [11:47:06]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 90.44it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 92.13it/s]
+  encoding A.year [11:47:06]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  82%|████████▏ | 9/11 [00:00<00:00, 88.87it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 93.73it/s]
+  encoding B.title [11:47:06]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 36.48it/s]Batches:   4%|▎         | 9/252 [00:00<00:06, 39.83it/s]Batches:   6%|▌         | 14/252 [00:00<00:05, 42.49it/s]Batches:   8%|▊         | 20/252 [00:00<00:05, 45.82it/s]Batches:  10%|█         | 26/252 [00:00<00:04, 48.43it/s]Batches:  12%|█▏        | 31/252 [00:00<00:04, 47.86it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 43.43it/s]Batches:  16%|█▋        | 41/252 [00:00<00:04, 43.93it/s]Batches:  18%|█▊        | 46/252 [00:01<00:04, 45.13it/s]Batches:  21%|██        | 52/252 [00:01<00:04, 46.38it/s]Batches:  23%|██▎       | 58/252 [00:01<00:04, 47.47it/s]Batches:  25%|██▌       | 64/252 [00:01<00:03, 49.76it/s]Batches:  28%|██▊       | 70/252 [00:01<00:03, 51.40it/s]Batches:  30%|███       | 76/252 [00:01<00:03, 49.81it/s]Batches:  33%|███▎      | 82/252 [00:01<00:03, 50.22it/s]Batches:  35%|███▍      | 88/252 [00:01<00:03, 52.21it/s]Batches:  37%|███▋      | 94/252 [00:01<00:03, 50.64it/s]Batches:  40%|███▉      | 100/252 [00:02<00:02, 51.43it/s]Batches:  42%|████▏     | 106/252 [00:02<00:02, 51.19it/s]Batches:  45%|████▍     | 113/252 [00:02<00:02, 53.92it/s]Batches:  47%|████▋     | 119/252 [00:02<00:02, 53.96it/s]Batches:  50%|████▉     | 125/252 [00:02<00:02, 55.36it/s]Batches:  52%|█████▏    | 131/252 [00:02<00:02, 54.86it/s]Batches:  55%|█████▍    | 138/252 [00:02<00:02, 56.72it/s]Batches:  57%|█████▋    | 144/252 [00:02<00:02, 53.05it/s]Batches:  60%|█████▉    | 150/252 [00:03<00:03, 32.89it/s]Batches:  62%|██████▏   | 156/252 [00:03<00:02, 37.14it/s]Batches:  64%|██████▍   | 162/252 [00:03<00:02, 41.30it/s]Batches:  67%|██████▋   | 169/252 [00:03<00:01, 46.39it/s]Batches:  70%|██████▉   | 176/252 [00:03<00:01, 50.76it/s]Batches:  72%|███████▏  | 182/252 [00:03<00:01, 52.19it/s]Batches:  75%|███████▌  | 189/252 [00:03<00:01, 56.14it/s]Batches:  77%|███████▋  | 195/252 [00:03<00:01, 55.83it/s]Batches:  80%|████████  | 202/252 [00:04<00:00, 57.63it/s]Batches:  83%|████████▎ | 209/252 [00:04<00:00, 58.99it/s]Batches:  86%|████████▌ | 216/252 [00:04<00:00, 60.58it/s]Batches:  88%|████████▊ | 223/252 [00:04<00:00, 62.43it/s]Batches:  92%|█████████▏| 231/252 [00:04<00:00, 65.88it/s]Batches:  94%|█████████▍| 238/252 [00:04<00:00, 64.64it/s]Batches:  97%|█████████▋| 245/252 [00:04<00:00, 65.95it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 51.88it/s]
+  encoding B.authors [11:47:11]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 52.55it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 53.98it/s]Batches:   8%|▊         | 19/252 [00:00<00:03, 58.74it/s]Batches:  10%|█         | 26/252 [00:00<00:03, 61.51it/s]Batches:  13%|█▎        | 33/252 [00:00<00:03, 59.07it/s]Batches:  16%|█▌        | 40/252 [00:00<00:03, 60.97it/s]Batches:  19%|█▊        | 47/252 [00:00<00:03, 61.17it/s]Batches:  22%|██▏       | 55/252 [00:00<00:03, 64.84it/s]Batches:  25%|██▍       | 62/252 [00:00<00:02, 66.22it/s]Batches:  27%|██▋       | 69/252 [00:01<00:02, 63.75it/s]Batches:  31%|███       | 77/252 [00:01<00:02, 67.28it/s]Batches:  34%|███▎      | 85/252 [00:01<00:02, 69.54it/s]Batches:  37%|███▋      | 93/252 [00:01<00:02, 70.05it/s]Batches:  40%|████      | 101/252 [00:01<00:02, 66.99it/s]Batches:  43%|████▎     | 109/252 [00:01<00:02, 69.42it/s]Batches:  46%|████▋     | 117/252 [00:01<00:01, 69.30it/s]Batches:  50%|████▉     | 125/252 [00:01<00:01, 70.46it/s]Batches:  53%|█████▎    | 133/252 [00:02<00:01, 72.87it/s]Batches:  56%|█████▌    | 141/252 [00:02<00:01, 73.70it/s]Batches:  59%|█████▉    | 149/252 [00:02<00:01, 72.05it/s]Batches:  62%|██████▏   | 157/252 [00:02<00:01, 74.26it/s]Batches:  65%|██████▌   | 165/252 [00:02<00:01, 75.60it/s]Batches:  69%|██████▊   | 173/252 [00:02<00:01, 76.33it/s]Batches:  72%|███████▏  | 182/252 [00:02<00:00, 78.02it/s]Batches:  76%|███████▌  | 191/252 [00:02<00:00, 80.42it/s]Batches:  79%|███████▉  | 200/252 [00:02<00:00, 81.88it/s]Batches:  83%|████████▎ | 209/252 [00:02<00:00, 79.32it/s]Batches:  86%|████████▌ | 217/252 [00:03<00:00, 50.97it/s]Batches:  89%|████████▉ | 224/252 [00:03<00:00, 54.44it/s]Batches:  93%|█████████▎| 234/252 [00:03<00:00, 62.71it/s]Batches:  96%|█████████▌| 242/252 [00:03<00:00, 66.65it/s]Batches: 100%|█████████▉| 251/252 [00:03<00:00, 72.52it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 68.20it/s]
+  encoding B.venue [11:47:15]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 54.75it/s]Batches:   5%|▌         | 13/252 [00:00<00:04, 57.85it/s]Batches:   8%|▊         | 19/252 [00:00<00:04, 55.60it/s]Batches:  10%|▉         | 25/252 [00:00<00:04, 52.75it/s]Batches:  12%|█▏        | 31/252 [00:00<00:04, 48.65it/s]Batches:  15%|█▍        | 37/252 [00:00<00:04, 49.76it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 53.68it/s]Batches:  20%|█▉        | 50/252 [00:00<00:03, 54.69it/s]Batches:  23%|██▎       | 57/252 [00:01<00:03, 58.48it/s]Batches:  25%|██▌       | 63/252 [00:01<00:03, 57.82it/s]Batches:  27%|██▋       | 69/252 [00:01<00:03, 56.96it/s]Batches:  30%|██▉       | 75/252 [00:01<00:03, 57.44it/s]Batches:  33%|███▎      | 82/252 [00:01<00:02, 59.18it/s]Batches:  35%|███▍      | 88/252 [00:01<00:02, 58.80it/s]Batches:  37%|███▋      | 94/252 [00:01<00:02, 58.77it/s]Batches:  40%|████      | 101/252 [00:01<00:02, 61.43it/s]Batches:  43%|████▎     | 109/252 [00:01<00:02, 64.85it/s]Batches:  46%|████▌     | 116/252 [00:01<00:02, 65.82it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 63.26it/s]Batches:  52%|█████▏    | 130/252 [00:02<00:01, 64.52it/s]Batches:  54%|█████▍    | 137/252 [00:02<00:01, 64.98it/s]Batches:  58%|█████▊    | 145/252 [00:02<00:01, 67.89it/s]Batches:  61%|██████    | 153/252 [00:02<00:01, 70.88it/s]Batches:  64%|██████▍   | 161/252 [00:02<00:01, 69.05it/s]Batches:  67%|██████▋   | 168/252 [00:02<00:01, 65.55it/s]Batches:  69%|██████▉   | 175/252 [00:02<00:01, 65.22it/s]Batches:  73%|███████▎  | 185/252 [00:02<00:00, 72.75it/s]Batches:  77%|███████▋  | 195/252 [00:03<00:00, 79.75it/s]Batches:  81%|████████  | 204/252 [00:03<00:00, 82.48it/s]Batches:  85%|████████▌ | 215/252 [00:03<00:00, 88.63it/s]Batches:  90%|█████████ | 228/252 [00:03<00:00, 98.36it/s]Batches:  95%|█████████▍| 239/252 [00:03<00:00, 100.28it/s]Batches:  99%|█████████▉| 250/252 [00:03<00:00, 102.97it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 69.47it/s] 
+  encoding B.year [11:47:18]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 11/252 [00:00<00:02, 101.23it/s]Batches:   9%|▊         | 22/252 [00:00<00:02, 101.08it/s]Batches:  13%|█▎        | 33/252 [00:00<00:03, 61.09it/s] Batches:  17%|█▋        | 44/252 [00:00<00:02, 73.65it/s]Batches:  21%|██▏       | 54/252 [00:00<00:02, 79.05it/s]Batches:  25%|██▌       | 63/252 [00:00<00:02, 81.58it/s]Batches:  30%|██▉       | 75/252 [00:00<00:01, 90.96it/s]Batches:  34%|███▍      | 86/252 [00:01<00:01, 96.19it/s]Batches:  38%|███▊      | 97/252 [00:01<00:01, 97.14it/s]Batches:  43%|████▎     | 109/252 [00:01<00:01, 101.16it/s]Batches:  48%|████▊     | 120/252 [00:01<00:01, 101.71it/s]Batches:  52%|█████▏    | 132/252 [00:01<00:01, 104.23it/s]Batches:  57%|█████▋    | 143/252 [00:01<00:01, 104.30it/s]Batches:  62%|██████▏   | 155/252 [00:01<00:00, 108.20it/s]Batches:  66%|██████▌   | 166/252 [00:01<00:00, 105.43it/s]Batches:  70%|███████   | 177/252 [00:01<00:00, 105.45it/s]Batches:  75%|███████▍  | 188/252 [00:01<00:00, 105.41it/s]Batches:  79%|███████▉  | 200/252 [00:02<00:00, 108.81it/s]Batches:  84%|████████▎ | 211/252 [00:02<00:00, 105.17it/s]Batches:  88%|████████▊ | 222/252 [00:02<00:00, 106.44it/s]Batches:  92%|█████████▏| 233/252 [00:02<00:00, 101.06it/s]Batches:  97%|█████████▋| 244/252 [00:02<00:00, 100.90it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 97.96it/s] 
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records
+  caching June string features for k=50 pairs [11:47:21]
+    cached 250/2,616 A records    cached 500/2,616 A records    cached 750/2,616 A records    cached 1,000/2,616 A records    cached 1,250/2,616 A records    cached 1,500/2,616 A records    cached 1,750/2,616 A records    cached 2,000/2,616 A records    cached 2,250/2,616 A records    cached 2,500/2,616 A records    cached 2,616/2,616 A records
+
+DBLP seed=42
+------------------------------------------------------------
+  loading FT model: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/DBLP/seed_42
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 10266.96it/s]
+  encoding fine-tuned per-field embeddings...
+  encoding FT-A.title [11:47:36]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  55%|█████▍    | 6/11 [00:00<00:00, 55.07it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 61.92it/s]
+  encoding FT-A.authors [11:47:36]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  27%|██▋       | 3/11 [00:00<00:00, 11.80it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 36.29it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 31.00it/s]
+  encoding FT-A.venue [11:47:36]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 99.94it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 103.44it/s]
+  encoding FT-A.year [11:47:36]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 94.28it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 95.64it/s]
+  encoding FT-B.title [11:47:36]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:07, 34.43it/s]Batches:   3%|▎         | 8/252 [00:00<00:06, 36.71it/s]Batches:   5%|▍         | 12/252 [00:00<00:06, 37.57it/s]Batches:   7%|▋         | 17/252 [00:00<00:05, 40.41it/s]Batches:   9%|▊         | 22/252 [00:00<00:05, 43.41it/s]Batches:  11%|█         | 27/252 [00:00<00:05, 44.53it/s]Batches:  13%|█▎        | 32/252 [00:00<00:04, 44.14it/s]Batches:  15%|█▍        | 37/252 [00:00<00:04, 44.62it/s]Batches:  17%|█▋        | 42/252 [00:00<00:04, 45.16it/s]Batches:  19%|█▉        | 48/252 [00:01<00:04, 47.07it/s]Batches:  21%|██        | 53/252 [00:01<00:04, 44.87it/s]Batches:  23%|██▎       | 58/252 [00:01<00:04, 43.65it/s]Batches:  25%|██▌       | 63/252 [00:01<00:04, 44.56it/s]Batches:  27%|██▋       | 69/252 [00:01<00:03, 47.29it/s]Batches:  30%|██▉       | 75/252 [00:01<00:03, 49.49it/s]Batches:  32%|███▏      | 81/252 [00:01<00:03, 51.29it/s]Batches:  35%|███▍      | 87/252 [00:01<00:03, 51.68it/s]Batches:  37%|███▋      | 93/252 [00:01<00:02, 53.01it/s]Batches:  39%|███▉      | 99/252 [00:02<00:02, 52.03it/s]Batches:  42%|████▏     | 105/252 [00:02<00:02, 51.64it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 52.40it/s]Batches:  46%|████▋     | 117/252 [00:02<00:02, 49.62it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 48.06it/s]Batches:  51%|█████     | 128/252 [00:03<00:04, 26.07it/s]Batches:  53%|█████▎    | 134/252 [00:03<00:03, 31.54it/s]Batches:  56%|█████▌    | 140/252 [00:03<00:03, 36.81it/s]Batches:  58%|█████▊    | 146/252 [00:03<00:02, 40.68it/s]Batches:  60%|██████    | 152/252 [00:03<00:02, 42.72it/s]Batches:  62%|██████▏   | 157/252 [00:03<00:02, 44.43it/s]Batches:  65%|██████▍   | 163/252 [00:03<00:01, 46.54it/s]Batches:  67%|██████▋   | 169/252 [00:03<00:01, 48.10it/s]Batches:  70%|██████▉   | 176/252 [00:03<00:01, 52.38it/s]Batches:  73%|███████▎  | 183/252 [00:04<00:01, 55.86it/s]Batches:  75%|███████▌  | 190/252 [00:04<00:01, 57.89it/s]Batches:  78%|███████▊  | 196/252 [00:04<00:00, 56.71it/s]Batches:  81%|████████  | 203/252 [00:04<00:00, 58.43it/s]Batches:  83%|████████▎ | 209/252 [00:04<00:00, 56.60it/s]Batches:  85%|████████▌ | 215/252 [00:04<00:00, 53.93it/s]Batches:  88%|████████▊ | 223/252 [00:04<00:00, 58.80it/s]Batches:  91%|█████████▏| 230/252 [00:04<00:00, 60.97it/s]Batches:  94%|█████████▍| 237/252 [00:04<00:00, 62.75it/s]Batches:  97%|█████████▋| 244/252 [00:05<00:00, 64.06it/s]Batches: 100%|██████████| 252/252 [00:05<00:00, 49.01it/s]
+  encoding FT-B.authors [11:47:42]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 57.10it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 53.58it/s]Batches:   8%|▊         | 19/252 [00:00<00:04, 56.79it/s]Batches:  10%|▉         | 25/252 [00:00<00:04, 54.65it/s]Batches:  12%|█▏        | 31/252 [00:00<00:06, 34.39it/s]Batches:  15%|█▌        | 38/252 [00:00<00:05, 41.68it/s]Batches:  18%|█▊        | 45/252 [00:00<00:04, 48.04it/s]Batches:  21%|██        | 52/252 [00:01<00:03, 51.47it/s]Batches:  23%|██▎       | 58/252 [00:01<00:03, 52.72it/s]Batches:  26%|██▌       | 65/252 [00:01<00:03, 56.08it/s]Batches:  29%|██▊       | 72/252 [00:01<00:03, 59.32it/s]Batches:  31%|███▏      | 79/252 [00:01<00:02, 62.01it/s]Batches:  35%|███▍      | 87/252 [00:01<00:02, 65.97it/s]Batches:  37%|███▋      | 94/252 [00:01<00:02, 66.82it/s]Batches:  40%|████      | 101/252 [00:01<00:02, 66.51it/s]Batches:  43%|████▎     | 109/252 [00:01<00:02, 69.22it/s]Batches:  46%|████▋     | 117/252 [00:02<00:01, 69.33it/s]Batches:  50%|████▉     | 125/252 [00:02<00:01, 71.79it/s]Batches:  53%|█████▎    | 134/252 [00:02<00:01, 75.13it/s]Batches:  56%|█████▋    | 142/252 [00:02<00:01, 75.96it/s]Batches:  60%|█████▉    | 150/252 [00:02<00:01, 76.90it/s]Batches:  63%|██████▎   | 158/252 [00:02<00:01, 72.68it/s]Batches:  66%|██████▌   | 166/252 [00:02<00:01, 70.47it/s]Batches:  69%|██████▉   | 174/252 [00:03<00:02, 31.48it/s]Batches:  73%|███████▎  | 183/252 [00:03<00:01, 39.77it/s]Batches:  76%|███████▌  | 192/252 [00:03<00:01, 47.85it/s]Batches:  79%|███████▉  | 200/252 [00:03<00:00, 52.20it/s]Batches:  83%|████████▎ | 208/252 [00:03<00:00, 57.21it/s]Batches:  86%|████████▌ | 217/252 [00:03<00:00, 63.84it/s]Batches:  90%|████████▉ | 226/252 [00:03<00:00, 70.10it/s]Batches:  93%|█████████▎| 234/252 [00:04<00:00, 70.95it/s]Batches:  96%|█████████▌| 242/252 [00:04<00:00, 69.07it/s]Batches:  99%|█████████▉| 250/252 [00:04<00:00, 69.23it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 58.80it/s]
+  encoding FT-B.venue [11:47:46]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 52.21it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 52.61it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 54.81it/s]Batches:  10%|▉         | 24/252 [00:00<00:04, 55.65it/s]Batches:  12%|█▏        | 30/252 [00:00<00:03, 55.72it/s]Batches:  15%|█▍        | 37/252 [00:00<00:03, 57.23it/s]Batches:  17%|█▋        | 43/252 [00:00<00:03, 55.08it/s]Batches:  20%|█▉        | 50/252 [00:00<00:03, 58.25it/s]Batches:  23%|██▎       | 57/252 [00:00<00:03, 60.33it/s]Batches:  25%|██▌       | 64/252 [00:01<00:03, 57.87it/s]Batches:  28%|██▊       | 71/252 [00:01<00:03, 59.05it/s]Batches:  31%|███       | 77/252 [00:01<00:06, 25.31it/s]Batches:  33%|███▎      | 84/252 [00:01<00:05, 31.40it/s]Batches:  36%|███▌      | 90/252 [00:02<00:04, 35.07it/s]Batches:  38%|███▊      | 97/252 [00:02<00:03, 40.79it/s]Batches:  41%|████▏     | 104/252 [00:02<00:03, 46.54it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 50.56it/s]Batches:  47%|████▋     | 119/252 [00:02<00:02, 55.16it/s]Batches:  50%|█████     | 126/252 [00:02<00:02, 58.30it/s]Batches:  53%|█████▎    | 133/252 [00:02<00:02, 57.85it/s]Batches:  56%|█████▌    | 140/252 [00:02<00:01, 60.09it/s]Batches:  59%|█████▊    | 148/252 [00:02<00:01, 63.79it/s]Batches:  62%|██████▏   | 156/252 [00:03<00:01, 66.56it/s]Batches:  65%|██████▌   | 164/252 [00:03<00:01, 68.36it/s]Batches:  68%|██████▊   | 172/252 [00:03<00:01, 70.75it/s]Batches:  72%|███████▏  | 181/252 [00:03<00:00, 74.43it/s]Batches:  75%|███████▌  | 190/252 [00:03<00:00, 78.49it/s]Batches:  80%|███████▉  | 201/252 [00:03<00:00, 86.50it/s]Batches:  84%|████████▎ | 211/252 [00:03<00:00, 89.12it/s]Batches:  88%|████████▊ | 222/252 [00:03<00:00, 94.26it/s]Batches:  92%|█████████▏| 232/252 [00:04<00:00, 37.40it/s]Batches:  96%|█████████▋| 243/252 [00:04<00:00, 47.34it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 54.61it/s]
+  encoding FT-B.year [11:47:51]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 10/252 [00:00<00:02, 98.87it/s]Batches:   8%|▊         | 21/252 [00:00<00:02, 100.09it/s]Batches:  13%|█▎        | 32/252 [00:00<00:02, 93.10it/s] Batches:  17%|█▋        | 42/252 [00:00<00:02, 95.17it/s]Batches:  21%|██        | 52/252 [00:00<00:02, 90.94it/s]Batches:  25%|██▍       | 62/252 [00:00<00:02, 86.63it/s]Batches:  29%|██▊       | 72/252 [00:00<00:01, 90.48it/s]Batches:  33%|███▎      | 84/252 [00:00<00:01, 96.10it/s]Batches:  38%|███▊      | 95/252 [00:01<00:01, 98.36it/s]Batches:  42%|████▏     | 106/252 [00:01<00:01, 99.63it/s]Batches:  46%|████▋     | 117/252 [00:01<00:01, 96.69it/s]Batches:  50%|█████     | 127/252 [00:01<00:01, 96.93it/s]Batches:  54%|█████▍    | 137/252 [00:01<00:02, 45.37it/s]Batches:  59%|█████▊    | 148/252 [00:01<00:01, 54.72it/s]Batches:  63%|██████▎   | 160/252 [00:02<00:01, 65.67it/s]Batches:  68%|██████▊   | 171/252 [00:02<00:01, 73.10it/s]Batches:  73%|███████▎  | 183/252 [00:02<00:00, 83.08it/s]Batches:  77%|███████▋  | 195/252 [00:02<00:00, 90.78it/s]Batches:  82%|████████▏ | 206/252 [00:02<00:00, 95.49it/s]Batches:  86%|████████▌ | 217/252 [00:02<00:00, 95.11it/s]Batches:  90%|█████████ | 228/252 [00:02<00:00, 98.91it/s]Batches:  95%|█████████▍| 239/252 [00:02<00:00, 97.50it/s]Batches: 100%|█████████▉| 251/252 [00:02<00:00, 101.52it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 86.20it/s] 
+  rebuilding FT top-50 for fine-tuned-cell verification...
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+  REBLOCKED CHECK PASS: FLR=0.019295, MMR=0.033884, legacy psi=0.025620, threshold=0.50, pairs=58,427
+  FIXED-BLOCK FT-LR: FLR=0.015228, MMR=0.038017, legacy psi=0.032231, threshold=0.55, validation F1=0.9149, pairs=58,465
+
+DBLP seed=43
+------------------------------------------------------------
+  loading FT model: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/DBLP/seed_43
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7551.62it/s]
+  encoding fine-tuned per-field embeddings...
+  encoding FT-A.title [11:47:55]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  55%|█████▍    | 6/11 [00:00<00:00, 55.22it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 63.73it/s]
+  encoding FT-A.authors [11:47:56]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 48.02it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 62.64it/s]
+  encoding FT-A.venue [11:47:56]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 95.41it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 98.73it/s]
+  encoding FT-A.year [11:47:56]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  18%|█▊        | 2/11 [00:00<00:01,  5.26it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 24.02it/s]
+  encoding FT-B.title [11:47:56]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 37.48it/s]Batches:   4%|▎         | 9/252 [00:00<00:05, 44.35it/s]Batches:   6%|▌         | 14/252 [00:00<00:05, 44.74it/s]Batches:   8%|▊         | 19/252 [00:00<00:05, 46.55it/s]Batches:  10%|▉         | 25/252 [00:00<00:04, 47.14it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 45.29it/s]Batches:  14%|█▍        | 35/252 [00:00<00:04, 45.93it/s]Batches:  16%|█▌        | 40/252 [00:00<00:04, 43.87it/s]Batches:  18%|█▊        | 45/252 [00:01<00:04, 42.36it/s]Batches:  20%|█▉        | 50/252 [00:01<00:04, 41.98it/s]Batches:  22%|██▏       | 55/252 [00:01<00:04, 40.99it/s]Batches:  24%|██▍       | 60/252 [00:01<00:04, 40.48it/s]Batches:  26%|██▌       | 66/252 [00:01<00:04, 44.15it/s]Batches:  28%|██▊       | 71/252 [00:01<00:04, 44.45it/s]Batches:  31%|███       | 77/252 [00:01<00:03, 47.36it/s]Batches:  33%|███▎      | 82/252 [00:01<00:03, 46.60it/s]Batches:  35%|███▍      | 88/252 [00:01<00:03, 50.04it/s]Batches:  37%|███▋      | 94/252 [00:02<00:03, 51.34it/s]Batches:  40%|███▉      | 100/252 [00:02<00:02, 50.87it/s]Batches:  42%|████▏     | 106/252 [00:02<00:02, 51.43it/s]Batches:  44%|████▍     | 112/252 [00:02<00:02, 50.31it/s]Batches:  47%|████▋     | 118/252 [00:02<00:02, 51.89it/s]Batches:  49%|████▉     | 124/252 [00:02<00:02, 53.03it/s]Batches:  52%|█████▏    | 130/252 [00:02<00:02, 53.59it/s]Batches:  54%|█████▍    | 136/252 [00:02<00:02, 55.12it/s]Batches:  57%|█████▋    | 143/252 [00:02<00:01, 57.29it/s]Batches:  59%|█████▉    | 149/252 [00:03<00:01, 57.50it/s]Batches:  62%|██████▏   | 155/252 [00:03<00:01, 57.36it/s]Batches:  64%|██████▍   | 161/252 [00:03<00:01, 57.27it/s]Batches:  66%|██████▋   | 167/252 [00:03<00:01, 55.98it/s]Batches:  69%|██████▉   | 174/252 [00:03<00:01, 57.97it/s]Batches:  71%|███████▏  | 180/252 [00:03<00:02, 27.96it/s]Batches:  74%|███████▍  | 186/252 [00:04<00:02, 32.41it/s]Batches:  77%|███████▋  | 193/252 [00:04<00:01, 38.43it/s]Batches:  79%|███████▉  | 199/252 [00:04<00:01, 42.30it/s]Batches:  81%|████████▏ | 205/252 [00:04<00:01, 45.16it/s]Batches:  85%|████████▍ | 213/252 [00:04<00:00, 51.84it/s]Batches:  88%|████████▊ | 221/252 [00:04<00:00, 57.11it/s]Batches:  90%|█████████ | 228/252 [00:04<00:00, 58.46it/s]Batches:  93%|█████████▎| 235/252 [00:04<00:00, 60.77it/s]Batches:  96%|█████████▌| 242/252 [00:04<00:00, 61.41it/s]Batches:  99%|█████████▉| 249/252 [00:05<00:00, 63.06it/s]Batches: 100%|██████████| 252/252 [00:05<00:00, 49.31it/s]
+  encoding FT-B.authors [11:48:02]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 5/252 [00:00<00:05, 49.36it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 57.23it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 55.98it/s]Batches:  10%|▉         | 25/252 [00:00<00:03, 58.01it/s]Batches:  12%|█▏        | 31/252 [00:00<00:03, 58.25it/s]Batches:  15%|█▍        | 37/252 [00:00<00:03, 56.17it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 58.48it/s]Batches:  21%|██        | 52/252 [00:00<00:03, 62.38it/s]Batches:  23%|██▎       | 59/252 [00:01<00:03, 58.77it/s]Batches:  27%|██▋       | 67/252 [00:01<00:02, 62.61it/s]Batches:  29%|██▉       | 74/252 [00:01<00:02, 61.25it/s]Batches:  33%|███▎      | 82/252 [00:01<00:05, 31.61it/s]Batches:  36%|███▌      | 90/252 [00:01<00:04, 38.87it/s]Batches:  39%|███▉      | 98/252 [00:01<00:03, 45.90it/s]Batches:  42%|████▏     | 106/252 [00:02<00:02, 52.84it/s]Batches:  46%|████▌     | 115/252 [00:02<00:02, 58.22it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 61.84it/s]Batches:  52%|█████▏    | 131/252 [00:02<00:01, 64.43it/s]Batches:  55%|█████▌    | 139/252 [00:02<00:01, 67.85it/s]Batches:  58%|█████▊    | 147/252 [00:02<00:01, 71.07it/s]Batches:  62%|██████▏   | 156/252 [00:02<00:01, 74.10it/s]Batches:  65%|██████▌   | 165/252 [00:02<00:01, 76.82it/s]Batches:  69%|██████▊   | 173/252 [00:02<00:01, 74.78it/s]Batches:  72%|███████▏  | 182/252 [00:03<00:00, 76.72it/s]Batches:  75%|███████▌  | 190/252 [00:03<00:00, 76.57it/s]Batches:  79%|███████▊  | 198/252 [00:03<00:00, 76.78it/s]Batches:  82%|████████▏ | 206/252 [00:03<00:00, 75.77it/s]Batches:  85%|████████▍ | 214/252 [00:03<00:00, 75.53it/s]Batches:  88%|████████▊ | 223/252 [00:03<00:00, 77.51it/s]Batches:  92%|█████████▏| 231/252 [00:03<00:00, 42.26it/s]Batches:  95%|█████████▌| 240/252 [00:04<00:00, 50.47it/s]Batches:  99%|█████████▉| 249/252 [00:04<00:00, 57.61it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 59.65it/s]
+  encoding FT-B.venue [11:48:06]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 5/252 [00:00<00:05, 49.35it/s]Batches:   4%|▍         | 11/252 [00:00<00:04, 53.27it/s]Batches:   7%|▋         | 17/252 [00:00<00:04, 55.02it/s]Batches:   9%|▉         | 23/252 [00:00<00:04, 56.74it/s]Batches:  12%|█▏        | 29/252 [00:00<00:03, 56.15it/s]Batches:  14%|█▍        | 36/252 [00:00<00:03, 56.85it/s]Batches:  17%|█▋        | 42/252 [00:00<00:03, 53.96it/s]Batches:  19%|█▉        | 48/252 [00:00<00:03, 51.72it/s]Batches:  21%|██▏       | 54/252 [00:00<00:03, 53.89it/s]Batches:  24%|██▍       | 60/252 [00:01<00:03, 55.23it/s]Batches:  26%|██▌       | 66/252 [00:01<00:03, 52.86it/s]Batches:  29%|██▉       | 73/252 [00:01<00:03, 55.67it/s]Batches:  32%|███▏      | 80/252 [00:01<00:03, 55.95it/s]Batches:  34%|███▍      | 86/252 [00:01<00:03, 54.47it/s]Batches:  37%|███▋      | 92/252 [00:01<00:02, 54.49it/s]Batches:  39%|███▉      | 98/252 [00:01<00:02, 55.13it/s]Batches:  42%|████▏     | 105/252 [00:01<00:02, 58.73it/s]Batches:  44%|████▍     | 112/252 [00:02<00:02, 59.86it/s]Batches:  47%|████▋     | 119/252 [00:02<00:02, 58.51it/s]Batches:  50%|█████     | 126/252 [00:02<00:02, 60.51it/s]Batches:  53%|█████▎    | 133/252 [00:02<00:01, 61.04it/s]Batches:  56%|█████▌    | 140/252 [00:02<00:02, 38.86it/s]Batches:  59%|█████▊    | 148/252 [00:02<00:02, 46.67it/s]Batches:  62%|██████▏   | 156/252 [00:02<00:01, 53.31it/s]Batches:  65%|██████▌   | 164/252 [00:02<00:01, 58.57it/s]Batches:  69%|██████▊   | 173/252 [00:03<00:01, 64.70it/s]Batches:  72%|███████▏  | 181/252 [00:03<00:01, 68.35it/s]Batches:  75%|███████▌  | 190/252 [00:03<00:00, 72.09it/s]Batches:  79%|███████▊  | 198/252 [00:03<00:00, 72.79it/s]Batches:  83%|████████▎ | 208/252 [00:03<00:00, 79.77it/s]Batches:  86%|████████▌ | 217/252 [00:03<00:00, 80.55it/s]Batches:  90%|█████████ | 227/252 [00:03<00:00, 84.43it/s]Batches:  94%|█████████▎| 236/252 [00:03<00:00, 82.88it/s]Batches:  98%|█████████▊| 247/252 [00:03<00:00, 87.98it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 62.69it/s]
+  encoding FT-B.year [11:48:10]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 11/252 [00:00<00:02, 104.18it/s]Batches:   9%|▊         | 22/252 [00:00<00:02, 107.19it/s]Batches:  13%|█▎        | 33/252 [00:00<00:02, 105.04it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 61.39it/s] Batches:  22%|██▏       | 56/252 [00:00<00:02, 74.14it/s]Batches:  26%|██▌       | 66/252 [00:00<00:02, 78.18it/s]Batches:  30%|███       | 76/252 [00:00<00:02, 82.21it/s]Batches:  35%|███▍      | 87/252 [00:01<00:01, 87.50it/s]Batches:  39%|███▉      | 98/252 [00:01<00:01, 92.46it/s]Batches:  43%|████▎     | 108/252 [00:01<00:01, 93.09it/s]Batches:  47%|████▋     | 119/252 [00:01<00:01, 97.53it/s]Batches:  52%|█████▏    | 130/252 [00:01<00:01, 100.85it/s]Batches:  56%|█████▌    | 141/252 [00:01<00:01, 101.93it/s]Batches:  60%|██████    | 152/252 [00:01<00:01, 97.81it/s] Batches:  65%|██████▍   | 163/252 [00:01<00:00, 101.03it/s]Batches:  69%|██████▉   | 174/252 [00:01<00:00, 99.12it/s] Batches:  73%|███████▎  | 185/252 [00:02<00:01, 44.89it/s]Batches:  77%|███████▋  | 195/252 [00:02<00:01, 53.01it/s]Batches:  81%|████████  | 204/252 [00:02<00:00, 59.37it/s]Batches:  85%|████████▍ | 214/252 [00:02<00:00, 66.38it/s]Batches:  89%|████████▉ | 224/252 [00:02<00:00, 73.76it/s]Batches:  93%|█████████▎| 234/252 [00:02<00:00, 78.48it/s]Batches:  97%|█████████▋| 244/252 [00:03<00:00, 82.92it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 80.05it/s]
+  rebuilding FT top-50 for fine-tuned-cell verification...
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+  REBLOCKED CHECK PASS: FLR=0.032976, MMR=0.019231, legacy psi=0.014214, threshold=0.40, pairs=59,102
+  FIXED-BLOCK FT-LR: FLR=0.026029, MMR=0.030100, legacy psi=0.025920, threshold=0.50, validation F1=0.9057, pairs=59,133
+
+DBLP seed=44
+------------------------------------------------------------
+  loading FT model: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/DBLP/seed_44
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8746.27it/s]
+  encoding fine-tuned per-field embeddings...
+  encoding FT-A.title [11:48:15]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  64%|██████▎   | 7/11 [00:00<00:00, 67.26it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 72.70it/s]
+  encoding FT-A.authors [11:48:15]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  55%|█████▍    | 6/11 [00:00<00:00, 53.41it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 65.73it/s]
+  encoding FT-A.venue [11:48:15]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 95.61it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 99.31it/s]
+  encoding FT-A.year [11:48:15]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 106.52it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 106.39it/s]
+  encoding FT-B.title [11:48:16]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   1%|          | 3/252 [00:00<00:08, 28.55it/s]Batches:   3%|▎         | 7/252 [00:00<00:06, 35.08it/s]Batches:   5%|▍         | 12/252 [00:00<00:06, 36.17it/s]Batches:   7%|▋         | 17/252 [00:00<00:05, 39.31it/s]Batches:   8%|▊         | 21/252 [00:00<00:05, 38.60it/s]Batches:  10%|█         | 26/252 [00:00<00:05, 41.07it/s]Batches:  12%|█▏        | 31/252 [00:00<00:05, 42.80it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 43.71it/s]Batches:  16%|█▋        | 41/252 [00:00<00:04, 45.13it/s]Batches:  18%|█▊        | 46/252 [00:01<00:04, 46.12it/s]Batches:  20%|██        | 51/252 [00:01<00:04, 46.11it/s]Batches:  22%|██▏       | 56/252 [00:01<00:04, 44.19it/s]Batches:  25%|██▍       | 62/252 [00:01<00:04, 47.23it/s]Batches:  27%|██▋       | 68/252 [00:01<00:03, 49.44it/s]Batches:  29%|██▉       | 74/252 [00:01<00:03, 50.89it/s]Batches:  32%|███▏      | 80/252 [00:01<00:03, 50.48it/s]Batches:  34%|███▍      | 86/252 [00:01<00:03, 49.75it/s]Batches:  36%|███▌      | 91/252 [00:02<00:03, 48.90it/s]Batches:  38%|███▊      | 96/252 [00:02<00:03, 47.37it/s]Batches:  40%|████      | 101/252 [00:02<00:03, 47.75it/s]Batches:  42%|████▏     | 107/252 [00:02<00:05, 26.54it/s]Batches:  45%|████▌     | 114/252 [00:02<00:04, 33.07it/s]Batches:  48%|████▊     | 120/252 [00:02<00:03, 37.46it/s]Batches:  50%|█████     | 126/252 [00:03<00:03, 40.18it/s]Batches:  52%|█████▏    | 132/252 [00:03<00:02, 43.28it/s]Batches:  55%|█████▍    | 138/252 [00:03<00:02, 47.14it/s]Batches:  57%|█████▋    | 144/252 [00:03<00:02, 49.11it/s]Batches:  60%|█████▉    | 150/252 [00:03<00:01, 51.43it/s]Batches:  62%|██████▏   | 156/252 [00:03<00:01, 53.59it/s]Batches:  64%|██████▍   | 162/252 [00:03<00:01, 55.19it/s]Batches:  67%|██████▋   | 168/252 [00:03<00:01, 54.53it/s]Batches:  69%|██████▉   | 174/252 [00:03<00:01, 55.47it/s]Batches:  72%|███████▏  | 181/252 [00:03<00:01, 58.18it/s]Batches:  74%|███████▍  | 187/252 [00:04<00:01, 57.66it/s]Batches:  77%|███████▋  | 194/252 [00:04<00:00, 59.12it/s]Batches:  80%|███████▉  | 201/252 [00:04<00:00, 61.39it/s]Batches:  83%|████████▎ | 208/252 [00:04<00:00, 61.98it/s]Batches:  85%|████████▌ | 215/252 [00:04<00:00, 62.65it/s]Batches:  88%|████████▊ | 222/252 [00:04<00:00, 64.37it/s]Batches:  91%|█████████ | 229/252 [00:04<00:00, 62.92it/s]Batches:  94%|█████████▎| 236/252 [00:04<00:00, 64.45it/s]Batches:  96%|█████████▋| 243/252 [00:04<00:00, 59.98it/s]Batches:  99%|█████████▉| 250/252 [00:05<00:00, 59.65it/s]Batches: 100%|██████████| 252/252 [00:05<00:00, 49.35it/s]
+  encoding FT-B.authors [11:48:21]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 53.30it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 56.34it/s]Batches:   8%|▊         | 19/252 [00:00<00:03, 59.17it/s]Batches:  10%|█         | 26/252 [00:00<00:03, 59.39it/s]Batches:  13%|█▎        | 33/252 [00:00<00:03, 61.25it/s]Batches:  16%|█▌        | 40/252 [00:00<00:03, 60.54it/s]Batches:  19%|█▊        | 47/252 [00:00<00:03, 59.96it/s]Batches:  21%|██▏       | 54/252 [00:00<00:03, 62.19it/s]Batches:  24%|██▍       | 61/252 [00:01<00:03, 58.50it/s]Batches:  27%|██▋       | 68/252 [00:01<00:03, 61.07it/s]Batches:  30%|██▉       | 75/252 [00:01<00:02, 60.77it/s]Batches:  33%|███▎      | 83/252 [00:01<00:02, 63.94it/s]Batches:  36%|███▌      | 91/252 [00:01<00:02, 68.04it/s]Batches:  39%|███▉      | 99/252 [00:01<00:02, 69.78it/s]Batches:  42%|████▏     | 107/252 [00:01<00:01, 72.55it/s]Batches:  46%|████▌     | 115/252 [00:01<00:01, 73.41it/s]Batches:  49%|████▉     | 123/252 [00:01<00:01, 74.84it/s]Batches:  52%|█████▏    | 131/252 [00:02<00:01, 71.09it/s]Batches:  55%|█████▌    | 139/252 [00:02<00:01, 72.47it/s]Batches:  59%|█████▊    | 148/252 [00:02<00:01, 75.14it/s]Batches:  62%|██████▏   | 156/252 [00:02<00:01, 74.86it/s]Batches:  65%|██████▌   | 164/252 [00:02<00:02, 34.86it/s]Batches:  69%|██████▊   | 173/252 [00:02<00:01, 42.63it/s]Batches:  72%|███████▏  | 182/252 [00:03<00:01, 50.14it/s]Batches:  76%|███████▌  | 191/252 [00:03<00:01, 57.24it/s]Batches:  79%|███████▉  | 199/252 [00:03<00:00, 61.54it/s]Batches:  82%|████████▏ | 207/252 [00:03<00:00, 64.13it/s]Batches:  85%|████████▌ | 215/252 [00:03<00:00, 65.07it/s]Batches:  88%|████████▊ | 223/252 [00:03<00:00, 68.08it/s]Batches:  92%|█████████▏| 232/252 [00:03<00:00, 72.65it/s]Batches:  96%|█████████▌| 241/252 [00:03<00:00, 75.81it/s]Batches:  99%|█████████▉| 249/252 [00:03<00:00, 76.34it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 63.55it/s]
+  encoding FT-B.venue [11:48:25]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 5/252 [00:00<00:05, 45.75it/s]Batches:   4%|▍         | 11/252 [00:00<00:04, 51.86it/s]Batches:   7%|▋         | 17/252 [00:00<00:04, 50.77it/s]Batches:   9%|▉         | 23/252 [00:00<00:04, 54.10it/s]Batches:  12%|█▏        | 29/252 [00:00<00:04, 54.65it/s]Batches:  14%|█▍        | 36/252 [00:00<00:03, 57.15it/s]Batches:  17%|█▋        | 43/252 [00:00<00:03, 58.29it/s]Batches:  19%|█▉        | 49/252 [00:00<00:03, 58.70it/s]Batches:  22%|██▏       | 56/252 [00:00<00:03, 61.10it/s]Batches:  25%|██▌       | 63/252 [00:01<00:03, 61.21it/s]Batches:  28%|██▊       | 70/252 [00:01<00:02, 63.53it/s]Batches:  31%|███       | 77/252 [00:01<00:02, 60.58it/s]Batches:  33%|███▎      | 84/252 [00:01<00:02, 62.79it/s]Batches:  36%|███▌      | 91/252 [00:01<00:02, 64.15it/s]Batches:  39%|███▉      | 99/252 [00:01<00:02, 66.57it/s]Batches:  42%|████▏     | 107/252 [00:01<00:02, 69.27it/s]Batches:  46%|████▌     | 115/252 [00:01<00:01, 69.81it/s]Batches:  49%|████▉     | 123/252 [00:01<00:01, 70.86it/s]Batches:  52%|█████▏    | 131/252 [00:02<00:01, 70.36it/s]Batches:  55%|█████▌    | 139/252 [00:02<00:01, 69.66it/s]Batches:  58%|█████▊    | 147/252 [00:02<00:01, 71.64it/s]Batches:  62%|██████▏   | 155/252 [00:02<00:01, 71.63it/s]Batches:  65%|██████▍   | 163/252 [00:02<00:01, 71.62it/s]Batches:  68%|██████▊   | 172/252 [00:02<00:01, 74.78it/s]Batches:  71%|███████▏  | 180/252 [00:02<00:00, 76.05it/s]Batches:  75%|███████▌  | 189/252 [00:02<00:00, 77.58it/s]Batches:  79%|███████▉  | 200/252 [00:02<00:00, 84.64it/s]Batches:  84%|████████▎ | 211/252 [00:03<00:00, 89.98it/s]Batches:  88%|████████▊ | 221/252 [00:03<00:00, 88.81it/s]Batches:  91%|█████████▏| 230/252 [00:03<00:00, 54.17it/s]Batches:  96%|█████████▌| 241/252 [00:03<00:00, 64.39it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 73.63it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 67.72it/s]
+  encoding FT-B.year [11:48:29]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 10/252 [00:00<00:02, 88.97it/s]Batches:   8%|▊         | 20/252 [00:00<00:02, 92.76it/s]Batches:  12%|█▏        | 30/252 [00:00<00:02, 89.14it/s]Batches:  16%|█▋        | 41/252 [00:00<00:02, 94.61it/s]Batches:  21%|██        | 52/252 [00:00<00:02, 99.76it/s]Batches:  25%|██▌       | 63/252 [00:00<00:02, 93.98it/s]Batches:  29%|██▉       | 73/252 [00:00<00:01, 93.60it/s]Batches:  33%|███▎      | 83/252 [00:00<00:01, 93.68it/s]Batches:  37%|███▋      | 94/252 [00:00<00:01, 97.09it/s]Batches:  41%|████▏     | 104/252 [00:01<00:01, 97.92it/s]Batches:  45%|████▌     | 114/252 [00:01<00:01, 95.90it/s]Batches:  49%|████▉     | 124/252 [00:01<00:01, 94.93it/s]Batches:  53%|█████▎    | 134/252 [00:01<00:01, 94.95it/s]Batches:  57%|█████▋    | 144/252 [00:01<00:01, 88.95it/s]Batches:  62%|██████▏   | 155/252 [00:01<00:01, 93.14it/s]Batches:  66%|██████▋   | 167/252 [00:01<00:00, 99.23it/s]Batches:  71%|███████   | 178/252 [00:01<00:00, 102.06it/s]Batches:  75%|███████▌  | 189/252 [00:01<00:00, 100.00it/s]Batches:  79%|███████▉  | 200/252 [00:02<00:00, 101.47it/s]Batches:  84%|████████▎ | 211/252 [00:02<00:00, 100.02it/s]Batches:  88%|████████▊ | 222/252 [00:02<00:00, 101.97it/s]Batches:  92%|█████████▏| 233/252 [00:02<00:00, 103.25it/s]Batches:  97%|█████████▋| 244/252 [00:02<00:00, 101.11it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 97.44it/s] 
+  rebuilding FT top-50 for fine-tuned-cell verification...
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+  REBLOCKED CHECK PASS: FLR=0.026359, MMR=0.027160, legacy psi=0.017284, threshold=0.50, pairs=58,203
+  FIXED-BLOCK FT-LR: FLR=0.011036, MMR=0.041152, legacy psi=0.033745, threshold=0.60, validation F1=0.9159, pairs=58,235
+
+==============================================================================
+ECOM
+==============================================================================
+
+ECOM input validation
+------------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  A with >1 match=16  max matches/A=2
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+Building common pretrained top-50 candidate blocks...
+
+ECOM baseline embeddings and blocking
+------------------------------------------------------------------------------
+  encoding A.title [11:48:33]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 63.23it/s]
+  encoding A.desc [11:48:33]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  60%|██████    | 3/5 [00:00<00:00, 23.17it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 26.93it/s]
+  encoding B.title [11:48:33]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 56.67it/s]
+  encoding B.desc [11:48:34]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 60.06it/s]
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records
+  caching June string features for k=50 pairs [11:48:34]
+    cached 250/1,081 A records    cached 500/1,081 A records    cached 750/1,081 A records    cached 1,000/1,081 A records    cached 1,081/1,081 A records
+
+ECOM seed=42
+------------------------------------------------------------
+  loading FT model: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/ECOM/seed_42
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7767.23it/s]
+  encoding fine-tuned per-field embeddings...
+  encoding FT-A.title [11:48:40]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 70.31it/s]
+  encoding FT-A.desc [11:48:40]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  40%|████      | 2/5 [00:00<00:00,  4.18it/s]Batches: 100%|██████████| 5/5 [00:00<00:00,  8.98it/s]
+  encoding FT-B.title [11:48:40]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 58.86it/s]
+  encoding FT-B.desc [11:48:40]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 60.96it/s]
+  rebuilding FT top-50 for fine-tuned-cell verification...
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+  REBLOCKED CHECK PASS: FLR=0.048426, MMR=0.273567, legacy psi=0.236599, threshold=0.40, pairs=26,996
+  FIXED-BLOCK FT-LR: FLR=0.050360, MMR=0.268022, legacy psi=0.229205, threshold=0.40, validation F1=0.8599, pairs=26,997
+
+ECOM seed=43
+------------------------------------------------------------
+  loading FT model: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/ECOM/seed_43
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8825.42it/s]
+  encoding fine-tuned per-field embeddings...
+  encoding FT-A.title [11:48:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 58.28it/s]
+  encoding FT-A.desc [11:48:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  60%|██████    | 3/5 [00:00<00:00, 21.13it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 26.48it/s]
+  encoding FT-B.title [11:48:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 58.63it/s]
+  encoding FT-B.desc [11:48:42]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 60.93it/s]
+  rebuilding FT top-50 for fine-tuned-cell verification...
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+  REBLOCKED CHECK PASS: FLR=0.053140, MMR=0.275416, legacy psi=0.234750, threshold=0.35, pairs=26,995
+  FIXED-BLOCK FT-LR: FLR=0.059770, MMR=0.243993, legacy psi=0.195933, threshold=0.30, validation F1=0.8634, pairs=26,997
+
+ECOM seed=44
+------------------------------------------------------------
+  loading FT model: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/ECOM/seed_44
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7508.18it/s]
+  encoding fine-tuned per-field embeddings...
+  encoding FT-A.title [11:48:42]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 59.83it/s]
+  encoding FT-A.desc [11:48:42]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  40%|████      | 2/5 [00:00<00:00, 19.86it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 26.34it/s]
+  encoding FT-B.title [11:48:43]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 51.44it/s]
+  encoding FT-B.desc [11:48:43]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 59.76it/s]
+  rebuilding FT top-50 for fine-tuned-cell verification...
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+  REBLOCKED CHECK PASS: FLR=0.056338, MMR=0.256932, legacy psi=0.212569, threshold=0.35, pairs=26,992
+  FIXED-BLOCK FT-LR: FLR=0.066964, MMR=0.227357, legacy psi=0.171904, threshold=0.30, validation F1=0.7982, pairs=26,994
+
+============================================================================================
+FINAL DISCRIMINATION-GAP TABLE
+============================================================================================
+dataset quartile               model  FLR_mean  MMR_mean
+   DBLP       Q1       Cross-encoder  0.033214  0.029315
+   DBLP       Q1 Logistic regression  0.037495  0.045209
+   DBLP       Q2       Cross-encoder  0.034252  0.021752
+   DBLP       Q2 Logistic regression  0.031464  0.063092
+   DBLP       Q3       Cross-encoder  0.008250  0.010294
+   DBLP       Q3 Logistic regression  0.006414  0.041181
+   DBLP       Q4       Cross-encoder  0.000000  0.000000
+   DBLP       Q4 Logistic regression  0.000000  0.000000
+   ECOM       Q1       Cross-encoder  0.120995  0.399510
+   ECOM       Q1 Logistic regression  0.230193  0.705882
+   ECOM       Q2       Cross-encoder  0.051143  0.130864
+   ECOM       Q2 Logistic regression  0.101332  0.259259
+   ECOM       Q3       Cross-encoder  0.015730  0.071605
+   ECOM       Q3 Logistic regression  0.017284  0.017284
+   ECOM       Q4       Cross-encoder  0.000000  0.004938
+   ECOM       Q4 Logistic regression  0.000000  0.000000
+
+Final-paper 3-decimal verification:
+dataset quartile               model  FLR_pass  MMR_pass
+   DBLP       Q1       Cross-encoder      True      True
+   DBLP       Q1 Logistic regression      True      True
+   DBLP       Q2       Cross-encoder      True      True
+   DBLP       Q2 Logistic regression      True      True
+   DBLP       Q3       Cross-encoder      True      True
+   DBLP       Q3 Logistic regression      True      True
+   DBLP       Q4       Cross-encoder      True      True
+   DBLP       Q4 Logistic regression      True      True
+   ECOM       Q1       Cross-encoder      True      True
+   ECOM       Q1 Logistic regression      True      True
+   ECOM       Q2       Cross-encoder      True      True
+   ECOM       Q2 Logistic regression      True      True
+   ECOM       Q3       Cross-encoder      True      True
+   ECOM       Q3 Logistic regression      True      True
+   ECOM       Q4       Cross-encoder      True      True
+   ECOM       Q4 Logistic regression      True      True
+
+PASS: every discrimination-gap row reproduces the final-paper FLR/MMR values to three decimals.
+
+Saved:
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis17_table7_ftlr_predictions.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis17_table7_ftlr_perseed.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis17_table7_ftlr_primary3.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis17_table7_ftlr_verification.csv
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

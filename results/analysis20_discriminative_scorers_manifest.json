@@ -1,0 +1,88 @@
+{
+  "all_expected_groups_complete": false,
+  "analysis": "analysis20_discriminative_scorers",
+  "analysis16_biencoder": "all-MiniLM-L6-v2",
+  "classifiers": [
+    "LR",
+    "SVM",
+    "XGB",
+    "MLP"
+  ],
+  "columns": [
+    "forced-1:1",
+    "k=5",
+    "k=50"
+  ],
+  "counting": {
+    "categories": "mutually exclusive correct/false/missing",
+    "correct": "any valid B partner",
+    "psi_denominator": "source records with >=1 true partner"
+  },
+  "datasets": [
+    "DBLP",
+    "ECOM"
+  ],
+  "june_jw_nan": "pandas NaN converted to literal 'nan'",
+  "legacy_claim_provenance": {
+    "classifier": "SVM",
+    "column": "k=50",
+    "dataset": "ECOM",
+    "lambda_mean": 0.14503333333333332,
+    "psi_mean": 0.9106333333333333,
+    "side": "string",
+    "thresholds": [
+      0.3,
+      0.1,
+      0.1
+    ]
+  },
+  "paper_table_side": "bi-encoder",
+  "protocol_source": "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis16_clean_2x2.py",
+  "raw_decoding": "latin-1",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "sides": [
+    "string",
+    "bi-encoder"
+  ],
+  "threshold_grid": [
+    0.1,
+    0.15000000000000002,
+    0.20000000000000004,
+    0.25000000000000006,
+    0.30000000000000004,
+    0.3500000000000001,
+    0.40000000000000013,
+    0.45000000000000007,
+    0.5000000000000001,
+    0.5500000000000002,
+    0.6000000000000002,
+    0.6500000000000001,
+    0.7000000000000002,
+    0.7500000000000002,
+    0.8000000000000002,
+    0.8500000000000002,
+    0.9000000000000002
+  ],
+  "threshold_objective": "validation F1, calibration only",
+  "threshold_rule": "strict probability > threshold",
+  "validation_fraction": 0.2,
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "sklearn": "1.9.1",
+    "torch": "2.5.1+cu121",
+    "xgboost": "3.3.0"
+  }
+}

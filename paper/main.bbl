@@ -1,0 +1,142 @@
+\begin{thebibliography}{}
+
+\bibitem[Binette et~al., 2024]{binette2024evaluation}
+Binette, O., Baek, Y., Engineer, S., Jones, C., Dasylva, A., and Reiter, J.~P.
+  (2024).
+\newblock How to evaluate entity resolution systems: An entity-centric
+  framework with application to inventor name disambiguation.
+
+\bibitem[Christen, 2012]{christen2012data}
+Christen, P. (2012).
+\newblock {\em Data Matching: Concepts and Techniques for Record Linkage,
+  Entity Resolution, and Duplicate Detection}.
+\newblock Springer.
+
+\bibitem[Fellegi and Sunter, 1969]{fellegi1969theory}
+Fellegi, I.~P. and Sunter, A.~B. (1969).
+\newblock A theory for record linkage.
+\newblock {\em Journal of the American Statistical Association},
+  64(328):1183--1210.
+
+\bibitem[Hastie et~al., 2009]{hastie2009elements}
+Hastie, T., Tibshirani, R., and Friedman, J. (2009).
+\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
+  and Prediction}.
+\newblock Springer, 2nd edition.
+
+\bibitem[Jaro, 1989]{jaro1989advances}
+Jaro, M.~A. (1989).
+\newblock Advances in record-linkage methodology as applied to matching the
+  1985 census of tampa, florida.
+\newblock {\em Journal of the American Statistical Association},
+  84(406):414--420.
+
+\bibitem[Konda et~al., 2016]{konda2016magellan}
+Konda, P., Das, S., Suganthan~G.C., P., Doan, A., Ardalan, A., Ballard, J.~R.,
+  Li, H., Panahi, F., Zhang, H., Naughton, J., Prasad, S., Krishnan, G., Deep,
+  R., and Raghavendra, V. (2016).
+\newblock Magellan: Toward building entity matching management systems.
+\newblock In {\em Proceedings of the VLDB Endowment}, pages 1197--1208.
+
+\bibitem[Lee et~al., 2022]{lee2021maximum}
+Lee, D., Zhang, L.-C., and Kim, J.~K. (2022).
+\newblock Maximum entropy classification for record linkage.
+\newblock {\em Survey Methodology}, 48(1):1--23.
+\newblock Statistics Canada, Catalogue No.\ 12-001-X.
+
+\bibitem[Li et~al., 2021]{li2020deep}
+Li, Y., Li, J., Suhara, Y., Doan, A., and Tan, W.-C. (2021).
+\newblock Deep entity matching with pre-trained language models.
+\newblock {\em Proceedings of the VLDB Endowment}, 14(1):50--60.
+
+\bibitem[Morris and Rush, 2025]{morris2025contextual}
+Morris, J.~X. and Rush, A.~M. (2025).
+\newblock Contextual document embeddings.
+\newblock In {\em The Thirteenth International Conference on Learning
+  Representations}.
+
+\bibitem[Mudgal et~al., 2018]{mudgal2018deep}
+Mudgal, S., Li, H., Rekatsinas, T., Doan, A., Park, Y., Krishnan, G., Deep, R.,
+  Arcaute, E., and Raghavendra, V. (2018).
+\newblock Deep learning for entity matching: A design space exploration.
+\newblock In {\em Proceedings of the ACM SIGMOD International Conference on
+  Management of Data}, pages 19--34.
+
+\bibitem[Newcombe et~al., 1959]{newcombe1959automatic}
+Newcombe, H.~B., Kennedy, J.~M., Axford, S.~J., and James, A.~P. (1959).
+\newblock Automatic linkage of vital records.
+\newblock {\em Science}, 130(3381):954--959.
+
+\bibitem[Peeters and Bizer, 2021]{peeters2021dual}
+Peeters, R. and Bizer, C. (2021).
+\newblock Dual-objective fine-tuning of {BERT} for entity matching.
+\newblock In {\em Proceedings of the VLDB Endowment}, pages 1913--1921.
+
+\bibitem[Reimers and Gurevych, 2019]{reimers2019sentence}
+Reimers, N. and Gurevych, I. (2019).
+\newblock Sentence-{BERT}: Sentence embeddings using {S}iamese {BERT}-networks.
+\newblock In {\em Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing}, pages 3982--3992.
+
+\bibitem[Sadinle, 2017]{sadinle2017bayesian}
+Sadinle, M. (2017).
+\newblock Bayesian estimation of bipartite matchings for record linkage.
+\newblock {\em Journal of the American Statistical Association},
+  112(518):600--612.
+
+\bibitem[Silverman, 1986]{silverman1986density}
+Silverman, B.~W. (1986).
+\newblock {\em Density Estimation for Statistics and Data Analysis}.
+\newblock Chapman and Hall, London.
+
+\bibitem[Steorts et~al., 2016]{steorts2016bayesian}
+Steorts, R.~C., Hall, R., and Fienberg, S.~E. (2016).
+\newblock A bayesian approach to graphical record linkage and de-duplication.
+\newblock {\em Journal of the American Statistical Association},
+  111(516):1660--1672.
+
+\bibitem[Tancredi and Liseo, 2011]{tancredi2011hierarchical}
+Tancredi, A. and Liseo, B. (2011).
+\newblock A hierarchical bayesian approach to record linkage and population
+  size problems.
+\newblock {\em The Annals of Applied Statistics}, 5(2B):1553--1585.
+
+\bibitem[Vaswani et~al., 2017]{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\L}., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008.
+
+\bibitem[Wang et~al., 2023]{wang2022sudowoodo}
+Wang, T., Lin, H., Fu, Y., Han, X., Sun, L., Hooi, B., and Chen, B. (2023).
+\newblock Sudowoodo: Contrastive self-supervised learning for multi-purpose
+  data integration and preparation.
+\newblock In {\em Proceedings of the IEEE International Conference on Data
+  Engineering}, pages 1502--1515.
+
+\bibitem[Wang et~al., 2020]{wang2020minilm}
+Wang, W., Wei, F., Bao, J., Dong, L., Lu, S., and Zhou, M. (2020).
+\newblock Minilm: Deep self-attention distillation for pre-trained language
+  models.
+\newblock {\em Advances in Neural Information Processing Systems},
+  33:5776--5786.
+
+\bibitem[Winkler, 1990]{winkler1990string}
+Winkler, W.~E. (1990).
+\newblock String comparator metrics and enhanced decision rules in the
+  fellegi-sunter model of record linkage.
+\newblock In {\em Proceedings of the Section on Survey Research Methods,
+  American Statistical Association}, pages 354--359.
+
+\bibitem[Zhang et~al., 2025]{zhang2025predictive}
+Zhang, L.-C., Sanguiao-Sande, L., and Lee, D. (2025).
+\newblock Design-based predictive inference.
+\newblock {\em Journal of Official Statistics}, 41(1):404--432.
+
+\bibitem[Zhang et~al., 2026]{zhang2026debiasing}
+Zhang, L.-C., Tam, S.-M., Sanguiao-Sande, L., Yung, W., and Holmberg, A.
+  (2026).
+\newblock On design-unbiased algorithmic machine learning.
+
+\end{thebibliography}

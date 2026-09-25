@@ -1,0 +1,30 @@
+{
+  "LR": {
+    "correct": 392,
+    "declared": 414,
+    "false_links": 22,
+    "lambda": 0.05314009661835749,
+    "missing_matches": 127,
+    "n_true_records": 541,
+    "psi": 0.23475046210720887
+  },
+  "MEC": {
+    "correct": 461,
+    "declared": 526,
+    "false_links": 65,
+    "lambda": 0.12357414448669202,
+    "missing_matches": 15,
+    "n_true_records": 541,
+    "psi": 0.027726432532347505
+  },
+  "dataset": "ECOM",
+  "lr_threshold": 0.3500000000000001,
+  "lr_validation_f1": 0.8571428571428571,
+  "n_baseline_train_pairs": 26997,
+  "n_ft_train_pairs": 26995,
+  "n_test_a": 541,
+  "n_train_a": 540,
+  "phase": "ft_biencoder",
+  "runtime_seconds": 124.85396242141724,
+  "seed": 43
+}

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite the associated paper."
+title: "Text-based Entity Resolution Using Transformer Models: Reproducibility Package"
+type: software
+authors:
+  - family-names: Ahmed
+    given-names: Abrar
+  - family-names: Zhang
+    given-names: Li-Chun
+  - family-names: Münnich
+    given-names: Ralf
+  - family-names: Vogt
+    given-names: Martin

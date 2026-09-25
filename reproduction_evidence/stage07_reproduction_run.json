@@ -1,0 +1,31 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-24T10:36:25.817868+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "training-fractions-direct",
+      "description": "Final direct-score reconstruction of the training-fraction experiment, including Zhang FLR/MMR.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis18_section7_direct.py"
+      ],
+      "started_at": "2026-09-24T10:36:25.818668+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-24T10:48:01.251224+00:00"
+    }
+  ],
+  "finished_at": "2026-09-24T10:48:01.251891+00:00",
+  "status": "completed"
+}

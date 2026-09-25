@@ -1,0 +1,34 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. paper-tables
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/build_paper_tables.py
+
+========================================================================================
+STAGE: paper-tables
+========================================================================================
+Reconstruct the paper-facing tables from saved record counts using Zhang FLR/MMR and verify them against the LaTeX manuscript.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/build_paper_tables.py
+========================================================================================
+PAPER-FACING TABLE RECONSTRUCTION
+========================================================================================
+Output directory : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/paper_tables
+Verification rows: 116
+Failures         : 0
+Metric rule      : FLR=1-C/D; MMR=1-C/M (Zhang definition)
+
+PASS: paper-facing checks passed. Table 4 is generated directly from Analysis 15 and is informational rather than hard-coded.
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

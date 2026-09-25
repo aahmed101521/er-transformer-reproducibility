@@ -1,0 +1,326 @@
+\section{Workflow with pretrained transformer models}
+\label{sec:pretrained}
+
+The three workflows in Figure \ref{fig:workflow} handle the text data differently.
+
+In the traditional workflow, the result of text preprocessing would enable one to calculate
+a similarity measure of any given record pair $(i,j)$ with associated texts
+$(\tau_i,\tau_j)$. The Jaro--Winkler metric
+\citep{jaro1989advances,winkler1990string} is very common in practice, which yields a
+value between 0 and 1 if appropriately configured. It captures the lexical overlaps, where
+each text is treated as a string of characters, but is not effective for expressions that differ
+only superficially to the human eyes, such as ``Conf. Proc.'' and ``Proceedings''.
+
+In the proposed workflow, preprocessing is replaced by embedding, which uses a bi-encoder
+model to turn each given text $\tau_i$ into a numerical vector, denoted by $\mathbf{x}_i$,
+which typically has a dimension of hundreds or more. A common similarity measure of
+$(\tau_i,\tau_j)$ is the cosine similarity of $(\mathbf{x}_i,\mathbf{x}_j)$, given as
+
+\begin{equation}
+\gamma_{ij}
+=
+\frac{\mathbf{x}_i^\top \mathbf{x}_j}
+{\lVert \mathbf{x}_i\rVert \lVert \mathbf{x}_j\rVert}.
+\end{equation}
+
+The bi-encoder similarity measure can capture semantic similarity that is not
+represented by character-level overlap, while the embeddings can be calculated
+efficiently and used routinely for the semantic blocking needed before
+scoring-classification.
+
+In the workflow using a cross-encoder model, which takes a pair of texts $\tau_i$ and
+$\tau_j$ as input directly, one can obtain a score for the similarity between them. A cross-encoder can represent pair-specific interactions between the two texts
+that similarity measures calculated from separate embeddings, such as
+$\gamma_{ij}$ above, cannot represent directly. Using a
+bi-encoder for semantic blocking, and applying a cross-encoder to the candidate-paired
+texts can potentially achieve the best link classification performance.
+
+Table \ref{tab:silverman-example} illustrates the differences with two citations of
+Silverman's 1986 monograph. The Jaro--Winkler metric is only calculated for comparisons
+per field. The pretrained bi-encoder model \texttt{all-MiniLM-L6-v2}
+\citep{reimers2019sentence} yields 384-dimensional embeddings, which result in the cosine
+similarity measures here. The pretrained cross-encoder model
+\texttt{ms-marco-MiniLM-L-6-v2} \citep{wang2020minilm} yields scores from paired texts
+directly without numerical embeddings being compared afterwards.
+
+\begin{table}[ht]
+\centering
+\caption{Per-field and whole-record scores for two citations of Silverman's 1986
+monograph: ``Silverman, B. W. (1986). Density Estimation for Statistics and Data
+Analysis. Chapman and Hall, London.'' and ``Bernard W. Silverman (1986). Density
+estimation for statistics and data analysis. Monographs on Statistics and Applied
+Probability.''}
+\begin{tabular}{lccc}
+\toprule
+Text & Jaro--Winkler metric & Bi-encoder cosine & Cross-encoder score \\
+\midrule
+Author        & 0.510 & 0.784 & 0.974 \\
+Title         & 0.856 & 0.872 & 0.991 \\
+Venue         & 0.933 & 0.969 & 0.999 \\
+Year          & 1.000 & 1.000 & 0.999 \\
+Full citation & --    & 0.887 & 0.999 \\
+\bottomrule
+\end{tabular}
+\label{tab:silverman-example}
+\end{table}
+
+All methods rank the field agreements in the same order, from the lowest on author
+name to the highest on year. However, the numerical values produced by the three methods
+should not be compared as if they were measured on a common scale: the Jaro--Winkler
+metric, cosine similarity and cross-encoder output arise from different scoring rules. The
+example instead illustrates the difference in representation. The cross-encoder evaluates
+the two names jointly, whereas the bi-encoder must commit ``Silverman, B. W.'' to a fixed
+vector without the sight of ``Bernard W. Silverman'', and vice versa. Joint encoding allows
+pair-specific interactions to be represented directly, which separate embeddings cannot do.
+Whether this architectural advantage translates into lower linkage error is assessed below
+using the FLR and MMR.
+
+Notice that, for deterministic record linkage, one can already apply a chosen threshold
+to any of the similarity measures for link classification directly. The cross-encoder has greater flexibility for representing pair-specific
+interactions, but the computation cost of applying it may be too high for many
+applications of entity resolution even with bi-encoder blocking.
+Below we first consider how the proposed workflow of probabilistic linkage allows one to
+incorporate the traditional models for scoring-classification, so as to reduce the
+computational cost, albeit without fine-tuning of the transformer models; the workflow
+with fine-tuning of transformer models will be considered in Section
+\ref{sec:finetuning} later.
+
+
+\subsection{Embedding and scoring}
+\label{sec:embedding-scoring}
+
+For scoring by generative or discriminative models, one needs numerical representation of
+key-value comparisons, denoted by $\gamma_{h,ij}$ for each field $h$ of $\tau_i$ and
+$\tau_j$, where $h=1,\ldots,H$. The Jaro--Winkler metric is a possibility for the
+traditional workflow, whereas one can use the cosine similarity measure of bi-encoder
+embeddings for the proposed workflow.
+
+By the MEC approach using generative models, one would obtain an estimated density
+ratio for the record pair $(i,j)$, which is given as
+
+\begin{equation}
+\label{eq:density-ratio}
+r_{ij}
+=
+\prod_{h=1}^{H}
+\frac{
+f(\gamma_{h,ij}\mid y_{ij}=1)
+}{
+f(\gamma_{h,ij}\mid y_{ij}=0)
+}.
+\end{equation}
+
+\rev{The product form in Equation \eqref{eq:density-ratio} assumes that the
+field-level comparison outcomes are conditionally independent given the match
+status $y_{ij}$. This assumption may be violated for related bibliographic fields,
+such as title, authors and venue. In that case, the product of the field-specific
+density ratios need not equal the likelihood ratio based on their joint distribution.}
+
+Notice that discrete comparison outcomes, i.e.\ agreement or not, are common for record
+linkage traditionally, in which case one would replace the density ratio by a probability
+ratio. Given continuous comparison outcomes $\gamma_{h,ij}$, we simply apply kernel
+density estimation \citep{silverman1986density} to estimate the two densities in
+Equation \eqref{eq:density-ratio}, separately, in the training set of matches and non-matches that are constructed as
+described in Section \ref{sec:training-candidates}.
+
+Meanwhile, discriminative models target the probability of match given the key-value
+comparison outcomes, denoted by
+
+\begin{equation}
+\label{eq:match-probability}
+p_{ij}
+=
+\Pr\left(
+y_{ij}=1
+\mid
+\gamma_{1,ij},\ldots,\gamma_{H,ij}
+\right).
+\end{equation}
+
+We use logistic regression as a basic discriminative model. Other models are possible,
+such as support vector machine (SVM), gradient-boosted trees (XGBoost) and multilayer
+perceptron (MLP) neural network. A given discriminative model can be estimated from
+the training set of matches and non-matches as a single dataset.
+
+Using the labelled records in the DBLP-Scholar and Abt-Buy datasets, we consider
+blocking scheme-II (Section 1.3) with fixed size $k$ for each record in $A(s_M)$. This
+induces a floor MMR, since a file-$A$ record cannot be linked correctly when none of its
+valid matched records is included in the candidate block.
+
+\begin{table}[ht]
+\centering
+\caption{Floor MMR by block size $k$ in DBLP-Scholar and Abt-Buy datasets.
+Floor-zero $k$ refers to the minimum block size needed for floor MMR to be zero.}
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & $k=1$ & $k=5$ & $k=50$ & Floor-zero $k$ \\
+\midrule
+DBLP-Scholar & 0.022 & 0.006 & 0.001 & 4535 \\
+Abt-Buy      & 0.278 & 0.082 & 0.003 & 748 \\
+\bottomrule
+\end{tabular}
+\label{tab:floor-mmr}
+\end{table}
+
+Table \ref{tab:floor-mmr} shows the floor MMR for the two datasets, where the candidates
+for each record in $A(s_M)$ are selected from $B$ based on the bi-encoder cosine
+similarity. At $k=1$, it is 0.022 for the former and 0.278 for the latter, which means
+that about 97.8\% of the matchable file-$A$ records have a valid match as the top
+candidate in the DBLP-Scholar dataset, whereas about 72.2\% do so in the Abt-Buy
+dataset. This indicates that entity resolution is more difficult in the latter case.
+
+Meanwhile, both the floor MMRs become practically acceptable once $k$ is increased to
+50, especially because one would have to set $k=4535$ to remove the floor (i.e.\ making
+the floor MMR zero) for the DBLP-Scholar dataset, or $k=748$ for the Abt-Buy dataset.
+
+
+\subsection{Comparison of embedding and scoring methods}
+\label{sec:comparison-pretrained}
+
+The comparison outcomes $\gamma_{h,ij}$ are calculated for the candidate pairs
+constructed as described in Section \ref{sec:training-candidates}, either as the
+Jaro--Winkler metric or the cosine similarity of bi-encoder embeddings. Given
+$\{\gamma_{h,ij}\}$, we compare the resulting link classification errors under
+generative and discriminative scoring models. The FLR and MMR are calculated on
+the held-out file-$A$ records according to Section \ref{sec:evaluation}.
+
+The distinction between the two scoring approaches is worth explaining. For MEC
+under the generative model, we link each file-$A$ record $i$ to the candidate
+$j\in C_i$ with the highest density ratio $r_{ij}$ in Equation
+\eqref{eq:density-ratio}. Thus, the best available candidate is always selected.
+For a discriminative model one could similarly select the candidate with the
+highest match probability $p_{ij}$ in Equation \eqref{eq:match-probability}.
+However, this would force a link even when all the candidate probabilities are
+small.
+
+We therefore consider a threshold-based classification rule for the discriminative
+models. As described in Section \ref{sec:training-candidates}, a validation subset
+of the training pairs is used to choose the threshold that maximises the F1 score.
+A link is declared only when the highest-scoring candidate exceeds this threshold;
+otherwise the file-$A$ record is left unlinked. This provides a useful contrast
+with the generative procedure because it allows the model to abstain when the
+candidate evidence is weak. We do not investigate alternative cross-validation
+schemes or decision criteria here, since our purpose is to illustrate the role of
+discriminative scoring-classification within the proposed workflow rather than to
+optimise the procedure for these two datasets.
+
+\begin{table}[ht]
+\centering
+\caption{FLR and MMR by key-value comparison method, scoring-classification model
+and block size $k$. DBLP-Scholar (top half), Abt-Buy (bottom half).
+\rev{Entries give the mean (Monte Carlo standard error) over three random splits.}}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{$k=5$} & \multicolumn{2}{c}{$k=50$} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Key-value comparison & Scoring-classification & FLR & MMR & FLR & MMR \\
+\midrule
+String, Jaro--Winkler & Generative, kernel density & 0.034 \rev{(0.0026)} & 0.018 \rev{(0.0005)} & 0.046 \rev{(0.0031)} & 0.013 \rev{(0.0002)} \\
+ & Discriminative, logistic & 0.030 \rev{(0.0038)} & 0.036 \rev{(0.0030)} & 0.027 \rev{(0.0027)} & 0.050 \rev{(0.0034)} \\
+Bi-encoder, cosine & Generative, kernel density & 0.023 \rev{(0.0013)} & 0.018 \rev{(0.0015)} & 0.043 \rev{(0.0026)} & 0.014 \rev{(0.0009)} \\
+ & Discriminative, logistic & 0.016 \rev{(0.0038)} & 0.056 \rev{(0.0028)} & 0.009 \rev{(0.0027)} & 0.068 \rev{(0.0027)} \\
+\midrule
+String, Jaro--Winkler & Generative, kernel density & 0.389 \rev{(0.0089)} & 0.500 \rev{(0.0043)} & 0.449 \rev{(0.0097)} & 0.525 \rev{(0.0075)} \\
+ & Discriminative, logistic & 0.343 \rev{(0.0279)} & 0.597 \rev{(0.0385)} & 0.338 \rev{(0.0081)} & 0.662 \rev{(0.0468)} \\
+Bi-encoder, cosine & Generative, kernel density & 0.278 \rev{(0.0044)} & 0.425 \rev{(0.0062)} & 0.327 \rev{(0.0043)} & 0.356 \rev{(0.0073)} \\
+ & Discriminative, logistic & 0.248 \rev{(0.0191)} & 0.479 \rev{(0.0505)} & 0.233 \rev{(0.0210)} & 0.543 \rev{(0.0597)} \\
+\bottomrule
+\end{tabular}
+\label{tab:comparison}
+\end{table}
+
+Table \ref{tab:comparison} reports the test set FLR and MMR for four combinations of
+embedding and scoring methods, given two block sizes $k$. The results are averaged over
+\rev{three random 50--50 training-test splits, with Monte Carlo standard errors in
+parentheses. Comparisons of close means should be read in light of this
+split-to-split variation.}
+
+Regarding bi-encoder embeddings instead of the traditional character-string comparisons,
+the effects are not obvious for the DBLP-Scholar dataset where the texts are less messy
+(Table 1). The bi-encoder yields lower FLRs in all four comparisons, but does not
+consistently reduce the MMR. In contrast, the improvements are clearly visible for the
+Abt-Buy dataset with more messy texts. Both the FLR and MMR are reduced by the
+bi-encoder representation for either scoring model and either block size.
+
+These results illustrate the potential advantages of transformer-based
+embeddings for text-based entity resolution. Notice that the performance of the bi-encoder can be further changed
+by fine-tuning, which will be considered in Section \ref{sec:finetuning}.
+
+Regarding scoring-classification by generative or discriminative models, the results here
+show that the discriminative logistic regression model yields lower FLRs than the
+generative kernel density model, whereas the latter yields lower MMRs. The distinction
+is especially clear for the Abt-Buy dataset. This reflects the different link-classification
+rules used here: we always link the top-ranked candidate under the generative model,
+whereas a validation split is used to determine a threshold for the discriminative model,
+which may abstain from declaring a link.
+\rev{Accordingly, the FLR/MMR contrast in
+Table \ref{tab:comparison} should not be interpreted as an intrinsic difference between
+generative and discriminative model families; it also reflects the different decision rules
+applied to their scores.}
+
+Without advocating for one modelling approach against the other generally, we note that
+scoring-classification by discriminative models is worth considering in practice, although
+such models have been less common in record linkage traditionally.
+
+For completeness, we also apply the pretrained cross-encoder directly to the candidate
+pairs obtained from bi-encoder blocking. Since the cross-encoder operates on paired
+record texts rather than on the numerical comparison outcomes used by the traditional
+scoring models, we report its results together with those of the fine-tuned cross-encoder
+in Table \ref{tab:fine-tuning}. This allows the effect of task-specific fine-tuning to be
+assessed separately from that of using the cross-encoder architecture itself.
+
+Regarding the proposed workflow, using the bi-encoder model for embedding and
+the traditional generative or discriminative models for automated
+scoring-classification can reduce the number of candidate pairs that need to be
+processed by a cross-encoder, compared with applying the cross-encoder to every
+candidate block. This provides the basis for examining the accuracy-cost tradeoff
+after fine-tuning, compared with either the traditional workflow without transformer
+models or the transformer-only workflow.
+
+\subsection{Sensitivity analysis}
+\label{sec:sensitivity}
+
+Here we conduct sensitivity analysis of a methodological choice not covered above, which
+exemplifies the relevant considerations in practice and helps to prepare the ground for
+fine-tuning transformer models later.
+
+\begin{table}[ht]
+\centering
+\caption{FLR and MMR by different discriminative models. Entries give the
+mean (Monte Carlo standard error) over three random splits.}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{$k=5$} & \multicolumn{2}{c}{$k=50$} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Dataset & Model & FLR & MMR & FLR & MMR \\
+\midrule
+DBLP-Scholar & Logistic & 0.016 \rev{(0.0038)} & 0.056 \rev{(0.0028)} & 0.009 \rev{(0.0027)} & 0.068 \rev{(0.0027)} \\
+ & SVM & 0.017 \rev{(0.0021)} & 0.040 \rev{(0.0037)} & 0.018 \rev{(0.0017)} & 0.041 \rev{(0.0048)} \\
+ & XGB & 0.033 \rev{(0.0030)} & 0.021 \rev{(0.0014)} & 0.024 \rev{(0.0055)} & 0.041 \rev{(0.0050)} \\
+ & MLP & 0.030 \rev{(0.0025)} & 0.030 \rev{(0.0016)} & 0.026 \rev{(0.0024)} & 0.034 \rev{(0.0066)} \\
+\addlinespace
+Abt-Buy & Logistic & 0.248 \rev{(0.0191)} & 0.479 \rev{(0.0505)} & 0.233 \rev{(0.0210)} & 0.543 \rev{(0.0597)} \\
+ & SVM & 0.252 \rev{(0.0170)} & 0.592 \rev{(0.0274)} & 0.211 \rev{(0.0235)} & 0.701 \rev{(0.0348)} \\
+ & XGB & 0.399 \rev{(0.0096)} & 0.538 \rev{(0.0187)} & 0.296 \rev{(0.0130)} & 0.551 \rev{(0.0235)} \\
+ & MLP & 0.251 \rev{(0.0111)} & 0.438 \rev{(0.0238)} & 0.228 \rev{(0.0202)} & 0.565 \rev{(0.0704)} \\
+\bottomrule
+\end{tabular}
+\label{tab:discriminative-sensitivity}
+\end{table}
+
+Instead of logistic regression, one can use many other discriminative models. Table
+\ref{tab:discriminative-sensitivity} compares it to a radial-kernel SVM, an XGBoost and
+a small MLP net, all based on the same bi-encoder embeddings. The FLR and MMR are
+obtained in the same way as above, and the results of logistic regression are reproduced
+from Table \ref{tab:comparison} for easy comparison. The models exhibit different
+tradeoffs between the two error measures. \rev{For DBLP-Scholar, logistic regression has
+low FLR in both block-size configurations, while several models have lower observed
+MMR. The FLR estimates for logistic regression and SVM at $k=5$ are close relative
+to their Monte Carlo standard errors. For Abt-Buy, the FLR and MMR comparisons vary
+with the model and block size, with appreciable split-to-split variation in several
+entries. Logistic regression provides a simple discriminative model and will be used
+as the default for the investigation later.}

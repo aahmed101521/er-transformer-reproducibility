@@ -1,0 +1,4 @@
+STAGE: verify_revision_outputs.py
+COMMAND: /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/verify_revision_outputs.py
+REVISION OUTPUT VERIFICATION: PASS
+Pretrained CE, final Table 8, and combined-routing saved outputs match the revision audit.

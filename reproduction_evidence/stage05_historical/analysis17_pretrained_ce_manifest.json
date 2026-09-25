@@ -1,0 +1,75 @@
+{
+  "purpose": "Recover missing MCSEs for pre-trained CE row of manuscript Table 7",
+  "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "fine_tuning": false,
+  "max_length": 128,
+  "candidate_block": "top-50 from all-MiniLM-L6-v2",
+  "primary_seeds": [
+    42,
+    43,
+    44
+  ],
+  "a_split": "50/50 train/test using sklearn train_test_split(random_state=seed)",
+  "threshold_calibration": {
+    "validation_fraction_of_training_pairs": 0.2,
+    "stratified": true,
+    "grid": [
+      0.1,
+      0.15000000000000002,
+      0.20000000000000004,
+      0.25000000000000006,
+      0.30000000000000004,
+      0.3500000000000001,
+      0.40000000000000013,
+      0.45000000000000007,
+      0.5000000000000001,
+      0.5500000000000002,
+      0.6000000000000002,
+      0.6500000000000001,
+      0.7000000000000002,
+      0.7500000000000002,
+      0.8000000000000002,
+      0.8500000000000002,
+      0.9000000000000002
+    ],
+    "criterion": "pair-level validation F1; strict score > threshold"
+  },
+  "truth": "many-match id_A -> set(all valid id_B)",
+  "training_positive": "first-listed valid id_B only",
+  "training_negatives": "top-50 candidates excluding every known valid id_B",
+  "correctness": "declared top-1 is correct if it is any valid id_B",
+  "FLR": "1 - correct/declared",
+  "MMR": "1 - correct/n_true_records",
+  "runtime_seconds": 72.70196509361267,
+  "versions": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "torch": "2.5.1+cu121",
+    "sentence_transformers": "6.1.0"
+  },
+  "data_sha256": {
+    "data/dblp/DBLP1.csv": "dde4acc939ad3f8f1597dcce64b2a030b425e1f6e08ace2e0e213c2093fba28d",
+    "data/dblp/Scholar.csv": "ce45427687aac57db592c5b046dcc777e04dd46ba73002a760dbab62b08c5c38",
+    "data/dblp/DBLP-Scholar_perfectMapping.csv": "757ca3c5daa0ec77ade3300df6ee8ab9fe2a989b3d09da30be72ecf3ef8eba10",
+    "cache/DBLP_top50.json": "8d3843fc35c39b5e410341d55de7a81cadb72926237b63144c7467f27ca8727a",
+    "data/abt_buy/Abt.csv": "ed6dbe5ac508e2e27ec7f78948875d4f754b6753674c65ccda3bf903ddaa13ea",
+    "data/abt_buy/Buy.csv": "37d78c33f85b27e92be1d8ee1b863ba7107dfe369c6ca1dc7961c89b460dd47a",
+    "data/abt_buy/abt_buy_perfectMapping.csv": "20af553a0846712de11703e2b9569988468d5c639650348dd5a059f4bb861b6a",
+    "cache/ECOM_top50.json": "6fd9d5e2172c76b9d3d2c39e2ede68e64a9da604d34ecd8a25b204afeb246b28"
+  },
+  "reproduction_checks": {
+    "DBLP": {
+      "status": "PASS",
+      "observed_flr_3dp": "0.061",
+      "expected_flr_3dp": "0.061",
+      "observed_mmr_3dp": "0.026",
+      "expected_mmr_3dp": "0.026"
+    },
+    "ECOM": {
+      "status": "WARNING",
+      "observed_flr_3dp": "0.267",
+      "expected_flr_3dp": "0.265",
+      "observed_mmr_3dp": "0.278",
+      "expected_mmr_3dp": "0.277"
+    }
+  }
+}

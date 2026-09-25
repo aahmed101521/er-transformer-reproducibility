@@ -1,0 +1,9 @@
+Historical core environment recorded by results/analysis20_discriminative_scorers_manifest.json
+Python: 3.12.3
+NumPy: 2.5.1
+pandas: 3.0.3
+scikit-learn: 1.9.0
+PyTorch: 2.5.1+cu121
+XGBoost: 3.3.0
+
+The historical project did not preserve a complete pip freeze for every analysis. See final_recovery_core_versions.txt and final_recovery_pip_freeze.txt for the environment used in the September 2026 recovery runs.

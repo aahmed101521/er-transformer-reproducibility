@@ -1,0 +1,88 @@
+{
+  "analysis17_source": "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_section5.py",
+  "blocks_rerun": [
+    "forced-1:1",
+    "k=5"
+  ],
+  "combined_mc10_written": false,
+  "complete_cells": 12,
+  "counting": {
+    "categories": "mutually exclusive correct/false/missing",
+    "correct": "any valid B",
+    "psi_denominator": "test A records with at least one true match"
+  },
+  "diagnostic_seeds": [
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "expected_cells": 40,
+  "generated_at": "2026-09-25 21:33:52",
+  "mc10_rows": 0,
+  "mc10_written": false,
+  "missing_analysis17_k50_seeds": {
+    "DBLP": [
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "ECOM": [
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ]
+  },
+  "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "pair_protocol": {
+    "forced_1to1": "one positive plus highest-ranked nonmatch",
+    "k5": "one positive plus all nonmatches in retrieved top five",
+    "negative_exclusion": "all valid B alternatives",
+    "positive": "first-listed valid B",
+    "retrained_per_block": true
+  },
+  "primary_seeds": [
+    42,
+    43,
+    44
+  ],
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "recipe": {
+    "batch_size": 16,
+    "epochs": 5,
+    "learning_rate": 2e-05,
+    "max_length": 128,
+    "score_path": "direct CrossEncoder.predict output",
+    "threshold_grid": [
+      0.1,
+      0.15000000000000002,
+      0.20000000000000004,
+      0.25000000000000006,
+      0.30000000000000004,
+      0.3500000000000001,
+      0.40000000000000013,
+      0.45000000000000007,
+      0.5000000000000001,
+      0.5500000000000002,
+      0.6000000000000002,
+      0.6500000000000001,
+      0.7000000000000002,
+      0.7500000000000002,
+      0.8000000000000002,
+      0.8500000000000002,
+      0.9000000000000002
+    ],
+    "warmup_fraction": 0.1
+  }
+}

@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+
+% =========================================================
+% ENCODING AND TYPOGRAPHY
+% =========================================================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% =========================================================
+% PAGE LAYOUT
+% =========================================================
+\usepackage[
+    a4paper,
+    top=2.6cm,
+    bottom=2.6cm,
+    left=2.8cm,
+    right=2.8cm
+]{geometry}
+
+\usepackage{setspace}
+\setstretch{1.05}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+% =========================================================
+% MATHEMATICS
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% =========================================================
+% TABLES
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+
+\renewcommand{\arraystretch}{1.12}
+
+% =========================================================
+% FIGURES
+% =========================================================
+\usepackage{graphicx}
+\usepackage{float}
+
+\graphicspath{
+    {newsections/images/}
+}
+
+% =========================================================
+% CAPTIONS
+% =========================================================
+\usepackage[
+    font=small,
+    labelfont=bf,
+    justification=justified,
+    singlelinecheck=false
+]{caption}
+
+% =========================================================
+% LISTS
+% =========================================================
+\usepackage{enumitem}
+
+\setlist[itemize]{
+    leftmargin=1.5em,
+    itemsep=0.3em,
+    topsep=0.4em
+}
+
+\setlist[enumerate]{
+    leftmargin=1.7em,
+    itemsep=0.3em,
+    topsep=0.4em
+}
+
+% =========================================================
+% SECTION FORMATTING
+% =========================================================
+\usepackage{titlesec}
+
+\titleformat{\section}
+    {\large\bfseries}
+    {\thesection}
+    {0.8em}
+    {}
+
+\titleformat{\subsection}
+    {\normalsize\bfseries}
+    {\thesubsection}
+    {0.8em}
+    {}
+
+\titleformat{\subsubsection}
+    {\normalsize\itshape}
+    {\thesubsubsection}
+    {0.8em}
+    {}
+
+\titlespacing*{\section}
+    {0pt}{2.2em}{0.8em}
+
+\titlespacing*{\subsection}
+    {0pt}{1.7em}{0.6em}
+
+\titlespacing*{\subsubsection}
+    {0pt}{1.3em}{0.5em}
+
+% =========================================================
+% CITATIONS AND REFERENCES
+% =========================================================
+\usepackage[
+    authoryear,
+    square
+]{natbib}
+
+% =========================================================
+% COLOURS AND LINKS
+% =========================================================
+\usepackage{xcolor}
+
+\definecolor{linkblue}{RGB}{35,70,110}
+\definecolor{citeblue}{RGB}{45,80,120}
+
+% Editorial change marks (for the review copy only).
+% In the final clean copy, change the definition to: \newcommand{\rev}[1]{#1}
+\definecolor{revisionblue}{RGB}{15,81,164}
+\newcommand{\rev}[1]{{\color{revisionblue}#1}}
+
+\usepackage[
+    colorlinks=true,
+    linkcolor=linkblue,
+    citecolor=citeblue,
+    urlcolor=linkblue,
+    pdfborder={0 0 0}
+]{hyperref}
+
+% =========================================================
+% HEADER AND FOOTER
+% =========================================================
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\small Text-based Entity Resolution}
+\fancyhead[R]{\small Ahmed et al.}
+
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\headheight}{14pt}
+
+% No header on the title page
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% =========================================================
+% DOCUMENT
+% =========================================================
+\begin{document}
+
+% ---------------------------------------------------------
+% TITLE
+% ---------------------------------------------------------
+
+\title{
+    \vspace{-1.2cm}
+    \textbf{\LARGE Text-based Entity Resolution Using Transformer Models}
+}
+
+\author{
+    Abrar Ahmed MSc
+    \and
+    Professor Li-Chun Zhang
+    \and
+    Prof. Dr. Ralf Münnich
+    \and
+    Prof. Dr. Martin Vogt
+}
+
+\date{July 21, 2026}
+
+\maketitle
+
+\vspace{-0.5em}
+
+% ---------------------------------------------------------
+% ABSTRACT
+% Keep unchanged for now.
+% We will revise the abstract after the main paper is final.
+% ---------------------------------------------------------
+
+\begin{abstract}
+
+Entity resolution (also known as record linkage) aims to classify which database
+items, or file records, refer to the same entity, where the entity is typically a
+real-world object such as a person, business or product. Transformer models have
+brought artificial intelligence to text-based entity resolution through their
+superior ability for natural language processing. However, applying a transformer
+model directly to ``link or not to link'' a large number of record pairs can be
+computationally too costly in practice. We propose a workflow of text-based entity
+resolution that extends traditional approaches to record linkage by incorporating
+judicious uses of transformer models. A bi-encoder is used for text embedding and
+blocking, while traditional generative or discriminative models can be used for
+scoring and classification. A cross-encoder can then be reserved for selected harder
+cases, providing a mechanism for trading linkage accuracy against computational cost.
+We also discuss fine-tuning and provide a workable approach to linkage error
+assessment for the combined procedure. The proposed workflow is evidenced and
+illustrated using two benchmark datasets from the Magellan data repository.
+
+\end{abstract}
+
+% ---------------------------------------------------------
+% CONTENTS
+% ---------------------------------------------------------
+
+\tableofcontents
+\clearpage
+
+% =========================================================
+% SECTION 1
+% Introduction
+%
+% Keep Zhang's content essentially unchanged.
+% =========================================================
+
+\input{newsections/introduction}
+
+
+% =========================================================
+% SECTION 2
+% Workflow with pretrained transformer models
+%
+% Active revision begins here.
+% =========================================================
+
+\input{newsections/experimental_setup}
+
+\input{newsections/pretrained}
+
+
+% =========================================================
+% SECTION 3
+% Workflow with fine-tuning of transformer models
+% =========================================================
+
+\input{newsections/finetuning}
+
+
+% =========================================================
+% SECTION 4
+% Final remarks
+% =========================================================
+
+\input{newsections/final}
+
+% =========================================================
+% DATA AND CODE AVAILABILITY
+% =========================================================
+
+\section*{Data and code availability}
+\rev{The DBLP-Scholar and Abt-Buy benchmark datasets are publicly available through the Magellan data repository cited in Appendix~\ref{app:datasets}. The supplementary reproduction package supplied with this revision contains the data files used in the analyses, scripts for blocking, embedding, fine-tuning, scoring, routing and error assessment, the random seeds, pinned core software versions, and a single entry point (\texttt{python reproduce.py}) for regenerating Tables~4--10. The main comparisons use seeds 42--44, while the training-fraction and nested error-assessment analyses use seeds 42--51. Revision-specific code and per-seed outputs for the updated Table~8 and the combined-procedure analysis are also included. GPU fine-tuning is not assumed to be bitwise deterministic across software and hardware stacks; the package therefore records the final environment and per-seed outputs used to assess numerical reproduction. A permanent archive identifier can be added to the accepted version.}
+
+% =========================================================
+% APPENDIX
+% =========================================================
+
+\appendix
+
+\input{newsections/appendix}
+
+
+% =========================================================
+% REFERENCES
+% =========================================================
+
+\clearpage
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
+

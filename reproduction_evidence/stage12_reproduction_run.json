@@ -1,0 +1,33 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-25T08:13:53.368230+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "nested-bias-direct",
+      "description": "Final direct-score reconstruction of the nested-bias experiment using Zhang FLR/MMR.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis22_section332_bias_direct.py",
+        "--phase",
+        "run"
+      ],
+      "started_at": "2026-09-25T08:13:53.368644+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-25T08:31:04.797283+00:00"
+    }
+  ],
+  "finished_at": "2026-09-25T08:31:04.797908+00:00",
+  "status": "completed"
+}

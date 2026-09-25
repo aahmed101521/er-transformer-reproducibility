@@ -1,0 +1,31 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-23T14:56:24.847042+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "pretrained-cross-encoder",
+      "description": "Untouched pretrained cross-encoder baseline using direct CrossEncoder.predict() scores and no model fitting.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_pretrained_ce.py"
+      ],
+      "started_at": "2026-09-23T14:56:24.847545+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-23T15:00:03.567887+00:00"
+    }
+  ],
+  "finished_at": "2026-09-23T15:00:03.568592+00:00",
+  "status": "completed"
+}

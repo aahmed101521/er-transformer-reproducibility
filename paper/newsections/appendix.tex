@@ -1,0 +1,52 @@
+﻿% ============================================================
+% Appendix A — Datasets
+% ============================================================
+
+\section{Datasets}
+\label{sec:appendix-datasets}
+\label{app:datasets}
+
+Two benchmark datasets from the Magellan data repository
+\citep{konda2016magellan} are used throughout the paper, one for
+bibliographic citation matching and one for product matching.
+Both have been widely used in the entity resolution literature
+\citep[e.g.][]{mudgal2018deep, li2020deep, peeters2021dual}.
+The Magellan data repository is available at
+\url{https://pages.cs.wisc.edu/~anhai/data1/magellan_data/}.
+
+\paragraph{DBLP-Scholar}
+Let file $A$ contain $2{,}616$ publication records from the DBLP
+computer science bibliography, and let file $B$ contain $64{,}263$
+records from Google Scholar. Records in both files have four fields:
+title, author, venue, and year.
+
+The labelled match set contains $5{,}347$ record pairs involving
+$2{,}408$ distinct records from $A$ and $5{,}218$ distinct records
+from $B$. The match relation is not one-to-one:
+$1{,}238$ matched records in $A$ have more than one valid partner in
+$B$, and the largest number of valid partners for a single record is
+20. All $5{,}347$ labelled pairs refer to records that are present in
+the two files.
+
+For supervised learning, one valid file-$B$ partner is retained as
+the positive example for each matched file-$A$ record. Any other
+known valid partners of the same file-$A$ record are excluded from
+the non-match examples. The complete labelled match relation is
+retained for evaluation, so that a predicted link is counted as
+correct if the selected file-$B$ record is any of the known valid
+partners of the corresponding file-$A$ record.
+
+\paragraph{Abt-Buy}
+Let file $A$ contain $1{,}081$ product records from Abt.com, and let
+file $B$ contain $1{,}092$ records from Buy.com. The Abt file contains product name, description and price, while the Buy file
+additionally contains manufacturer. The price field is not used in the calculations in this
+paper.
+
+The labelled match set contains $1{,}097$ record pairs. All
+$1{,}081$ records in $A$ have at least one valid match, and all
+$1{,}092$ records in $B$ occur in the labelled match set. Sixteen
+records in $A$ have two valid partners in $B$, while all remaining
+records have one. As for DBLP-Scholar, one valid partner is retained
+per file-$A$ record for supervised training, while all known valid
+partners are retained when determining whether a predicted link is
+correct.

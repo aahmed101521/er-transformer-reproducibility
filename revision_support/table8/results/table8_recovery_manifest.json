@@ -1,0 +1,30 @@
+{
+  "candidate_blocks": "pretrained all-MiniLM-L6-v2 top-50 held fixed for Table 8",
+  "cross_encoder": "historical Analysis 17 direct decisions; no retraining in recovery",
+  "final_flr": "1 - correct / declared",
+  "final_mmr": "1 - correct / n_true_records",
+  "ft_biencoder": {
+    "batch_size": 16,
+    "epochs": 1,
+    "learning_rate": 2e-05,
+    "loss": "ContrastiveLoss",
+    "model": "all-MiniLM-L6-v2",
+    "warmup_fraction": 0.1
+  },
+  "historical_reproduction_passed": true,
+  "mcse": "sample SD across seeds / sqrt(3)",
+  "purpose": "Recover manuscript Table 8 primary-three-seed MCSEs",
+  "quartiles": "pd.qcut(ft_lr_gap, 4) separately within each dataset/seed test set",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "versions": {
+    "pandas": "3.0.6",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "sentence_transformers": "6.1.0",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1"
+  }
+}

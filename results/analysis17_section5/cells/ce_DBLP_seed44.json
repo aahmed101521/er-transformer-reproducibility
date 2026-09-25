@@ -1,0 +1,45 @@
+{
+  "CE_direct": {
+    "correct": 1197,
+    "declared": 1216,
+    "false_links": 19,
+    "lambda": 0.015625,
+    "missing_matches": 12,
+    "n_true_records": 1215,
+    "psi": 0.009876543209876543
+  },
+  "CE_legacy": {
+    "correct": 1197,
+    "declared": 1216,
+    "false_links": 19,
+    "lambda": 0.015625,
+    "missing_matches": 12,
+    "n_true_records": 1215,
+    "psi": 0.009876543209876543
+  },
+  "LR": {
+    "correct": 1138,
+    "declared": 1155,
+    "false_links": 17,
+    "lambda": 0.01471861471861472,
+    "missing_matches": 63,
+    "n_true_records": 1215,
+    "psi": 0.05185185185185185
+  },
+  "alternative_valid_links": 365,
+  "ce_direct_threshold": 0.20000000000000004,
+  "ce_direct_validation_f1": 0.9274193548387096,
+  "ce_legacy_threshold": 0.5500000000000002,
+  "ce_legacy_validation_f1": 0.9274193548387096,
+  "dataset": "DBLP",
+  "lr_threshold": 0.40000000000000013,
+  "lr_validation_f1": 0.8448275862068966,
+  "n_ce_train_pairs": 46588,
+  "n_ce_validation_pairs": 11647,
+  "n_test_a": 1308,
+  "n_train_a": 1308,
+  "n_train_pairs_full": 58235,
+  "phase": "cross_encoder",
+  "runtime_seconds": 358.9033818244934,
+  "seed": 44
+}

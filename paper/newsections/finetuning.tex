@@ -1,0 +1,765 @@
+\section{Workflow with fine-tuning of transformer models}
+\label{sec:finetuning}
+
+Fine-tuning of pretrained transformer models can be important for the application at hand.
+In the proposed flow of entity resolution, this concerns the bi-encoder model for embedding
+and the cross-encoder model for direct text-to-link classification.
+
+
+\subsection{Fine-tuning transformer models}
+\label{sec:fine-tuning-models}
+
+Using the training-test construction described in Section
+\ref{sec:training-candidates}, we now consider task-specific fine-tuning
+of the bi-encoder and cross-encoder models. The same random splits and
+treatment of multiple valid partners are retained, so that the results
+can be compared directly with those obtained using the pretrained models.
+
+There is one important distinction between the two fine-tuning
+experiments. After fine-tuning the bi-encoder, the records are re-embedded
+and the $k=50$ candidate blocks are reconstructed from the fine-tuned
+embeddings before the traditional scoring models are evaluated. For the
+cross-encoder, the candidate blocks obtained from the pretrained
+bi-encoder are held fixed. Thus, the cross-encoder comparison isolates
+the effect of fine-tuning the classifier rather than changing the
+candidate set at the same time.
+
+The hyperparameters for learning transformer models involve at least four choices: the
+warmup step, typically set to around 10\%; the learning rate, typically of the order
+$10^{-5}$; the number of epochs, typically small; and the batch size, typically 16 or 32.
+While some experimentation is needed to settle the hyperparameters in practice, it is rare
+to apply cross-validation inside the training set formally due to the computation cost this
+would require. Notice that the computation cost differs for bi-encoder and cross-encoder.
+Once the embeddings from a bi-encoder have been obtained, similarity calculation and
+subsequent scoring are computationally cheap. In contrast, the cross-encoder must process
+each pair of texts directly whenever it is applied.
+
+The bi-encoder model \texttt{all-MiniLM-L6-v2} is trained for one epoch with
+\texttt{ContrastiveLoss}, using 10\% linear warmup, batch size 16 and learning rate
+$2\times10^{-5}$. The contrastive loss encourages the embeddings of matched record
+pairs to be closer and those of non-matched pairs to be further apart. The fine-tuned
+bi-encoder model can then be applied to the records in $A\cup B$ to yield the fine-tuned
+embeddings, from which the per-field cosine similarities are calculated as before.
+
+The cross-encoder \texttt{ms-marco-MiniLM-L-6-v2} is trained for five epochs with
+10\% linear warmup, batch size 16, learning rate $2\times10^{-5}$, and a maximum
+sequence length of 128 tokens. The training pairs are labelled as matches or non-matches
+for binary link classification.
+
+For comparison, we also evaluate the pretrained cross-encoder without updating any of
+its model parameters. The same 50--50 outer split and 80--20 pair-level validation split
+are used, but the training portion is not used to fit the cross-encoder. It is retained only
+so that the link-classification threshold can be selected on exactly the same validation
+partition as for the fine-tuned model. In both cases, the threshold is selected from
+$0.10,0.15,\ldots,0.90$ by maximising the validation F1 score, and the direct output of
+\texttt{CrossEncoder.predict()} is used without an additional sigmoid transformation.
+
+While the hyperparameters above may not be optimal for these models, they suffice for
+the methodological investigations below, which is our purpose in this paper rather than
+to find the best procedures for the two datasets at hand.
+
+\rev{The bi-encoder and cross-encoder are fine-tuned for one and five epochs,
+respectively. Thus, the fine-tuned comparisons in Table~\ref{tab:fine-tuning}
+concern the specified training configurations, rather than an epoch-matched
+comparison of model architectures. The contribution of training duration to
+the observed differences is not assessed separately.}
+
+\begin{table}[ht]
+\centering
+\caption{FLR and MMR for pretrained and fine-tuned transformer models. For the
+generative and logistic models, pretrained and fine-tuned refer to the
+bi-encoder used for embedding and blocking; the candidate blocks are
+reconstructed after bi-encoder fine-tuning. For the cross-encoder, they refer
+to the cross-encoder model itself, with the candidate blocks held fixed.
+\rev{Entries give the mean (Monte Carlo standard error) over three random splits.}}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{Pretrained} & \multicolumn{2}{c}{Fine-tuned} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Dataset & Model & FLR & MMR & FLR & MMR \\
+\midrule
+DBLP-Scholar & Generative, kernel density & 0.043 \rev{(0.0026)} & 0.014 \rev{(0.0009)} & 0.046 \rev{(0.0044)} & 0.011 \rev{(0.0012)} \\
+ & Discriminative, logistic & 0.009 \rev{(0.0027)} & 0.068 \rev{(0.0027)} & 0.026 \rev{(0.0040)} & 0.027 \rev{(0.0042)} \\
+ & Cross-encoder & 0.061 \rev{(0.0026)} & 0.026 \rev{(0.0011)} & 0.018 \rev{(0.0031)} & 0.014 \rev{(0.0009)} \\
+\addlinespace
+Abt-Buy & Generative, kernel density & 0.327 \rev{(0.0043)} & 0.356 \rev{(0.0073)} & 0.124 \rev{(0.0008)} & 0.145 \rev{(0.0031)} \\
+ & Discriminative, logistic & 0.233 \rev{(0.0210)} & 0.543 \rev{(0.0597)} & 0.053 \rev{(0.0023)} & 0.269 \rev{(0.0059)} \\
+ & Cross-encoder & \rev{0.267} \rev{(0.0102)} & \rev{0.278} \rev{(0.0123)} & 0.041 \rev{(0.0023)} & 0.152 \rev{(0.0130)} \\
+\bottomrule
+\end{tabular}
+\label{tab:fine-tuning}
+\end{table}
+
+Table \ref{tab:fine-tuning} compares the link classification performance with or without
+fine-tuning of the transformer models. The results for the traditional models with
+pretrained bi-encoder embeddings are reproduced from Table \ref{tab:comparison} for easy
+comparison. All results are averaged over three random 50--50 splits of the training and
+test sets.
+
+The cross-encoder results show a clear improvement from fine-tuning. For DBLP-Scholar,
+the pretrained cross-encoder has an FLR of 0.061 and an MMR of 0.026, compared with
+0.018 and 0.014 after fine-tuning. For Abt-Buy, the corresponding error rates fall from
+\rev{0.267} and \rev{0.278} to 0.041 and 0.152. Fine-tuning therefore reduces both error rates for
+the cross-encoder in both datasets.
+
+Compared with the traditional models based on the fine-tuned bi-encoder, the
+\rev{cross-encoder has a lower observed FLR than MEC in both datasets. For DBLP-Scholar,
+the mean MMRs for MEC and the cross-encoder are 0.011 and 0.014, respectively;
+this small difference should be interpreted cautiously given the Monte Carlo
+standard errors. For Abt-Buy, their mean MMRs are likewise close (0.145 and
+0.152), while their FLRs differ more substantially (0.124 and 0.041).
+Logistic regression has higher observed MMR in both datasets, while its FLR is
+closer to that of the cross-encoder for Abt-Buy.}
+
+We also examined the sensitivity of the fine-tuned cross-encoder to the
+block size. For Abt-Buy, reducing the block size from $k=50$ to $k=5$ increases
+both the FLR and MMR, from 0.041 and 0.152 to 0.056 and 0.219, respectively.
+For DBLP-Scholar, the effect is less uniform: the FLR increases from 0.018 to
+0.022, whereas the MMR changes only slightly, from 0.014 to 0.013.
+
+Changing $k$ affects more than the number of non-match examples available during
+fine-tuning. It also changes the candidate set available at evaluation and hence the
+probability that at least one valid partner is retrieved. This is particularly relevant
+for Abt-Buy, where the floor MMR is appreciably higher at $k=5$ than at $k=50$.
+The comparison should therefore be interpreted as sensitivity to the block-size
+configuration as a whole, rather than as an isolated effect of the number of training
+non-matches.
+
+This points to another aspect of the cost-accuracy tradeoff for
+cross-encoder models. Larger candidate blocks provide more retrieved hard
+non-matches for supervised learning and can increase the chance that a valid
+partner is available for classification, but they also increase the number of
+record pairs to which the cross-encoder must be applied. The appropriate block
+size therefore depends on candidate recall, linkage error and computational cost
+together. Notice also that the test-set performance of a fine-tuned cross-encoder
+would not necessarily carry over unchanged if a different blocking procedure were
+employed for out-of-sample records.
+
+Meanwhile, the workflow using the fine-tuned bi-encoder produces a different
+pattern across the two datasets. Since the candidate blocks are reconstructed after
+fine-tuning, this comparison reflects both the changed embedding representation and
+the candidate blocks obtained from it. For DBLP-Scholar, the workflow using the
+fine-tuned bi-encoder yields lower MMRs for both the generative and discriminative
+models, but higher FLRs. For Abt-Buy, it yields considerably lower values of both
+error rates for both traditional models. \rev{For the discriminative logistic regression model, the observed Abt-Buy FLR is
+0.053, compared with 0.041 for the fine-tuned cross-encoder. This motivates
+examining whether traditional-model scoring can handle some cases without
+cross-encoder evaluation, which we investigate next.}
+
+\subsection{Combining models for scoring-classification}
+\label{sec:combining-models}
+
+Since bi-encoder blocking does not distinguish different blocks of text pairs, which are
+all sent to the cross-encoder model for link classification, a natural idea is to use the
+traditional models to separate the harder and easier cases, each composed of $(i,C_i)$,
+so that only the harder cases are passed on to the costly cross-encoder link classification,
+while the easier cases can be classified by the traditional models directly.
+
+Given a traditional discriminative model for scoring in Equation
+\eqref{eq:match-probability}, trained on the fine-tuned bi-encoder embeddings, define a
+corresponding discrimination gap for each case $(i,C_i)$, which is given as
+
+\begin{equation}
+\label{eq:discrimination-gap}
+\Delta_i = p_{(i1)} - p_{(i2)},
+\end{equation}
+
+where $p_{(i1)} \geq p_{(i2)} \geq \cdots \geq p_{(ik)}$ are the order statistics of
+$\{p_{ij}:j\in C_i\}$. A smaller gap \eqref{eq:discrimination-gap} for a file-$A$
+record suggests lower confidence by the traditional model to separate its best file-$B$
+candidate from the runner-up, in which sense link classification of this case is harder
+than another case with a larger discrimination gap.
+
+For the comparison below, the $k=50$ candidate blocks are held fixed at those obtained
+from the pretrained bi-encoder, so that the logistic regression and cross-encoder are
+evaluated on the same candidate records. The logistic regression scores are recalculated
+using the fine-tuned bi-encoder embeddings. The quartiles are then formed separately
+within each test set according to $\Delta_i$. \rev{These test-set quartiles are used only
+as an illustrative analysis of how linkage errors vary with case difficulty; they do not
+define a routing threshold for deployment. In an operational combined procedure, the
+routing rule, including any discrimination-gap threshold, would be selected using the
+training or validation partition and then applied unchanged to test or out-of-sample
+records.}
+
+\begin{table}[ht]
+\centering
+\caption{FLR and MMR by discrimination-gap quartiles and models. \rev{Entries give
+the mean (Monte Carlo standard error) over three random 50--50 training-test
+splits. A zero MCSE denotes no observed variation across these splits.}}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrr}
+\toprule
+& & \multicolumn{2}{c}{Logistic regression}
+& \multicolumn{2}{c}{Cross-encoder} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Dataset & Quartile & FLR & MMR & FLR & MMR \\
+\midrule
+DBLP-Scholar & Q1 (hardest) & 0.037 \rev{(0.0150)} & 0.045 \rev{(0.0042)} & 0.033 \rev{(0.0027)} & 0.029 \rev{(0.0010)} \\
+ & Q2 & 0.031 \rev{(0.0062)} & 0.063 \rev{(0.0026)} & 0.034 \rev{(0.0100)} & 0.022 \rev{(0.0010)} \\
+ & Q3 & 0.006 \rev{(0.0019)} & 0.041 \rev{(0.0080)} & 0.008 \rev{(0.0010)} & 0.010 \rev{(0.0027)} \\
+ & Q4 (easiest) & 0.000 \rev{(0.0000)} & 0.000 \rev{(0.0000)} & 0.000 \rev{(0.0000)} & 0.000 \rev{(0.0000)} \\
+\addlinespace
+Abt-Buy & Q1 (hardest) & 0.230 \rev{(0.0229)} & 0.706 \rev{(0.0153)} & 0.121 \rev{(0.0085)} & 0.400 \rev{(0.0343)} \\
+ & Q2 & 0.101 \rev{(0.0031)} & 0.259 \rev{(0.0559)} & 0.051 \rev{(0.0114)} & 0.131 \rev{(0.0150)} \\
+ & Q3 & 0.017 \rev{(0.0025)} & 0.017 \rev{(0.0025)} & 0.016 \rev{(0.0045)} & 0.072 \rev{(0.0108)} \\
+ & Q4 (easiest) & 0.000 \rev{(0.0000)} & 0.000 \rev{(0.0000)} & 0.000 \rev{(0.0000)} & 0.005 \rev{(0.0025)} \\
+\bottomrule
+\end{tabular}
+\label{tab:discrimination-gap}
+\end{table}
+
+Table \ref{tab:discrimination-gap} shows the FLR and MMR by the quartiles of
+$\Delta_i$, where Q1 refers to the smallest 25\% discrimination gaps and the hardest
+cases accordingly, and Q4 refers to the 25\% easiest cases. The FLR and MMR of the
+fine-tuned cross-encoder model are compared to those of logistic regression based on the
+fine-tuned bi-encoder embeddings.
+
+The results support the discrimination gap as a useful measure for separating harder
+cases from easier ones, although the error rates do not decrease monotonically across
+every quartile. The distinction is particularly clear for Abt-Buy. In Q1, logistic
+regression has FLR 0.230 and MMR 0.706, compared with 0.121 and 0.400,
+respectively, for the cross-encoder. The advantage of the cross-encoder remains
+substantial in Q2. In Q3, however, both models have very low FLRs and logistic
+regression has the lower MMR. In Q4, logistic regression makes no errors, while the
+cross-encoder has only a very small MMR.
+
+\rev{For DBLP-Scholar, neither model makes an observed error in Q4 across these splits.
+In Q1--Q3, the cross-encoder has lower mean MMR, while the small FLR differences
+in Q1--Q3 should not be treated as stable model orderings given the Monte Carlo
+standard errors. The results are consistent with concentrating cross-encoder
+evaluation among cases with smaller discrimination gaps, while leaving many of
+the easier cases to the traditional model.}
+
+This shows that, (i) the discrimination gap is a reasonable measure for separating the
+harder cases from the easier ones, and (ii) it can be more beneficial to apply the
+cross-encoder model to the harder cases in order to improve accuracy subject to a cost
+constraint, provided the traditional models can do a relatively good job for the easier
+cases. The Abt-Buy results illustrate this particularly clearly: the largest gains from the
+cross-encoder occur among the cases with the smallest discrimination gaps, whereas
+there is little benefit from sending the easiest cases to the more costly model.
+
+\rev{Figure \ref{fig:flr-mmr-summary} provides a visual summary of the FLR/MMR
+tradeoff in the main comparisons and the discrimination-gap analysis. The figure is
+descriptive and intended to aid visual comparison; the corresponding tables remain
+the primary source for the exact numerical values and Monte Carlo standard errors.}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.98\textwidth]{flr_mmr_tradeoff.pdf}
+\caption{\rev{Visual summary of the false linkage rate (FLR) and missing match rate
+(MMR) tradeoff. Panels (a) and (b) summarise the main comparisons reported in
+Tables~\ref{tab:comparison}--\ref{tab:fine-tuning} for DBLP-Scholar and Abt-Buy,
+respectively. Panels (c) and (d) summarise the discrimination-gap quartile results
+from Table~\ref{tab:discrimination-gap}. Points closer to the origin correspond to
+lower error on both measures. The figure is intended as a descriptive complement to
+the tables, which report the exact values and Monte Carlo standard errors.}}
+\label{fig:flr-mmr-summary}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\fbox{
+\begin{minipage}{0.90\textwidth}
+\centering
+Texts
+$\longrightarrow$
+Embedding [transformer model]
+$\longrightarrow$
+Scoring [generative/discriminative model]
+
+\vspace{0.8em}
+
+$\longrightarrow$
+
+Separate streams of harder cases and the rest
+
+[e.g.\ by discrimination gap]
+
+\vspace{0.8em}
+
+$\longrightarrow$
+
+\begin{tabular}{ll}
+hard cases & $\longrightarrow$ Classification [cross-encoder] \\
+rest       & $\longrightarrow$ Classification [generative/discriminative model]
+\end{tabular}
+\end{minipage}
+}
+\caption{Workflow of entity resolution combining different models. Type of model in
+square brackets.}
+\label{fig:combined-workflow}
+\end{figure}
+
+Figure \ref{fig:combined-workflow} shows the proposed workflow of entity
+resolution with the additional details of how the traditional scoring models can be
+combined with the transformer model. In particular, the workflow provides a way to
+control the accuracy-cost tradeoff by using the traditional generative or
+discriminative models to identify the hard cases for cross-encoder link
+classification, while leaving the rest of the link classification to the traditional
+model.
+
+The potential computational saving arises because fine-tuning is performed once
+for a given labelled sample, whereas the subsequent cost of cross-encoder
+classification increases with the number of text pairs sent to it. Once the
+bi-encoder embeddings have been obtained, scoring by the traditional models is
+comparatively inexpensive. Routing only a subset of cases to the cross-encoder
+therefore reduces the number of pairwise cross-encoder evaluations. \rev{As a
+hardware-independent cost measure, Table~\ref{tab:combined-procedure} reports the
+realised number of cross-encoder pair evaluations for the two training-derived routing
+rules relative to sending all $k=50$ candidate pairs to the cross-encoder.} The realised
+runtime saving will depend on the routing rule, block size, hardware and
+implementation, and is not benchmarked systematically in the present paper.
+
+Although the benefits of creating separate case streams for link classification and the
+feasibility of using the traditional models for this task are clear by now, how to determine
+exactly which cases should be sent to the cross-encoder model must depend on the cost
+constraint and the acceptable accuracy in each application. It is also possible to consider
+more refined schemes than, say, choosing a single threshold of the discrimination gap.
+
+For instance, by MEC using a generative model, one can estimate both the FLR and MMR
+for the classified link set, and use them to filter out the cases for the cross-encoder model.
+Or, to further reduce the cost, one may consider sending fewer candidates for each case
+passed on to the cross-encoder model, provided the left-out candidates have much lower
+match probabilities than the selected ones according to the scoring model, in which
+respect one may consider more refined discrimination measures than the gap
+\eqref{eq:discrimination-gap} between the top two candidate match probabilities.
+
+However, we notice that there is another issue related to the exact scheme of creating
+separate case streams, which concerns the assessment of linkage errors by transformer
+models, as we shall discuss in the next section. 
+\rev{To demonstrate the combined
+procedure directly, Section~\ref{sec:workable-error-assessment} also reports pooled
+FLR and MMR under two routing rules whose discrimination-gap cutoffs are determined
+from the training records and then applied unchanged to the test records.}
+
+
+\subsection{Linkage error assessment of transformer models}
+\label{sec:error-assessment}
+
+Assessing the link classification errors of the cross-encoder model faces two major issues.
+As we have explained in Section 1.2, the test errors only refer to the model fine-tuned on
+the training set, which causes the first issue if one would like to fine-tune the model on the
+whole labelled match sample using the hyperparameters settled on the training set, which
+is a very common practice in Machine Learning \citep[e.g.][]{hastie2009elements}. The
+second issue is related to the creation of separate case streams for link classification in the
+proposed workflow, which means, for example, that the cross-encoder model would only be
+applied to the selected harder cases instead of all the out-of-sample cases.
+
+Below we investigate the first issue, before proposing a workable approach to linkage error
+assessment, even though it does not yield unbiased estimation of the FLR and MMR.
+
+
+\subsubsection{Sensitivity of training-test split}
+\label{sec:split-sensitivity}
+
+We have divided the sampled file-$A$ records into training and test sets 50--50 so far
+in this paper. To study sensitivity to this choice, let $A_{s,f}$ denote an SRSWOR sample
+containing a fraction $f=0.5,0.6,\ldots,0.9$ of the sampled file-$A$ records $A_s$, and let
+
+\[
+s_{M,f}
+=
+\{(i,j)\in s_M:i\in A_{s,f}\}
+\]
+
+denote the labelled match sample induced by those selected records. The cross-encoder is
+trained using the records in $A_{s,f}$ and evaluated on the complementary file-$A$ records
+$A_s\setminus A_{s,f}$, together with their associated gold-standard matches.
+
+For each value of $f$, we repeat the random split ten times. The cross-encoder is
+fine-tuned separately on each training sample using the same model and hyperparameters
+as in Section \ref{sec:fine-tuning-models}. Within each training sample, 20\% of the
+constructed training pairs are used as validation data to determine the link-classification
+threshold by maximising the F1 score. The FLR and MMR are then evaluated on the
+corresponding held-out file-$A$ records.
+
+Table \ref{tab:training-fraction} reports the mean error rates over the ten replications,
+together with their Monte Carlo standard errors. We also report the relative Monte Carlo
+standard error, defined as the Monte Carlo standard error divided by the absolute mean
+error rate, as an indication of the precision of the Monte Carlo mean.
+
+\begin{table}[ht]
+\centering
+\caption{FLR and MMR of the cross-encoder model by training-set fraction $f$, based
+on 10 replications. SE denotes the Monte Carlo standard error and RMCSE the relative
+Monte Carlo standard error.}
+\begin{tabular}{lrrrrrrr}
+\toprule
+& & \multicolumn{3}{c}{FLR} & \multicolumn{3}{c}{MMR} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Dataset & $f$ & Mean & SE & RMCSE & Mean & SE & RMCSE \\
+\midrule
+DBLP-Scholar
+& 0.5 & 0.017 & 0.001 & 0.058 & 0.015 & 0.001 & 0.077 \\
+& 0.6 & 0.019 & 0.001 & 0.078 & 0.016 & 0.001 & 0.077 \\
+& 0.7 & 0.014 & 0.002 & 0.136 & 0.015 & 0.002 & 0.110 \\
+& 0.8 & 0.016 & 0.003 & 0.171 & 0.016 & 0.002 & 0.102 \\
+& 0.9 & 0.015 & 0.003 & 0.188 & 0.019 & 0.002 & 0.115 \\
+\addlinespace
+Abt-Buy
+& 0.5 & 0.039 & 0.003 & 0.064 & 0.160 & 0.005 & 0.033 \\
+& 0.6 & 0.034 & 0.003 & 0.076 & 0.168 & 0.009 & 0.051 \\
+& 0.7 & 0.029 & 0.004 & 0.133 & 0.164 & 0.004 & 0.026 \\
+& 0.8 & 0.033 & 0.002 & 0.066 & 0.174 & 0.007 & 0.041 \\
+& 0.9 & 0.029 & 0.004 & 0.148 & 0.158 & 0.013 & 0.080 \\
+\bottomrule
+\end{tabular}
+\label{tab:training-fraction}
+\end{table}
+
+Table \ref{tab:training-fraction} gives the results from ten Monte Carlo
+replications of the record-level training-test split for each given $f$. Although the FLR and MMR are not constant with respect
+to the training-set size, there is no systematic improvement in either error rate as $f$
+increases. For DBLP-Scholar, the mean FLR remains between approximately 0.014 and
+0.019 over the five training fractions, while the MMR remains between approximately
+0.015 and 0.019. For Abt-Buy, the FLR varies between approximately 0.029 and 0.039,
+whereas the MMR varies between approximately 0.158 and 0.174.
+
+The error rates can therefore be considered relatively stable over the range of training
+fractions considered here, especially given the variability between random splits. At the
+same time, increasing $f$ reduces the size of the holdout test set. For DBLP-Scholar,
+the relative Monte Carlo standard error of the FLR becomes noticeably larger at the
+higher training fractions. The corresponding RMCSE of the MMR is also somewhat
+larger for several of the higher values of $f$, although the pattern is not monotonic.
+For Abt-Buy, the relative Monte Carlo standard errors remain comparatively small for
+most values of $f$, but increase for both error measures at $f=0.9$. Thus, allocating
+more of the labelled sample to fine-tuning does not necessarily yield visibly lower test
+error in these experiments, while it leaves fewer records for assessing that error.
+
+However, the stability of the observed error rates does not solve the more fundamental
+problem mentioned above. For any $f<1$, the test error in Table \ref{tab:training-fraction}
+refers to the cross-encoder fine-tuned using the records in $A_{s,f}$, rather
+than to a model subsequently fine-tuned using the complete sampled file-$A$
+set $A_s$. Whether
+the former can provide a useful estimate of the error of the latter is a separate question,
+which we investigate next.
+
+
+\subsubsection{Bias of subsample test error estimation}
+\label{sec:subsample-bias}
+
+We can explore the bias of subsample test error estimation for the larger-sample trained
+cross-encoder model by the following setup. Let $A_{s,f}$ and the induced match sample
+$s_{M,f}$ be given as above, with $A_s\setminus A_{s,f}$ providing the outer holdout
+records. Now, treating $A_{s,f}$ as if it were the whole labelled file-$A$ sample, we create
+an inner training sample $A^*_{s,f}\subset A_{s,f}$ and the corresponding inner test records.
+Let $s^*_{M,f}$ denote the labelled match sample induced by $A^*_{s,f}$.
+
+The sampling is therefore carried out at the level of file-$A$ records, with their associated
+candidate blocks kept together. Let $\mathrm{FLR}$ denote the error of the model trained
+using $A_{s,f}$ and evaluated on the outer holdout $A_s\setminus A_{s,f}$, which simulates
+the target FLR of interest. Let $\mathrm{FLR}^*$ denote the error of the model trained using
+$A^*_{s,f}$ and evaluated on the corresponding inner test records, which simulates
+subsample test error estimation in practice. The replicate-level difference
+
+\begin{equation}
+\widehat{\mathrm{Bias}}_{\mathrm{FLR}}
+=
+\mathrm{FLR}^*-\mathrm{FLR}
+\end{equation}
+
+can then be used to assess the bias of the subsample test-set estimator. The same
+construction is applied to the MMR,
+
+\begin{equation}
+\widehat{\mathrm{Bias}}_{\mathrm{MMR}}
+=
+\mathrm{MMR}^*-\mathrm{MMR}.
+\end{equation}
+
+We consider two choices of the inner training records $A^*_{s,f}$ given each
+$A_{s,f}$. In addition to splitting $A_{s,f}$ by SRSWOR, we consider bootstrap
+resampling, where a sample of size $|A_{s,f}|$ is drawn with replacement from the
+file-$A$ records in $A_{s,f}$ and the source records not selected in the bootstrap sample
+form the out-of-bag test set. Since a bootstrap sample of size $|A_{s,f}|$ contains on
+average $1-e^{-1}\approx0.632$ distinct source records, we use a 65--35 training-test
+split when constructing $A^*_{s,f}$ by SRSWOR for comparison.
+
+\begin{table}[ht]
+\centering
+\caption{Bias of FLR and MMR estimation by sampling fraction $f$, using SRSWOR
+or bootstrap subsampling. Results are based on 10 replications. Monte Carlo standard
+errors (SE) of the estimated bias are given in parentheses.}
+\label{tab:subsample-bias}
+\begin{tabular}{llrrr}
+\toprule
+Dataset & $f$ & Target & SRSWOR bias (SE) & Bootstrap bias (SE) \\
+\midrule
+\multicolumn{5}{l}{\textit{Panel A: FLR}} \\[2pt]
+
+DBLP-Scholar
+& 0.5 & 0.017 & 0.003 (0.003) & 0.004 (0.002) \\
+& 0.6 & 0.019 & 0.005 (0.003) & 0.003 (0.002) \\
+& 0.7 & 0.014 & 0.005 (0.003) & 0.010 (0.003) \\
+& 0.8 & 0.016 & 0.003 (0.004) & 0.008 (0.004) \\
+& 0.9 & 0.015 & 0.004 (0.003) & 0.007 (0.003) \\
+
+\addlinespace
+Abt-Buy
+& 0.5 & 0.039 &  0.001 (0.004) & 0.001 (0.006) \\
+& 0.6 & 0.034 & -0.001 (0.006) & 0.004 (0.006) \\
+& 0.7 & 0.029 &  0.007 (0.007) & 0.008 (0.006) \\
+& 0.8 & 0.033 &  0.001 (0.005) & 0.001 (0.004) \\
+& 0.9 & 0.029 &  0.004 (0.005) & 0.006 (0.006) \\
+
+\midrule
+\multicolumn{5}{l}{\textit{Panel B: MMR}} \\[2pt]
+
+DBLP-Scholar
+& 0.5 & 0.015 & -0.002 (0.001) &  0.005 (0.002) \\
+& 0.6 & 0.016 & -0.001 (0.002) &  0.000 (0.002) \\
+& 0.7 & 0.015 & -0.001 (0.003) &  0.003 (0.003) \\
+& 0.8 & 0.016 &  0.001 (0.003) &  0.002 (0.003) \\
+& 0.9 & 0.019 & -0.003 (0.003) & -0.003 (0.002) \\
+
+\addlinespace
+Abt-Buy
+& 0.5 & 0.160 &  0.015 (0.012) &  0.010 (0.009) \\
+& 0.6 & 0.168 &  0.015 (0.014) & -0.004 (0.013) \\
+& 0.7 & 0.164 & -0.002 (0.008) &  0.007 (0.009) \\
+& 0.8 & 0.174 & -0.007 (0.014) & -0.008 (0.008) \\
+& 0.9 & 0.158 &  0.008 (0.018) &  0.007 (0.016) \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{tab:subsample-bias} shows, for each outer training fraction
+$f$, the target out-of-sample error and the estimated bias of the corresponding subsample
+error under SRSWOR and bootstrap sampling. The results are averaged over ten Monte
+Carlo replications, with the Monte Carlo SE of the bias estimator given in parentheses.
+
+There are no large or systematic differences between the SRSWOR and bootstrap results.
+
+\rev{For DBLP-Scholar, the estimated FLR biases are positive for all values of $f$ under both
+sampling schemes, but the common sign should not be interpreted as evidence of a systematic
+upward bias at this replication count. The estimates range from approximately 0.003 to 0.005
+under SRSWOR and from approximately 0.003 to 0.010 under bootstrap sampling, and most
+are within about one to two Monte Carlo standard errors of zero. Some of the bootstrap
+estimates are larger relative to their Monte Carlo standard errors, but the ten-replication
+experiment does not establish a common bias direction. The biases are nevertheless not
+negligible relative to the very low target FLR for DBLP-Scholar.}
+
+The corresponding MMR biases for DBLP-Scholar are generally smaller and do not have
+a common direction. Under SRSWOR they range from approximately $-0.003$ to 0.001,
+while under bootstrap sampling they range from approximately $-0.003$ to 0.005.
+Several of the estimates are of similar magnitude to their Monte Carlo standard errors.
+
+The picture is also mixed for Abt-Buy. The FLR biases are generally small and mostly
+positive, with the exception of the SRSWOR result at $f=0.6$. The MMR bias changes
+sign as $f$ varies under both sampling schemes, and its Monte Carlo standard error is
+often large relative to the estimated bias. There is therefore no evidence here of a
+common direction of bias that could simply be corrected by adding or subtracting a
+fixed amount.
+
+Overall, the results suggest that subsample test errors can provide a rough indication of
+the error of a model trained on a larger labelled sample, but they should not be regarded
+as unbiased estimates of that error. Nor do the results identify either SRSWOR or
+bootstrap sampling as uniformly preferable. The difference between the model trained on
+the subsample and the model trained on the larger labelled sample remains part of the
+error-assessment problem.
+
+\subsubsection{A workable approach to error assessment}
+\label{sec:workable-error-assessment}
+
+In light of the investigation above, a workable approach to linkage error assessment can
+be given as follows. Assume the same partition of training and test sets for all the models,
+and let $A_{\mathrm{test}}$ denote the file-$A$ records in the test set. Let
+
+\[
+A_{\mathrm{test}}^H \cup A_{\mathrm{test}}^R
+=
+A_{\mathrm{test}},
+\qquad
+A_{\mathrm{test}}^H \cap A_{\mathrm{test}}^R
+=
+\varnothing,
+\]
+
+denote the separation of hard and rest cases for link classification, where
+$A_{\mathrm{test}}^H$ contains those selected for the fine-tuned cross-encoder model and
+$A_{\mathrm{test}}^R$ the rest for link classification by the chosen generative or
+discriminative model. \rev{For error assessment, the rule producing this partition must
+be fixed using the training or validation data before the test set is evaluated; selecting
+or tuning the rule from the test-set discrimination gaps or errors would make the
+hard/rest split in-sample.} Let
+
+\[
+\phi
+=
+\frac{|A_{\mathrm{test}}^H|}
+{|A_{\mathrm{test}}|}
+\]
+
+be the test-set proportion selected for cross-encoder classification. This quantity directly
+describes the proportion of records routed to the more costly model and is therefore useful
+for describing the computational cost of the combined procedure.
+
+To estimate the linkage errors of the combined procedure, however, the component error
+rates must be combined according to their respective denominators in Equation (1).
+For $g\in\{R,H\}$, let
+
+\[
+C_g
+=
+\sum_{i\in A_{\mathrm{test}}^g\cap A(s_M)}
+\ell_i y_{ij_i}
+\]
+
+denote the number of correctly linked matchable records in stratum $g$, let
+
+\[
+D_g
+=
+\sum_{i\in A_{\mathrm{test}}^g}\ell_i
+\]
+
+denote the number of declared links, and let
+
+\[
+M_g
+=
+|A_{\mathrm{test}}^g\cap A(s_M)|
+\]
+
+denote the number of matchable file-$A$ records. The linkage errors of the complete combined procedure are most directly
+calculated by pooling the corresponding counts across the two strata. Provided that
+at least one link is declared, the FLR and MMR are
+
+\begin{equation}
+\label{eq:combined-errors}
+\widehat{\mathrm{FLR}}
+=
+1-\frac{C_R+C_H}{D_R+D_H},
+\qquad
+\widehat{\mathrm{MMR}}
+=
+1-\frac{C_R+C_H}{M_R+M_H}.
+\end{equation}
+
+This is simply Equation (1) applied to the link decisions produced by the complete
+combined procedure.
+
+\rev{To instantiate this procedure, we consider two explicit routing rules. For each
+random split, the 25th or 50th percentile of the discrimination gaps among the outer
+training records is used as the routing cutoff. The cutoff is therefore fixed before the
+test set is evaluated. Test records with a gap at or below the cutoff are sent to the
+fine-tuned cross-encoder, while the remaining records are classified by logistic
+regression using the fine-tuned bi-encoder similarities. Because the distribution of gaps
+may differ between the training and test records, the realised test-set routing proportion
+$\phi$ need not equal 0.25 or 0.50. Table~\ref{tab:combined-procedure} reports the
+resulting pooled error rates from Equation~\eqref{eq:combined-errors}.}
+
+\begin{table}[ht]
+\centering
+\caption{\rev{Combined-procedure error rates under training-derived discrimination-gap
+routing rules. Entries for $\phi$, FLR and MMR give the mean (Monte Carlo standard
+error) over seeds 42--44. Cross-encoder evaluations are the mean number of routed
+record pairs per split for $k=50$, relative to evaluating all 50 candidates for every test
+record; the percentage in parentheses is the corresponding reduction.}}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Training-gap rule & $\phi$ & FLR & MMR & Cross-encoder evaluations \\
+\midrule
+DBLP-Scholar & 25th percentile & \rev{0.246 (0.0033)} & \rev{0.017 (0.0018)} & \rev{0.033 (0.0025)} & \rev{16,117 / 65,400 (75.4\%)} \\
+             & 50th percentile & \rev{0.485 (0.0123)} & \rev{0.017 (0.0034)} & \rev{0.024 (0.0035)} & \rev{31,700 / 65,400 (51.5\%)} \\
+\addlinespace
+Abt-Buy      & 25th percentile & \rev{0.333 (0.0115)} & \rev{0.050 (0.0035)} & \rev{0.148 (0.0048)} & \rev{9,000 / 27,050 (66.7\%)} \\
+             & 50th percentile & \rev{0.590 (0.0149)} & \rev{0.042 (0.0021)} & \rev{0.145 (0.0138)} & \rev{15,950 / 27,050 (41.0\%)} \\
+\bottomrule
+\end{tabular}
+\label{tab:combined-procedure}
+\end{table}
+
+\rev{The two rules exhibit the intended accuracy-cost tradeoff directly. For
+DBLP-Scholar, the 50th-percentile training-gap rule routes 0.485 of the test records on
+average and reduces cross-encoder pair evaluations by 51.5\%, with pooled FLR 0.017
+and MMR 0.024. The corresponding Abt-Buy rule routes 0.590 of the test records and
+reduces cross-encoder evaluations by 41.0\%, with pooled FLR 0.042 and MMR 0.145.
+For reference, applying the fine-tuned cross-encoder to all test records in
+Table~\ref{tab:fine-tuning} gives FLR/MMR 0.018/0.014 for DBLP-Scholar and
+0.041/0.152 for Abt-Buy, whereas fine-tuned logistic regression gives 0.026/0.027 and
+0.053/0.269, respectively. The 25th-percentile rule reduces cross-encoder evaluations
+further, at the cost of a different balance between FLR and MMR. These results are
+illustrative of the two training-derived routing rules rather than an optimisation over
+possible cutoffs.}
+
+For a stratum $g\in\{R,H\}$ with positive relevant denominators, the component
+error rates can also be written as
+
+\[
+\widehat{\mathrm{FLR}}_g
+=
+1-\frac{C_g}{D_g},
+\qquad
+\widehat{\mathrm{MMR}}_g
+=
+1-\frac{C_g}{M_g}.
+\]
+
+When the component denominators are positive, Equation
+\eqref{eq:combined-errors} is equivalently
+
+\[
+\widehat{\mathrm{FLR}}
+=
+\frac{D_R}{D_R+D_H}
+\widehat{\mathrm{FLR}}_{\mathrm{rest}}
++
+\frac{D_H}{D_R+D_H}
+\widehat{\mathrm{FLR}}_{\mathrm{cross}},
+\]
+
+and
+
+\[
+\widehat{\mathrm{MMR}}
+=
+\frac{M_R}{M_R+M_H}
+\widehat{\mathrm{MMR}}_{\mathrm{rest}}
++
+\frac{M_H}{M_R+M_H}
+\widehat{\mathrm{MMR}}_{\mathrm{cross}}.
+\]
+
+Writing the pooled counts first also covers the case in which one routed stratum
+declares no links, so that its stratum-specific FLR is undefined even though the
+FLR of the complete combined procedure remains well-defined.
+
+In other words, treat $A_{\mathrm{test}}^R$ as the auditing sample for the traditional
+model and $A_{\mathrm{test}}^H$ as that for the fine-tuned cross-encoder model. The
+difference from evaluating either model alone is that the error assessment follows the same
+routing rule that would be used in application. Hence the resulting FLR and MMR refer to
+the combined linkage procedure actually being considered.
+
+Notice that the routing proportion $\phi$ is not generally the appropriate weight for both
+error rates. For the MMR it coincides with the weight in
+Equation \eqref{eq:combined-errors} when all test records are matchable. For the FLR,
+the relevant weights depend instead on the numbers of links declared by the two models.
+This follows directly from the different denominators of FLR and MMR in Equation (1).
+
+The estimates in Equation \eqref{eq:combined-errors} can be used to assess the linkage
+errors of the procedure in which the models learned from the training set are subsequently
+applied without change outside the labelled sample. This includes the fine-tuned
+bi-encoder and cross-encoder models, the chosen generative or discriminative model, and
+the rule used to separate the hard cases from the rest.
+
+The matter is less straightforward if some or all of the models are subsequently retrained
+using the complete labelled sample before out-of-sample deployment. In that case, the
+test-set estimates refer to models trained on less data than the models eventually deployed.
+If the full-sample retrained models have lower linkage errors, the test-set estimates may be
+conservative. However, the results in Section \ref{sec:subsample-bias} show that the
+direction and magnitude of this discrepancy need not be the same for FLR and MMR or
+across applications. Bias exploration following the setup of that section can therefore be
+used to gather the relevant evidence.
+
+Thus, the approach does not remove the general difficulty of estimating the error of a
+model that is retrained after evaluation. It provides a workable error assessment for the
+combined entity-resolution procedure while preserving the separation between the
+traditional model and the cross-encoder that is required for the accuracy-cost tradeoff.
+

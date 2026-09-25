@@ -1,0 +1,31 @@
+{
+  "paper": "Text-based Entity Resolution Using Transformer Models",
+  "authors": [
+    "Abrar Ahmed",
+    "Li-Chun Zhang",
+    "Ralf Münnich",
+    "Martin Vogt"
+  ],
+  "entry_point": "python reproduce.py",
+  "project_root": "/home/ahmeda/ER_Transformer_Reproducible_RUN",
+  "python": "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+  "gpu": "0",
+  "started_at": "2026-09-23T09:46:56.627444+00:00",
+  "dry_run": false,
+  "stages": [
+    {
+      "name": "discrimination-gap",
+      "description": "Final record-difficulty analysis using fine-tuned bi-encoder LR gaps on fixed pretrained top-50 blocks, compared with the direct-score cross-encoder.",
+      "command": [
+        "/home/ahmeda/er_transformer_fulltest_venv/bin/python",
+        "/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_table7_ftlr.py"
+      ],
+      "started_at": "2026-09-23T09:46:56.628070+00:00",
+      "status": "completed",
+      "returncode": 0,
+      "finished_at": "2026-09-23T09:48:45.405750+00:00"
+    }
+  ],
+  "finished_at": "2026-09-23T09:48:45.406612+00:00",
+  "status": "completed"
+}

@@ -1,0 +1,91 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+========================================================================
+Analysis 15: corrected many-match blocking statistic
+========================================================================
+Project root: /home/ahmeda/ER_Transformer_Reproducible_RUN
+Bi-encoder: all-MiniLM-L6-v2
+Raw-file decoding: latin-1 (matches February/June pipeline)
+Text preparation: fill missing, lowercase, strip whitespace
+Truth rule: earliest rank of ANY valid reachable B match
+CUDA available: True
+CUDA device: NVIDIA L40
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8248.31it/s]
+
+DBLP input validation
+------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  reachable pairs=5,347
+A with >1 reachable match=1,238  max matches/A=20
+unreachable raw mapping rows=0
+
+DBLP embedding
+------------------------------------------------------------------------
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:00<00:02,  4.36it/s]Batches:  73%|███████▎  | 8/11 [00:00<00:00, 29.28it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 29.66it/s]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   1%|          | 3/252 [00:00<00:08, 28.73it/s]Batches:   3%|▎         | 8/252 [00:00<00:06, 40.08it/s]Batches:   5%|▌         | 13/252 [00:00<00:05, 44.08it/s]Batches:   8%|▊         | 19/252 [00:00<00:04, 46.97it/s]Batches:  10%|▉         | 24/252 [00:00<00:04, 46.20it/s]Batches:  12%|█▏        | 29/252 [00:00<00:05, 43.33it/s]Batches:  13%|█▎        | 34/252 [00:00<00:04, 43.72it/s]Batches:  15%|█▌        | 39/252 [00:00<00:05, 42.53it/s]Batches:  17%|█▋        | 44/252 [00:01<00:04, 43.99it/s]Batches:  19%|█▉        | 49/252 [00:01<00:04, 44.82it/s]Batches:  21%|██▏       | 54/252 [00:01<00:04, 43.51it/s]Batches:  23%|██▎       | 59/252 [00:01<00:04, 44.20it/s]Batches:  26%|██▌       | 65/252 [00:01<00:03, 47.94it/s]Batches:  28%|██▊       | 70/252 [00:01<00:03, 46.51it/s]Batches:  30%|██▉       | 75/252 [00:01<00:03, 46.96it/s]Batches:  32%|███▏      | 80/252 [00:01<00:03, 45.72it/s]Batches:  34%|███▍      | 86/252 [00:01<00:03, 49.49it/s]Batches:  37%|███▋      | 92/252 [00:02<00:03, 50.74it/s]Batches:  39%|███▉      | 98/252 [00:02<00:03, 47.52it/s]Batches:  41%|████▏     | 104/252 [00:02<00:03, 48.99it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 53.00it/s]Batches:  46%|████▋     | 117/252 [00:02<00:04, 32.60it/s]Batches:  49%|████▉     | 124/252 [00:02<00:03, 38.60it/s]Batches:  52%|█████▏    | 130/252 [00:02<00:02, 41.81it/s]Batches:  54%|█████▎    | 135/252 [00:03<00:02, 42.79it/s]Batches:  56%|█████▌    | 141/252 [00:03<00:02, 46.72it/s]Batches:  58%|█████▊    | 147/252 [00:03<00:02, 49.45it/s]Batches:  61%|██████    | 154/252 [00:03<00:01, 53.00it/s]Batches:  63%|██████▎   | 160/252 [00:03<00:01, 49.37it/s]Batches:  66%|██████▌   | 166/252 [00:03<00:01, 47.80it/s]Batches:  68%|██████▊   | 172/252 [00:03<00:01, 50.42it/s]Batches:  71%|███████   | 179/252 [00:03<00:01, 54.65it/s]Batches:  73%|███████▎  | 185/252 [00:03<00:01, 56.09it/s]Batches:  76%|███████▌  | 191/252 [00:04<00:01, 55.83it/s]Batches:  79%|███████▊  | 198/252 [00:04<00:00, 58.12it/s]Batches:  81%|████████▏ | 205/252 [00:04<00:00, 60.48it/s]Batches:  85%|████████▍ | 213/252 [00:04<00:00, 63.71it/s]Batches:  88%|████████▊ | 221/252 [00:04<00:00, 66.75it/s]Batches:  91%|█████████ | 229/252 [00:04<00:00, 68.62it/s]Batches:  94%|█████████▍| 237/252 [00:04<00:00, 70.48it/s]Batches:  97%|█████████▋| 245/252 [00:04<00:00, 71.35it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 51.00it/s]
+
+DBLP rank computation
+------------------------------------------------------------------------
+processed 256/2,408 matched A recordsprocessed 512/2,408 matched A recordsprocessed 768/2,408 matched A recordsprocessed 1,024/2,408 matched A recordsprocessed 1,280/2,408 matched A recordsprocessed 1,536/2,408 matched A recordsprocessed 1,792/2,408 matched A recordsprocessed 2,048/2,408 matched A recordsprocessed 2,304/2,408 matched A recordsprocessed 2,408/2,408 matched A records
+
+DBLP corrected blocking floor
+------------------------------------------------------------------------
+     k   captured records   record-level MMR
+     1              2,371           0.015365
+     2              2,391           0.007060
+     3              2,396           0.004983
+     5              2,401           0.002907
+    10              2,404           0.001661
+    20              2,405           0.001246
+    30              2,405           0.001246
+    50              2,406           0.000831
+    75              2,406           0.000831
+   100              2,407           0.000415
+   150              2,407           0.000415
+   200              2,407           0.000415
+
+Rank summary
+rank 1=0.984635  median=1.0  p95=1.0  p99=2.0  max=4514
+
+ECOM input validation
+------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  reachable pairs=1,097
+A with >1 reachable match=16  max matches/A=2
+unreachable raw mapping rows=0
+
+ECOM embedding
+------------------------------------------------------------------------
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 67.70it/s]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00,  9.43it/s]Batches: 100%|██████████| 5/5 [00:00<00:00,  9.42it/s]
+
+ECOM rank computation
+------------------------------------------------------------------------
+processed 256/1,081 matched A recordsprocessed 512/1,081 matched A recordsprocessed 768/1,081 matched A recordsprocessed 1,024/1,081 matched A recordsprocessed 1,081/1,081 matched A records
+
+ECOM corrected blocking floor
+------------------------------------------------------------------------
+     k   captured records   record-level MMR
+     1                789           0.270120
+     2                910           0.158187
+     3                950           0.121184
+     5                992           0.082331
+    10              1,044           0.034228
+    20              1,067           0.012951
+    30              1,074           0.006475
+    50              1,078           0.002775
+    75              1,079           0.001850
+   100              1,079           0.001850
+   150              1,080           0.000925
+   200              1,080           0.000925
+
+Rank summary
+rank 1=0.729880  median=1.0  p95=8.0  p99=23.2  max=748
+
+========================================================================
+Saved outputs
+------------------------------------------------------------------------
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis15_rank_statistic_DBLP.csv
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis15_rank_statistic_ECOM.csv
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis15_rank_mmr_by_k.csv
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis15_rank_summary.csv
+========================================================================

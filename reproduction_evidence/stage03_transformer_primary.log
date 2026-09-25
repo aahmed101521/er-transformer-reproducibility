@@ -1,0 +1,829 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. transformer-primary
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_section5.py --phase all --primary-only
+
+========================================================================================
+STAGE: transformer-primary
+========================================================================================
+Primary three-seed baseline, fine-tuned bi-encoder, and fine-tuned cross-encoder experiment.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_section5.py --phase all --primary-only
+/home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis17_section5.py:171: DeprecationWarning: Importing from 'sentence_transformers.losses' is deprecated and will be removed in a future version. Please use 'sentence_transformers.sentence_transformer.losses' instead.
+  from sentence_transformers import (
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+==============================================================================
+Analysis 17: standalone corrected, resumable Section 5 rerun
+==============================================================================
+Project root: /home/ahmeda/ER_Transformer_Reproducible_RUN
+Phase: all
+Datasets: ['DBLP', 'ECOM']
+Seeds: [42, 43, 44]
+Analysis 16 dependency: none
+Internal baseline work: corrected k=50 two-step cells only
+CUDA_VISIBLE_DEVICES=0
+CUDA available: True
+Visible CUDA devices: 1
+Visible device 0: NVIDIA L40
+
+Confirmed CE recipe from analysis8_crossencoder.py
+  cross-encoder/ms-marco-MiniLM-L-6-v2; epochs=5; warmup=10%; lr=2e-05; batch=16; max_length=128
+Confirmed Table 7 lineage
+  Current draft values exactly match analysis11_hardness.py (MiniLM), not run6_fixed_ce.py (RoBERTa).
+  Main Table 7 preserves analysis11's extra-sigmoid score path; a direct-score diagnostic table is also saved.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6475.31it/s]
+
+DBLP input validation
+------------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  A with >1 match=1,238  max matches/A=20
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+
+DBLP baseline embeddings and blocking
+------------------------------------------------------------------------------
+  encoding A.title [09:03:07]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:00<00:02,  3.82it/s]Batches:  64%|██████▎   | 7/11 [00:00<00:00, 22.83it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 24.65it/s]
+  encoding A.authors [09:03:07]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 45.01it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 59.24it/s]
+  encoding A.venue [09:03:07]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  73%|███████▎  | 8/11 [00:00<00:00, 77.52it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 80.06it/s]
+  encoding A.year [09:03:07]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 95.73it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 97.87it/s]
+  encoding B.title [09:03:07]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 36.31it/s]Batches:   4%|▎         | 9/252 [00:00<00:05, 43.53it/s]Batches:   6%|▌         | 14/252 [00:00<00:05, 42.48it/s]Batches:   8%|▊         | 19/252 [00:00<00:05, 42.13it/s]Batches:  10%|▉         | 25/252 [00:00<00:04, 45.45it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 45.64it/s]Batches:  14%|█▍        | 35/252 [00:00<00:04, 46.09it/s]Batches:  16%|█▌        | 40/252 [00:00<00:04, 47.13it/s]Batches:  18%|█▊        | 45/252 [00:01<00:04, 45.91it/s]Batches:  20%|██        | 51/252 [00:01<00:04, 47.45it/s]Batches:  22%|██▏       | 56/252 [00:01<00:04, 47.31it/s]Batches:  25%|██▍       | 62/252 [00:01<00:03, 48.72it/s]Batches:  27%|██▋       | 68/252 [00:01<00:03, 49.94it/s]Batches:  29%|██▉       | 73/252 [00:01<00:03, 49.42it/s]Batches:  31%|███▏      | 79/252 [00:01<00:03, 51.02it/s]Batches:  34%|███▎      | 85/252 [00:01<00:03, 53.09it/s]Batches:  36%|███▌      | 91/252 [00:02<00:04, 33.06it/s]Batches:  38%|███▊      | 97/252 [00:02<00:04, 36.91it/s]Batches:  40%|████      | 102/252 [00:02<00:03, 39.22it/s]Batches:  43%|████▎     | 108/252 [00:02<00:03, 42.71it/s]Batches:  46%|████▌     | 115/252 [00:02<00:02, 47.80it/s]Batches:  48%|████▊     | 121/252 [00:02<00:02, 50.66it/s]Batches:  50%|█████     | 127/252 [00:02<00:02, 51.58it/s]Batches:  53%|█████▎    | 133/252 [00:02<00:02, 53.22it/s]Batches:  55%|█████▌    | 139/252 [00:02<00:02, 54.47it/s]Batches:  58%|█████▊    | 145/252 [00:03<00:01, 55.77it/s]Batches:  60%|██████    | 152/252 [00:03<00:01, 57.31it/s]Batches:  63%|██████▎   | 159/252 [00:03<00:01, 58.81it/s]Batches:  65%|██████▌   | 165/252 [00:03<00:01, 58.97it/s]Batches:  68%|██████▊   | 171/252 [00:03<00:01, 57.64it/s]Batches:  71%|███████   | 178/252 [00:03<00:01, 59.24it/s]Batches:  73%|███████▎  | 184/252 [00:03<00:01, 57.38it/s]Batches:  75%|███████▌  | 190/252 [00:03<00:01, 57.20it/s]Batches:  78%|███████▊  | 196/252 [00:03<00:00, 57.26it/s]Batches:  81%|████████  | 203/252 [00:04<00:00, 60.51it/s]Batches:  83%|████████▎ | 210/252 [00:04<00:00, 56.09it/s]Batches:  86%|████████▌ | 217/252 [00:04<00:00, 57.28it/s]Batches:  89%|████████▉ | 224/252 [00:04<00:00, 59.57it/s]Batches:  92%|█████████▏| 231/252 [00:04<00:00, 40.28it/s]Batches:  94%|█████████▍| 237/252 [00:04<00:00, 43.45it/s]Batches:  97%|█████████▋| 245/252 [00:04<00:00, 50.55it/s]Batches: 100%|██████████| 252/252 [00:05<00:00, 50.16it/s]
+  encoding B.authors [09:03:13]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 56.46it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 57.31it/s]Batches:   8%|▊         | 19/252 [00:00<00:03, 60.20it/s]Batches:  10%|█         | 26/252 [00:00<00:03, 59.94it/s]Batches:  13%|█▎        | 33/252 [00:00<00:03, 60.38it/s]Batches:  16%|█▌        | 40/252 [00:00<00:03, 62.20it/s]Batches:  19%|█▊        | 47/252 [00:00<00:03, 63.38it/s]Batches:  21%|██▏       | 54/252 [00:00<00:03, 65.20it/s]Batches:  25%|██▍       | 62/252 [00:00<00:02, 66.94it/s]Batches:  28%|██▊       | 70/252 [00:01<00:02, 69.12it/s]Batches:  31%|███       | 78/252 [00:01<00:02, 71.38it/s]Batches:  34%|███▍      | 86/252 [00:01<00:02, 71.24it/s]Batches:  37%|███▋      | 94/252 [00:01<00:02, 72.38it/s]Batches:  40%|████      | 102/252 [00:01<00:02, 73.02it/s]Batches:  44%|████▎     | 110/252 [00:01<00:01, 72.87it/s]Batches:  47%|████▋     | 119/252 [00:01<00:01, 75.31it/s]Batches:  50%|█████     | 127/252 [00:01<00:01, 73.62it/s]Batches:  54%|█████▎    | 135/252 [00:01<00:01, 75.16it/s]Batches:  57%|█████▋    | 143/252 [00:02<00:02, 50.97it/s]Batches:  60%|█████▉    | 151/252 [00:02<00:01, 57.11it/s]Batches:  63%|██████▎   | 160/252 [00:02<00:01, 64.35it/s]Batches:  67%|██████▋   | 168/252 [00:02<00:01, 66.90it/s]Batches:  70%|██████▉   | 176/252 [00:02<00:01, 69.37it/s]Batches:  73%|███████▎  | 184/252 [00:02<00:00, 71.90it/s]Batches:  76%|███████▌  | 192/252 [00:02<00:00, 73.58it/s]Batches:  80%|███████▉  | 201/252 [00:02<00:00, 76.44it/s]Batches:  83%|████████▎ | 210/252 [00:03<00:00, 78.84it/s]Batches:  87%|████████▋ | 219/252 [00:03<00:00, 77.64it/s]Batches:  91%|█████████ | 229/252 [00:03<00:00, 81.93it/s]Batches:  95%|█████████▍| 239/252 [00:03<00:00, 84.82it/s]Batches:  98%|█████████▊| 248/252 [00:03<00:00, 84.15it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 70.89it/s]
+  encoding B.venue [09:03:16]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 54.31it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 52.40it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 55.28it/s]Batches:  10%|▉         | 24/252 [00:00<00:04, 56.65it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 54.83it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 53.92it/s]Batches:  17%|█▋        | 42/252 [00:00<00:05, 36.10it/s]Batches:  19%|█▉        | 49/252 [00:01<00:04, 42.81it/s]Batches:  22%|██▏       | 56/252 [00:01<00:04, 48.96it/s]Batches:  25%|██▌       | 63/252 [00:01<00:03, 53.80it/s]Batches:  28%|██▊       | 70/252 [00:01<00:03, 55.65it/s]Batches:  31%|███       | 77/252 [00:01<00:03, 57.34it/s]Batches:  33%|███▎      | 84/252 [00:01<00:02, 57.05it/s]Batches:  36%|███▌      | 91/252 [00:01<00:02, 58.58it/s]Batches:  39%|███▉      | 98/252 [00:01<00:02, 60.49it/s]Batches:  42%|████▏     | 106/252 [00:01<00:02, 64.93it/s]Batches:  45%|████▌     | 114/252 [00:02<00:02, 67.71it/s]Batches:  48%|████▊     | 121/252 [00:02<00:02, 65.04it/s]Batches:  51%|█████     | 129/252 [00:02<00:01, 67.52it/s]Batches:  54%|█████▍    | 137/252 [00:02<00:01, 68.75it/s]Batches:  57%|█████▋    | 144/252 [00:02<00:01, 68.34it/s]Batches:  60%|██████    | 152/252 [00:02<00:01, 69.31it/s]Batches:  63%|██████▎   | 159/252 [00:02<00:01, 67.74it/s]Batches:  66%|██████▌   | 166/252 [00:02<00:01, 67.65it/s]Batches:  69%|██████▊   | 173/252 [00:02<00:01, 67.81it/s]Batches:  72%|███████▏  | 182/252 [00:03<00:00, 73.76it/s]Batches:  75%|███████▌  | 190/252 [00:03<00:01, 48.58it/s]Batches:  80%|████████  | 202/252 [00:03<00:00, 63.01it/s]Batches:  85%|████████▍ | 214/252 [00:03<00:00, 75.48it/s]Batches:  90%|████████▉ | 226/252 [00:03<00:00, 85.24it/s]Batches:  94%|█████████▍| 237/252 [00:03<00:00, 91.15it/s]Batches:  98%|█████████▊| 248/252 [00:03<00:00, 94.99it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 65.29it/s]
+  encoding B.year [09:03:20]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   5%|▍         | 12/252 [00:00<00:02, 110.76it/s]Batches:  10%|▉         | 24/252 [00:00<00:02, 92.53it/s] Batches:  14%|█▍        | 35/252 [00:00<00:02, 96.82it/s]Batches:  19%|█▊        | 47/252 [00:00<00:01, 102.95it/s]Batches:  23%|██▎       | 59/252 [00:00<00:01, 105.30it/s]Batches:  28%|██▊       | 70/252 [00:00<00:01, 103.75it/s]Batches:  32%|███▏      | 81/252 [00:00<00:01, 100.26it/s]Batches:  37%|███▋      | 92/252 [00:01<00:02, 70.33it/s] Batches:  41%|████      | 103/252 [00:01<00:01, 78.85it/s]Batches:  45%|████▌     | 114/252 [00:01<00:01, 85.03it/s]Batches:  50%|█████     | 126/252 [00:01<00:01, 92.92it/s]Batches:  55%|█████▍    | 138/252 [00:01<00:01, 98.49it/s]Batches:  59%|█████▉    | 149/252 [00:01<00:01, 99.28it/s]Batches:  63%|██████▎   | 160/252 [00:01<00:00, 102.07it/s]Batches:  68%|██████▊   | 172/252 [00:01<00:00, 105.64it/s]Batches:  73%|███████▎  | 184/252 [00:01<00:00, 106.83it/s]Batches:  77%|███████▋  | 195/252 [00:02<00:00, 102.78it/s]Batches:  82%|████████▏ | 206/252 [00:02<00:00, 100.04it/s]Batches:  86%|████████▌ | 217/252 [00:02<00:00, 100.84it/s]Batches:  90%|█████████ | 228/252 [00:02<00:00, 102.32it/s]Batches:  95%|█████████▍| 239/252 [00:02<00:00, 67.69it/s] Batches:  99%|█████████▉| 250/252 [00:02<00:00, 76.25it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 91.48it/s]
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records
+  caching June string features for k=50 pairs [09:03:23]
+    cached 250/2,616 A records    cached 500/2,616 A records    cached 750/2,616 A records    cached 1,000/2,616 A records    cached 1,250/2,616 A records    cached 1,500/2,616 A records    cached 1,750/2,616 A records    cached 2,000/2,616 A records    cached 2,250/2,616 A records    cached 2,500/2,616 A records    cached 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+
+==============================================================================
+DBLP seed=42 (primary)
+==============================================================================
+      baseline string: MEC lambda=0.0455, psi=0.0041; LR lambda=0.0223, psi=0.0529, threshold=0.45
+      baseline bi-encoder: MEC lambda=0.0426, psi=0.0050; LR lambda=0.0070, psi=0.0628, threshold=0.55
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7573.87it/s]
+      fine-tuning bi-encoder: pairs=58,465, epochs=1, warmup=365, lr=2e-05, batch=16 [09:21:35]
+Computing widget examples:   0%|          | 0/1 [00:00<?, ?example/s]                                                                     {'loss': '0.001043', 'grad_norm': '0.07236', 'learning_rate': '1.919e-05', 'epoch': '0.1368'}
+{'loss': '0.0005791', 'grad_norm': '0', 'learning_rate': '1.614e-05', 'epoch': '0.2736'}
+{'loss': '0.0004692', 'grad_norm': '0.03543', 'learning_rate': '1.31e-05', 'epoch': '0.4104'}
+{'loss': '0.0004495', 'grad_norm': '0', 'learning_rate': '1.006e-05', 'epoch': '0.5472'}
+{'loss': '0.0004998', 'grad_norm': '0.01519', 'learning_rate': '7.023e-06', 'epoch': '0.684'}
+{'loss': '0.0003895', 'grad_norm': '0.0239', 'learning_rate': '3.983e-06', 'epoch': '0.8208'}
+{'loss': '0.0004839', 'grad_norm': '0', 'learning_rate': '9.425e-07', 'epoch': '0.9576'}
+{'train_runtime': '128.8', 'train_samples_per_second': '454.1', 'train_steps_per_second': '28.39', 'train_loss': '0.0005484', 'epoch': '1'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.64it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.62it/s]
+      saved fine-tuned checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/DBLP/seed_42
+      re-embedding complete A and B with fine-tuned encoder [09:23:44]
+  encoding FT-A.title [09:23:44]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 49.28it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 62.43it/s]
+  encoding FT-A.authors [09:23:44]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 42.16it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 59.72it/s]
+  encoding FT-A.venue [09:23:44]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  82%|████████▏ | 9/11 [00:00<00:00, 86.38it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 84.47it/s]
+  encoding FT-A.year [09:23:45]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 98.17it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 100.51it/s]
+  encoding FT-B.title [09:23:45]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 36.68it/s]Batches:   4%|▍         | 10/252 [00:00<00:05, 43.26it/s]Batches:   6%|▌         | 15/252 [00:00<00:05, 44.43it/s]Batches:   8%|▊         | 21/252 [00:00<00:04, 47.46it/s]Batches:  10%|█         | 26/252 [00:00<00:04, 46.80it/s]Batches:  13%|█▎        | 32/252 [00:00<00:04, 48.74it/s]Batches:  15%|█▍        | 37/252 [00:00<00:04, 48.07it/s]Batches:  17%|█▋        | 42/252 [00:00<00:04, 45.93it/s]Batches:  19%|█▊        | 47/252 [00:01<00:04, 46.48it/s]Batches:  21%|██        | 52/252 [00:01<00:04, 46.73it/s]Batches:  23%|██▎       | 58/252 [00:01<00:04, 48.46it/s]Batches:  25%|██▌       | 64/252 [00:01<00:03, 50.15it/s]Batches:  28%|██▊       | 70/252 [00:01<00:03, 50.64it/s]Batches:  30%|███       | 76/252 [00:01<00:03, 52.87it/s]Batches:  33%|███▎      | 82/252 [00:01<00:03, 53.30it/s]Batches:  35%|███▍      | 88/252 [00:01<00:03, 53.90it/s]Batches:  37%|███▋      | 94/252 [00:01<00:02, 54.21it/s]Batches:  40%|███▉      | 100/252 [00:02<00:02, 52.17it/s]Batches:  42%|████▏     | 106/252 [00:02<00:02, 49.50it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 47.80it/s]Batches:  46%|████▌     | 116/252 [00:02<00:02, 47.46it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 51.68it/s]Batches:  51%|█████     | 129/252 [00:02<00:02, 51.94it/s]Batches:  54%|█████▎    | 135/252 [00:02<00:02, 53.12it/s]Batches:  56%|█████▌    | 141/252 [00:02<00:02, 52.46it/s]Batches:  58%|█████▊    | 147/252 [00:02<00:01, 54.20it/s]Batches:  61%|██████    | 154/252 [00:03<00:01, 57.52it/s]Batches:  64%|██████▍   | 161/252 [00:03<00:01, 58.41it/s]Batches:  66%|██████▋   | 167/252 [00:03<00:01, 58.59it/s]Batches:  69%|██████▊   | 173/252 [00:03<00:01, 58.84it/s]Batches:  71%|███████▏  | 180/252 [00:03<00:01, 61.93it/s]Batches:  74%|███████▍  | 187/252 [00:03<00:01, 61.37it/s]Batches:  77%|███████▋  | 194/252 [00:03<00:01, 39.29it/s]Batches:  79%|███████▉  | 200/252 [00:04<00:01, 42.39it/s]Batches:  83%|████████▎ | 208/252 [00:04<00:00, 49.11it/s]Batches:  85%|████████▌ | 215/252 [00:04<00:00, 52.70it/s]Batches:  88%|████████▊ | 221/252 [00:04<00:00, 53.62it/s]Batches:  91%|█████████ | 229/252 [00:04<00:00, 57.93it/s]Batches:  94%|█████████▍| 237/252 [00:04<00:00, 62.91it/s]Batches:  97%|█████████▋| 245/252 [00:04<00:00, 65.92it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 53.15it/s]
+  encoding FT-B.authors [09:23:50]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 50.69it/s]Batches:   5%|▍         | 12/252 [00:00<00:05, 46.24it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 47.99it/s]Batches:   9%|▉         | 23/252 [00:00<00:04, 47.57it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 53.79it/s]Batches:  15%|█▍        | 37/252 [00:00<00:03, 57.17it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 59.99it/s]Batches:  20%|██        | 51/252 [00:00<00:03, 60.94it/s]Batches:  23%|██▎       | 58/252 [00:01<00:03, 63.40it/s]Batches:  26%|██▌       | 65/252 [00:01<00:02, 63.16it/s]Batches:  29%|██▊       | 72/252 [00:01<00:02, 62.66it/s]Batches:  31%|███▏      | 79/252 [00:01<00:02, 63.85it/s]Batches:  34%|███▍      | 86/252 [00:01<00:02, 64.84it/s]Batches:  37%|███▋      | 93/252 [00:01<00:02, 63.28it/s]Batches:  40%|███▉      | 100/252 [00:02<00:04, 31.56it/s]Batches:  43%|████▎     | 108/252 [00:02<00:03, 39.43it/s]Batches:  46%|████▌     | 116/252 [00:02<00:02, 46.86it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 51.13it/s]Batches:  52%|█████▏    | 131/252 [00:02<00:02, 56.25it/s]Batches:  55%|█████▌    | 139/252 [00:02<00:01, 60.93it/s]Batches:  58%|█████▊    | 147/252 [00:02<00:01, 63.84it/s]Batches:  62%|██████▏   | 155/252 [00:02<00:01, 67.99it/s]Batches:  65%|██████▍   | 163/252 [00:02<00:01, 70.69it/s]Batches:  68%|██████▊   | 171/252 [00:02<00:01, 72.86it/s]Batches:  71%|███████▏  | 180/252 [00:03<00:00, 76.95it/s]Batches:  75%|███████▌  | 189/252 [00:03<00:00, 79.42it/s]Batches:  79%|███████▊  | 198/252 [00:03<00:00, 77.10it/s]Batches:  82%|████████▏ | 206/252 [00:03<00:00, 75.38it/s]Batches:  85%|████████▍ | 214/252 [00:03<00:00, 76.64it/s]Batches:  88%|████████▊ | 222/252 [00:03<00:00, 76.33it/s]Batches:  92%|█████████▏| 231/252 [00:03<00:00, 79.72it/s]Batches:  95%|█████████▌| 240/252 [00:03<00:00, 79.04it/s]Batches:  98%|█████████▊| 248/252 [00:04<00:00, 37.47it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 57.36it/s]
+  encoding FT-B.venue [09:23:54]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 5/252 [00:00<00:05, 48.13it/s]Batches:   4%|▍         | 10/252 [00:00<00:05, 47.22it/s]Batches:   6%|▌         | 15/252 [00:00<00:05, 44.19it/s]Batches:   9%|▊         | 22/252 [00:00<00:04, 49.89it/s]Batches:  11%|█         | 28/252 [00:00<00:04, 51.91it/s]Batches:  14%|█▍        | 35/252 [00:00<00:03, 55.48it/s]Batches:  16%|█▋        | 41/252 [00:00<00:03, 55.25it/s]Batches:  19%|█▉        | 48/252 [00:00<00:03, 57.54it/s]Batches:  21%|██▏       | 54/252 [00:01<00:03, 56.48it/s]Batches:  24%|██▍       | 61/252 [00:01<00:03, 59.50it/s]Batches:  27%|██▋       | 68/252 [00:01<00:02, 62.14it/s]Batches:  30%|██▉       | 75/252 [00:01<00:02, 64.37it/s]Batches:  33%|███▎      | 82/252 [00:01<00:02, 62.67it/s]Batches:  35%|███▌      | 89/252 [00:01<00:02, 56.74it/s]Batches:  38%|███▊      | 95/252 [00:01<00:02, 57.41it/s]Batches:  40%|████      | 101/252 [00:01<00:02, 57.24it/s]Batches:  43%|████▎     | 109/252 [00:01<00:02, 61.94it/s]Batches:  46%|████▋     | 117/252 [00:02<00:02, 65.98it/s]Batches:  50%|████▉     | 125/252 [00:02<00:01, 67.88it/s]Batches:  53%|█████▎    | 133/252 [00:02<00:01, 71.11it/s]Batches:  56%|█████▌    | 141/252 [00:02<00:01, 72.34it/s]Batches:  59%|█████▉    | 149/252 [00:02<00:01, 72.89it/s]Batches:  62%|██████▏   | 157/252 [00:02<00:02, 41.73it/s]Batches:  66%|██████▌   | 166/252 [00:02<00:01, 49.28it/s]Batches:  69%|██████▉   | 175/252 [00:03<00:01, 56.55it/s]Batches:  73%|███████▎  | 183/252 [00:03<00:01, 60.43it/s]Batches:  76%|███████▌  | 191/252 [00:03<00:00, 63.10it/s]Batches:  80%|███████▉  | 201/252 [00:03<00:00, 71.61it/s]Batches:  84%|████████▎ | 211/252 [00:03<00:00, 78.55it/s]Batches:  87%|████████▋ | 220/252 [00:03<00:00, 80.43it/s]Batches:  91%|█████████▏| 230/252 [00:03<00:00, 84.97it/s]Batches:  95%|█████████▍| 239/252 [00:03<00:00, 85.96it/s]Batches: 100%|█████████▉| 251/252 [00:03<00:00, 94.11it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 64.93it/s]
+  encoding FT-B.year [09:23:58]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 11/252 [00:00<00:02, 98.46it/s]Batches:   8%|▊         | 21/252 [00:00<00:02, 93.65it/s]Batches:  12%|█▏        | 31/252 [00:00<00:02, 92.00it/s]Batches:  17%|█▋        | 43/252 [00:00<00:02, 100.06it/s]Batches:  21%|██▏       | 54/252 [00:00<00:03, 49.95it/s] Batches:  26%|██▌       | 65/252 [00:00<00:03, 60.83it/s]Batches:  30%|██▉       | 75/252 [00:01<00:02, 67.75it/s]Batches:  34%|███▍      | 86/252 [00:01<00:02, 77.08it/s]Batches:  39%|███▉      | 98/252 [00:01<00:01, 86.19it/s]Batches:  43%|████▎     | 108/252 [00:01<00:01, 89.17it/s]Batches:  47%|████▋     | 119/252 [00:01<00:01, 93.81it/s]Batches:  52%|█████▏    | 130/252 [00:01<00:01, 98.20it/s]Batches:  56%|█████▌    | 141/252 [00:01<00:01, 96.54it/s]Batches:  60%|██████    | 152/252 [00:01<00:01, 97.70it/s]Batches:  65%|██████▌   | 164/252 [00:01<00:00, 102.42it/s]Batches:  69%|██████▉   | 175/252 [00:02<00:00, 101.62it/s]Batches:  74%|███████▍  | 187/252 [00:02<00:00, 104.36it/s]Batches:  79%|███████▊  | 198/252 [00:02<00:00, 57.18it/s] Batches:  83%|████████▎ | 209/252 [00:02<00:00, 66.50it/s]Batches:  88%|████████▊ | 221/252 [00:02<00:00, 77.00it/s]Batches:  92%|█████████▏| 233/252 [00:02<00:00, 86.32it/s]Batches:  97%|█████████▋| 245/252 [00:02<00:00, 93.02it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 83.87it/s]
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      FT saved: MEC lambda=0.0416, psi=0.0025; LR lambda=0.0193, psi=0.0256
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7593.53it/s]
+      training CE: pairs=46,772, epochs=5, warmup=1462, lr=2e-05, batch=16, max_length=128 [09:33:58]
+{'loss': '0.02232', 'grad_norm': '0.003062', 'learning_rate': '6.826e-06', 'epoch': '0.171'}
+{'loss': '0.01719', 'grad_norm': '0.0002312', 'learning_rate': '1.367e-05', 'epoch': '0.342'}
+{'loss': '0.01622', 'grad_norm': '6.087', 'learning_rate': '1.994e-05', 'epoch': '0.513'}
+{'loss': '0.01231', 'grad_norm': '0.0008593', 'learning_rate': '1.918e-05', 'epoch': '0.684'}
+{'loss': '0.0139', 'grad_norm': '17.28', 'learning_rate': '1.842e-05', 'epoch': '0.855'}
+{'loss': '0.008876', 'grad_norm': '0.0004747', 'learning_rate': '1.766e-05', 'epoch': '1.026'}
+{'loss': '0.006316', 'grad_norm': '0.002962', 'learning_rate': '1.69e-05', 'epoch': '1.197'}
+{'loss': '0.01104', 'grad_norm': '0.002658', 'learning_rate': '1.614e-05', 'epoch': '1.368'}
+{'loss': '0.01021', 'grad_norm': '0.000298', 'learning_rate': '1.538e-05', 'epoch': '1.539'}
+{'loss': '0.00959', 'grad_norm': '0.0004287', 'learning_rate': '1.462e-05', 'epoch': '1.71'}
+{'loss': '0.007067', 'grad_norm': '0.02497', 'learning_rate': '1.386e-05', 'epoch': '1.881'}
+{'loss': '0.006343', 'grad_norm': '0.003167', 'learning_rate': '1.31e-05', 'epoch': '2.052'}
+{'loss': '0.007179', 'grad_norm': '0.001048', 'learning_rate': '1.234e-05', 'epoch': '2.223'}
+{'loss': '0.003443', 'grad_norm': '0.000287', 'learning_rate': '1.158e-05', 'epoch': '2.394'}
+{'loss': '0.003141', 'grad_norm': '0.002472', 'learning_rate': '1.082e-05', 'epoch': '2.565'}
+{'loss': '0.002967', 'grad_norm': '0.04596', 'learning_rate': '1.006e-05', 'epoch': '2.736'}
+{'loss': '0.003348', 'grad_norm': '0.0002917', 'learning_rate': '9.3e-06', 'epoch': '2.907'}
+{'loss': '0.007052', 'grad_norm': '0.001116', 'learning_rate': '8.539e-06', 'epoch': '3.078'}
+{'loss': '0.001481', 'grad_norm': '0.0001716', 'learning_rate': '7.779e-06', 'epoch': '3.249'}
+{'loss': '0.00154', 'grad_norm': '0.000408', 'learning_rate': '7.019e-06', 'epoch': '3.42'}
+{'loss': '0.003265', 'grad_norm': '0.0001488', 'learning_rate': '6.259e-06', 'epoch': '3.591'}
+{'loss': '0.005683', 'grad_norm': '0.000182', 'learning_rate': '5.498e-06', 'epoch': '3.762'}
+{'loss': '0.002404', 'grad_norm': '0.0002389', 'learning_rate': '4.738e-06', 'epoch': '3.933'}
+{'loss': '0.00132', 'grad_norm': '0.007542', 'learning_rate': '3.978e-06', 'epoch': '4.104'}
+{'loss': '0.002007', 'grad_norm': '0.0004258', 'learning_rate': '3.218e-06', 'epoch': '4.275'}
+{'loss': '0.0008882', 'grad_norm': '0.001436', 'learning_rate': '2.457e-06', 'epoch': '4.446'}
+{'loss': '0.001265', 'grad_norm': '0.000115', 'learning_rate': '1.697e-06', 'epoch': '4.617'}
+{'loss': '0.000575', 'grad_norm': '0.0001036', 'learning_rate': '9.367e-07', 'epoch': '4.788'}
+{'loss': '0.0009835', 'grad_norm': '0.0004683', 'learning_rate': '1.764e-07', 'epoch': '4.959'}
+{'train_runtime': '296.3', 'train_samples_per_second': '789.3', 'train_steps_per_second': '49.34', 'train_loss': '0.006495', 'epoch': '5'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.91it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.89it/s]
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+      saved CE checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/cross_encoder/DBLP/seed_42
+      evaluating 1,308 test records with 50 candidates each [09:39:01]
+        200/1,308        400/1,308        600/1,308        800/1,308        1,000/1,308        1,200/1,308        1,308/1,308/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      CE saved: direct lambda=0.0141, psi=0.0124; legacy lambda=0.0141, psi=0.0124; alternative valid links=377
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean  psi_sd  psi_se
+   DBLP  fine-tuned     LR         1     0.019295        NaN        NaN  0.025620     NaN     NaN
+   DBLP  fine-tuned    MEC         1     0.041567        NaN        NaN  0.002479     NaN     NaN
+   DBLP pre-trained     LR         1     0.007048        NaN        NaN  0.062810     NaN     NaN
+   DBLP pre-trained    MEC         1     0.042570        NaN        NaN  0.004959     NaN     NaN
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean  psi_sd  psi_se
+   DBLP  bi-encoder / LR         1     0.007048        NaN        NaN  0.062810     NaN     NaN
+   DBLP bi-encoder / MEC         1     0.042570        NaN        NaN  0.004959     NaN     NaN
+   DBLP    cross-encoder         1     0.014073        NaN        NaN  0.012397     NaN     NaN
+   DBLP      string / LR         1     0.022260        NaN        NaN  0.052893     NaN     NaN
+   DBLP     string / MEC         1     0.045527        NaN        NaN  0.004132     NaN     NaN
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean  psi_sd  psi_se
+   DBLP       Q1 cross-encoder         1     0.057613        NaN        NaN  0.037344     NaN     NaN
+   DBLP       Q1   two-step LR         1     0.024272        NaN        NaN  0.145228     NaN     NaN
+   DBLP       Q2 cross-encoder         1     0.006349        NaN        NaN  0.006329     NaN     NaN
+   DBLP       Q2   two-step LR         1     0.007220        NaN        NaN  0.123418     NaN     NaN
+   DBLP       Q3 cross-encoder         1     0.003096        NaN        NaN  0.012270     NaN     NaN
+   DBLP       Q3   two-step LR         1     0.003077        NaN        NaN  0.006135     NaN     NaN
+   DBLP       Q4 cross-encoder         1     0.000000        NaN        NaN  0.000000     NaN     NaN
+   DBLP       Q4   two-step LR         1     0.000000        NaN        NaN  0.000000     NaN     NaN
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+==============================================================================
+DBLP seed=43 (primary)
+==============================================================================
+      baseline string: MEC lambda=0.0522, psi=0.0042; LR lambda=0.0315, psi=0.0452, threshold=0.35
+      baseline bi-encoder: MEC lambda=0.0475, psi=0.0033; LR lambda=0.0063, psi=0.0677, threshold=0.55
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7817.69it/s]
+      fine-tuning bi-encoder: pairs=59,133, epochs=1, warmup=369, lr=2e-05, batch=16 [09:58:03]
+Computing widget examples:   0%|          | 0/1 [00:00<?, ?example/s]                                                                     {'loss': '0.001017', 'grad_norm': '0.01608', 'learning_rate': '1.922e-05', 'epoch': '0.1353'}
+{'loss': '0.0005935', 'grad_norm': '0.02405', 'learning_rate': '1.621e-05', 'epoch': '0.2706'}
+{'loss': '0.0005446', 'grad_norm': '0', 'learning_rate': '1.321e-05', 'epoch': '0.4058'}
+{'loss': '0.0004966', 'grad_norm': '0', 'learning_rate': '1.02e-05', 'epoch': '0.5411'}
+{'loss': '0.0005403', 'grad_norm': '0.05447', 'learning_rate': '7.192e-06', 'epoch': '0.6764'}
+{'loss': '0.0004583', 'grad_norm': '0', 'learning_rate': '4.185e-06', 'epoch': '0.8117'}
+{'loss': '0.0003921', 'grad_norm': '0', 'learning_rate': '1.179e-06', 'epoch': '0.947'}
+{'train_runtime': '129.2', 'train_samples_per_second': '457.6', 'train_steps_per_second': '28.6', 'train_loss': '0.0005699', 'epoch': '1'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.83it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.82it/s]
+      saved fine-tuned checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/DBLP/seed_43
+      re-embedding complete A and B with fine-tuned encoder [10:00:13]
+  encoding FT-A.title [10:00:13]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  64%|██████▎   | 7/11 [00:00<00:00, 60.05it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 64.35it/s]
+  encoding FT-A.authors [10:00:13]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 46.05it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 59.81it/s]
+  encoding FT-A.venue [10:00:13]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 95.60it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 98.84it/s]
+  encoding FT-A.year [10:00:13]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  91%|█████████ | 10/11 [00:00<00:00, 88.50it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 89.78it/s]
+  encoding FT-B.title [10:00:13]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 37.70it/s]Batches:   4%|▎         | 9/252 [00:00<00:05, 41.42it/s]Batches:   6%|▌         | 14/252 [00:00<00:05, 42.89it/s]Batches:   8%|▊         | 20/252 [00:00<00:05, 46.27it/s]Batches:  10%|█         | 26/252 [00:00<00:04, 48.83it/s]Batches:  13%|█▎        | 32/252 [00:00<00:04, 50.03it/s]Batches:  15%|█▍        | 37/252 [00:00<00:04, 48.55it/s]Batches:  17%|█▋        | 42/252 [00:00<00:04, 46.90it/s]Batches:  19%|█▊        | 47/252 [00:01<00:04, 43.85it/s]Batches:  21%|██        | 52/252 [00:01<00:04, 44.27it/s]Batches:  23%|██▎       | 58/252 [00:01<00:04, 47.26it/s]Batches:  25%|██▌       | 64/252 [00:01<00:03, 49.92it/s]Batches:  28%|██▊       | 70/252 [00:01<00:03, 50.87it/s]Batches:  30%|███       | 76/252 [00:01<00:03, 50.44it/s]Batches:  33%|███▎      | 82/252 [00:01<00:03, 48.83it/s]Batches:  35%|███▌      | 89/252 [00:01<00:03, 51.31it/s]Batches:  38%|███▊      | 95/252 [00:01<00:03, 50.12it/s]Batches:  40%|████      | 101/252 [00:02<00:03, 48.70it/s]Batches:  42%|████▏     | 106/252 [00:02<00:03, 47.22it/s]Batches:  44%|████▍     | 112/252 [00:02<00:02, 47.69it/s]Batches:  47%|████▋     | 118/252 [00:02<00:02, 48.89it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 48.41it/s]Batches:  51%|█████     | 129/252 [00:02<00:02, 50.77it/s]Batches:  54%|█████▍    | 136/252 [00:02<00:02, 53.17it/s]Batches:  57%|█████▋    | 143/252 [00:02<00:01, 55.81it/s]Batches:  60%|█████▉    | 150/252 [00:03<00:01, 57.07it/s]Batches:  62%|██████▏   | 156/252 [00:03<00:01, 55.80it/s]Batches:  65%|██████▍   | 163/252 [00:03<00:01, 57.71it/s]Batches:  67%|██████▋   | 169/252 [00:03<00:01, 57.70it/s]Batches:  70%|██████▉   | 176/252 [00:03<00:01, 58.81it/s]Batches:  73%|███████▎  | 183/252 [00:03<00:01, 59.62it/s]Batches:  75%|███████▌  | 189/252 [00:03<00:01, 56.86it/s]Batches:  77%|███████▋  | 195/252 [00:03<00:00, 57.69it/s]Batches:  80%|████████  | 202/252 [00:03<00:00, 59.58it/s]Batches:  83%|████████▎ | 208/252 [00:04<00:00, 57.45it/s]Batches:  85%|████████▍ | 214/252 [00:04<00:00, 56.79it/s]Batches:  88%|████████▊ | 221/252 [00:04<00:00, 58.51it/s]Batches:  90%|█████████ | 228/252 [00:04<00:00, 59.92it/s]Batches:  93%|█████████▎| 235/252 [00:04<00:00, 60.54it/s]Batches:  96%|█████████▌| 242/252 [00:04<00:00, 60.13it/s]Batches:  99%|█████████▉| 249/252 [00:04<00:00, 62.50it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 53.42it/s]
+  encoding FT-B.authors [10:00:18]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 55.80it/s]Batches:   5%|▌         | 13/252 [00:00<00:04, 59.69it/s]Batches:   8%|▊         | 19/252 [00:00<00:03, 59.62it/s]Batches:  10%|▉         | 25/252 [00:00<00:03, 58.18it/s]Batches:  13%|█▎        | 32/252 [00:00<00:03, 57.51it/s]Batches:  15%|█▌        | 38/252 [00:00<00:04, 53.27it/s]Batches:  18%|█▊        | 45/252 [00:00<00:03, 56.34it/s]Batches:  20%|██        | 51/252 [00:00<00:03, 56.85it/s]Batches:  23%|██▎       | 57/252 [00:01<00:05, 37.64it/s]Batches:  25%|██▌       | 64/252 [00:01<00:04, 43.92it/s]Batches:  28%|██▊       | 71/252 [00:01<00:03, 49.75it/s]Batches:  31%|███▏      | 79/252 [00:01<00:03, 56.92it/s]Batches:  35%|███▍      | 87/252 [00:01<00:02, 60.38it/s]Batches:  38%|███▊      | 95/252 [00:01<00:02, 64.43it/s]Batches:  41%|████      | 103/252 [00:01<00:02, 66.98it/s]Batches:  44%|████▍     | 112/252 [00:01<00:01, 71.32it/s]Batches:  48%|████▊     | 120/252 [00:02<00:01, 70.30it/s]Batches:  51%|█████     | 129/252 [00:02<00:01, 73.48it/s]Batches:  55%|█████▍    | 138/252 [00:02<00:01, 75.93it/s]Batches:  58%|█████▊    | 146/252 [00:02<00:01, 71.58it/s]Batches:  61%|██████    | 154/252 [00:02<00:01, 69.04it/s]Batches:  64%|██████▍   | 161/252 [00:02<00:01, 68.93it/s]Batches:  67%|██████▋   | 169/252 [00:02<00:01, 70.99it/s]Batches:  70%|███████   | 177/252 [00:02<00:01, 73.43it/s]Batches:  74%|███████▍  | 186/252 [00:02<00:00, 74.79it/s]Batches:  77%|███████▋  | 194/252 [00:03<00:00, 75.63it/s]Batches:  81%|████████  | 203/252 [00:03<00:00, 77.14it/s]Batches:  84%|████████▎ | 211/252 [00:03<00:00, 76.64it/s]Batches:  87%|████████▋ | 220/252 [00:03<00:00, 78.13it/s]Batches:  90%|█████████ | 228/252 [00:03<00:00, 78.50it/s]Batches:  94%|█████████▍| 237/252 [00:03<00:00, 78.16it/s]Batches:  98%|█████████▊| 247/252 [00:03<00:00, 81.14it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 66.70it/s]
+  encoding FT-B.venue [10:00:22]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 55.77it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 49.16it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 53.05it/s]Batches:  10%|▉         | 25/252 [00:00<00:04, 55.95it/s]Batches:  12%|█▏        | 31/252 [00:00<00:03, 55.27it/s]Batches:  15%|█▍        | 37/252 [00:00<00:03, 54.66it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 57.53it/s]Batches:  20%|██        | 51/252 [00:00<00:03, 57.82it/s]Batches:  23%|██▎       | 58/252 [00:01<00:03, 59.84it/s]Batches:  25%|██▌       | 64/252 [00:01<00:03, 58.70it/s]Batches:  29%|██▊       | 72/252 [00:01<00:02, 62.63it/s]Batches:  32%|███▏      | 80/252 [00:01<00:02, 65.22it/s]Batches:  35%|███▍      | 87/252 [00:01<00:02, 66.40it/s]Batches:  37%|███▋      | 94/252 [00:01<00:02, 65.04it/s]Batches:  40%|████      | 101/252 [00:01<00:02, 66.22it/s]Batches:  43%|████▎     | 108/252 [00:01<00:03, 44.91it/s]Batches:  46%|████▌     | 115/252 [00:02<00:02, 49.48it/s]Batches:  48%|████▊     | 122/252 [00:02<00:02, 54.10it/s]Batches:  51%|█████     | 129/252 [00:02<00:02, 56.34it/s]Batches:  54%|█████▍    | 136/252 [00:02<00:02, 57.18it/s]Batches:  57%|█████▋    | 144/252 [00:02<00:01, 62.23it/s]Batches:  61%|██████    | 153/252 [00:02<00:01, 67.90it/s]Batches:  64%|██████▍   | 161/252 [00:02<00:01, 68.55it/s]Batches:  67%|██████▋   | 169/252 [00:02<00:01, 68.76it/s]Batches:  71%|███████   | 178/252 [00:02<00:01, 73.37it/s]Batches:  75%|███████▍  | 188/252 [00:03<00:00, 78.99it/s]Batches:  79%|███████▊  | 198/252 [00:03<00:00, 83.29it/s]Batches:  83%|████████▎ | 210/252 [00:03<00:00, 93.01it/s]Batches:  88%|████████▊ | 221/252 [00:03<00:00, 97.42it/s]Batches:  92%|█████████▏| 232/252 [00:03<00:00, 99.08it/s]Batches:  96%|█████████▋| 243/252 [00:03<00:00, 101.23it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 68.95it/s] 
+  encoding FT-B.year [10:00:26]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 10/252 [00:00<00:02, 96.30it/s]Batches:   8%|▊         | 21/252 [00:00<00:02, 98.66it/s]Batches:  13%|█▎        | 32/252 [00:00<00:02, 101.54it/s]Batches:  17%|█▋        | 43/252 [00:00<00:02, 94.50it/s] Batches:  21%|██        | 53/252 [00:00<00:02, 94.81it/s]Batches:  25%|██▌       | 63/252 [00:00<00:02, 90.04it/s]Batches:  30%|██▉       | 75/252 [00:00<00:01, 97.07it/s]Batches:  34%|███▎      | 85/252 [00:00<00:01, 92.46it/s]Batches:  38%|███▊      | 97/252 [00:01<00:01, 98.49it/s]Batches:  43%|████▎     | 108/252 [00:01<00:01, 98.65it/s]Batches:  47%|████▋     | 118/252 [00:01<00:01, 98.54it/s]Batches:  52%|█████▏    | 130/252 [00:01<00:01, 102.92it/s]Batches:  56%|█████▌    | 141/252 [00:01<00:01, 101.00it/s]Batches:  61%|██████    | 153/252 [00:01<00:00, 104.21it/s]Batches:  65%|██████▌   | 164/252 [00:01<00:01, 72.22it/s] Batches:  70%|██████▉   | 176/252 [00:01<00:00, 81.19it/s]Batches:  75%|███████▍  | 188/252 [00:02<00:00, 89.71it/s]Batches:  79%|███████▉  | 200/252 [00:02<00:00, 96.05it/s]Batches:  84%|████████▍ | 212/252 [00:02<00:00, 100.20it/s]Batches:  89%|████████▉ | 224/252 [00:02<00:00, 103.25it/s]Batches:  93%|█████████▎| 235/252 [00:02<00:00, 104.14it/s]Batches:  98%|█████████▊| 246/252 [00:02<00:00, 105.00it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 96.50it/s] 
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      FT saved: MEC lambda=0.0551, psi=0.0008; LR lambda=0.0330, psi=0.0142
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7279.25it/s]
+      training CE: pairs=47,306, epochs=5, warmup=1478, lr=2e-05, batch=16, max_length=128 [10:10:04]
+{'loss': '0.02257', 'grad_norm': '1.072', 'learning_rate': '6.752e-06', 'epoch': '0.1691'}
+{'loss': '0.02317', 'grad_norm': '0.05031', 'learning_rate': '1.352e-05', 'epoch': '0.3382'}
+{'loss': '0.01393', 'grad_norm': '0.0001792', 'learning_rate': '1.997e-05', 'epoch': '0.5073'}
+{'loss': '0.01595', 'grad_norm': '0.06385', 'learning_rate': '1.922e-05', 'epoch': '0.6764'}
+{'loss': '0.01747', 'grad_norm': '0.0004758', 'learning_rate': '1.846e-05', 'epoch': '0.8455'}
+{'loss': '0.01477', 'grad_norm': '0.006047', 'learning_rate': '1.771e-05', 'epoch': '1.015'}
+{'loss': '0.01127', 'grad_norm': '0.07261', 'learning_rate': '1.696e-05', 'epoch': '1.184'}
+{'loss': '0.01099', 'grad_norm': '0.0003134', 'learning_rate': '1.621e-05', 'epoch': '1.353'}
+{'loss': '0.003496', 'grad_norm': '0.0139', 'learning_rate': '1.546e-05', 'epoch': '1.522'}
+{'loss': '0.009571', 'grad_norm': '0.01522', 'learning_rate': '1.471e-05', 'epoch': '1.691'}
+{'loss': '0.01198', 'grad_norm': '0.008214', 'learning_rate': '1.395e-05', 'epoch': '1.86'}
+{'loss': '0.008077', 'grad_norm': '0.02144', 'learning_rate': '1.32e-05', 'epoch': '2.029'}
+{'loss': '0.00367', 'grad_norm': '0.111', 'learning_rate': '1.245e-05', 'epoch': '2.198'}
+{'loss': '0.007827', 'grad_norm': '0.0003719', 'learning_rate': '1.17e-05', 'epoch': '2.367'}
+{'loss': '0.002571', 'grad_norm': '0.0002924', 'learning_rate': '1.095e-05', 'epoch': '2.536'}
+{'loss': '0.003325', 'grad_norm': '0.1496', 'learning_rate': '1.02e-05', 'epoch': '2.705'}
+{'loss': '0.004264', 'grad_norm': '0.000615', 'learning_rate': '9.444e-06', 'epoch': '2.875'}
+{'loss': '0.008295', 'grad_norm': '0.01006', 'learning_rate': '8.692e-06', 'epoch': '3.044'}
+{'loss': '0.003104', 'grad_norm': '0.0005261', 'learning_rate': '7.94e-06', 'epoch': '3.213'}
+{'loss': '0.002668', 'grad_norm': '0.0001855', 'learning_rate': '7.188e-06', 'epoch': '3.382'}
+{'loss': '0.002549', 'grad_norm': '0.003054', 'learning_rate': '6.437e-06', 'epoch': '3.551'}
+{'loss': '0.004327', 'grad_norm': '0.0003148', 'learning_rate': '5.685e-06', 'epoch': '3.72'}
+{'loss': '0.003759', 'grad_norm': '0.0001374', 'learning_rate': '4.933e-06', 'epoch': '3.889'}
+{'loss': '0.003481', 'grad_norm': '0.000232', 'learning_rate': '4.181e-06', 'epoch': '4.058'}
+{'loss': '0.001479', 'grad_norm': '0.001836', 'learning_rate': '3.43e-06', 'epoch': '4.227'}
+{'loss': '0.0009648', 'grad_norm': '0.0001548', 'learning_rate': '2.678e-06', 'epoch': '4.396'}
+{'loss': '0.002124', 'grad_norm': '0.0001569', 'learning_rate': '1.926e-06', 'epoch': '4.565'}
+{'loss': '0.001113', 'grad_norm': '0.01331', 'learning_rate': '1.174e-06', 'epoch': '4.735'}
+{'loss': '0.002304', 'grad_norm': '0.0002486', 'learning_rate': '4.225e-07', 'epoch': '4.904'}
+{'train_runtime': '301.4', 'train_samples_per_second': '784.7', 'train_steps_per_second': '49.05', 'train_loss': '0.007549', 'epoch': '5'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.79it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.77it/s]
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+      saved CE checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/cross_encoder/DBLP/seed_43
+      evaluating 1,308 test records with 50 candidates each [10:15:12]
+        200/1,308        400/1,308        600/1,308        800/1,308        1,000/1,308        1,200/1,308        1,308/1,308/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      CE saved: direct lambda=0.0240, psi=0.0067; legacy lambda=0.0240, psi=0.0067; alternative valid links=360
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  fine-tuned     LR         2     0.026136   0.009674   0.006840  0.019917 0.008065 0.005703
+   DBLP  fine-tuned    MEC         2     0.048339   0.009578   0.006773  0.001658 0.001162 0.000822
+   DBLP pre-trained     LR         2     0.006660   0.000549   0.000388  0.065268 0.003476 0.002458
+   DBLP pre-trained    MEC         2     0.045056   0.003516   0.002486  0.004152 0.001141 0.000807
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  bi-encoder / LR         2     0.006660   0.000549   0.000388  0.065268 0.003476 0.002458
+   DBLP bi-encoder / MEC         2     0.045056   0.003516   0.002486  0.004152 0.001141 0.000807
+   DBLP    cross-encoder         2     0.019020   0.006996   0.004947  0.009543 0.004036 0.002854
+   DBLP      string / LR         2     0.026888   0.006545   0.004628  0.049022 0.005474 0.003871
+   DBLP     string / MEC         2     0.048847   0.004695   0.003320  0.004156 0.000034 0.000024
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP       Q1 cross-encoder         2     0.071664   0.019870   0.014051  0.029448 0.011167 0.007896
+   DBLP       Q1   two-step LR         2     0.019599   0.006609   0.004673  0.139424 0.008208 0.005804
+   DBLP       Q2 cross-encoder         2     0.015995   0.013641   0.009646  0.006390 0.000087 0.000061
+   DBLP       Q2   two-step LR         2     0.011018   0.005370   0.003797  0.127838 0.006251 0.004420
+   DBLP       Q3 cross-encoder         2     0.001548   0.002189   0.001548  0.007664 0.006514 0.004606
+   DBLP       Q3   two-step LR         2     0.001538   0.002176   0.001538  0.016829 0.015124 0.010694
+   DBLP       Q4 cross-encoder         2     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   DBLP       Q4   two-step LR         2     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+==============================================================================
+DBLP seed=44 (primary)
+==============================================================================
+      baseline string: MEC lambda=0.0416, psi=0.0033; LR lambda=0.0260, psi=0.0379, threshold=0.35
+      baseline bi-encoder: MEC lambda=0.0385, psi=0.0025; LR lambda=0.0147, psi=0.0519, threshold=0.40
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7850.93it/s]
+      fine-tuning bi-encoder: pairs=58,235, epochs=1, warmup=364, lr=2e-05, batch=16 [10:34:11]
+Computing widget examples:   0%|          | 0/1 [00:00<?, ?example/s]                                                                     {'loss': '0.00117', 'grad_norm': '0', 'learning_rate': '1.918e-05', 'epoch': '0.1374'}
+{'loss': '0.0005873', 'grad_norm': '0.05813', 'learning_rate': '1.612e-05', 'epoch': '0.2747'}
+{'loss': '0.0005359', 'grad_norm': '0.03451', 'learning_rate': '1.307e-05', 'epoch': '0.4121'}
+{'loss': '0.000506', 'grad_norm': '0', 'learning_rate': '1.002e-05', 'epoch': '0.5495'}
+{'loss': '0.000477', 'grad_norm': '0.06919', 'learning_rate': '6.962e-06', 'epoch': '0.6868'}
+{'loss': '0.0004557', 'grad_norm': '0', 'learning_rate': '3.908e-06', 'epoch': '0.8242'}
+{'loss': '0.0004439', 'grad_norm': '0.009003', 'learning_rate': '8.55e-07', 'epoch': '0.9615'}
+{'train_runtime': '126.9', 'train_samples_per_second': '459', 'train_steps_per_second': '28.69', 'train_loss': '0.0005874', 'epoch': '1'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.91it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.90it/s]
+      saved fine-tuned checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/DBLP/seed_44
+      re-embedding complete A and B with fine-tuned encoder [10:36:18]
+  encoding FT-A.title [10:36:18]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  64%|██████▎   | 7/11 [00:00<00:00, 62.05it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 67.09it/s]
+  encoding FT-A.authors [10:36:19]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  45%|████▌     | 5/11 [00:00<00:00, 48.95it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 66.07it/s]
+  encoding FT-A.venue [10:36:19]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:  82%|████████▏ | 9/11 [00:00<00:00, 80.58it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 85.34it/s]
+  encoding FT-A.year [10:36:19]
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 102.97it/s]Batches: 100%|██████████| 11/11 [00:00<00:00, 102.81it/s]
+  encoding FT-B.title [10:36:19]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 4/252 [00:00<00:06, 37.22it/s]Batches:   4%|▎         | 9/252 [00:00<00:06, 40.34it/s]Batches:   6%|▌         | 14/252 [00:00<00:05, 43.04it/s]Batches:   8%|▊         | 20/252 [00:00<00:05, 46.17it/s]Batches:  10%|█         | 26/252 [00:00<00:04, 48.45it/s]Batches:  12%|█▏        | 31/252 [00:00<00:04, 47.45it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 45.32it/s]Batches:  16%|█▋        | 41/252 [00:00<00:04, 43.83it/s]Batches:  19%|█▊        | 47/252 [00:01<00:04, 46.15it/s]Batches:  21%|██        | 52/252 [00:01<00:04, 46.81it/s]Batches:  23%|██▎       | 57/252 [00:01<00:04, 47.10it/s]Batches:  25%|██▌       | 63/252 [00:01<00:03, 50.23it/s]Batches:  27%|██▋       | 69/252 [00:01<00:03, 50.86it/s]Batches:  30%|██▉       | 75/252 [00:01<00:03, 52.45it/s]Batches:  32%|███▏      | 81/252 [00:01<00:03, 53.39it/s]Batches:  35%|███▍      | 87/252 [00:01<00:03, 53.51it/s]Batches:  37%|███▋      | 93/252 [00:01<00:02, 54.82it/s]Batches:  39%|███▉      | 99/252 [00:02<00:02, 52.35it/s]Batches:  42%|████▏     | 105/252 [00:02<00:02, 53.79it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 54.05it/s]Batches:  46%|████▋     | 117/252 [00:02<00:02, 55.53it/s]Batches:  49%|████▉     | 123/252 [00:02<00:02, 53.75it/s]Batches:  51%|█████     | 129/252 [00:02<00:02, 53.43it/s]Batches:  54%|█████▍    | 136/252 [00:02<00:02, 55.96it/s]Batches:  57%|█████▋    | 143/252 [00:02<00:01, 57.69it/s]Batches:  59%|█████▉    | 149/252 [00:02<00:01, 57.30it/s]Batches:  62%|██████▏   | 155/252 [00:03<00:01, 56.01it/s]Batches:  64%|██████▍   | 161/252 [00:03<00:01, 56.69it/s]Batches:  67%|██████▋   | 168/252 [00:03<00:01, 58.36it/s]Batches:  69%|██████▉   | 174/252 [00:03<00:01, 58.47it/s]Batches:  71%|███████▏  | 180/252 [00:03<00:01, 55.08it/s]Batches:  74%|███████▍  | 186/252 [00:03<00:01, 54.27it/s]Batches:  76%|███████▌  | 192/252 [00:03<00:01, 55.79it/s]Batches:  79%|███████▉  | 200/252 [00:03<00:00, 59.26it/s]Batches:  82%|████████▏ | 207/252 [00:03<00:00, 61.79it/s]Batches:  85%|████████▍ | 214/252 [00:04<00:00, 62.92it/s]Batches:  88%|████████▊ | 222/252 [00:04<00:00, 65.26it/s]Batches:  91%|█████████▏| 230/252 [00:04<00:00, 67.84it/s]Batches:  94%|█████████▍| 237/252 [00:04<00:00, 66.39it/s]Batches:  97%|█████████▋| 244/252 [00:04<00:00, 66.81it/s]Batches: 100%|██████████| 252/252 [00:04<00:00, 55.64it/s]
+  encoding FT-B.authors [10:36:24]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 5/252 [00:00<00:05, 44.23it/s]Batches:   4%|▍         | 10/252 [00:00<00:05, 45.19it/s]Batches:   6%|▋         | 16/252 [00:00<00:04, 51.13it/s]Batches:   9%|▉         | 23/252 [00:00<00:03, 57.40it/s]Batches:  12%|█▏        | 30/252 [00:00<00:03, 60.46it/s]Batches:  15%|█▍        | 37/252 [00:00<00:03, 59.95it/s]Batches:  17%|█▋        | 44/252 [00:00<00:03, 62.62it/s]Batches:  21%|██        | 52/252 [00:00<00:03, 65.85it/s]Batches:  23%|██▎       | 59/252 [00:01<00:04, 40.12it/s]Batches:  26%|██▌       | 66/252 [00:01<00:04, 45.17it/s]Batches:  29%|██▉       | 74/252 [00:01<00:03, 52.35it/s]Batches:  33%|███▎      | 82/252 [00:01<00:02, 58.22it/s]Batches:  35%|███▌      | 89/252 [00:01<00:02, 59.16it/s]Batches:  38%|███▊      | 97/252 [00:01<00:02, 62.87it/s]Batches:  42%|████▏     | 105/252 [00:01<00:02, 65.36it/s]Batches:  44%|████▍     | 112/252 [00:01<00:02, 64.26it/s]Batches:  48%|████▊     | 120/252 [00:02<00:01, 66.31it/s]Batches:  51%|█████     | 128/252 [00:02<00:01, 68.98it/s]Batches:  54%|█████▍    | 136/252 [00:02<00:01, 70.83it/s]Batches:  57%|█████▋    | 144/252 [00:02<00:01, 72.97it/s]Batches:  60%|██████    | 152/252 [00:02<00:01, 71.55it/s]Batches:  63%|██████▎   | 160/252 [00:02<00:01, 71.99it/s]Batches:  67%|██████▋   | 168/252 [00:02<00:01, 68.70it/s]Batches:  69%|██████▉   | 175/252 [00:02<00:01, 68.00it/s]Batches:  72%|███████▏  | 182/252 [00:02<00:01, 67.48it/s]Batches:  76%|███████▌  | 191/252 [00:03<00:00, 72.01it/s]Batches:  79%|███████▉  | 200/252 [00:03<00:00, 75.64it/s]Batches:  83%|████████▎ | 208/252 [00:03<00:00, 76.49it/s]Batches:  86%|████████▌ | 217/252 [00:03<00:00, 79.34it/s]Batches:  90%|████████▉ | 226/252 [00:03<00:00, 81.34it/s]Batches:  93%|█████████▎| 235/252 [00:03<00:00, 80.81it/s]Batches:  97%|█████████▋| 245/252 [00:03<00:00, 84.46it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 66.76it/s]
+  encoding FT-B.venue [10:36:28]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   2%|▏         | 6/252 [00:00<00:04, 54.57it/s]Batches:   5%|▍         | 12/252 [00:00<00:04, 55.02it/s]Batches:   7%|▋         | 18/252 [00:00<00:04, 51.32it/s]Batches:  10%|▉         | 24/252 [00:00<00:04, 54.24it/s]Batches:  12%|█▏        | 30/252 [00:00<00:04, 51.66it/s]Batches:  14%|█▍        | 36/252 [00:00<00:04, 49.32it/s]Batches:  16%|█▋        | 41/252 [00:00<00:04, 49.12it/s]Batches:  19%|█▊        | 47/252 [00:00<00:03, 51.85it/s]Batches:  21%|██        | 53/252 [00:01<00:03, 53.83it/s]Batches:  24%|██▍       | 60/252 [00:01<00:03, 56.51it/s]Batches:  27%|██▋       | 67/252 [00:01<00:03, 59.90it/s]Batches:  29%|██▉       | 74/252 [00:01<00:02, 59.50it/s]Batches:  32%|███▏      | 81/252 [00:01<00:02, 61.38it/s]Batches:  35%|███▌      | 89/252 [00:01<00:02, 64.41it/s]Batches:  38%|███▊      | 97/252 [00:01<00:02, 66.86it/s]Batches:  41%|████▏     | 104/252 [00:01<00:03, 43.72it/s]Batches:  44%|████▍     | 111/252 [00:02<00:02, 48.47it/s]Batches:  47%|████▋     | 119/252 [00:02<00:02, 54.27it/s]Batches:  50%|█████     | 127/252 [00:02<00:02, 58.61it/s]Batches:  53%|█████▎    | 134/252 [00:02<00:02, 58.83it/s]Batches:  56%|█████▋    | 142/252 [00:02<00:01, 63.15it/s]Batches:  60%|█████▉    | 151/252 [00:02<00:01, 68.33it/s]Batches:  63%|██████▎   | 159/252 [00:02<00:01, 69.64it/s]Batches:  66%|██████▋   | 167/252 [00:02<00:01, 70.29it/s]Batches:  70%|██████▉   | 176/252 [00:02<00:01, 74.68it/s]Batches:  73%|███████▎  | 185/252 [00:03<00:00, 78.33it/s]Batches:  78%|███████▊  | 196/252 [00:03<00:00, 86.05it/s]Batches:  83%|████████▎ | 208/252 [00:03<00:00, 93.57it/s]Batches:  87%|████████▋ | 218/252 [00:03<00:00, 94.33it/s]Batches:  91%|█████████▏| 230/252 [00:03<00:00, 99.48it/s]Batches:  96%|█████████▌| 241/252 [00:03<00:00, 102.04it/s]Batches: 100%|██████████| 252/252 [00:03<00:00, 68.44it/s] 
+  encoding FT-B.year [10:36:31]
+Batches:   0%|          | 0/252 [00:00<?, ?it/s]Batches:   4%|▍         | 11/252 [00:00<00:02, 109.90it/s]Batches:   9%|▉         | 23/252 [00:00<00:02, 111.81it/s]Batches:  14%|█▍        | 35/252 [00:00<00:02, 106.14it/s]Batches:  18%|█▊        | 46/252 [00:00<00:02, 95.05it/s] Batches:  22%|██▏       | 56/252 [00:00<00:02, 95.59it/s]Batches:  27%|██▋       | 67/252 [00:00<00:01, 98.76it/s]Batches:  31%|███       | 78/252 [00:00<00:01, 101.87it/s]Batches:  35%|███▌      | 89/252 [00:00<00:01, 101.86it/s]Batches:  40%|████      | 101/252 [00:00<00:01, 104.03it/s]Batches:  44%|████▍     | 112/252 [00:01<00:01, 99.63it/s] Batches:  49%|████▉     | 123/252 [00:01<00:01, 99.27it/s]Batches:  53%|█████▎    | 134/252 [00:01<00:01, 102.10it/s]Batches:  58%|█████▊    | 146/252 [00:01<00:00, 106.29it/s]Batches:  62%|██████▏   | 157/252 [00:01<00:00, 100.75it/s]Batches:  67%|██████▋   | 168/252 [00:01<00:01, 67.17it/s] Batches:  71%|███████▏  | 180/252 [00:01<00:00, 76.79it/s]Batches:  75%|███████▌  | 190/252 [00:02<00:00, 80.49it/s]Batches:  79%|███████▉  | 200/252 [00:02<00:00, 84.94it/s]Batches:  84%|████████▍ | 212/252 [00:02<00:00, 91.96it/s]Batches:  88%|████████▊ | 222/252 [00:02<00:00, 89.85it/s]Batches:  92%|█████████▏| 232/252 [00:02<00:00, 91.54it/s]Batches:  96%|█████████▌| 242/252 [00:02<00:00, 91.04it/s]Batches: 100%|██████████| 252/252 [00:02<00:00, 93.57it/s]
+  retrieved 256/2,616 A records  retrieved 512/2,616 A records  retrieved 768/2,616 A records  retrieved 1,024/2,616 A records  retrieved 1,280/2,616 A records  retrieved 1,536/2,616 A records  retrieved 1,792/2,616 A records  retrieved 2,048/2,616 A records  retrieved 2,304/2,616 A records  retrieved 2,560/2,616 A records  retrieved 2,616/2,616 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      FT saved: MEC lambda=0.0423, psi=0.0016; LR lambda=0.0264, psi=0.0173
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8118.76it/s]
+      training CE: pairs=46,588, epochs=5, warmup=1456, lr=2e-05, batch=16, max_length=128 [10:45:59]
+{'loss': '0.02844', 'grad_norm': '0.005979', 'learning_rate': '6.854e-06', 'epoch': '0.1717'}
+{'loss': '0.02133', 'grad_norm': '0.002125', 'learning_rate': '1.372e-05', 'epoch': '0.3434'}
+{'loss': '0.01276', 'grad_norm': '0.001104', 'learning_rate': '1.993e-05', 'epoch': '0.5151'}
+{'loss': '0.01956', 'grad_norm': '0.0002542', 'learning_rate': '1.917e-05', 'epoch': '0.6868'}
+{'loss': '0.0154', 'grad_norm': '0.0005433', 'learning_rate': '1.841e-05', 'epoch': '0.8585'}
+{'loss': '0.01218', 'grad_norm': '7.49', 'learning_rate': '1.764e-05', 'epoch': '1.03'}
+{'loss': '0.004826', 'grad_norm': '0.0001334', 'learning_rate': '1.688e-05', 'epoch': '1.202'}
+{'loss': '0.0083', 'grad_norm': '0.0001676', 'learning_rate': '1.612e-05', 'epoch': '1.374'}
+{'loss': '0.01012', 'grad_norm': '0.0002786', 'learning_rate': '1.535e-05', 'epoch': '1.545'}
+{'loss': '0.008333', 'grad_norm': '0.000402', 'learning_rate': '1.459e-05', 'epoch': '1.717'}
+{'loss': '0.01284', 'grad_norm': '0.0004757', 'learning_rate': '1.383e-05', 'epoch': '1.889'}
+{'loss': '0.007086', 'grad_norm': '0.007308', 'learning_rate': '1.306e-05', 'epoch': '2.06'}
+{'loss': '0.002295', 'grad_norm': '0.0001752', 'learning_rate': '1.23e-05', 'epoch': '2.232'}
+{'loss': '0.004698', 'grad_norm': '0.0003596', 'learning_rate': '1.154e-05', 'epoch': '2.404'}
+{'loss': '0.00411', 'grad_norm': '0.0002922', 'learning_rate': '1.077e-05', 'epoch': '2.576'}
+{'loss': '0.006889', 'grad_norm': '3.955', 'learning_rate': '1.001e-05', 'epoch': '2.747'}
+{'loss': '0.003834', 'grad_norm': '0.006062', 'learning_rate': '9.247e-06', 'epoch': '2.919'}
+{'loss': '0.001976', 'grad_norm': '0.002499', 'learning_rate': '8.483e-06', 'epoch': '3.091'}
+{'loss': '0.0009358', 'grad_norm': '0.0002405', 'learning_rate': '7.72e-06', 'epoch': '3.262'}
+{'loss': '0.002268', 'grad_norm': '0.0001436', 'learning_rate': '6.956e-06', 'epoch': '3.434'}
+{'loss': '0.001624', 'grad_norm': '0.0001573', 'learning_rate': '6.193e-06', 'epoch': '3.606'}
+{'loss': '0.003255', 'grad_norm': '0.0001373', 'learning_rate': '5.429e-06', 'epoch': '3.777'}
+{'loss': '0.004279', 'grad_norm': '0.0003288', 'learning_rate': '4.666e-06', 'epoch': '3.949'}
+{'loss': '0.0005753', 'grad_norm': '0.0001096', 'learning_rate': '3.903e-06', 'epoch': '4.121'}
+{'loss': '0.002454', 'grad_norm': '0.0007496', 'learning_rate': '3.139e-06', 'epoch': '4.293'}
+{'loss': '0.002204', 'grad_norm': '0.0001124', 'learning_rate': '2.376e-06', 'epoch': '4.464'}
+{'loss': '0.0005323', 'grad_norm': '0.0001022', 'learning_rate': '1.612e-06', 'epoch': '4.636'}
+{'loss': '0.0005638', 'grad_norm': '0.0002003', 'learning_rate': '8.489e-07', 'epoch': '4.808'}
+{'loss': '0.001366', 'grad_norm': '0.001147', 'learning_rate': '8.55e-08', 'epoch': '4.979'}
+{'train_runtime': '305.2', 'train_samples_per_second': '763.2', 'train_steps_per_second': '47.71', 'train_loss': '0.007043', 'epoch': '5'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.19it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.17it/s]
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+      saved CE checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/cross_encoder/DBLP/seed_44
+      evaluating 1,308 test records with 50 candidates each [10:51:10]
+        200/1,308        400/1,308        600/1,308        800/1,308        1,000/1,308        1,200/1,308        1,308/1,308
+      CE saved: direct lambda=0.0156, psi=0.0099; legacy lambda=0.0156, psi=0.0099; alternative valid links=365
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  fine-tuned     LR         3     0.026210   0.006842   0.003950  0.019039 0.005902 0.003408
+   DBLP  fine-tuned    MEC         3     0.046337   0.007609   0.004393  0.001654 0.000822 0.000474
+   DBLP pre-trained     LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP pre-trained    MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  bi-encoder / LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP bi-encoder / MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   DBLP    cross-encoder         3     0.017888   0.005321   0.003072  0.009654 0.002860 0.001651
+   DBLP      string / LR         3     0.026594   0.004656   0.002688  0.045301 0.007517 0.004340
+   DBLP     string / MEC         3     0.046420   0.005356   0.003092  0.003868 0.000500 0.000288
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP       Q1 cross-encoder         3     0.064102   0.019208   0.011090  0.027897 0.008341 0.004816
+   DBLP       Q1   two-step LR         3     0.020818   0.005128   0.002961  0.130140 0.017097 0.009871
+   DBLP       Q2 cross-encoder         3     0.015888   0.009648   0.005570  0.008414 0.003505 0.002024
+   DBLP       Q2   two-step LR         3     0.019000   0.014338   0.008278  0.122608 0.010079 0.005819
+   DBLP       Q3 cross-encoder         3     0.003083   0.003077   0.001776  0.007161 0.004688 0.002706
+   DBLP       Q3   two-step LR         3     0.003064   0.003058   0.001766  0.011219 0.014449 0.008342
+   DBLP       Q4 cross-encoder         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   DBLP       Q4   two-step LR         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+ECOM input validation
+------------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  A with >1 match=16  max matches/A=2
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+
+ECOM baseline embeddings and blocking
+------------------------------------------------------------------------------
+  encoding A.title [10:51:48]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 63.89it/s]
+  encoding A.desc [10:51:48]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  60%|██████    | 3/5 [00:00<00:00, 23.40it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 27.56it/s]
+  encoding B.title [10:51:48]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 52.41it/s]
+  encoding B.desc [10:51:48]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 59.68it/s]
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records
+  caching June string features for k=50 pairs [10:51:48]
+    cached 250/1,081 A records    cached 500/1,081 A records    cached 750/1,081 A records    cached 1,000/1,081 A records    cached 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+
+==============================================================================
+ECOM seed=42 (primary)
+==============================================================================
+      baseline string: MEC lambda=0.4407, psi=0.1275; LR lambda=0.3543, psi=0.4418, threshold=0.15
+      baseline bi-encoder: MEC lambda=0.3193, psi=0.0333; LR lambda=0.2322, psi=0.2994, threshold=0.15
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7222.13it/s]
+      fine-tuning bi-encoder: pairs=26,997, epochs=1, warmup=168, lr=2e-05, batch=16 [10:53:49]
+Computing widget examples:   0%|          | 0/1 [00:00<?, ?example/s]                                                                     {'loss': '0.001614', 'grad_norm': '0.03681', 'learning_rate': '1.564e-05', 'epoch': '0.2962'}
+{'loss': '0.001159', 'grad_norm': '0.02181', 'learning_rate': '9.059e-06', 'epoch': '0.5924'}
+{'loss': '0.001094', 'grad_norm': '0.1465', 'learning_rate': '2.475e-06', 'epoch': '0.8886'}
+{'train_runtime': '65.53', 'train_samples_per_second': '412', 'train_steps_per_second': '25.76', 'train_loss': '0.001244', 'epoch': '1'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.90it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.88it/s]
+      saved fine-tuned checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/ECOM/seed_42
+      re-embedding complete A and B with fine-tuned encoder [10:54:55]
+  encoding FT-A.title [10:54:55]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 55.91it/s]
+  encoding FT-A.desc [10:54:55]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  60%|██████    | 3/5 [00:00<00:00, 21.62it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 26.59it/s]
+  encoding FT-B.title [10:54:55]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 53.15it/s]
+  encoding FT-B.desc [10:54:56]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 62.51it/s]
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      FT saved: MEC lambda=0.1224, psi=0.0185; LR lambda=0.0484, psi=0.2366
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7822.14it/s]
+      training CE: pairs=21,597, epochs=5, warmup=675, lr=2e-05, batch=16, max_length=128 [10:55:57]
+{'loss': '0.07383', 'grad_norm': '0.1809', 'learning_rate': '1.479e-05', 'epoch': '0.3704'}
+{'loss': '0.05165', 'grad_norm': '0.3988', 'learning_rate': '1.893e-05', 'epoch': '0.7407'}
+{'loss': '0.03592', 'grad_norm': '0.2219', 'learning_rate': '1.729e-05', 'epoch': '1.111'}
+{'loss': '0.03017', 'grad_norm': '0.01012', 'learning_rate': '1.564e-05', 'epoch': '1.481'}
+{'loss': '0.02909', 'grad_norm': '0.02726', 'learning_rate': '1.399e-05', 'epoch': '1.852'}
+{'loss': '0.02085', 'grad_norm': '0.005814', 'learning_rate': '1.234e-05', 'epoch': '2.222'}
+{'loss': '0.01625', 'grad_norm': '0.0004959', 'learning_rate': '1.07e-05', 'epoch': '2.593'}
+{'loss': '0.01769', 'grad_norm': '0.00587', 'learning_rate': '9.048e-06', 'epoch': '2.963'}
+{'loss': '0.01132', 'grad_norm': '0.01353', 'learning_rate': '7.4e-06', 'epoch': '3.333'}
+{'loss': '0.01244', 'grad_norm': '0.002054', 'learning_rate': '5.753e-06', 'epoch': '3.704'}
+{'loss': '0.01168', 'grad_norm': '0.01904', 'learning_rate': '4.105e-06', 'epoch': '4.074'}
+{'loss': '0.00826', 'grad_norm': '0.00107', 'learning_rate': '2.458e-06', 'epoch': '4.444'}
+{'loss': '0.01103', 'grad_norm': '0.006894', 'learning_rate': '8.105e-07', 'epoch': '4.815'}
+{'train_runtime': '146.1', 'train_samples_per_second': '739.3', 'train_steps_per_second': '46.21', 'train_loss': '0.02487', 'epoch': '5'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.16it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.15it/s]
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+      saved CE checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/cross_encoder/ECOM/seed_42
+      evaluating 541 test records with 50 candidates each [10:58:26]
+        200/541        400/541        541/541/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      CE saved: direct lambda=0.0426, psi=0.0887; legacy lambda=0.0441, psi=0.0776; alternative valid links=3
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  fine-tuned     LR         3     0.026210   0.006842   0.003950  0.019039 0.005902 0.003408
+   DBLP  fine-tuned    MEC         3     0.046337   0.007609   0.004393  0.001654 0.000822 0.000474
+   DBLP pre-trained     LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP pre-trained    MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   ECOM  fine-tuned     LR         1     0.048426        NaN        NaN  0.236599      NaN      NaN
+   ECOM  fine-tuned    MEC         1     0.122411        NaN        NaN  0.018484      NaN      NaN
+   ECOM pre-trained     LR         1     0.232190        NaN        NaN  0.299445      NaN      NaN
+   ECOM pre-trained    MEC         1     0.319312        NaN        NaN  0.033272      NaN      NaN
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  bi-encoder / LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP bi-encoder / MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   DBLP    cross-encoder         3     0.017888   0.005321   0.003072  0.009654 0.002860 0.001651
+   DBLP      string / LR         3     0.026594   0.004656   0.002688  0.045301 0.007517 0.004340
+   DBLP     string / MEC         3     0.046420   0.005356   0.003092  0.003868 0.000500 0.000288
+   ECOM  bi-encoder / LR         1     0.232190        NaN        NaN  0.299445      NaN      NaN
+   ECOM bi-encoder / MEC         1     0.319312        NaN        NaN  0.033272      NaN      NaN
+   ECOM    cross-encoder         1     0.042596        NaN        NaN  0.088725      NaN      NaN
+   ECOM      string / LR         1     0.354305        NaN        NaN  0.441774      NaN      NaN
+   ECOM     string / MEC         1     0.440678        NaN        NaN  0.127542      NaN      NaN
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP       Q1 cross-encoder         3     0.064102   0.019208   0.011090  0.027897 0.008341 0.004816
+   DBLP       Q1   two-step LR         3     0.020818   0.005128   0.002961  0.130140 0.017097 0.009871
+   DBLP       Q2 cross-encoder         3     0.015888   0.009648   0.005570  0.008414 0.003505 0.002024
+   DBLP       Q2   two-step LR         3     0.019000   0.014338   0.008278  0.122608 0.010079 0.005819
+   DBLP       Q3 cross-encoder         3     0.003083   0.003077   0.001776  0.007161 0.004688 0.002706
+   DBLP       Q3   two-step LR         3     0.003064   0.003058   0.001766  0.011219 0.014449 0.008342
+   DBLP       Q4 cross-encoder         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   DBLP       Q4   two-step LR         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   ECOM       Q1 cross-encoder         1     0.075630        NaN        NaN  0.125000      NaN      NaN
+   ECOM       Q1   two-step LR         1     0.468085        NaN        NaN  0.654412      NaN      NaN
+   ECOM       Q2 cross-encoder         1     0.040000        NaN        NaN  0.074074      NaN      NaN
+   ECOM       Q2   two-step LR         1     0.391892        NaN        NaN  0.451852      NaN      NaN
+   ECOM       Q3 cross-encoder         1     0.040984        NaN        NaN  0.096296      NaN      NaN
+   ECOM       Q3   two-step LR         1     0.252033        NaN        NaN  0.088889      NaN      NaN
+   ECOM       Q4 cross-encoder         1     0.022556        NaN        NaN  0.014815      NaN      NaN
+   ECOM       Q4   two-step LR         1     0.044444        NaN        NaN  0.000000      NaN      NaN
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+==============================================================================
+ECOM seed=43 (primary)
+==============================================================================
+      baseline string: MEC lambda=0.4376, psi=0.1553; LR lambda=0.3303, psi=0.3956, threshold=0.15
+      baseline bi-encoder: MEC lambda=0.3282, psi=0.0481; LR lambda=0.1965, psi=0.5767, threshold=0.25
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7673.14it/s]
+      fine-tuning bi-encoder: pairs=26,997, epochs=1, warmup=168, lr=2e-05, batch=16 [11:00:37]
+Computing widget examples:   0%|          | 0/1 [00:00<?, ?example/s]                                                                     {'loss': '0.001452', 'grad_norm': '0.02453', 'learning_rate': '1.564e-05', 'epoch': '0.2962'}
+{'loss': '0.001124', 'grad_norm': '0.01693', 'learning_rate': '9.059e-06', 'epoch': '0.5924'}
+{'loss': '0.001124', 'grad_norm': '0', 'learning_rate': '2.475e-06', 'epoch': '0.8886'}
+{'train_runtime': '63.14', 'train_samples_per_second': '427.6', 'train_steps_per_second': '26.73', 'train_loss': '0.001195', 'epoch': '1'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.19it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.17it/s]
+      saved fine-tuned checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/ECOM/seed_43
+      re-embedding complete A and B with fine-tuned encoder [11:01:41]
+  encoding FT-A.title [11:01:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 61.84it/s]
+  encoding FT-A.desc [11:01:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  40%|████      | 2/5 [00:00<00:00, 18.54it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 25.49it/s]
+  encoding FT-B.title [11:01:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 60.81it/s]
+  encoding FT-B.desc [11:01:41]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 62.55it/s]
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      FT saved: MEC lambda=0.1236, psi=0.0277; LR lambda=0.0531, psi=0.2348
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7702.57it/s]
+      training CE: pairs=21,597, epochs=5, warmup=675, lr=2e-05, batch=16, max_length=128 [11:02:42]
+{'loss': '0.06852', 'grad_norm': '18', 'learning_rate': '1.479e-05', 'epoch': '0.3704'}
+{'loss': '0.04582', 'grad_norm': '0.4516', 'learning_rate': '1.893e-05', 'epoch': '0.7407'}
+{'loss': '0.03571', 'grad_norm': '7.508', 'learning_rate': '1.729e-05', 'epoch': '1.111'}
+{'loss': '0.02481', 'grad_norm': '0.0003602', 'learning_rate': '1.564e-05', 'epoch': '1.481'}
+{'loss': '0.028', 'grad_norm': '0.06774', 'learning_rate': '1.399e-05', 'epoch': '1.852'}
+{'loss': '0.02237', 'grad_norm': '0.006987', 'learning_rate': '1.234e-05', 'epoch': '2.222'}
+{'loss': '0.01424', 'grad_norm': '0.1347', 'learning_rate': '1.07e-05', 'epoch': '2.593'}
+{'loss': '0.01348', 'grad_norm': '0.002998', 'learning_rate': '9.048e-06', 'epoch': '2.963'}
+{'loss': '0.01394', 'grad_norm': '6.008', 'learning_rate': '7.4e-06', 'epoch': '3.333'}
+{'loss': '0.009085', 'grad_norm': '0.03604', 'learning_rate': '5.753e-06', 'epoch': '3.704'}
+{'loss': '0.01058', 'grad_norm': '0.0002168', 'learning_rate': '4.105e-06', 'epoch': '4.074'}
+{'loss': '0.005615', 'grad_norm': '2.695', 'learning_rate': '2.458e-06', 'epoch': '4.444'}
+{'loss': '0.006154', 'grad_norm': '0.0007455', 'learning_rate': '8.105e-07', 'epoch': '4.815'}
+{'train_runtime': '140.7', 'train_samples_per_second': '767.6', 'train_steps_per_second': '47.98', 'train_loss': '0.02224', 'epoch': '5'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.96it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.95it/s]
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+      saved CE checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/cross_encoder/ECOM/seed_43
+      evaluating 541 test records with 50 candidates each [11:05:06]
+        200/541        400/541        541/541/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      CE saved: direct lambda=0.0440, psi=0.1183; legacy lambda=0.0400, psi=0.1220; alternative valid links=2
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  fine-tuned     LR         3     0.026210   0.006842   0.003950  0.019039 0.005902 0.003408
+   DBLP  fine-tuned    MEC         3     0.046337   0.007609   0.004393  0.001654 0.000822 0.000474
+   DBLP pre-trained     LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP pre-trained    MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   ECOM  fine-tuned     LR         2     0.050783   0.003333   0.002357  0.235675 0.001307 0.000924
+   ECOM  fine-tuned    MEC         2     0.122992   0.000823   0.000582  0.023105 0.006535 0.004621
+   ECOM pre-trained     LR         2     0.214348   0.025232   0.017842  0.438078 0.196055 0.138632
+   ECOM pre-trained    MEC         2     0.323734   0.006253   0.004422  0.040665 0.010456 0.007394
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  bi-encoder / LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP bi-encoder / MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   DBLP    cross-encoder         3     0.017888   0.005321   0.003072  0.009654 0.002860 0.001651
+   DBLP      string / LR         3     0.026594   0.004656   0.002688  0.045301 0.007517 0.004340
+   DBLP     string / MEC         3     0.046420   0.005356   0.003092  0.003868 0.000500 0.000288
+   ECOM  bi-encoder / LR         2     0.214348   0.025232   0.017842  0.438078 0.196055 0.138632
+   ECOM bi-encoder / MEC         2     0.323734   0.006253   0.004422  0.040665 0.010456 0.007394
+   ECOM    cross-encoder         2     0.043311   0.001010   0.000714  0.103512 0.020913 0.014787
+   ECOM      string / LR         2     0.342290   0.016991   0.012015  0.418669 0.032676 0.023105
+   ECOM     string / MEC         2     0.439157   0.002150   0.001521  0.141405 0.019606 0.013863
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP       Q1 cross-encoder         3     0.064102   0.019208   0.011090  0.027897 0.008341 0.004816
+   DBLP       Q1   two-step LR         3     0.020818   0.005128   0.002961  0.130140 0.017097 0.009871
+   DBLP       Q2 cross-encoder         3     0.015888   0.009648   0.005570  0.008414 0.003505 0.002024
+   DBLP       Q2   two-step LR         3     0.019000   0.014338   0.008278  0.122608 0.010079 0.005819
+   DBLP       Q3 cross-encoder         3     0.003083   0.003077   0.001776  0.007161 0.004688 0.002706
+   DBLP       Q3   two-step LR         3     0.003064   0.003058   0.001766  0.011219 0.014449 0.008342
+   DBLP       Q4 cross-encoder         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   DBLP       Q4   two-step LR         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   ECOM       Q1 cross-encoder         2     0.086922   0.015969   0.011292  0.150735 0.036395 0.025735
+   ECOM       Q1   two-step LR         2     0.503273   0.049764   0.035188  0.731618 0.109186 0.077206
+   ECOM       Q2 cross-encoder         2     0.041739   0.002460   0.001739  0.111111 0.052378 0.037037
+   ECOM       Q2   two-step LR         2     0.341107   0.071820   0.050785  0.611111 0.225227 0.159259
+   ECOM       Q3 cross-encoder         2     0.028756   0.017292   0.012227  0.100000 0.005238 0.003704
+   ECOM       Q3   two-step LR         2     0.246016   0.008508   0.006016  0.359259 0.382361 0.270370
+   ECOM       Q4 cross-encoder         2     0.015215   0.010382   0.007341  0.037037 0.031427 0.022222
+   ECOM       Q4   two-step LR         2     0.063206   0.026533   0.018761  0.048148 0.068092 0.048148
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+==============================================================================
+ECOM seed=44 (primary)
+==============================================================================
+      baseline string: MEC lambda=0.4681, psi=0.1312; LR lambda=0.3300, psi=0.6303, threshold=0.20
+      baseline bi-encoder: MEC lambda=0.3340, psi=0.0481; LR lambda=0.2692, psi=0.3272, threshold=0.15
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6319.77it/s]
+      fine-tuning bi-encoder: pairs=26,994, epochs=1, warmup=168, lr=2e-05, batch=16 [11:07:17]
+Computing widget examples:   0%|          | 0/1 [00:00<?, ?example/s]                                                                     {'loss': '0.001558', 'grad_norm': '0', 'learning_rate': '1.564e-05', 'epoch': '0.2962'}
+{'loss': '0.001162', 'grad_norm': '0.07893', 'learning_rate': '9.059e-06', 'epoch': '0.5924'}
+{'loss': '0.001123', 'grad_norm': '0.05688', 'learning_rate': '2.475e-06', 'epoch': '0.8886'}
+{'train_runtime': '67.02', 'train_samples_per_second': '402.8', 'train_steps_per_second': '25.19', 'train_loss': '0.001251', 'epoch': '1'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.94it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.93it/s]
+      saved fine-tuned checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/ft_biencoder/ECOM/seed_44
+      re-embedding complete A and B with fine-tuned encoder [11:08:25]
+  encoding FT-A.title [11:08:25]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 55.53it/s]
+  encoding FT-A.desc [11:08:25]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  60%|██████    | 3/5 [00:00<00:00, 23.64it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 28.74it/s]
+  encoding FT-B.title [11:08:25]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 59.82it/s]
+  encoding FT-B.desc [11:08:25]
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches: 100%|██████████| 5/5 [00:00<00:00, 57.27it/s]
+  retrieved 256/1,081 A records  retrieved 512/1,081 A records  retrieved 768/1,081 A records  retrieved 1,024/1,081 A records  retrieved 1,081/1,081 A records/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+
+      FT saved: MEC lambda=0.1252, psi=0.0259; LR lambda=0.0563, psi=0.2126
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7563.01it/s]
+      training CE: pairs=21,595, epochs=5, warmup=675, lr=2e-05, batch=16, max_length=128 [11:09:26]
+{'loss': '0.06597', 'grad_norm': '0.1151', 'learning_rate': '1.479e-05', 'epoch': '0.3704'}
+{'loss': '0.04697', 'grad_norm': '1.609', 'learning_rate': '1.893e-05', 'epoch': '0.7407'}
+{'loss': '0.03869', 'grad_norm': '0.009842', 'learning_rate': '1.729e-05', 'epoch': '1.111'}
+{'loss': '0.02182', 'grad_norm': '0.001966', 'learning_rate': '1.564e-05', 'epoch': '1.481'}
+{'loss': '0.02531', 'grad_norm': '0.009072', 'learning_rate': '1.399e-05', 'epoch': '1.852'}
+{'loss': '0.02209', 'grad_norm': '0.002002', 'learning_rate': '1.234e-05', 'epoch': '2.222'}
+{'loss': '0.01452', 'grad_norm': '0.00172', 'learning_rate': '1.07e-05', 'epoch': '2.593'}
+{'loss': '0.01335', 'grad_norm': '0.05716', 'learning_rate': '9.048e-06', 'epoch': '2.963'}
+{'loss': '0.005968', 'grad_norm': '0.00204', 'learning_rate': '7.4e-06', 'epoch': '3.333'}
+{'loss': '0.01148', 'grad_norm': '0.0009893', 'learning_rate': '5.753e-06', 'epoch': '3.704'}
+{'loss': '0.01045', 'grad_norm': '0.001027', 'learning_rate': '4.105e-06', 'epoch': '4.074'}
+{'loss': '0.009453', 'grad_norm': '0.0008904', 'learning_rate': '2.458e-06', 'epoch': '4.444'}
+{'loss': '0.006297', 'grad_norm': '0.001401', 'learning_rate': '8.105e-07', 'epoch': '4.815'}
+{'train_runtime': '142', 'train_samples_per_second': '760.2', 'train_steps_per_second': '47.52', 'train_loss': '0.02194', 'epoch': '5'}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.50it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.49it/s]
+/home/ahmeda/er_transformer_fulltest_venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1381: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.
+  warnings.warn(
+      saved CE checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis17_section5/cross_encoder/ECOM/seed_44
+      evaluating 541 test records with 50 candidates each [11:11:52]
+        200/541        400/541        541/541
+      CE saved: direct lambda=0.0366, psi=0.1405; legacy lambda=0.0308, psi=0.1590; alternative valid links=1
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  fine-tuned     LR         3     0.026210   0.006842   0.003950  0.019039 0.005902 0.003408
+   DBLP  fine-tuned    MEC         3     0.046337   0.007609   0.004393  0.001654 0.000822 0.000474
+   DBLP pre-trained     LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP pre-trained    MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   ECOM  fine-tuned     LR         3     0.052635   0.003980   0.002298  0.227973 0.013372 0.007720
+   ECOM  fine-tuned    MEC         3     0.123741   0.001421   0.000820  0.024030 0.004890 0.002824
+   ECOM pre-trained     LR         3     0.232642   0.036364   0.020995  0.401109 0.152705 0.088164
+   ECOM pre-trained    MEC         3     0.327149   0.007386   0.004264  0.043130 0.008538 0.004929
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  bi-encoder / LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP bi-encoder / MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   DBLP    cross-encoder         3     0.017888   0.005321   0.003072  0.009654 0.002860 0.001651
+   DBLP      string / LR         3     0.026594   0.004656   0.002688  0.045301 0.007517 0.004340
+   DBLP     string / MEC         3     0.046420   0.005356   0.003092  0.003868 0.000500 0.000288
+   ECOM  bi-encoder / LR         3     0.232642   0.036364   0.020995  0.401109 0.152705 0.088164
+   ECOM bi-encoder / MEC         3     0.327149   0.007386   0.004264  0.043130 0.008538 0.004929
+   ECOM    cross-encoder         3     0.041060   0.003963   0.002288  0.115835 0.025966 0.014991
+   ECOM      string / LR         3     0.338193   0.013954   0.008056  0.489217 0.124359 0.071799
+   ECOM     string / MEC         3     0.448800   0.016771   0.009682  0.138016 0.015055 0.008692
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP       Q1 cross-encoder         3     0.064102   0.019208   0.011090  0.027897 0.008341 0.004816
+   DBLP       Q1   two-step LR         3     0.020818   0.005128   0.002961  0.130140 0.017097 0.009871
+   DBLP       Q2 cross-encoder         3     0.015888   0.009648   0.005570  0.008414 0.003505 0.002024
+   DBLP       Q2   two-step LR         3     0.019000   0.014338   0.008278  0.122608 0.010079 0.005819
+   DBLP       Q3 cross-encoder         3     0.003083   0.003077   0.001776  0.007161 0.004688 0.002706
+   DBLP       Q3   two-step LR         3     0.003064   0.003058   0.001766  0.011219 0.014449 0.008342
+   DBLP       Q4 cross-encoder         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   DBLP       Q4   two-step LR         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   ECOM       Q1 cross-encoder         3     0.074129   0.024869   0.014358  0.181373 0.058977 0.034050
+   ECOM       Q1   two-step LR         3     0.549191   0.086968   0.050211  0.725490 0.077932 0.044994
+   ECOM       Q2 cross-encoder         3     0.045370   0.006525   0.003767  0.125926 0.045058 0.026014
+   ECOM       Q2   two-step LR         3     0.367501   0.068330   0.039451  0.570370 0.174192 0.100570
+   ECOM       Q3 cross-encoder         3     0.025019   0.013835   0.007988  0.118519 0.032288 0.018642
+   ECOM       Q3   two-step LR         3     0.243901   0.007044   0.004067  0.274074 0.308009 0.177829
+   ECOM       Q4 cross-encoder         3     0.012832   0.008422   0.004863  0.051852 0.033945 0.019598
+   ECOM       Q4   two-step LR         3     0.079174   0.033421   0.019296  0.032099 0.055597 0.032099
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+======================================================================================================================
+analysis17_table5: primary seeds
+======================================================================================================================
+dataset     encoder scorer  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  fine-tuned     LR         3     0.026210   0.006842   0.003950  0.019039 0.005902 0.003408
+   DBLP  fine-tuned    MEC         3     0.046337   0.007609   0.004393  0.001654 0.000822 0.000474
+   DBLP pre-trained     LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP pre-trained    MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   ECOM  fine-tuned     LR         3     0.052635   0.003980   0.002298  0.227973 0.013372 0.007720
+   ECOM  fine-tuned    MEC         3     0.123741   0.001421   0.000820  0.024030 0.004890 0.002824
+   ECOM pre-trained     LR         3     0.232642   0.036364   0.020995  0.401109 0.152705 0.088164
+   ECOM pre-trained    MEC         3     0.327149   0.007386   0.004264  0.043130 0.008538 0.004929
+
+======================================================================================================================
+analysis17_table6: primary seeds
+======================================================================================================================
+dataset            model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP  bi-encoder / LR         3     0.009346   0.004669   0.002695  0.060796 0.008126 0.004692
+   DBLP bi-encoder / MEC         3     0.042879   0.004517   0.002608  0.003591 0.001263 0.000729
+   DBLP    cross-encoder         3     0.017888   0.005321   0.003072  0.009654 0.002860 0.001651
+   DBLP      string / LR         3     0.026594   0.004656   0.002688  0.045301 0.007517 0.004340
+   DBLP     string / MEC         3     0.046420   0.005356   0.003092  0.003868 0.000500 0.000288
+   ECOM  bi-encoder / LR         3     0.232642   0.036364   0.020995  0.401109 0.152705 0.088164
+   ECOM bi-encoder / MEC         3     0.327149   0.007386   0.004264  0.043130 0.008538 0.004929
+   ECOM    cross-encoder         3     0.041060   0.003963   0.002288  0.115835 0.025966 0.014991
+   ECOM      string / LR         3     0.338193   0.013954   0.008056  0.489217 0.124359 0.071799
+   ECOM     string / MEC         3     0.448800   0.016771   0.009682  0.138016 0.015055 0.008692
+
+======================================================================================================================
+analysis17_table7: primary seeds
+======================================================================================================================
+dataset quartile         model  n_splits  lambda_mean  lambda_sd  lambda_se  psi_mean   psi_sd   psi_se
+   DBLP       Q1 cross-encoder         3     0.064102   0.019208   0.011090  0.027897 0.008341 0.004816
+   DBLP       Q1   two-step LR         3     0.020818   0.005128   0.002961  0.130140 0.017097 0.009871
+   DBLP       Q2 cross-encoder         3     0.015888   0.009648   0.005570  0.008414 0.003505 0.002024
+   DBLP       Q2   two-step LR         3     0.019000   0.014338   0.008278  0.122608 0.010079 0.005819
+   DBLP       Q3 cross-encoder         3     0.003083   0.003077   0.001776  0.007161 0.004688 0.002706
+   DBLP       Q3   two-step LR         3     0.003064   0.003058   0.001766  0.011219 0.014449 0.008342
+   DBLP       Q4 cross-encoder         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   DBLP       Q4   two-step LR         3     0.000000   0.000000   0.000000  0.000000 0.000000 0.000000
+   ECOM       Q1 cross-encoder         3     0.074129   0.024869   0.014358  0.181373 0.058977 0.034050
+   ECOM       Q1   two-step LR         3     0.549191   0.086968   0.050211  0.725490 0.077932 0.044994
+   ECOM       Q2 cross-encoder         3     0.045370   0.006525   0.003767  0.125926 0.045058 0.026014
+   ECOM       Q2   two-step LR         3     0.367501   0.068330   0.039451  0.570370 0.174192 0.100570
+   ECOM       Q3 cross-encoder         3     0.025019   0.013835   0.007988  0.118519 0.032288 0.018642
+   ECOM       Q3   two-step LR         3     0.243901   0.007044   0.004067  0.274074 0.308009 0.177829
+   ECOM       Q4 cross-encoder         3     0.012832   0.008422   0.004863  0.051852 0.033945 0.019598
+   ECOM       Q4   two-step LR         3     0.079174   0.033421   0.019296  0.032099 0.055597 0.032099
+
+Saved final outputs under:
+/home/ahmeda/ER_Transformer_Reproducible_RUN/results
+
+Analysis 17 complete for the requested cells.
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

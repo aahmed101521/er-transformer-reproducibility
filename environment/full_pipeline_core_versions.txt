@@ -1,0 +1,13 @@
+Python: 3.12.3
+NumPy: 2.5.3
+pandas: 3.0.6
+scikit-learn: 1.9.1
+torch: 2.5.1+cu121
+transformers: 5.17.0
+sentence-transformers: 6.1.0
+xgboost: 3.3.0
+datasets: 5.0.1
+accelerate: 1.15.0
+CUDA available: True
+CUDA runtime: 12.1
+GPU: NVIDIA L40

@@ -1,0 +1,45 @@
+{
+  "CE_direct": {
+    "correct": 472,
+    "declared": 493,
+    "false_links": 21,
+    "lambda": 0.04259634888438134,
+    "missing_matches": 48,
+    "n_true_records": 541,
+    "psi": 0.08872458410351201
+  },
+  "CE_legacy": {
+    "correct": 477,
+    "declared": 499,
+    "false_links": 22,
+    "lambda": 0.04408817635270541,
+    "missing_matches": 42,
+    "n_true_records": 541,
+    "psi": 0.07763401109057301
+  },
+  "LR": {
+    "correct": 291,
+    "declared": 379,
+    "false_links": 88,
+    "lambda": 0.23218997361477572,
+    "missing_matches": 162,
+    "n_true_records": 541,
+    "psi": 0.29944547134935307
+  },
+  "alternative_valid_links": 3,
+  "ce_direct_threshold": 0.1,
+  "ce_direct_validation_f1": 0.8544600938967136,
+  "ce_legacy_threshold": 0.25000000000000006,
+  "ce_legacy_validation_f1": 0.8623853211009175,
+  "dataset": "ECOM",
+  "lr_threshold": 0.15000000000000002,
+  "lr_validation_f1": 0.46853146853146854,
+  "n_ce_train_pairs": 21597,
+  "n_ce_validation_pairs": 5400,
+  "n_test_a": 541,
+  "n_train_a": 540,
+  "n_train_pairs_full": 26997,
+  "phase": "cross_encoder",
+  "runtime_seconds": 171.72083139419556,
+  "seed": 42
+}

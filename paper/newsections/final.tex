@@ -1,0 +1,81 @@
+\section{Final remarks}
+\label{sec:final-remarks}
+
+The traditional workflow may yield high error rates for entity resolution based on more or
+less free texts, because hand-crafted preprocessing rules and traditional scoring models
+cannot handle natural language as effectively as structured linkage key values.
+
+The transformer-only workflow, on the other hand, may not be scalable in many
+applications, because the cross-encoder model needs to handle a potentially large number
+of text pairs directly. Assessment of the associated linkage errors presents another
+challenge in practice, particularly when the available labelled sample is used both for
+fine-tuning and for error assessment.
+
+The proposed workflow replaces hand-crafted text processing by automated bi-encoder
+embedding and refines the steps of scoring and classification (Figure
+\ref{fig:combined-workflow}). This allows one to deploy the cross-encoder model to only
+a subset of selected cases, while capitalising on the cost-effective baseline performance
+that is achievable by the traditional generative or discriminative models. The combined use of the models provides a practical mechanism for controlling
+the tradeoff between linkage accuracy and computational cost.
+
+The empirical results illustrate the different roles of the components in this workflow.
+Bi-encoder embeddings can improve on traditional string comparisons, especially for
+messier texts such as those in Abt-Buy. Fine-tuning can further improve the bi-encoder
+representation, although the effect depends on both the dataset and the scoring model.
+The fine-tuned cross-encoder yields a favourable balance between FLR and MMR on both
+datasets, but at a higher computational cost. The discrimination-gap results show that cross-encoder evaluations can be
+concentrated on the harder cases, while many of the easier cases can remain with the
+traditional scoring-classification model. 
+\rev{The explicit combined-procedure experiment
+makes this tradeoff concrete: using the 50th percentile of the training-record gaps as the
+routing cutoff reduces cross-encoder pair evaluations by 51.5\% for DBLP-Scholar and
+41.0\% for Abt-Buy, with pooled FLR/MMR of 0.017/0.024 and 0.042/0.145,
+respectively.}
+
+\rev{The empirical findings are based on two benchmark datasets, and the extent to which the observed patterns generalise to other entity-matching settings remains to be assessed.}
+
+The issues of linkage error assessment have also been studied. Test-set error estimates
+refer directly to the models fitted on the corresponding training samples, and need not
+equal the errors of models subsequently retrained on a larger labelled sample. The
+subsample experiments show that the discrepancy is not of a common direction for both
+FLR and MMR. A workable approach is therefore to assess the combined procedure under
+the same routing rule that will be used for classification, using the appropriate
+denominators of FLR and MMR for combining the component errors. If the component
+models are subsequently retrained on the complete labelled sample, additional assumptions
+or evidence are needed to relate these test-set estimates to the errors of the retrained
+models.
+
+Let us close by outlining three topics for future research on using transformer models for
+entity resolution.
+
+The first topic concerns embedding. As noted before, a weakness of the bi-encoder is
+that it must encode each text $\tau_i$ without ``seeing'' the other similar texts, including
+the likely matched item (Table \ref{tab:silverman-example}). \citet{morris2025contextual} propose a contextual document embedding (CDE) model,
+which first uses a sample of texts from the same domain to create a domain-specific
+contextual sequence, say $\xi$, and then encodes each concatenated item
+$(\xi,\tau_i)$, instead of just $\tau_i$ on its own. The embedding
+$\mathbf{x}(\xi,\tau_i)$ may improve on $\mathbf{x}(\tau_i)$ given an appropriate
+$\xi$, while using a common $\xi$ for every item keeps the computation scalable.
+Whether the particular CDE model, or other ideas of contextual embedding, can be
+successfully implemented for entity resolution is clearly worth studying.
+
+Secondly, scoring-classification in the unsupervised setting is a topic we did not consider
+in this paper. In particular, fine-tuning of the cross-encoder model would remain
+necessary if it is to be adapted to the texts of a specific application. One possibility is
+to create a pseudo match sample $\widetilde{s}_M$, where a traditional model is used to
+obtain automatically a link set for $A_s$ with a sufficiently low estimated FLR, and use
+it as if it were a labelled match sample $s_M$. How reliable such pseudo-labels must be,
+and how their errors propagate through fine-tuning and subsequent classification, would
+need to be investigated. More generally, the application of cross-encoder models in the
+unsupervised setting remains an open question.
+
+Finally, the workflow configuration itself may be refined. In particular, one can study how
+best to create separate case streams for link classification, including the possibilities
+discussed in Section \ref{sec:combining-models}. The choice is intrinsically connected to
+the accuracy-cost tradeoff. Computational cost can be evaluated relatively directly, but
+the associated linkage error rates are more difficult to assess, both conceptually and
+practically. We have proposed a workable approach in the supervised setting and a setup
+for exploring the potential discrepancy between subsample and larger-sample error
+assessment in Section \ref{sec:subsample-bias}. Corresponding methods for error
+assessment in the unsupervised setting are still needed when entity resolution involves
+the use of transformer models.

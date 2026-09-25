@@ -1,0 +1,1718 @@
+========================================================================================
+ER TRANSFORMER REPRODUCTION
+========================================================================================
+Project root : /home/ahmeda/ER_Transformer_Reproducible_RUN
+Python       : /home/ahmeda/er_transformer_fulltest_venv/bin/python
+GPU          : 0
+Stages       : 1
+Mode         : EXECUTE
+
+Execution plan:
+  01. nested-bias-direct
+      /home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis22_section332_bias_direct.py --phase run
+
+========================================================================================
+STAGE: nested-bias-direct
+========================================================================================
+Final direct-score reconstruction of the nested-bias experiment using Zhang FLR/MMR.
+
+/home/ahmeda/er_transformer_fulltest_venv/bin/python /home/ahmeda/ER_Transformer_Reproducible_RUN/scripts/analysis22_section332_bias_direct.py --phase run
+====================================================================================================
+Analysis 22 direct-score reconstruction
+====================================================================================================
+NO CROSS-ENCODER TRAINING
+Target: final direct-score Analysis 18 with Zhang FLR/MMR
+Inner validation: direct CrossEncoder.predict()
+Inner test: saved sigmoid scores reclassified with equivalent threshold
+Final metrics: FLR = 1 - correct/declared; MMR = 1 - correct/matchable
+Seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+Fractions: [0.5, 0.6, 0.7, 0.8, 0.9]
+Schemes: ['SRSWOR_65_35', 'bootstrap_OOB']
+Pinned GPU: cuda:0 (NVIDIA L40); visible CUDA devices=1
+
+DBLP (DBLP-Scholar) input validation
+------------------------------------------------------------------------------
+|A|=2,616  |B|=64,263  raw pairs=5,347
+A records with truth=2,408  A with >1 match=1,238  max matches/A=20
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+
+ECOM (Abt-Buy) input validation
+------------------------------------------------------------------------------
+|A|=1,081  |B|=1,092  raw pairs=1,097
+A records with truth=1,081  A with >1 match=16  max matches/A=2
+Raw-file decoding: Latin-1
+B candidate universe: complete raw B, duplicates retained
+Training positive: first-listed valid B only
+Training negatives: all known valid B matches excluded
+Test correctness: any valid B match
+Counting: correct / false / missing are mutually exclusive
+Loaded fixed top-50 cache (analysis18): /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_section7/cache/DBLP_top50.json
+Loaded fixed top-50 cache (analysis18): /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis18_section7/cache/ECOM_top50.json
+
+    DBLP f=0.50 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8774.52it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9187
+      target: FLR=0.014073; MMR=0.015702
+      inner:  FLR=0.025882; MMR=0.011933
+      bias:   FLR=+0.011810; MMR=-0.003769
+
+    DBLP f=0.50 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8364.87it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9693
+      target: FLR=0.014073; MMR=0.015702
+      inner:  FLR=0.028825; MMR=0.022321
+      bias:   FLR=+0.014752; MMR=+0.006619
+
+    DBLP f=0.50 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8435.20it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9474
+      target: FLR=0.023967; MMR=0.012542
+      inner:  FLR=0.025701; MMR=0.014184
+      bias:   FLR=+0.001734; MMR=+0.001643
+
+    DBLP f=0.50 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8113.52it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9645
+      target: FLR=0.023967; MMR=0.012542
+      inner:  FLR=0.013793; MMR=0.013793
+      bias:   FLR=-0.010174; MMR=+0.001251
+
+    DBLP f=0.50 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9835.23it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9329
+      target: FLR=0.015625; MMR=0.014815
+      inner:  FLR=0.014354; MMR=0.011990
+      bias:   FLR=-0.001271; MMR=-0.002824
+
+    DBLP f=0.50 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8214.77it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9630
+      target: FLR=0.015625; MMR=0.014815
+      inner:  FLR=0.022472; MMR=0.020270
+      bias:   FLR=+0.006847; MMR=+0.005455
+
+    DBLP f=0.50 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8026.72it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9270
+      target: FLR=0.013969; MMR=0.009083
+      inner:  FLR=0.018779; MMR=0.011820
+      bias:   FLR=+0.004811; MMR=+0.002737
+
+    DBLP f=0.50 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6711.09it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9652
+      target: FLR=0.013969; MMR=0.009083
+      inner:  FLR=0.020642; MMR=0.013857
+      bias:   FLR=+0.006673; MMR=+0.004773
+
+    DBLP f=0.50 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7356.22it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9137
+      target: FLR=0.018333; MMR=0.010915
+      inner:  FLR=0.011710; MMR=0.018605
+      bias:   FLR=-0.006624; MMR=+0.007689
+
+    DBLP f=0.50 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7569.90it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.9478
+      target: FLR=0.018333; MMR=0.010915
+      inner:  FLR=0.028384; MMR=0.026258
+      bias:   FLR=+0.010051; MMR=+0.015343
+
+    DBLP f=0.50 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8244.60it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9174
+      target: FLR=0.016447; MMR=0.018868
+      inner:  FLR=0.016393; MMR=0.011765
+      bias:   FLR=-0.000054; MMR=-0.007103
+
+    DBLP f=0.50 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8654.85it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9647
+      target: FLR=0.016447; MMR=0.018868
+      inner:  FLR=0.018018; MMR=0.011338
+      bias:   FLR=+0.001571; MMR=-0.007530
+
+    DBLP f=0.50 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8318.26it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9148
+      target: FLR=0.017370; MMR=0.016556
+      inner:  FLR=0.014252; MMR=0.011905
+      bias:   FLR=-0.003118; MMR=-0.004652
+
+    DBLP f=0.50 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7560.16it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9710
+      target: FLR=0.017370; MMR=0.016556
+      inner:  FLR=0.014019; MMR=0.029885
+      bias:   FLR=-0.003351; MMR=+0.013329
+
+    DBLP f=0.50 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7209.89it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9295
+      target: FLR=0.014742; MMR=0.011504
+      inner:  FLR=0.033019; MMR=0.009662
+      bias:   FLR=+0.018277; MMR=-0.001842
+
+    DBLP f=0.50 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8537.40it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9588
+      target: FLR=0.014742; MMR=0.011504
+      inner:  FLR=0.016827; MMR=0.023866
+      bias:   FLR=+0.002085; MMR=+0.012363
+
+    DBLP f=0.50 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6803.04it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9196
+      target: FLR=0.019040; MMR=0.018227
+      inner:  FLR=0.011848; MMR=0.011848
+      bias:   FLR=-0.007191; MMR=-0.006379
+
+    DBLP f=0.50 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7765.86it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.9625
+      target: FLR=0.019040; MMR=0.018227
+      inner:  FLR=0.024213; MMR=0.019465
+      bias:   FLR=+0.005173; MMR=+0.001238
+
+    DBLP f=0.50 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p50/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8740.21it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9401
+      target: FLR=0.014286; MMR=0.019231
+      inner:  FLR=0.023256; MMR=0.016393
+      bias:   FLR=+0.008970; MMR=-0.002837
+
+    DBLP f=0.50 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p50/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7602.44it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9689
+      target: FLR=0.014286; MMR=0.019231
+      inner:  FLR=0.017937; MMR=0.017937
+      bias:   FLR=+0.003652; MMR=-0.001294
+
+    DBLP f=0.60 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7857.30it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9387
+      target: FLR=0.025407; MMR=0.014388
+      inner:  FLR=0.033399; MMR=0.014028
+      bias:   FLR=+0.007992; MMR=-0.000360
+
+    DBLP f=0.60 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7897.89it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.9737
+      target: FLR=0.025407; MMR=0.014388
+      inner:  FLR=0.021898; MMR=0.016514
+      bias:   FLR=-0.003509; MMR=+0.002125
+
+    DBLP f=0.60 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6622.49it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.9485
+      target: FLR=0.019669; MMR=0.014568
+      inner:  FLR=0.035433; MMR=0.012097
+      bias:   FLR=+0.015764; MMR=-0.002471
+
+    DBLP f=0.60 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7913.64it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.9880
+      target: FLR=0.019669; MMR=0.014568
+      inner:  FLR=0.031955; MMR=0.013410
+      bias:   FLR=+0.012286; MMR=-0.001158
+
+    DBLP f=0.60 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7985.67it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9357
+      target: FLR=0.013361; MMR=0.012346
+      inner:  FLR=0.035363; MMR=0.018000
+      bias:   FLR=+0.022003; MMR=+0.005654
+
+    DBLP f=0.60 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8075.73it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9558
+      target: FLR=0.013361; MMR=0.012346
+      inner:  FLR=0.024621; MMR=0.019048
+      bias:   FLR=+0.011260; MMR=+0.006702
+
+    DBLP f=0.60 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7363.84it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9286
+      target: FLR=0.011482; MMR=0.017635
+      inner:  FLR=0.021696; MMR=0.015873
+      bias:   FLR=+0.010214; MMR=-0.001762
+
+    DBLP f=0.60 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8174.06it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9610
+      target: FLR=0.011482; MMR=0.017635
+      inner:  FLR=0.018657; MMR=0.007547
+      bias:   FLR=+0.007174; MMR=-0.010088
+
+    DBLP f=0.60 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7613.09it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9526
+      target: FLR=0.017764; MMR=0.010526
+      inner:  FLR=0.021569; MMR=0.013834
+      bias:   FLR=+0.003805; MMR=+0.003308
+
+    DBLP f=0.60 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8366.46it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9561
+      target: FLR=0.017764; MMR=0.010526
+      inner:  FLR=0.011257; MMR=0.014953
+      bias:   FLR=-0.006507; MMR=+0.004427
+
+    DBLP f=0.60 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7846.53it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9380
+      target: FLR=0.017562; MMR=0.019588
+      inner:  FLR=0.017578; MMR=0.009843
+      bias:   FLR=+0.000016; MMR=-0.009745
+
+    DBLP f=0.60 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7768.19it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9712
+      target: FLR=0.017562; MMR=0.019588
+      inner:  FLR=0.026465; MMR=0.015296
+      bias:   FLR=+0.008903; MMR=-0.004291
+
+    DBLP f=0.60 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7222.90it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9284
+      target: FLR=0.014478; MMR=0.016512
+      inner:  FLR=0.021696; MMR=0.021696
+      bias:   FLR=+0.007218; MMR=+0.005184
+
+    DBLP f=0.60 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7916.91it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9541
+      target: FLR=0.014478; MMR=0.016512
+      inner:  FLR=0.015009; MMR=0.011299
+      bias:   FLR=+0.000532; MMR=-0.005212
+
+    DBLP f=0.60 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7681.07it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9312
+      target: FLR=0.022380; MMR=0.011317
+      inner:  FLR=0.017613; MMR=0.021442
+      bias:   FLR=-0.004768; MMR=+0.010126
+
+    DBLP f=0.60 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7582.16it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9583
+      target: FLR=0.022380; MMR=0.011317
+      inner:  FLR=0.011538; MMR=0.011538
+      bias:   FLR=-0.010842; MMR=+0.000222
+
+    DBLP f=0.60 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7855.76it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9206
+      target: FLR=0.022774; MMR=0.019730
+      inner:  FLR=0.017682; MMR=0.013807
+      bias:   FLR=-0.005093; MMR=-0.005923
+
+    DBLP f=0.60 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9035.92it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9611
+      target: FLR=0.022774; MMR=0.019730
+      inner:  FLR=0.027723; MMR=0.019960
+      bias:   FLR=+0.004948; MMR=+0.000230
+
+    DBLP f=0.60 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p60/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7866.15it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9549
+      target: FLR=0.022965; MMR=0.021944
+      inner:  FLR=0.019342; MMR=0.011696
+      bias:   FLR=-0.003622; MMR=-0.010248
+
+    DBLP f=0.60 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p60/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7723.23it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9616
+      target: FLR=0.022965; MMR=0.021944
+      inner:  FLR=0.028626; MMR=0.024904
+      bias:   FLR=+0.005661; MMR=+0.002961
+
+    DBLP f=0.70 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7379.39it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9067
+      target: FLR=0.015131; MMR=0.015131
+      inner:  FLR=0.028381; MMR=0.006826
+      bias:   FLR=+0.013250; MMR=-0.008305
+
+    DBLP f=0.70 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8252.79it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9718
+      target: FLR=0.015131; MMR=0.015131
+      inner:  FLR=0.030722; MMR=0.017134
+      bias:   FLR=+0.015591; MMR=+0.002003
+
+    DBLP f=0.70 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7479.27it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9294
+      target: FLR=0.022008; MMR=0.016598
+      inner:  FLR=0.010152; MMR=0.011824
+      bias:   FLR=-0.011856; MMR=-0.004773
+
+    DBLP f=0.70 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7668.90it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9765
+      target: FLR=0.022008; MMR=0.016598
+      inner:  FLR=0.013180; MMR=0.016420
+      bias:   FLR=-0.008829; MMR=-0.000177
+
+    DBLP f=0.70 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8886.24it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9333
+      target: FLR=0.006859; MMR=0.012278
+      inner:  FLR=0.025381; MMR=0.018739
+      bias:   FLR=+0.018522; MMR=+0.006461
+
+    DBLP f=0.70 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8211.70it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9676
+      target: FLR=0.006859; MMR=0.012278
+      inner:  FLR=0.016051; MMR=0.019200
+      bias:   FLR=+0.009193; MMR=+0.006922
+
+    DBLP f=0.70 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8543.70it/s]
+      direct threshold=0.40; sigmoid-equivalent=0.598688; validation F1=0.9303
+      target: FLR=0.016349; MMR=0.006878
+      inner:  FLR=0.021812; MMR=0.015203
+      bias:   FLR=+0.005463; MMR=+0.008325
+
+    DBLP f=0.70 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8487.22it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9661
+      target: FLR=0.016349; MMR=0.006878
+      inner:  FLR=0.030400; MMR=0.019417
+      bias:   FLR=+0.014051; MMR=+0.012540
+
+    DBLP f=0.70 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8177.70it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.9262
+      target: FLR=0.015385; MMR=0.011236
+      inner:  FLR=0.019967; MMR=0.018333
+      bias:   FLR=+0.004582; MMR=+0.007097
+
+    DBLP f=0.70 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8422.46it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9497
+      target: FLR=0.015385; MMR=0.011236
+      inner:  FLR=0.028846; MMR=0.025723
+      bias:   FLR=+0.013462; MMR=+0.014488
+
+    DBLP f=0.70 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7709.85it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9364
+      target: FLR=0.016484; MMR=0.017833
+      inner:  FLR=0.016807; MMR=0.011824
+      bias:   FLR=+0.000323; MMR=-0.006008
+
+    DBLP f=0.70 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7723.23it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9453
+      target: FLR=0.016484; MMR=0.017833
+      inner:  FLR=0.020833; MMR=0.014516
+      bias:   FLR=+0.004350; MMR=-0.003317
+
+    DBLP f=0.70 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7796.66it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.9206
+      target: FLR=0.005571; MMR=0.019231
+      inner:  FLR=0.020339; MMR=0.018676
+      bias:   FLR=+0.014768; MMR=-0.000555
+
+    DBLP f=0.70 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8310.10it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9611
+      target: FLR=0.005571; MMR=0.019231
+      inner:  FLR=0.016129; MMR=0.016129
+      bias:   FLR=+0.010558; MMR=-0.003102
+
+    DBLP f=0.70 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8577.48it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9289
+      target: FLR=0.013736; MMR=0.009655
+      inner:  FLR=0.010169; MMR=0.020134
+      bias:   FLR=-0.003567; MMR=+0.010479
+
+    DBLP f=0.70 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7471.15it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9662
+      target: FLR=0.013736; MMR=0.009655
+      inner:  FLR=0.031301; MMR=0.023256
+      bias:   FLR=+0.017565; MMR=+0.013601
+
+    DBLP f=0.70 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8732.59it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9313
+      target: FLR=0.024965; MMR=0.024965
+      inner:  FLR=0.016694; MMR=0.001695
+      bias:   FLR=-0.008271; MMR=-0.023270
+
+    DBLP f=0.70 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8834.90it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.9666
+      target: FLR=0.024965; MMR=0.024965
+      inner:  FLR=0.021776; MMR=0.011844
+      bias:   FLR=-0.003190; MMR=-0.013121
+
+    DBLP f=0.70 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p70/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8092.80it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9381
+      target: FLR=0.008451; MMR=0.016760
+      inner:  FLR=0.026891; MMR=0.021959
+      bias:   FLR=+0.018440; MMR=+0.005200
+
+    DBLP f=0.70 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p70/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7634.34it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9654
+      target: FLR=0.008451; MMR=0.016760
+      inner:  FLR=0.036508; MMR=0.014610
+      bias:   FLR=+0.028057; MMR=-0.002149
+
+    DBLP f=0.80 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7932.88it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9246
+      target: FLR=0.022358; MMR=0.008247
+      inner:  FLR=0.013699; MMR=0.028486
+      bias:   FLR=-0.008659; MMR=+0.020238
+
+    DBLP f=0.80 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7652.78it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9603
+      target: FLR=0.022358; MMR=0.008247
+      inner:  FLR=0.028455; MMR=0.017808
+      bias:   FLR=+0.006098; MMR=+0.009561
+
+    DBLP f=0.80 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7972.09it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9246
+      target: FLR=0.026804; MMR=0.014614
+      inner:  FLR=0.014577; MMR=0.014577
+      bias:   FLR=-0.012227; MMR=-0.000037
+
+    DBLP f=0.80 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7628.52it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9714
+      target: FLR=0.026804; MMR=0.014614
+      inner:  FLR=0.021157; MMR=0.008571
+      bias:   FLR=-0.005648; MMR=-0.006042
+
+    DBLP f=0.80 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7829.92it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9407
+      target: FLR=0.004141; MMR=0.014344
+      inner:  FLR=0.017804; MMR=0.019259
+      bias:   FLR=+0.013663; MMR=+0.004915
+
+    DBLP f=0.80 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8063.31it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9688
+      target: FLR=0.004141; MMR=0.014344
+      inner:  FLR=0.027510; MMR=0.028846
+      bias:   FLR=+0.023370; MMR=+0.014502
+
+    DBLP f=0.80 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7676.79it/s]
+      direct threshold=0.40; sigmoid-equivalent=0.598688; validation F1=0.9246
+      target: FLR=0.004124; MMR=0.012270
+      inner:  FLR=0.033774; MMR=0.017910
+      bias:   FLR=+0.029650; MMR=+0.005641
+
+    DBLP f=0.80 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8450.42it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.9688
+      target: FLR=0.004124; MMR=0.012270
+      inner:  FLR=0.020290; MMR=0.027338
+      bias:   FLR=+0.016166; MMR=+0.015068
+
+    DBLP f=0.80 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7411.93it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.9393
+      target: FLR=0.017058; MMR=0.017058
+      inner:  FLR=0.014815; MMR=0.014815
+      bias:   FLR=-0.002243; MMR=-0.002243
+
+    DBLP f=0.80 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7850.58it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9523
+      target: FLR=0.017058; MMR=0.017058
+      inner:  FLR=0.012912; MMR=0.014327
+      bias:   FLR=-0.004145; MMR=-0.002731
+
+    DBLP f=0.80 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7888.41it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9430
+      target: FLR=0.018330; MMR=0.026263
+      inner:  FLR=0.014903; MMR=0.014903
+      bias:   FLR=-0.003427; MMR=-0.011359
+
+    DBLP f=0.80 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8294.45it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9766
+      target: FLR=0.018330; MMR=0.026263
+      inner:  FLR=0.025140; MMR=0.015515
+      bias:   FLR=+0.006810; MMR=-0.010748
+
+    DBLP f=0.80 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7455.72it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9058
+      target: FLR=0.012346; MMR=0.014374
+      inner:  FLR=0.014859; MMR=0.014859
+      bias:   FLR=+0.002513; MMR=+0.000485
+
+    DBLP f=0.80 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7840.94it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9652
+      target: FLR=0.012346; MMR=0.014374
+      inner:  FLR=0.029046; MMR=0.016807
+      bias:   FLR=+0.016700; MMR=+0.002433
+
+    DBLP f=0.80 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8204.67it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9251
+      target: FLR=0.006224; MMR=0.014403
+      inner:  FLR=0.027941; MMR=0.020741
+      bias:   FLR=+0.021717; MMR=+0.006337
+
+    DBLP f=0.80 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7552.25it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9549
+      target: FLR=0.006224; MMR=0.014403
+      inner:  FLR=0.037572; MMR=0.020588
+      bias:   FLR=+0.031348; MMR=+0.006185
+
+    DBLP f=0.80 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7876.13it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9476
+      target: FLR=0.024691; MMR=0.018634
+      inner:  FLR=0.023634; MMR=0.016369
+      bias:   FLR=-0.001058; MMR=-0.002264
+
+    DBLP f=0.80 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7934.74it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9719
+      target: FLR=0.024691; MMR=0.018634
+      inner:  FLR=0.017291; MMR=0.022923
+      bias:   FLR=-0.007400; MMR=+0.004289
+
+    DBLP f=0.80 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p80/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 12037.11it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9302
+      target: FLR=0.019068; MMR=0.023207
+      inner:  FLR=0.008902; MMR=0.014749
+      bias:   FLR=-0.010166; MMR=-0.008457
+
+    DBLP f=0.80 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p80/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7699.33it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9666
+      target: FLR=0.019068; MMR=0.023207
+      inner:  FLR=0.015493; MMR=0.007102
+      bias:   FLR=-0.003575; MMR=-0.016104
+
+    DBLP f=0.90 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8276.99it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9401
+      target: FLR=0.008333; MMR=0.016529
+      inner:  FLR=0.011984; MMR=0.014608
+      bias:   FLR=+0.003651; MMR=-0.001921
+
+    DBLP f=0.90 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7586.07it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9815
+      target: FLR=0.008333; MMR=0.016529
+      inner:  FLR=0.014563; MMR=0.013366
+      bias:   FLR=+0.006230; MMR=-0.003163
+
+    DBLP f=0.90 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7535.71it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9350
+      target: FLR=0.025000; MMR=0.016807
+      inner:  FLR=0.025099; MMR=0.025099
+      bias:   FLR=+0.000099; MMR=+0.008292
+
+    DBLP f=0.90 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8015.18it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.9677
+      target: FLR=0.025000; MMR=0.016807
+      inner:  FLR=0.022959; MMR=0.020460
+      bias:   FLR=-0.002041; MMR=+0.003654
+
+    DBLP f=0.90 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7876.98it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.9209
+      target: FLR=0.012448; MMR=0.028571
+      inner:  FLR=0.018373; MMR=0.018373
+      bias:   FLR=+0.005925; MMR=-0.010199
+
+    DBLP f=0.90 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8002.51it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9552
+      target: FLR=0.012448; MMR=0.028571
+      inner:  FLR=0.033694; MMR=0.018337
+      bias:   FLR=+0.021246; MMR=-0.010234
+
+    DBLP f=0.90 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7676.79it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9296
+      target: FLR=0.004065; MMR=0.012097
+      inner:  FLR=0.018229; MMR=0.018229
+      bias:   FLR=+0.014164; MMR=+0.006132
+
+    DBLP f=0.90 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7502.59it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9816
+      target: FLR=0.004065; MMR=0.012097
+      inner:  FLR=0.017812; MMR=0.017812
+      bias:   FLR=+0.013747; MMR=+0.005715
+
+    DBLP f=0.90 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7696.24it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9387
+      target: FLR=0.021186; MMR=0.012821
+      inner:  FLR=0.017060; MMR=0.015769
+      bias:   FLR=-0.004126; MMR=+0.002948
+
+    DBLP f=0.90 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7770.66it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9465
+      target: FLR=0.021186; MMR=0.012821
+      inner:  FLR=0.021795; MMR=0.015484
+      bias:   FLR=+0.000608; MMR=+0.002663
+
+    DBLP f=0.90 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 16921.61it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9204
+      target: FLR=0.016393; MMR=0.024390
+      inner:  FLR=0.015915; MMR=0.011984
+      bias:   FLR=-0.000478; MMR=-0.012406
+
+    DBLP f=0.90 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7817.14it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9645
+      target: FLR=0.016393; MMR=0.024390
+      inner:  FLR=0.022782; MMR=0.013317
+      bias:   FLR=+0.006388; MMR=-0.011073
+
+    DBLP f=0.90 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8235.20it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9322
+      target: FLR=0.012448; MMR=0.012448
+      inner:  FLR=0.018301; MMR=0.013141
+      bias:   FLR=+0.005853; MMR=+0.000692
+
+    DBLP f=0.90 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8724.80it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9688
+      target: FLR=0.012448; MMR=0.012448
+      inner:  FLR=0.022005; MMR=0.012346
+      bias:   FLR=+0.009557; MMR=-0.000102
+
+    DBLP f=0.90 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7449.92it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9368
+      target: FLR=0.000000; MMR=0.012448
+      inner:  FLR=0.026281; MMR=0.023715
+      bias:   FLR=+0.026281; MMR=+0.011267
+
+    DBLP f=0.90 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8231.97it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9712
+      target: FLR=0.000000; MMR=0.012448
+      inner:  FLR=0.014066; MMR=0.016582
+      bias:   FLR=+0.014066; MMR=+0.004133
+
+    DBLP f=0.90 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7131.78it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9366
+      target: FLR=0.021008; MMR=0.021008
+      inner:  FLR=0.009198; MMR=0.009198
+      bias:   FLR=-0.011810; MMR=-0.011810
+
+    DBLP f=0.90 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8261.00it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9554
+      target: FLR=0.021008; MMR=0.021008
+      inner:  FLR=0.021492; MMR=0.012755
+      bias:   FLR=+0.000483; MMR=-0.008253
+
+    DBLP f=0.90 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/DBLP/f_0p90/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7702.97it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9424
+      target: FLR=0.025316; MMR=0.029412
+      inner:  FLR=0.024772; MMR=0.009272
+      bias:   FLR=-0.000545; MMR=-0.020140
+
+    DBLP f=0.90 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/DBLP/f_0p90/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6915.10it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.9688
+      target: FLR=0.025316; MMR=0.029412
+      inner:  FLR=0.020279; MMR=0.014031
+      bias:   FLR=-0.005038; MMR=-0.015381
+
+    ECOM f=0.50 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7379.51it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.7746
+      target: FLR=0.042596; MMR=0.127542
+      inner:  FLR=0.051282; MMR=0.216931
+      bias:   FLR=+0.008686; MMR=+0.089390
+
+    ECOM f=0.50 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8994.04it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9401
+      target: FLR=0.042596; MMR=0.127542
+      inner:  FLR=0.011236; MMR=0.149758
+      bias:   FLR=-0.031360; MMR=+0.022217
+
+    ECOM f=0.50 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7642.15it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8800
+      target: FLR=0.044025; MMR=0.157116
+      inner:  FLR=0.030675; MMR=0.164021
+      bias:   FLR=-0.013350; MMR=+0.006905
+
+    ECOM f=0.50 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7913.78it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9384
+      target: FLR=0.044025; MMR=0.157116
+      inner:  FLR=0.024540; MMR=0.184615
+      bias:   FLR=-0.019485; MMR=+0.027499
+
+    ECOM f=0.50 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7907.25it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.8296
+      target: FLR=0.036559; MMR=0.171904
+      inner:  FLR=0.036585; MMR=0.164021
+      bias:   FLR=+0.000026; MMR=-0.007883
+
+    ECOM f=0.50 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7875.15it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.8942
+      target: FLR=0.036559; MMR=0.171904
+      inner:  FLR=0.030675; MMR=0.177083
+      bias:   FLR=-0.005884; MMR=+0.005179
+
+    ECOM f=0.50 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9282.56it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.7857
+      target: FLR=0.051173; MMR=0.177449
+      inner:  FLR=0.047337; MMR=0.148148
+      bias:   FLR=-0.003835; MMR=-0.029301
+
+    ECOM f=0.50 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7319.17it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9266
+      target: FLR=0.051173; MMR=0.177449
+      inner:  FLR=0.034884; MMR=0.157360
+      bias:   FLR=-0.016289; MMR=-0.020089
+
+    ECOM f=0.50 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7926.89it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8369
+      target: FLR=0.041068; MMR=0.136784
+      inner:  FLR=0.038462; MMR=0.206349
+      bias:   FLR=-0.002606; MMR=+0.069565
+
+    ECOM f=0.50 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7818.53it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9107
+      target: FLR=0.041068; MMR=0.136784
+      inner:  FLR=0.052326; MMR=0.164103
+      bias:   FLR=+0.011258; MMR=+0.027319
+
+    ECOM f=0.50 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7579.94it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8310
+      target: FLR=0.027897; MMR=0.162662
+      inner:  FLR=0.055556; MMR=0.190476
+      bias:   FLR=+0.027659; MMR=+0.027814
+
+    ECOM f=0.50 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7455.97it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.8952
+      target: FLR=0.027897; MMR=0.162662
+      inner:  FLR=0.066225; MMR=0.225275
+      bias:   FLR=+0.038328; MMR=+0.062613
+
+    ECOM f=0.50 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8677.19it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8435
+      target: FLR=0.026144; MMR=0.173752
+      inner:  FLR=0.030120; MMR=0.148148
+      bias:   FLR=+0.003977; MMR=-0.025604
+
+    ECOM f=0.50 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6255.80it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.8910
+      target: FLR=0.026144; MMR=0.173752
+      inner:  FLR=0.041916; MMR=0.157895
+      bias:   FLR=+0.015772; MMR=-0.015858
+
+    ECOM f=0.50 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7700.95it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.8209
+      target: FLR=0.034043; MMR=0.160813
+      inner:  FLR=0.030864; MMR=0.169312
+      bias:   FLR=-0.003178; MMR=+0.008499
+
+    ECOM f=0.50 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7557.95it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9282
+      target: FLR=0.034043; MMR=0.160813
+      inner:  FLR=0.043478; MMR=0.180851
+      bias:   FLR=+0.009436; MMR=+0.020038
+
+    ECOM f=0.50 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7985.67it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.8252
+      target: FLR=0.044872; MMR=0.173752
+      inner:  FLR=0.055215; MMR=0.185185
+      bias:   FLR=+0.010343; MMR=+0.011433
+
+    ECOM f=0.50 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7610.72it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.9174
+      target: FLR=0.044872; MMR=0.173752
+      inner:  FLR=0.056818; MMR=0.130890
+      bias:   FLR=+0.011946; MMR=-0.042862
+
+    ECOM f=0.50 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p50/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7475.46it/s]
+      direct threshold=0.15; sigmoid-equivalent=0.537430; validation F1=0.8189
+      target: FLR=0.043841; MMR=0.153420
+      inner:  FLR=0.030120; MMR=0.148148
+      bias:   FLR=-0.013721; MMR=-0.005271
+
+    ECOM f=0.50 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p50/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8757.25it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9378
+      target: FLR=0.043841; MMR=0.153420
+      inner:  FLR=0.041916; MMR=0.166667
+      bias:   FLR=-0.001925; MMR=+0.013247
+
+    ECOM f=0.60 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7452.44it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.8333
+      target: FLR=0.039164; MMR=0.150115
+      inner:  FLR=0.015707; MMR=0.171806
+      bias:   FLR=-0.023458; MMR=+0.021691
+
+    ECOM f=0.60 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8349.17it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.9071
+      target: FLR=0.039164; MMR=0.150115
+      inner:  FLR=0.032407; MMR=0.167331
+      bias:   FLR=-0.006757; MMR=+0.017215
+
+    ECOM f=0.60 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7957.11it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8025
+      target: FLR=0.043597; MMR=0.189376
+      inner:  FLR=0.035897; MMR=0.171806
+      bias:   FLR=-0.007699; MMR=-0.017570
+
+    ECOM f=0.60 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7596.54it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9297
+      target: FLR=0.043597; MMR=0.189376
+      inner:  FLR=0.039801; MMR=0.175214
+      bias:   FLR=-0.003796; MMR=-0.014163
+
+    ECOM f=0.60 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7465.96it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8276
+      target: FLR=0.032432; MMR=0.173210
+      inner:  FLR=0.025907; MMR=0.171806
+      bias:   FLR=-0.006526; MMR=-0.001404
+
+    ECOM f=0.60 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7634.34it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.9163
+      target: FLR=0.032432; MMR=0.173210
+      inner:  FLR=0.031250; MMR=0.176991
+      bias:   FLR=-0.001182; MMR=+0.003781
+
+    ECOM f=0.60 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8266.89it/s]
+      direct threshold=0.60; sigmoid-equivalent=0.645656; validation F1=0.8375
+      target: FLR=0.022284; MMR=0.189376
+      inner:  FLR=0.035533; MMR=0.162996
+      bias:   FLR=+0.013249; MMR=-0.026381
+
+    ECOM f=0.60 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7596.28it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.8794
+      target: FLR=0.022284; MMR=0.189376
+      inner:  FLR=0.028037; MMR=0.126050
+      bias:   FLR=+0.005753; MMR=-0.063326
+
+    ECOM f=0.60 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8092.95it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.8820
+      target: FLR=0.023438; MMR=0.133949
+      inner:  FLR=0.032258; MMR=0.207048
+      bias:   FLR=+0.008821; MMR=+0.073099
+
+    ECOM f=0.60 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8216.15it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.8949
+      target: FLR=0.023438; MMR=0.133949
+      inner:  FLR=0.062500; MMR=0.187500
+      bias:   FLR=+0.039062; MMR=+0.053551
+
+    ECOM f=0.60 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6974.45it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.8757
+      target: FLR=0.033943; MMR=0.145497
+      inner:  FLR=0.073684; MMR=0.224670
+      bias:   FLR=+0.039742; MMR=+0.079173
+
+    ECOM f=0.60 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7782.74it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9243
+      target: FLR=0.033943; MMR=0.145497
+      inner:  FLR=0.067708; MMR=0.211454
+      bias:   FLR=+0.033766; MMR=+0.065957
+
+    ECOM f=0.60 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7345.54it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8662
+      target: FLR=0.028818; MMR=0.221709
+      inner:  FLR=0.010753; MMR=0.189427
+      bias:   FLR=-0.018066; MMR=-0.032282
+
+    ECOM f=0.60 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8780.29it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9302
+      target: FLR=0.028818; MMR=0.221709
+      inner:  FLR=0.020305; MMR=0.171674
+      bias:   FLR=-0.008514; MMR=-0.050035
+
+    ECOM f=0.60 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7611.25it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.8701
+      target: FLR=0.043011; MMR=0.177829
+      inner:  FLR=0.020408; MMR=0.154185
+      bias:   FLR=-0.022603; MMR=-0.023644
+
+    ECOM f=0.60 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6869.58it/s]
+      direct threshold=0.90; sigmoid-equivalent=0.710950; validation F1=0.9020
+      target: FLR=0.043011; MMR=0.177829
+      inner:  FLR=0.020513; MMR=0.147321
+      bias:   FLR=-0.022498; MMR=-0.030508
+
+    ECOM f=0.60 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8157.25it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8535
+      target: FLR=0.043928; MMR=0.145497
+      inner:  FLR=0.043011; MMR=0.215859
+      bias:   FLR=-0.000917; MMR=+0.070362
+
+    ECOM f=0.60 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7008.53it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8790
+      target: FLR=0.043928; MMR=0.145497
+      inner:  FLR=0.039604; MMR=0.149123
+      bias:   FLR=-0.004324; MMR=+0.003626
+
+    ECOM f=0.60 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p60/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8050.34it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.8589
+      target: FLR=0.029101; MMR=0.152425
+      inner:  FLR=0.040201; MMR=0.158590
+      bias:   FLR=+0.011100; MMR=+0.006165
+
+    ECOM f=0.60 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p60/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 12961.38it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8790
+      target: FLR=0.029101; MMR=0.152425
+      inner:  FLR=0.042453; MMR=0.128755
+      bias:   FLR=+0.013352; MMR=-0.023670
+
+    ECOM f=0.70 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8350.59it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8293
+      target: FLR=0.035088; MMR=0.153846
+      inner:  FLR=0.029661; MMR=0.135849
+      bias:   FLR=-0.005427; MMR=-0.017997
+
+    ECOM f=0.70 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7954.81it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9356
+      target: FLR=0.035088; MMR=0.153846
+      inner:  FLR=0.031746; MMR=0.161512
+      bias:   FLR=-0.003342; MMR=+0.007666
+
+    ECOM f=0.70 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8230.89it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.8469
+      target: FLR=0.035842; MMR=0.172308
+      inner:  FLR=0.026549; MMR=0.169811
+      bias:   FLR=-0.009294; MMR=-0.002496
+
+    ECOM f=0.70 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8618.77it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8958
+      target: FLR=0.035842; MMR=0.172308
+      inner:  FLR=0.020833; MMR=0.148551
+      bias:   FLR=-0.015009; MMR=-0.023757
+
+    ECOM f=0.70 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7494.67it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.8404
+      target: FLR=0.014440; MMR=0.160000
+      inner:  FLR=0.030172; MMR=0.150943
+      bias:   FLR=+0.015732; MMR=-0.009057
+
+    ECOM f=0.70 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8489.68it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9155
+      target: FLR=0.014440; MMR=0.160000
+      inner:  FLR=0.038627; MMR=0.151515
+      bias:   FLR=+0.024186; MMR=-0.008485
+
+    ECOM f=0.70 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7633.67it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.8042
+      target: FLR=0.026119; MMR=0.196923
+      inner:  FLR=0.035242; MMR=0.173585
+      bias:   FLR=+0.009123; MMR=-0.023338
+
+    ECOM f=0.70 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7634.73it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8933
+      target: FLR=0.026119; MMR=0.196923
+      inner:  FLR=0.034934; MMR=0.210714
+      bias:   FLR=+0.008815; MMR=+0.013791
+
+    ECOM f=0.70 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7282.14it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8526
+      target: FLR=0.017986; MMR=0.160000
+      inner:  FLR=0.053812; MMR=0.203774
+      bias:   FLR=+0.035826; MMR=+0.043774
+
+    ECOM f=0.70 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7353.27it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.9066
+      target: FLR=0.017986; MMR=0.160000
+      inner:  FLR=0.021645; MMR=0.204225
+      bias:   FLR=+0.003659; MMR=+0.044225
+
+    ECOM f=0.70 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7396.62it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.8308
+      target: FLR=0.017857; MMR=0.153846
+      inner:  FLR=0.060870; MMR=0.184906
+      bias:   FLR=+0.043012; MMR=+0.031060
+
+    ECOM f=0.70 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8897.73it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.8828
+      target: FLR=0.017857; MMR=0.153846
+      inner:  FLR=0.035556; MMR=0.210909
+      bias:   FLR=+0.017698; MMR=+0.057063
+
+    ECOM f=0.70 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7087.25it/s]
+      direct threshold=0.50; sigmoid-equivalent=0.622459; validation F1=0.7956
+      target: FLR=0.042553; MMR=0.169231
+      inner:  FLR=0.013158; MMR=0.150943
+      bias:   FLR=-0.029395; MMR=-0.018287
+
+    ECOM f=0.70 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9023.70it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.8858
+      target: FLR=0.042553; MMR=0.169231
+      inner:  FLR=0.028571; MMR=0.146953
+      bias:   FLR=-0.013982; MMR=-0.022277
+
+    ECOM f=0.70 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7993.79it/s]
+      direct threshold=0.40; sigmoid-equivalent=0.598688; validation F1=0.8211
+      target: FLR=0.039007; MMR=0.166154
+      inner:  FLR=0.025974; MMR=0.150943
+      bias:   FLR=-0.013033; MMR=-0.015210
+
+    ECOM f=0.70 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8167.24it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9158
+      target: FLR=0.039007; MMR=0.166154
+      inner:  FLR=0.045455; MMR=0.201521
+      bias:   FLR=+0.006447; MMR=+0.035367
+
+    ECOM f=0.70 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7537.00it/s]
+      direct threshold=0.85; sigmoid-equivalent=0.700567; validation F1=0.8473
+      target: FLR=0.045296; MMR=0.156923
+      inner:  FLR=0.041494; MMR=0.128302
+      bias:   FLR=-0.003802; MMR=-0.028621
+
+    ECOM f=0.70 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8052.70it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.9054
+      target: FLR=0.045296; MMR=0.156923
+      inner:  FLR=0.049383; MMR=0.141264
+      bias:   FLR=+0.004087; MMR=-0.015659
+
+    ECOM f=0.70 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p70/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7486.77it/s]
+      direct threshold=0.15; sigmoid-equivalent=0.537430; validation F1=0.8731
+      target: FLR=0.014286; MMR=0.150769
+      inner:  FLR=0.039130; MMR=0.166038
+      bias:   FLR=+0.024845; MMR=+0.015269
+
+    ECOM f=0.70 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p70/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8195.81it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9145
+      target: FLR=0.014286; MMR=0.150769
+      inner:  FLR=0.065041; MMR=0.135338
+      bias:   FLR=+0.050755; MMR=-0.015431
+
+    ECOM f=0.80 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8536.91it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.8257
+      target: FLR=0.041667; MMR=0.152074
+      inner:  FLR=0.019763; MMR=0.181518
+      bias:   FLR=-0.021904; MMR=+0.029444
+
+    ECOM f=0.80 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8358.99it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9391
+      target: FLR=0.041667; MMR=0.152074
+      inner:  FLR=0.031250; MMR=0.154545
+      bias:   FLR=-0.010417; MMR=+0.002472
+
+    ECOM f=0.80 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8167.24it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.8295
+      target: FLR=0.027473; MMR=0.184332
+      inner:  FLR=0.038023; MMR=0.165017
+      bias:   FLR=+0.010550; MMR=-0.019315
+
+    ECOM f=0.80 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7328.31it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9267
+      target: FLR=0.027473; MMR=0.184332
+      inner:  FLR=0.044610; MMR=0.178914
+      bias:   FLR=+0.017137; MMR=-0.005418
+
+    ECOM f=0.80 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7448.28it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8333
+      target: FLR=0.039773; MMR=0.221198
+      inner:  FLR=0.043165; MMR=0.122112
+      bias:   FLR=+0.003393; MMR=-0.099086
+
+    ECOM f=0.80 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8022.62it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9388
+      target: FLR=0.039773; MMR=0.221198
+      inner:  FLR=0.034483; MMR=0.173770
+      bias:   FLR=-0.005290; MMR=-0.047428
+
+    ECOM f=0.80 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8117.11it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8612
+      target: FLR=0.033149; MMR=0.193548
+      inner:  FLR=0.059925; MMR=0.171617
+      bias:   FLR=+0.026776; MMR=-0.021931
+
+    ECOM f=0.80 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8479.54it/s]
+      direct threshold=0.15; sigmoid-equivalent=0.537430; validation F1=0.9134
+      target: FLR=0.033149; MMR=0.193548
+      inner:  FLR=0.046595; MMR=0.168750
+      bias:   FLR=+0.013446; MMR=-0.024798
+
+    ECOM f=0.80 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7762.85it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8651
+      target: FLR=0.027027; MMR=0.170507
+      inner:  FLR=0.043796; MMR=0.135314
+      bias:   FLR=+0.016769; MMR=-0.035193
+
+    ECOM f=0.80 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9781.93it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8922
+      target: FLR=0.027027; MMR=0.170507
+      inner:  FLR=0.021429; MMR=0.143750
+      bias:   FLR=-0.005598; MMR=-0.026757
+
+    ECOM f=0.80 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8570.30it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8638
+      target: FLR=0.042781; MMR=0.175115
+      inner:  FLR=0.019608; MMR=0.174917
+      bias:   FLR=-0.023173; MMR=-0.000198
+
+    ECOM f=0.80 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6871.94it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8909
+      target: FLR=0.042781; MMR=0.175115
+      inner:  FLR=0.028881; MMR=0.146032
+      bias:   FLR=-0.013900; MMR=-0.029083
+
+    ECOM f=0.80 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7157.52it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8624
+      target: FLR=0.037838; MMR=0.179724
+      inner:  FLR=0.030303; MMR=0.155116
+      bias:   FLR=-0.007535; MMR=-0.024608
+
+    ECOM f=0.80 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8349.01it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9341
+      target: FLR=0.037838; MMR=0.179724
+      inner:  FLR=0.033210; MMR=0.178683
+      bias:   FLR=-0.004628; MMR=-0.001040
+
+    ECOM f=0.80 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7515.65it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8214
+      target: FLR=0.031579; MMR=0.152074
+      inner:  FLR=0.027344; MMR=0.178218
+      bias:   FLR=-0.004235; MMR=+0.026144
+
+    ECOM f=0.80 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7964.88it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9377
+      target: FLR=0.031579; MMR=0.152074
+      inner:  FLR=0.039526; MMR=0.192691
+      bias:   FLR=+0.007947; MMR=+0.040617
+
+    ECOM f=0.80 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9151.78it/s]
+      direct threshold=0.15; sigmoid-equivalent=0.537430; validation F1=0.8311
+      target: FLR=0.031579; MMR=0.152074
+      inner:  FLR=0.035573; MMR=0.194719
+      bias:   FLR=+0.003994; MMR=+0.042646
+
+    ECOM f=0.80 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7458.37it/s]
+      direct threshold=0.65; sigmoid-equivalent=0.657010; validation F1=0.9235
+      target: FLR=0.031579; MMR=0.152074
+      inner:  FLR=0.047970; MMR=0.156863
+      bias:   FLR=+0.016392; MMR=+0.004789
+
+    ECOM f=0.80 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p80/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7646.93it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8479
+      target: FLR=0.021390; MMR=0.156682
+      inner:  FLR=0.023904; MMR=0.191419
+      bias:   FLR=+0.002514; MMR=+0.034737
+
+    ECOM f=0.80 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p80/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8091.16it/s]
+      direct threshold=0.35; sigmoid-equivalent=0.586618; validation F1=0.9179
+      target: FLR=0.021390; MMR=0.156682
+      inner:  FLR=0.015444; MMR=0.161184
+      bias:   FLR=-0.005946; MMR=+0.004502
+
+    ECOM f=0.90 seed=42 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7571.99it/s]
+      direct threshold=0.25; sigmoid-equivalent=0.562177; validation F1=0.8230
+      target: FLR=0.041667; MMR=0.155963
+      inner:  FLR=0.020270; MMR=0.149560
+      bias:   FLR=-0.021396; MMR=-0.006403
+
+    ECOM f=0.90 seed=42 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_42
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7720.53it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9427
+      target: FLR=0.041667; MMR=0.155963
+      inner:  FLR=0.029586; MMR=0.127660
+      bias:   FLR=-0.012081; MMR=-0.028304
+
+    ECOM f=0.90 seed=43 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7849.04it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.8689
+      target: FLR=0.053191; MMR=0.183486
+      inner:  FLR=0.033784; MMR=0.161290
+      bias:   FLR=-0.019408; MMR=-0.022196
+
+    ECOM f=0.90 seed=43 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_43
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7512.19it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9101
+      target: FLR=0.053191; MMR=0.183486
+      inner:  FLR=0.019672; MMR=0.152975
+      bias:   FLR=-0.033519; MMR=-0.030512
+
+    ECOM f=0.90 seed=44 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7852.40it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8750
+      target: FLR=0.034483; MMR=0.229358
+      inner:  FLR=0.032787; MMR=0.134897
+      bias:   FLR=-0.001696; MMR=-0.094460
+
+    ECOM f=0.90 seed=44 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_44
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6164.47it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.9186
+      target: FLR=0.034483; MMR=0.229358
+      inner:  FLR=0.033223; MMR=0.151603
+      bias:   FLR=-0.001260; MMR=-0.077754
+
+    ECOM f=0.90 seed=45 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7956.39it/s]
+      direct threshold=0.30; sigmoid-equivalent=0.574443; validation F1=0.8548
+      target: FLR=0.031915; MMR=0.165138
+      inner:  FLR=0.039735; MMR=0.149560
+      bias:   FLR=+0.007820; MMR=-0.015577
+
+    ECOM f=0.90 seed=45 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_45
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8162.70it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9504
+      target: FLR=0.031915; MMR=0.165138
+      inner:  FLR=0.042945; MMR=0.142857
+      bias:   FLR=+0.011030; MMR=-0.022280
+
+    ECOM f=0.90 seed=46 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7478.38it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8512
+      target: FLR=0.010204; MMR=0.110092
+      inner:  FLR=0.031359; MMR=0.184751
+      bias:   FLR=+0.021155; MMR=+0.074659
+
+    ECOM f=0.90 seed=46 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_46
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7222.31it/s]
+      direct threshold=0.45; sigmoid-equivalent=0.610639; validation F1=0.9263
+      target: FLR=0.010204; MMR=0.110092
+      inner:  FLR=0.035144; MMR=0.165746
+      bias:   FLR=+0.024940; MMR=+0.055654
+
+    ECOM f=0.90 seed=47 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7967.61it/s]
+      direct threshold=0.55; sigmoid-equivalent=0.634136; validation F1=0.8750
+      target: FLR=0.032609; MMR=0.183486
+      inner:  FLR=0.027397; MMR=0.167155
+      bias:   FLR=-0.005211; MMR=-0.016331
+
+    ECOM f=0.90 seed=47 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_47
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7741.97it/s]
+      direct threshold=0.20; sigmoid-equivalent=0.549834; validation F1=0.9271
+      target: FLR=0.032609; MMR=0.183486
+      inner:  FLR=0.040000; MMR=0.188732
+      bias:   FLR=+0.007391; MMR=+0.005246
+
+    ECOM f=0.90 seed=48 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7544.88it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8889
+      target: FLR=0.021053; MMR=0.146789
+      inner:  FLR=0.034247; MMR=0.173021
+      bias:   FLR=+0.013194; MMR=+0.026232
+
+    ECOM f=0.90 seed=48 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_48
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7187.42it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9138
+      target: FLR=0.021053; MMR=0.146789
+      inner:  FLR=0.038835; MMR=0.161017
+      bias:   FLR=+0.017782; MMR=+0.014228
+
+    ECOM f=0.90 seed=49 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7439.72it/s]
+      direct threshold=0.15; sigmoid-equivalent=0.537430; validation F1=0.8816
+      target: FLR=0.030303; MMR=0.119266
+      inner:  FLR=0.045775; MMR=0.205279
+      bias:   FLR=+0.015472; MMR=+0.086013
+
+    ECOM f=0.90 seed=49 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_49
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7859.55it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.9433
+      target: FLR=0.030303; MMR=0.119266
+      inner:  FLR=0.037415; MMR=0.174927
+      bias:   FLR=+0.007112; MMR=+0.055661
+
+    ECOM f=0.90 seed=50 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7867.55it/s]
+      direct threshold=0.70; sigmoid-equivalent=0.668188; validation F1=0.8525
+      target: FLR=0.010101; MMR=0.100917
+      inner:  FLR=0.030928; MMR=0.173021
+      bias:   FLR=+0.020827; MMR=+0.072103
+
+    ECOM f=0.90 seed=50 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_50
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8575.30it/s]
+      direct threshold=0.80; sigmoid-equivalent=0.689974; validation F1=0.9365
+      target: FLR=0.010101; MMR=0.100917
+      inner:  FLR=0.024561; MMR=0.201149
+      bias:   FLR=+0.014460; MMR=+0.100232
+
+    ECOM f=0.90 seed=51 SRSWOR_65_35
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/SRSWOR_65_35/ECOM/f_0p90/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 8655.19it/s]
+      direct threshold=0.10; sigmoid-equivalent=0.524979; validation F1=0.8644
+      target: FLR=0.021978; MMR=0.183486
+      inner:  FLR=0.033557; MMR=0.155425
+      bias:   FLR=+0.011579; MMR=-0.028061
+
+    ECOM f=0.90 seed=51 bootstrap_OOB
+      loading checkpoint: /home/ahmeda/ER_Transformer_Reproducible_RUN/models/analysis22_section332_bias/cross_encoder/bootstrap_OOB/ECOM/f_0p90/seed_51
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7473.81it/s]
+      direct threshold=0.75; sigmoid-equivalent=0.679179; validation F1=0.9275
+      target: FLR=0.021978; MMR=0.183486
+      inner:  FLR=0.047619; MMR=0.181287
+      bias:   FLR=+0.025641; MMR=-0.002200
+
+====================================================================================================
+ANALYSIS 22 DIRECT-SCORE SUMMARY
+====================================================================================================
+
+Primary three seeds:
+dataset   f        scheme  target_FLR_mean  bias_FLR_mean  target_MMR_mean  bias_MMR_mean
+   DBLP 0.5  SRSWOR_65_35         0.017888       0.004091         0.014353      -0.001650
+   DBLP 0.5 bootstrap_OOB         0.017888       0.003808         0.014353       0.004442
+   DBLP 0.6  SRSWOR_65_35         0.019479       0.015253         0.013767       0.000941
+   DBLP 0.6 bootstrap_OOB         0.019479       0.006679         0.013767       0.002556
+   DBLP 0.7  SRSWOR_65_35         0.014666       0.006639         0.014669      -0.002206
+   DBLP 0.7 bootstrap_OOB         0.014666       0.005318         0.014669       0.002916
+   DBLP 0.8  SRSWOR_65_35         0.017768      -0.002408         0.012402       0.008372
+   DBLP 0.8 bootstrap_OOB         0.017768       0.007940         0.012402       0.006007
+   DBLP 0.9  SRSWOR_65_35         0.015260       0.003225         0.020636      -0.001276
+   DBLP 0.9 bootstrap_OOB         0.015260       0.008478         0.020636      -0.003248
+   ECOM 0.5  SRSWOR_65_35         0.041060      -0.001546         0.152187       0.029471
+   ECOM 0.5 bootstrap_OOB         0.041060      -0.018910         0.152187       0.018298
+   ECOM 0.6  SRSWOR_65_35         0.038398      -0.012561         0.170901       0.000905
+   ECOM 0.6 bootstrap_OOB         0.038398      -0.003912         0.170901       0.002278
+   ECOM 0.7  SRSWOR_65_35         0.028457       0.000337         0.162051      -0.009850
+   ECOM 0.7 bootstrap_OOB         0.028457       0.001945         0.162051      -0.008192
+   ECOM 0.8  SRSWOR_65_35         0.036304      -0.002654         0.185868      -0.029652
+   ECOM 0.8 bootstrap_OOB         0.036304       0.000477         0.185868      -0.016791
+   ECOM 0.9  SRSWOR_65_35         0.043114      -0.014167         0.189602      -0.041020
+   ECOM 0.9 bootstrap_OOB         0.043114      -0.015620         0.189602      -0.045523
+
+Complete ten-seed groups:
+dataset   f        scheme  target_FLR_mean  bias_FLR_mean  bias_FLR_SE  target_MMR_mean  bias_MMR_mean  bias_MMR_SE
+   DBLP 0.5  SRSWOR_65_35         0.016785       0.002734     0.002608         0.014744      -0.001734     0.001436
+   DBLP 0.5 bootstrap_OOB         0.016785       0.003728     0.002193         0.014744       0.005155     0.002256
+   DBLP 0.6  SRSWOR_65_35         0.018784       0.005353     0.002873         0.015855      -0.000624     0.002142
+   DBLP 0.6 bootstrap_OOB         0.018784       0.002991     0.002468         0.015855      -0.000408     0.001581
+   DBLP 0.7  SRSWOR_65_35         0.014494       0.005166     0.003468         0.015056      -0.000535     0.003275
+   DBLP 0.7 bootstrap_OOB         0.014494       0.010081     0.003340         0.015056       0.002769     0.002838
+   DBLP 0.8  SRSWOR_65_35         0.015514       0.002976     0.004473         0.016341       0.001326     0.002787
+   DBLP 0.8 bootstrap_OOB         0.015514       0.007972     0.004261         0.016341       0.001641     0.003305
+   DBLP 0.9  SRSWOR_65_35         0.014620       0.003901     0.003298         0.018653      -0.002714     0.003292
+   DBLP 0.9 bootstrap_OOB         0.014620       0.006525     0.002611         0.018653      -0.003204     0.002380
+   ECOM 0.5  SRSWOR_65_35         0.039222       0.001400     0.003861         0.159519       0.014555     0.012175
+   ECOM 0.5 bootstrap_OOB         0.039222       0.001180     0.006437         0.159519       0.009930     0.009444
+   ECOM 0.6  SRSWOR_65_35         0.033972      -0.000636     0.006184         0.167898       0.014921     0.013925
+   ECOM 0.6 bootstrap_OOB         0.033972       0.004486     0.006087         0.167898      -0.003757     0.013168
+   ECOM 0.7  SRSWOR_65_35         0.028847       0.006759     0.007295         0.164000      -0.002491     0.007741
+   ECOM 0.7 bootstrap_OOB         0.028847       0.008332     0.006111         0.164000       0.007250     0.009311
+   ECOM 0.8  SRSWOR_65_35         0.033425       0.000715     0.004977         0.173733      -0.006736     0.013597
+   ECOM 0.8 bootstrap_OOB         0.033425       0.000914     0.003675         0.173733      -0.008214     0.007804
+   ECOM 0.9  SRSWOR_65_35         0.028750       0.004234     0.004916         0.157798       0.007598     0.017961
+   ECOM 0.9 bootstrap_OOB         0.028750       0.006150     0.005700         0.157798       0.006997     0.016419
+
+Saved:
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis22_section332_bias_direct_perseed.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis22_section332_bias_direct_primary3.csv
+  /home/ahmeda/ER_Transformer_Reproducible_RUN/results/analysis22_section332_bias_direct_mc10.csv
+
+Analysis 22 direct-score reconstruction complete.
+
+========================================================================================
+REPRODUCTION COMPLETE
+========================================================================================
+Results      : /home/ahmeda/ER_Transformer_Reproducible_RUN/results
+Run manifest : /home/ahmeda/ER_Transformer_Reproducible_RUN/reproduced/reproduction_run.json

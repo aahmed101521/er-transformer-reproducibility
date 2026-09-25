@@ -1,0 +1,30 @@
+{
+  "LR": {
+    "correct": 1173,
+    "declared": 1213,
+    "false_links": 40,
+    "lambda": 0.03297609233305853,
+    "missing_matches": 17,
+    "n_true_records": 1196,
+    "psi": 0.014214046822742474
+  },
+  "MEC": {
+    "correct": 1183,
+    "declared": 1252,
+    "false_links": 69,
+    "lambda": 0.05511182108626198,
+    "missing_matches": 1,
+    "n_true_records": 1196,
+    "psi": 0.0008361204013377926
+  },
+  "dataset": "DBLP",
+  "lr_threshold": 0.40000000000000013,
+  "lr_validation_f1": 0.9164969450101833,
+  "n_baseline_train_pairs": 59133,
+  "n_ft_train_pairs": 59102,
+  "n_test_a": 1308,
+  "n_train_a": 1308,
+  "phase": "ft_biencoder",
+  "runtime_seconds": 722.359920501709,
+  "seed": 43
+}

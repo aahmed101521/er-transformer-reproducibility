@@ -1,0 +1,18 @@
+# VERIFIED full-pipeline environment used for the September 2026
+# reproduction on the NVIDIA L40 server.
+#
+# All 13 main stages were executed successfully in this environment.
+# The final paper-table reconstruction passed 116/116 manuscript-facing
+# checks. A complete transitive package snapshot is stored in
+# environment/full_pipeline_pip_freeze.txt.
+--extra-index-url https://download.pytorch.org/whl/cu121
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+torch==2.5.1+cu121
+sentence-transformers==6.1.0
+transformers==5.17.0
+datasets==5.0.1
+accelerate==1.15.0
+xgboost==3.3.0
+jellyfish==1.2.1

@@ -1,0 +1,4 @@
+usage: reproduce_revision.py [-h]
+                             (--verify-saved | --all | --table8 | --combined-only | --dry-run)
+                             [--gpu GPU]
+reproduce_revision.py: error: one of the arguments --verify-saved --all --table8 --combined-only --dry-run is required

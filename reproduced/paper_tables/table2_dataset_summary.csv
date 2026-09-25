@@ -1,0 +1,3 @@
+dataset,nA,nB,gold_pairs,matchable_A,matched_B,multi_partner_A,max_partners_A
+DBLP-Scholar,2616,64263,5347,2408,5218,1238,20
+Abt-Buy,1081,1092,1097,1081,1092,16,2

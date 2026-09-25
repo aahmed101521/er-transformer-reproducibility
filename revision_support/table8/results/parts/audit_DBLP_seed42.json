@@ -1,0 +1,31 @@
+{
+  "cuda": "12.1",
+  "dataset": "DBLP",
+  "fixed": {
+    "correct": 1164,
+    "declared": 1182,
+    "false_links": 18,
+    "lambda": 0.015228426395939087,
+    "missing_matches": 39,
+    "n_train_pairs": 58465,
+    "n_true_records": 1210,
+    "psi": 0.032231404958677684,
+    "threshold": 0.5500000000000002,
+    "validation_f1": 0.9148936170212766
+  },
+  "historical_check_passed": true,
+  "reblocked": {
+    "correct": 1169,
+    "declared": 1192,
+    "false_links": 23,
+    "lambda": 0.01929530201342282,
+    "missing_matches": 31,
+    "n_train_pairs": 58427,
+    "n_true_records": 1210,
+    "psi": 0.0256198347107438,
+    "threshold": 0.5000000000000001,
+    "validation_f1": 0.921161825726141
+  },
+  "seed": 42,
+  "torch": "2.5.1+cu121"
+}

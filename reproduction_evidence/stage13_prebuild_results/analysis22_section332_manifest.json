@@ -1,0 +1,153 @@
+{
+  "analysis": "analysis22_section332_bias",
+  "bias": {
+    "FLR": "inner_FLR - target_FLR",
+    "MMR": "inner_MMR - target_MMR",
+    "Monte_Carlo_SE": "sample SD of the ten seed-level biases divided by sqrt(10)"
+  },
+  "blocking": {
+    "bi_encoder": "all-MiniLM-L6-v2",
+    "fixed_across_all_fractions": true,
+    "k": 50,
+    "scheme": "scheme-II title-only bi-encoder"
+  },
+  "checkpointing": "atomic JSON/CSV per target and per inner scheme; model checkpoints retained unless explicitly pruned",
+  "complete_counts": {
+    "DBLP": {
+      "0.50": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.60": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.70": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.80": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.90": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      }
+    },
+    "ECOM": {
+      "0.50": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.60": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.70": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.80": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      },
+      "0.90": {
+        "SRSWOR_65_35": 10,
+        "bootstrap_OOB": 10
+      }
+    }
+  },
+  "corrections": {
+    "MMR_denominator": "test source items with at least one true partner",
+    "alternative_valid_matches_excluded_from_negatives": true,
+    "any_valid_match_is_correct": true,
+    "complete_raw_b": true,
+    "many_match_truth": true,
+    "mutually_exclusive_counting": true,
+    "preprocessing": "frozen June analysis18 CSV round-trip and CE serialisation",
+    "raw_decoding": "Latin-1",
+    "training_positive": "first-listed retained valid B partner"
+  },
+  "cross_encoder": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "cross_encoder_recipe": {
+    "batch_size": 16,
+    "epochs": 5,
+    "learning_rate": 2e-05,
+    "max_length": 128,
+    "rng_reset_before_each_fit": true,
+    "rng_sources": [
+      "python",
+      "numpy",
+      "torch",
+      "torch_cuda"
+    ],
+    "score_path": "sigmoid(CrossEncoder.predict)",
+    "threshold_grid": [
+      0.1,
+      0.15000000000000002,
+      0.20000000000000004,
+      0.25000000000000006,
+      0.30000000000000004,
+      0.3500000000000001,
+      0.40000000000000013,
+      0.45000000000000007,
+      0.5000000000000001,
+      0.5500000000000002,
+      0.6000000000000002,
+      0.6500000000000001,
+      0.7000000000000002,
+      0.7500000000000002,
+      0.8000000000000002,
+      0.8500000000000002,
+      0.9000000000000002
+    ],
+    "validation_fraction_of_pairs": 0.2,
+    "warmup_fraction": 0.1
+  },
+  "datasets": [
+    "DBLP",
+    "ECOM"
+  ],
+  "fractions": [
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "generated_at": "2026-09-25 10:10:53",
+  "protocol_version": "analysis22-v2-seeded-2026-07-28",
+  "schemes": {
+    "SRSWOR_65_35": {
+      "sampling": "SRSWOR within sM_f",
+      "test_ratio": 0.35,
+      "train_ratio": 0.65
+    },
+    "bootstrap_OOB": {
+      "expected_distinct_fraction": 0.6321205588285577,
+      "inner_test": "out-of-bag source items",
+      "sampling": "n-out-of-n bootstrap within sM_f"
+    }
+  },
+  "scope": "revised-paper Section 3.3.2 FLR/MMR bias; not analysis13 proxy",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "target": {
+    "definition": "cross-encoder trained under exact analysis18 protocol on sM_f and evaluated on A\\sM_f",
+    "reuse_source": "analysis18 only after manifest/split/result audit",
+    "target_source_counts": {
+      "analysis18_cell_prediction_manifest": 200
+    }
+  }
+}

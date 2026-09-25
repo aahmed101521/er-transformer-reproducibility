@@ -1,0 +1,55 @@
+{
+  "dataset": "DBLP",
+  "n_test_a": 1308,
+  "n_train_a": 1308,
+  "n_train_pairs": 59133,
+  "phase": "baseline_k50",
+  "results": {
+    "bi-encoder": {
+      "LR": {
+        "correct": 1109,
+        "declared": 1116,
+        "false_links": 7,
+        "lambda": 0.0062724014336917565,
+        "missing_matches": 81,
+        "n_true_records": 1196,
+        "psi": 0.0677257525083612
+      },
+      "MEC": {
+        "correct": 1182,
+        "declared": 1241,
+        "false_links": 59,
+        "lambda": 0.04754230459307011,
+        "missing_matches": 4,
+        "n_true_records": 1196,
+        "psi": 0.0033444816053511705
+      },
+      "lr_threshold": 0.5500000000000002,
+      "lr_validation_f1": 0.8423423423423423
+    },
+    "string": {
+      "LR": {
+        "correct": 1137,
+        "declared": 1174,
+        "false_links": 37,
+        "lambda": 0.03151618398637138,
+        "missing_matches": 54,
+        "n_true_records": 1196,
+        "psi": 0.0451505016722408
+      },
+      "MEC": {
+        "correct": 1181,
+        "declared": 1246,
+        "false_links": 65,
+        "lambda": 0.0521669341894061,
+        "missing_matches": 5,
+        "n_true_records": 1196,
+        "psi": 0.004180602006688963
+      },
+      "lr_threshold": 0.3500000000000001,
+      "lr_validation_f1": 0.8595744680851064
+    }
+  },
+  "runtime_seconds": 1093.5839054584503,
+  "seed": 43
+}
